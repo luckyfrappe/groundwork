@@ -274,7 +274,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    margin-bottom: 100px;
 }
 
 .contact-section .img1 {
@@ -296,9 +297,9 @@ header {
 .contact-section .img3 {
     position: absolute;
     left: 5%;
-    height: 250px;
-    width: 250px;
-    bottom: 30%;
+    height: 150px;
+    width: 150px;
+    bottom: 0%;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
@@ -331,4 +332,34 @@ header {
 .contact-section button:hover {
     opacity: 0.7;
     box-shadow: 0 0 15px lightgrey;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(211,211,211,0.21);
+    backdrop-filter: blur(10px);
+    height: 100px;
+}
+
+.footer p {
+    margin: 0 20px;
+}
+
+.footer ul {
+    display: flex;
+    list-style: none;
+    margin-right: 140px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+    padding: 7px 7px;
+    border-radius: 50px;
+    border: 1px solid lightskyblue;
+    transition: 0.3s;
+    margin: 0 10px;
 }
