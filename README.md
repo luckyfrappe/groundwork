@@ -27,3 +27,6 @@ typo hero-section
 black margin under video
 
 https://bennettfeely.com/clippy/ clip-path css to clip the images
+
+prototype of the webpage is full of bugs:
+mobile responsivness is bad
