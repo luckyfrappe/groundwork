@@ -26,3 +26,4 @@ typo hero-section
 
 black margin under video
 
+https://bennettfeely.com/clippy/ clip-path css to clip the images
