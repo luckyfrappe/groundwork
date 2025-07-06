@@ -17,3 +17,12 @@ hero video https://www.pexels.com/video/aerial-view-of-excavator-working-at-cons
 to convert video https://www.freeconvert.com/
 
 ideas for the text are cooperation between gemini and author
+
+capcut for image corrections
+
+
+bugs:
+typo hero-section
+
+black margin under video
+
