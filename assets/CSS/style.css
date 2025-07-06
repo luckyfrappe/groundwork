@@ -153,7 +153,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50px;
 }
 
 .image-box img {
@@ -175,7 +174,7 @@ p {
 }
 
 .about-section {
-    padding: 0 100px;
+    padding: 0;
     width: 100%;
     background-color: black;
 }
@@ -183,6 +182,7 @@ p {
 .about-section h2 {
     margin-top: 50px;
     padding-top: 50px;
+    padding-left: 100px;
     margin-bottom: 0;
     color: white;
 }
@@ -190,13 +190,15 @@ p {
 .about-section p {
     line-height: 25px;
     max-width: 600px;
+    padding-left: 100px;
+    margin-bottom: 0;
 }
 
 .services-section {
     display: flex;
     flex-direction: column;
-    background-color: #edff66;
-    padding: 0 100px;
+    background-color: black;
+    padding: 0 100px 100px 100px;
 }
 
 .services-section h3 {
@@ -275,6 +277,7 @@ p {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    padding-top: 50px;
 }
 
 .contact-section .img1 {
@@ -335,9 +338,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(211,211,211,0.21);
+    background-color: #edff66;
     backdrop-filter: blur(10px);
     height: 100px;
+    padding: 20px 0;
 }
 
 footer p {
@@ -406,7 +410,7 @@ footer a {
 @keyframes autoDisplayAnimation {
     from {
         opacity: 0;
-        transform: translateY(200px) scale(0.3);
+        transform: translateY(50px) scale(0.95);
     } to {
         opacity: 1;
         transform: translateY(0) scale(1);
