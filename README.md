@@ -30,3 +30,5 @@ https://bennettfeely.com/clippy/ clip-path css to clip the images
 
 prototype of the webpage is full of bugs:
 mobile responsivness is bad
+
+https://codesandbox.io/p/sandbox/responsive-card-layout-with-css-grid-rpfdn?file=%2Fstyles.css%3A82%2C1-110%2C2 responsive cards
