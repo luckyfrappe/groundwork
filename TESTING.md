@@ -8,8 +8,9 @@ Testing for this project was a constant process, not just something done at the 
 However, things got much easier and less stressful once I started breaking down tasks into smaller, more manageable steps. This helped me see the big picture better. Even though it was challenging, this ongoing testing helped me find and fix problems little by little. I focused mainly on making sure the website looked and worked great on all devices (responsive design) and that every feature did exactly what it was supposed to. I regularly used browser tools to quickly sort out any bugs, which really helped make the website strong and reliable in the end.
 
 ## Contents
-<!-- * [Automated Testing](#automated-testing)  
-* [Manual Testing](#manual-testing)   -->
+* [Automated Testing](#automated-testing)  
+* [Manual Testing](#manual-testing)
+* [Full Testing](#full-testing)
 * [Bugs](#bugs)  
     * [Known Bugs](#known-bugs)  
     * [Solved Bugs](#solved-bugs)  
