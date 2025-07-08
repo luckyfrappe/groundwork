@@ -120,11 +120,9 @@ This website is designed to provide a seamless and professional experience for o
 <!-- Add about us image -->
 - **Services Teaser:** A concise overview teasing the comprehensive offerings, with a clear link to the full Services page, inviting users to explore further.
 <!-- Add services image -->
-- **Customer Journey:** Lays out the clear steps for clients to engage with us and bridges the gap between understanding our comprehensive services and taking the next step.
-  <!-- Add section -->
-  <!-- Add image -->
-- **Contact Section:** Encourages users to get in touch with a clear CTA.
-  <!-- Add contact section -->
+
+<!-- Update and reconstruct the section -->
+- **Customer Journey and Contact Section:** Lays out the clear steps for clients to engage with us and bridges the gap between understanding our comprehensive services and taking the next step with a clear CTA.
   <!-- Add image -->
 
   <!-- Add any new sections and images -->
