@@ -158,16 +158,6 @@ This website is designed to provide a seamless and professional experience for o
 <!-- Add image -->
 
 <!-- To be created -->
-
-**Services Page:**
-
-- Presents a comprehensive list of Groundwork Solutions Ltd.'s services, enhanced with appropriate images.
-<!-- Add image -->
-- Each service includes a concise, benefit-focused description.
-  Add image
-
-<!-- To be created -->
-
 **Contact Page:**
 
 - Provides a straightforward contact form for user inquiries.
@@ -176,7 +166,6 @@ This website is designed to provide a seamless and professional experience for o
 <!-- Add image -->
 
 <!-- To be created -->
-
 **Success Page:**
 
 - Displayed upon successful form submission, providing immediate confirmation to the user.
@@ -189,6 +178,8 @@ Future implementations could include:
 - **Allow users to upload historical project data for more accurate estimates.**
 - **Integrate a system to automatically request quotes from suppliers.**
 - **Develop an admin dashboard for Groundwork Solutions Ltd. to manage and track all quotes.**
+- **Services Page - Presents a comprehensive list of Groundwork Solutions Ltd.'s services, enhanced with appropriate images.**
+- **Articles/Portfolio Page**
 
 ### Accessibility Considerations
 
