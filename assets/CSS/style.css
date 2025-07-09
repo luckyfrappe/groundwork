@@ -42,7 +42,7 @@ header {
   right: 0;
   left: 0;
   position: absolute;
-  padding: 10px 40px; /* Try removing padding and spacing after container */
+  padding: 10px 40px;
   z-index: 999;
   background-color: #4b4b4b5b; /* Semi-transparent background using 5b at the end */
   backdrop-filter: blur(10px);
@@ -246,6 +246,9 @@ footer {
 /* ==== FLEX + GRID HELPERS ==== */
 .flex {
   display: flex;
+}
+.fluid {
+  width: 100%;
 }
 .center {
   align-items: center;
