@@ -116,8 +116,6 @@ This website is designed to provide a seamless and professional experience for o
 <!-- Add hero image -->
 - **Introduction Section:** Briefly highlights the company's role as a trusted foundation partner.
 <!-- Add introduction image -->
-- **About Us Section:** Provides an overview of Groundwork Solutions Ltd.'s approach and expertise.
-<!-- Add about us image -->
 - **Services Teaser:** A concise overview teasing the comprehensive offerings, with a clear link to the full Services page, inviting users to explore further.
 <!-- Add services image -->
 
@@ -145,7 +143,6 @@ This website is designed to provide a seamless and professional experience for o
 <!-- Add image -->
 
 <!-- To be created -->
-
 **Results & Summary Page:**
 
 - Displays a service-by-service cost breakdown.
@@ -153,20 +150,6 @@ This website is designed to provide a seamless and professional experience for o
 - Shows the total estimated price range (e.g., "11.8M – 25.1M SEK").
 <!-- Add image -->
 - Includes a clear Call to Action (CTA) like: "<!-- Send us your details for a finalized quote. -->"
-<!-- Add image -->
-
-<!-- To be created -->
-**Contact Page:**
-
-- Provides a straightforward contact form for user inquiries.
-<!-- Add image -->
-- Includes essential fields such as name, email, and a message area, with clear validation hints for required information.
-<!-- Add image -->
-
-<!-- To be created -->
-**Success Page:**
-
-- Displayed upon successful form submission, providing immediate confirmation to the user.
 <!-- Add image -->
 
 ### Future Implementations
@@ -178,9 +161,10 @@ Future implementations could include:
 - **Develop an admin dashboard for Groundwork Solutions Ltd. to manage and track all quotes.**
 - **Services Page - Presents a comprehensive list of Groundwork Solutions Ltd.'s services, enhanced with appropriate images.**
 - **Articles/Portfolio Page**
+- **Contact form page.**
 
 ### Accessibility Considerations
-
+<!-- go through each picture and video for alt -->
   <!-- - **Semantic HTML:** Utilizing meaningful HTML tags to ensure proper document structure for assistive technologies. -->
   <!-- - **Descriptive Alt Attributes:** All images include descriptions for screen reader users. -->
   <!-- - **Color Contrast:**  -->

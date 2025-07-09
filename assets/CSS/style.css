@@ -81,12 +81,14 @@ h1 {
   /* letter-spacing: 1px; */
   font-size: 2.5rem;
   font-weight: 900;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 h2, h3 {
-  font-family: 'Merriweather Sans', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 2rem;
   font-weight: 600;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 p {
@@ -118,11 +120,12 @@ p {
 .hero-info h1 {
   font-size: 100px;
   color: white;
+  margin: 0;
 }
 
 .hero-info > p {
   color: var(--color-primary);
-  font-size: 30px;
+  font-size: 25px;
   max-width: 500px;
   font-weight: 900;
   margin-bottom: 20px;
@@ -130,19 +133,18 @@ p {
 
 .hero-info button {
   background-color: #edff66;
-  border: 2px solid #a2c799
-  var(--color-navy-blue)
 }
 
 .hero-info button:hover {
   background-color: rgba(0, 0, 0, 0.9);
   color: #edff66;
   box-shadow: 0 0 15px #edff66;
+  border: 2px solid #edff66;
 }
 
 .hero-heading-bottom {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 120px;
+  font-size: 100px;
   font-weight: 900;
   margin: 0;
   position: absolute;
@@ -151,6 +153,94 @@ p {
   color: white;
 }
 
+.services-cards {
+  display: grid;
+  grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
+  grid-gap: 40px;
+  padding: 60px 0;
+}
+
+.text--medium {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #ecf0f1;
+}
+
+.cards {
+  grid-column: 2 / span 12;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(auto, 60px));
+  grid-gap: 40px;
+}
+
+.card {
+  grid-column-end: span 4;
+  display: flex;
+  flex-direction: column;
+  background-color: #39393b;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  border-radius: 12px;
+}
+
+.card:hover {
+    box-shadow: 0 0 15px white;
+}
+
+.card__image-container {
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px 12px 0 0;
+}
+
+.card__image-container img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card__content {
+  padding: 20px;
+}
+
+.card__title {
+  margin-bottom: 20px;
+}
+
+.card__info {
+  display: flex;
+  align-self: end;
+  align-items: center;
+}
+
+.card__price {
+  margin-left: auto;
+  padding: 5px 20px;
+  background-color: #303032;
+  border-radius: 20px;
+}
+
+.journey button {
+  background-color: #edff66;;
+}
+
+.journey button:hover {
+  background-color: rgba(0, 0, 0);
+  color: #edff66;
+  box-shadow: 0 0 15px #edff66;
+  border: 2px solid #edff66;
+}
+
+/* ==== FOOTER ==== */
+footer {
+  background-image: linear-gradient(to bottom, #2f4858, #007987, #00ab96, #74da84, #edff66);
+}
 /*  */
 
 /* ==== FLEX + GRID HELPERS ==== */
@@ -234,11 +324,42 @@ a {
   color: inherit;
 }
 
-
-/* ==== FOOTER ==== */
-footer {
-  background-image: linear-gradient(to bottom, #2f4858, #007987, #00ab96, #74da84, #edff66);
+/* Animations */
+/* .autoBlur {
+  animation: autoBlurAnimation linear both;
+  animation-timeline: view();
 }
+
+@keyframes autoBlurAnimation {
+  0% {
+    filter: blur(40px);
+  }
+  40%,
+  60% {
+    filter: blur(0);
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(40px);
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+} */
+
+/* About image expand */
+/* .autoTakeFull {
+  animation: autoTakeFullAnimation both;
+  animation-timeline: view(70% 3%);
+} */
+/* 
+@keyframes autoTakeFullAnimation {
+  to {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+} */
 
 /* ==== RESPONSIVE ==== */
 :root {
@@ -264,8 +385,31 @@ footer {
   .hero-section h1, .hero-heading-bottom {
     font-size: 55px;
   }
+  .services-cards {
+    grid-template-columns: 10px repeat(6, 1fr) 10px;
+    grid-gap: 10px;
+  }
+  .cards {
+    grid-column: 2 / span 6;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+  }
+  .card {
+    grid-column-end: span 6;
+  }
 }
 
 @media (max-width: 768px) {
-  
+  .services-cards {
+    grid-gap: 20px;
+  }
+  .card {
+    grid-column-end: span 12;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .card {
+    grid-column-end: span 6;
+  }
 }
