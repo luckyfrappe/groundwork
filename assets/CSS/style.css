@@ -31,9 +31,7 @@ body {
   --color-soft-green: #2ebf92;      /* soft green */
   --color-teal: #009795;            /* teal */
   --color-teal-blue: #0f6f80;       /* teal blue */
-  --color-black: #2f4858;           /* deep navy blue */
-  --color-text: #111111;            /* dark grey */
-  --color-dark-grey: #2c2c2c;       /* modern dark grey */
+  --color-navy-blue: #2f4858;           /* deep navy blue */
   --color-background: var(--color-light-grey);
 
   --spacing: 1rem;
@@ -65,7 +63,8 @@ header {
   text-decoration: none;
   padding-left: 25px;
   color: white;
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 /* ==== CONTAINER ==== */
@@ -77,7 +76,7 @@ header {
 
 /* ==== TYPOGRAPHY ==== */
 h1 {
-  font-family: 'Anton', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
   /* letter-spacing: 1px; */
   font-size: 2.5rem;
@@ -85,7 +84,7 @@ h1 {
   margin-bottom: 1rem;
 }
 h2, h3 {
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Merriweather Sans', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -93,6 +92,66 @@ h2, h3 {
 p {
   font-size: 1rem;
 }
+
+/*  */
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hero-video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-info {
+  z-index: 1;
+  position: absolute;
+  top: 80px;
+  left: 40px;
+}
+
+.hero-info h1 {
+  font-size: 100px;
+  color: white;
+}
+
+.hero-info > p {
+  color: white;
+  font-size: 30px;
+  max-width: 210px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.hero-info button {
+  background-color: #edff66;
+  border: 2px solid #a2c799
+  var(--color-navy-blue)
+}
+
+.hero-info button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #edff66;
+  box-shadow: 0 0 15px #edff66;
+}
+
+.hero-heading-bottom {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 120px;
+  font-weight: 900;
+  margin: 0;
+  position: absolute;
+  right: 40px;
+  bottom: 0px;
+  color: white;
+}
+
+/*  */
 
 /* ==== FLEX + GRID HELPERS ==== */
 .flex {
@@ -188,8 +247,25 @@ footer {
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
 }
-@media (max-width: 768px) {
-  .grid-2 {
-    grid-template-columns: 1fr;
+@media (max-width: 640px) {
+  header {
+    padding: 0 10px;
   }
+  .head-left button {
+    display: none;
+  }
+  .head-right a {
+    padding-left: 0 5px;
+    font-size: 12px;
+  }
+  .hero-info {
+    left: 5%;
+  }
+  .hero-section h1, .hero-heading-bottom {
+    font-size: 55px;
+  }
+}
+
+@media (max-width: 768px) {
+  
 }

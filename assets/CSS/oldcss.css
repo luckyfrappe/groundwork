@@ -1,71 +1,8 @@
 
 
-.hero-section {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-color: white;
-}
 
-.hero-video {
-  object-fit: cover;
-  width: 100vw;
-  height: 100vh;
-}
 
-.hero-info {
-  z-index: 1;
-  position: absolute;
-  top: 80px;
-  left: 50px;
-}
 
-.hero-info h1 {
-  font-size: 100px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-weight: 900;
-  font-size: normal;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  color: white;
-}
-
-p {
-  color: grey;
-}
-
-.hero-info > p {
-  color: white;
-  max-width: 210px;
-}
-
-.hero-info button {
-  background-color: #edff66;
-  border: 2px solid #a2c799
-  padding: 10px 40px;
-  border-radius: 20px;
-  cursor: pointer;
-  color: black;
-  transition: 0.3s;
-}
-
-.hero-info button:hover {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #edff66;
-  box-shadow: 0 0 15px #edff66;
-}
-
-.solutions-text {
-  font-size: 120px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-weight: 900;
-  margin: 0;
-  position: absolute;
-  right: 20px;
-  bottom: 130px;
-  color: white;
-}
 
 .introduction-section {
   width: 100%;
@@ -211,33 +148,7 @@ p {
   align-items: center;
 }
 
-/* .contact-section .img1 {
-  position: absolute;
-  top: 10%;
-  right: 20px;
-  height: 400px;
-  clip-path: polygon(25% 0%, 84% 22%, 60% 100%, 0% 100%);
-}
-
-.contact-section .img2 {
-  position: absolute;
-  left: 50px;
-  top: 10px;
-  height: 200px;
-  clip-path: polygon(0 0, 85% 0, 80% 90%, 20% 100%);
-}
-
-.contact-section .img3 {
-  position: absolute;
-  left: 5%;
-  height: 150px;
-  width: 150px;
-  bottom: 0%;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-} */
-
 .contact-section h1 {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 50px;
   max-width: 550px;
   text-align: center;
