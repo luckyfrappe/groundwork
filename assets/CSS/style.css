@@ -74,6 +74,12 @@ section {
   padding-bottom: 100px;
 }
 
+.container {
+  max-width: 1280px; 
+  margin: 0 auto;
+  padding: 0 24px; 
+}
+
 .hero-section {
   position: relative;
   width: 100vw;
@@ -148,7 +154,7 @@ p {
   flex-direction: column;
   align-items: center;
   color: black;
-  padding-bottom: 94px;
+  padding-bottom: 0px;
 }
 
 .image-box {
@@ -176,6 +182,7 @@ p {
   font-size: 50px;
   max-width: 1150px;
   text-align: center;
+  margin-bottom: 120px;
 }
 
 .about-section {
@@ -185,17 +192,15 @@ p {
 }
 
 .about-section h2 {
-  margin-top: 50px;
   padding-top: 50px;
-  padding-left: 100px;
   margin-bottom: 0;
   color: white;
+  
 }
 
 .about-section p {
   line-height: 25px;
   max-width: 600px;
-  padding-left: 60px;
   margin-bottom: 0;
 }
 
@@ -279,14 +284,14 @@ p {
 .contact-section {
   position: relative;
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100%;
   padding-top: 50px;
+  align-items: center;
 }
 
-.contact-section .img1 {
+/* .contact-section .img1 {
   position: absolute;
   top: 10%;
   right: 20px;
@@ -309,7 +314,7 @@ p {
   width: 150px;
   bottom: 0%;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-}
+} */
 
 .contact-section h1 {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -320,7 +325,6 @@ p {
 
 .contact-section p {
   max-width: 400px;
-  text-align: center;
 }
 
 .contact-section button {
@@ -396,7 +400,7 @@ footer a {
 /* About image expand */
 .autoTakeFull {
   animation: autoTakeFullAnimation both;
-  animation-timeline: view(70% 65%);
+  animation-timeline: view(70% 3%);
 }
 
 @keyframes autoTakeFullAnimation {
@@ -425,6 +429,12 @@ footer a {
   }
 }
 
+@media only screen and (max-width: 2000px) {
+  .introduction-section {
+  position: relative;
+  top: 21px;
+ }
+}
 
 @media only screen and (max-width: 1000px) {
   .card {
@@ -460,12 +470,6 @@ footer a {
     flex-wrap: wrap;
     margin-right: 20px;
     justify-content: center;
-  }
-  .about-section h2 {
-    padding-left: 20px;
-  }
-  .about-section p {
-    padding-left: 20px;
   }
 }
 

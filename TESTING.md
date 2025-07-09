@@ -34,6 +34,9 @@ Many bugs were identified and successfully resolved throughout the development p
 - Non-Standardized Typography: Fonts and text sizes vary across the website, leading to a less cohesive and professional look.
 - Semantic HTML Errors: The HTML structure is not fully semantically correct, which can impact accessibility and maintainability.
 - Mobile Image Margin: After the "About" section, the expanding image has an unintended white margin below it on mobile screens, which can be resolved with specific CSS media queries.
+- Animation shrinks to fast on tablet view when scrolling up.
+- White space between picture and about section on tablets.
+- Soltuions text does not shrink on mobile size.
 
 ### Solved Bugs
 - Typo in hero-section: A spelling error in the hero section's code has been corrected.
