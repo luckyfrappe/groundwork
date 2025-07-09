@@ -200,12 +200,13 @@ HTML, CSS and Javascript.
 - **Google Dev Tools:** Development.
 <!-- - **Font Awesome:** Import icons. -->
 - **FreeConvert:** To downsize and convert the hero video.
-  <!-- - **Favicon.io:** To create favicon. -->
+  - **Favicon.io:** To create favicon.
   <!-- - **Tiny PNG:** To downsize the images. -->
   <!-- - **Am I Responsive?:** To showcase the website on different devices. -->
   <!-- - **Autoprefixer CSS online:** Applied to add necessary vendor prefixes to CSS properties, ensuring broader browser compatibility. -->
 - **ChatGPT (by OpenAI):** Used for generating specific service and feature descriptions, ensuring industry relevance and authenticity in the website's content.
 - **Gemini (by Google):** Providing extensive debugging assistance and code explanations during development.
+- **ColorSpace:** Used to generate matching Color Palette 
 
 ## Deployment & Local Development
 
@@ -285,7 +286,8 @@ Various service and feature descriptions, as well as general website copy, were 
 - **Royalty-Free Stock Images:**
   - About Section: `assets/images/about.jpeg` (A construction worker in a hard hat and safety vest, standing on a construction site with heavy machinery in the background.) Provided by a friend who works as construction supervisor.
 
-  <!-- - **Favicons:** Generated using <a href="[https://favicon.io/](https://favicon.io/)" target="_blank" rel="noopener">Favicon.io</a>. -->
+  - **Favicons:** Generated using <a href="[https://favicon.io/](https://favicon.io/)" target="_blank" rel="noopener">Favicon.io</a>.
+  - **Color Palette:** Generated using <a href="[https://mycolor.space/](https://mycolor.space/)" target="_blank" rel="noopener">ColorSpace</a>.
   <!-- - **Image Optimization:** Images were compressed and optimized using <a href="[https://tinypng.com/](https://tinypng.com/)" target="_blank" rel="noopener">Tiny PNG</a>. -->
   <!-- - **Responsive Showcase Image:** The screenshot demonstrating website responsiveness was created using <a href="[http://ami.responsivedesign.is/](http://ami.responsivedesign.is)" target="_blank" rel="noopener">Am I Responsive?</a>. -->
 
