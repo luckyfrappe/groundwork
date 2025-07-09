@@ -8,18 +8,18 @@
 }
 
 html {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+  box-sizing: border-box; /* Ensures consistent box-sizing */
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
 body {
   height: 100%;
-  font-family: system-ui, sans-serif;
   line-height: 1.5;
   color: var(--color-text);
-  background-color: var(--color-background);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-background); /* Light grey background */
+  -webkit-font-smoothing: antialiased; /* Smooth text rendering for WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooth text rendering for Firefox on macOS */
+  font-family: 'Roboto', system-ui, -apple-system, sans-serif; /* Modern, clean font */
 }
 
 /* ==== THEME COLORS ==== */
@@ -39,6 +39,35 @@ body {
   --spacing: 1rem;
 }
 
+header {
+  top: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  padding: 10px 40px; /* Try removing padding and spacing after container */
+  z-index: 999;
+  background-color: #4b4b4b5b; /* Semi-transparent background using 5b at the end */
+  backdrop-filter: blur(10px);
+
+}
+
+.head-left img {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px; /* Space between logo and button */
+}
+
+.head-left button:hover {
+  opacity: 0.7;
+}
+
+.head-right a {
+  text-decoration: none;
+  padding-left: 25px;
+  color: white;
+  font-size: 15px;
+}
+
 /* ==== CONTAINER ==== */
 .container {
   max-width: 1280px;
@@ -48,31 +77,32 @@ body {
 
 /* ==== TYPOGRAPHY ==== */
 h1 {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  /* letter-spacing: 1px; */
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 1rem;
-  color: var(--color-text);
 }
-h2 {
+h2, h3 {
+  font-family: 'Merriweather Sans', sans-serif;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--color-text);
 }
 p {
   font-size: 1rem;
-  margin-bottom: 1rem;
-  color: var(--color-dark-grey);
 }
 
 /* ==== FLEX + GRID HELPERS ==== */
 .flex {
   display: flex;
 }
-.flex-center {
-  display: flex;
-  justify-content: center;
+.center {
   align-items: center;
+}
+.space-between {
+  justify-content: space-between;
 }
 .grid-2 {
   display: grid;
@@ -96,17 +126,15 @@ p {
 
 /* ==== BUTTONS ==== */
 button {
-  background-color: var(--color-dark-grey);
-  color: var(--color-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  padding: 10px 30px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s;
+  font-weight: 700;
+  transition: 0.3s;
 }
 button:hover {
-  background-color: var(--color-black);
+  opacity: 0.7;
 }
 
 /* ==== FORMS ==== */
@@ -116,12 +144,10 @@ textarea,
 select {
   font: inherit;
   color: inherit;
-  background: none;
   border: none;
   outline: none;
 }
 input, textarea {
-  background-color: var(--color-white);
   border: 1px solid #ccc;
   padding: 0.5rem;
   border-radius: 4px;
@@ -149,14 +175,21 @@ a {
   color: inherit;
 }
 
-/* ==== RESPONSIVE ==== */
-@media (max-width: 768px) {
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ==== FOOTER ==== */
 footer {
   background-image: linear-gradient(to bottom, #2f4858, #007987, #00ab96, #74da84, #edff66);
+}
+
+/* ==== RESPONSIVE ==== */
+:root {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
 }

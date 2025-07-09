@@ -18,28 +18,72 @@
     <link rel="stylesheet" href="assets/CSS/style.css" />
 
     <!-- Font Awesome (for icons) -->
-    <script
+    <!-- <script
       src="https://kit.fontawesome.com/1ca7252419.js"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
 
     <!-- Google Fonts (Merriweather Sans for Headings, Roboto Flex for Paragraphs) -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@700&family=Roboto+Flex:wght@400&display=swap"
-      rel="stylesheet"
-    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Anton&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+    </style>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicon-16x16.png"
+    />
     <link rel="manifest" href="assets/images/site.webmanifest" />
   </head>
   <body>
+    <!-- Site-wide Header (Navbar) -->
+    <header class="flex center space-between">
+        <!-- Logo and Project Estimate Button -->
+        <div class="head-left flex center">
+        <img src="assets/images/groundwork-logo-white.svg" alt="logo" />
+        <button>PROJECT ESTIMATE</button>
+      </div>
 
+      <!-- Navigation Links -->
+      <div class="head-right center flex">
+        <p><a href="#">HOME</a></p>
+        <p><a href="#">ABOUT</a></p>
+        <p><a href="#">SERVICES</a></p>
+        <p><a href="#">CONTACT</a></p>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <section class="hero-section">
+        <div class="hero-vid">
+          <video loop autoplay muted plays-inline class="hero-video">
+            <source src="assets/videos/hero-video.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-info">
+            <h1>Groundwork</h1>
+            <p>Where Every Great Build Begins</p>
+            <button>GET YOUR ESTIMATE</button>
+          </div>
+          <p class="solutions-text">Solutions</p>
+        </div>
+      </section>
+
+
+
+
+    </main>
   </body>
 </html>
-
-
-
-
