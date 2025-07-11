@@ -193,14 +193,6 @@ header p {
   padding: 60px 0;
 }
 
-.text--medium {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 400;
-  color: #ecf0f1;
-}
-
 .cards {
   grid-column: 2 / span 12;
   display: grid;
@@ -216,6 +208,14 @@ header p {
   cursor: pointer;
   transition: all 0.3s ease 0s;
   border-radius: 12px;
+}
+
+.cards p {
+  color: white;
+}
+
+.cards h3 {
+  color: white;
 }
 
 .card:hover {
@@ -252,11 +252,18 @@ header p {
   align-items: center;
 }
 
-.card__price {
-  margin-left: auto;
-  padding: 5px 20px;
-  background-color: #303032;
-  border-radius: 20px;
+.border {
+  background-color: var(--color-primary);
+  align-items: center;
+  justify-content: center;
+}
+
+.border h3 {
+  color: var(--color-navy-blue);
+}
+
+.border p {
+  color: var(--color-navy-blue)
 }
 
 .journey button {
@@ -270,10 +277,27 @@ header p {
   border: 2px solid #edff66;
 }
 
+.journey li {
+  border: 5px solid #edff66;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
 /* ==== FOOTER ==== */
 footer {
-  background-image: linear-gradient(to bottom, #2f4858, #007987, #00ab96, #74da84, #edff66);
+  background-color: var(--color-navy-blue);
+  color: var(--color-primary);
 }
+
+footer p {
+  color: var(--color-primary);
+}
+
+footer a {
+  color: var(--color-primary);
+}
+
 /*  */
 
 /* ==== FLEX + GRID HELPERS ==== */
@@ -289,25 +313,6 @@ footer {
 .space-between {
   justify-content: space-between;
 }
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-/* ==== UTILITIES ==== */
-.text-center { text-align: center; }
-
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-4 { margin-top: 2rem; }
-
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-4 { margin-bottom: 2rem; }
-
-.pt-1 { padding-top: 0.5rem; }
-.pb-1 { padding-bottom: 0.5rem; }
 
 /* ==== BUTTONS ==== */
 button {

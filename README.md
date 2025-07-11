@@ -257,6 +257,10 @@ For testing details, known issues, and resolved bugs, see [TESTING.md](TESTING.m
 This tutorial provided guidance on how to create animations and build a website prototype using HTML, CSS, and JavaScript, covering topics from setting up files to implementing scroll animations and mobile responsiveness.
  <!-- https://css-tricks.com/how-to-create-multi-step-forms-with-vanilla-javascript-and-css/ -->
 
+ https://css-tricks.com/gradient-borders-in-css/ border gradient css
+
+ html reset and base chatgpt
+
 ### Content
 
 The textual content and overall narrative for this fictional website were a collaborative effort between the developer and AI.
@@ -270,7 +274,7 @@ Various service and feature descriptions, as well as general website copy, were 
 - **Royalty-Free Stock Images:**
   - About Section: `assets/images/about.jpeg` (A construction worker in a hard hat and safety vest, standing on a construction site with heavy machinery in the background.) Provided by a friend who works as construction supervisor.
  - services https://www.pexels.com/photo/bird-s-eye-view-photo-of-heavy-equipment-on-construction-site-1188554/
- - services assets/images/site.jpeg
+ - services https://www.pexels.com/photo/people-with-hard-hard-standing-on-the-construction-site-8961260/
 
   - **Favicons:** Generated using <a href="[https://favicon.io/](https://favicon.io/)" target="_blank" rel="noopener">Favicon.io</a>.
   - **Color Palette:** Generated using <a href="[https://mycolor.space/](https://mycolor.space/)" target="_blank" rel="noopener">ColorSpace</a>.
