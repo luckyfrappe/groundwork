@@ -269,6 +269,8 @@ Various service and feature descriptions, as well as general website copy, were 
 - **Hero Video:** Sourced from <a href="[https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/](https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/)" target="_blank" rel="noopener">Pexels</a>.
 - **Royalty-Free Stock Images:**
   - About Section: `assets/images/about.jpeg` (A construction worker in a hard hat and safety vest, standing on a construction site with heavy machinery in the background.) Provided by a friend who works as construction supervisor.
+ - services https://www.pexels.com/photo/bird-s-eye-view-photo-of-heavy-equipment-on-construction-site-1188554/
+ - services assets/images/site.jpeg
 
   - **Favicons:** Generated using <a href="[https://favicon.io/](https://favicon.io/)" target="_blank" rel="noopener">Favicon.io</a>.
   - **Color Palette:** Generated using <a href="[https://mycolor.space/](https://mycolor.space/)" target="_blank" rel="noopener">ColorSpace</a>.
