@@ -63,7 +63,7 @@ h2, h3 {
 p {
   font-size: clamp(1rem, 1.1vw + 0.5rem, 1.25rem); /* ~16px → 20px */
   line-height: 1.6;
-  color: #2f2f2f; /* or white on dark background */
+  color: var(--color-navy-blue);
   margin-bottom: var(--space-md);
   font-weight: 400;
 }
@@ -99,7 +99,7 @@ header p {
 
 .head-right a {
   padding-left: 25px;
-  color: white;
+  color: var(--color-light-grey);
   font-size: 20px;
   font-weight: 500;
 }
@@ -135,7 +135,7 @@ header p {
 
 .hero-info h1 {
   font-size: 100px;
-  color: white;
+  color: var(--color-light-grey);
   margin: 0;
 }
 
@@ -148,14 +148,15 @@ header p {
 }
 
 .hero-info button {
-  background-color: #edff66;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 .hero-info button:hover {
   background-color: rgba(0, 0, 0, 0.9);
-  color: #edff66;
-  box-shadow: 0 0 15px #edff66;
-  border: 2px solid #edff66;
+  color: var(--color-primary);
+  box-shadow: 0 0 15px var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 .hero-heading-bottom {
@@ -166,7 +167,7 @@ header p {
   position: absolute;
   right: 40px;
   bottom: 0px;
-  color: white;
+  color: var(--color-light-grey);
 }
 
 .intro {
@@ -203,22 +204,21 @@ header p {
   grid-column-end: span 4;
   display: flex;
   flex-direction: column;
-  background-color: #39393b;
-  cursor: pointer;
+  background-color: var(--color-navy-blue);
   transition: all 0.3s ease 0s;
   border-radius: 12px;
 }
 
 .cards p {
-  color: white;
+  color: var(--color-light-grey);
 }
 
 .cards h3 {
-  color: white;
+  color: var(--color-light-grey);
 }
 
 .card:hover {
-    box-shadow: 0 0 15px white;
+    box-shadow: 0 0 15px var(--color-light-grey);
 }
 
 .card__image-container {
@@ -287,19 +287,19 @@ header p {
 }
 
 .journey button {
-  background-color: #edff66;
+  background-color: var(--color-primary);
   color: var(--color-navy-blue);
 }
 
 .journey button:hover {
-  background-color: rgba(0, 0, 0);
-  color: #edff66;
-  box-shadow: 0 0 15px #edff66;
-  border: 2px solid #edff66;
+  background-color: var(--color-navy-blue);
+  color: var(--color-primary);
+  box-shadow: 0 0 15px var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 .journey li {
-  border: 5px solid #edff66;
+  border: 5px solid var(--color-primary);
   border-radius: 20px;
   padding: 20px;
   margin-bottom: 30px;
