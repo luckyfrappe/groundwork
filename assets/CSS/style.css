@@ -108,8 +108,8 @@ header p {
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
-  padding: var(--space-fluid);
+  padding-bottom: var(--space-fluid);
+  padding-top: var(--space-fluid);
 }
 
 .hero-section {
@@ -153,7 +153,7 @@ header p {
 }
 
 .hero-info button:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: var(--color-navy-blue);
   color: var(--color-primary);
   box-shadow: 0 0 15px var(--color-primary);
   border: 2px solid var(--color-primary);
@@ -217,7 +217,11 @@ header p {
   color: var(--color-light-grey);
 }
 
-.card:hover {
+.services-cards .card:hover {
+  box-shadow: 0 0 15px var(--color-navy-blue)
+}
+
+.journey .card:hover {
     box-shadow: 0 0 15px var(--color-light-grey);
 }
 
@@ -289,6 +293,8 @@ header p {
 .journey button {
   background-color: var(--color-primary);
   color: var(--color-navy-blue);
+  border: 2px solid var(--color-primary);
+  margin-bottom: 60px;
 }
 
 .journey button:hover {
@@ -307,17 +313,44 @@ header p {
 
 /* ==== FOOTER ==== */
 footer {
-  background-color: var(--color-navy-blue);
-  color: var(--color-primary);
+  background-color: var(--color-light-grey);
+  color: var(--color-navy-blue);
+}
+
+.elevate {
+  background-image: -webkit-gradient(
+      linear,
+      left top, left bottom,
+      from(rgba(244, 244, 244, 0.9)),
+      to(rgba(244, 244, 244, 0.9))
+    ),
+    /* Gemini advice on linear-gradietn */ url(../images/footer.png);
+  background-image: -o-linear-gradient(
+      rgba(244, 244, 244, 0.9),
+      rgba(244, 244, 244, 0.9)
+    ),
+    /* Gemini advice on linear-gradietn */ url(../images/footer.png);
+  background-image: linear-gradient(
+      rgba(244, 244, 244, 0.9),
+      rgba(244, 244, 244, 0.9)
+    ),
+    /* Gemini advice on linear-gradietn */ url(../images/footer.png);
+  background-position: center;
+  background-size: cover;
+
 }
 
 footer p {
-  color: var(--color-primary);
+  color: var(--color-navy-blue);
+}
+
+footer i {
+  color: var(--color-navy-blue);
 }
 
 /*  */
 
-/* ==== FLEX + GRID HELPERS ==== */
+/* ==== FLEX HELPERS ==== */
 .flex {
   display: flex;
 }
@@ -391,7 +424,7 @@ a {
   }
   .head-right a {
     padding-left: 0 5px;
-    font-size: 12px;
+    font-size: 10px;
   }
   .hero-info {
     left: 5%;
@@ -411,6 +444,7 @@ a {
   .card {
     grid-column-end: span 6;
   }
+
   .image-box {
     width: 300px;
     height: 500px;
@@ -424,10 +458,16 @@ a {
   .card {
     grid-column-end: span 12;
   }
+  footer .container {
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
   .card {
     grid-column-end: span 6;
+  }
+  .container {
+    padding: var(--space-fluid);
   }
 }
