@@ -68,6 +68,10 @@ p {
   font-weight: 400;
 }
 
+i {
+  color: var(--color-primary);
+}
+
 header {
   top: 0;
   right: 0;
@@ -94,7 +98,6 @@ header p {
 }
 
 .head-right a {
-  text-decoration: none;
   padding-left: 25px;
   color: white;
   font-size: 20px;
@@ -113,6 +116,7 @@ header p {
   position: relative;
   width: 100vw;
   height: 100vh;
+   bottom: 24px;
 }
 
 .hero-video {
@@ -172,18 +176,13 @@ header p {
 }
 
 .image-box {
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-}
-
-.image-box img {
   border-radius: 50px;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
 .services-cards {
@@ -266,8 +265,25 @@ header p {
   color: var(--color-navy-blue)
 }
 
+.journey {
+  background-color: var(--color-navy-blue);
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: var(--color-white);
+}
+
+.journey i {
+  font-size: 50px;
+}
+
+.journey p {
+  color: var(--color-white);
+}
+
 .journey button {
-  background-color: #edff66;;
+  background-color: #edff66;
+  color: var(--color-navy-blue);
 }
 
 .journey button:hover {
@@ -291,10 +307,6 @@ footer {
 }
 
 footer p {
-  color: var(--color-primary);
-}
-
-footer a {
   color: var(--color-primary);
 }
 
