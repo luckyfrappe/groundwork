@@ -263,6 +263,8 @@ This tutorial provided guidance on how to create animations and build a website 
 
  https://heropatterns.com/ - svg patterns footer
 
+ https://www.youtube.com/watch?v=U8smiWQ8Seg - responsive navbar redo
+
 ### Content
 
 The textual content and overall narrative for this fictional website were a collaborative effort between the developer and AI.

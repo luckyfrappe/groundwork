@@ -25,6 +25,7 @@ body {
 :root {
   --color-white: #ffffff;           /* pure white */
   --color-light-grey: #FAFAFA;      /* soft light grey */
+  --color-darker-grey: #f1f1f1;        /* slightly darker grey */
   --color-primary: #edff66;         /* neon yellow */
   --color-navy-blue: #2f4858;           /* deep navy blue */
   --space-page-x: clamp(16px, 6vw, 24px); /* modern side paddings */
@@ -53,30 +54,73 @@ i {
 }
 
 header {
-  top: 0;
-  right: 0;
-  left: 0;
-  position: absolute;
-  padding: 10px 40px;
-  z-index: 999;
   background-color: var(--color-light-grey);
 }
 
-header p {
-  margin-bottom: 0;
+nav ul {
+  justify-content: center;
+  width: 100vw;
+  align-items: center;
+  display: flex;
+  padding: 6px 6px;
 }
 
-.head-left img {
-  width: 40px;
-  height: 40px;
-  margin-right: 20px; /* Space between logo and button */
+nav img {
+  height: 44px;
 }
 
-.head-right a {
-  padding-left: 25px;
-  color: var(--color-navy-blue);
-  font-size: 20px;
-  font-weight: 500;
+
+nav li {
+  height: 44px;
+}
+
+nav a {
+  height: 100%;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+}
+
+nav a:hover {
+  background-color: var(--color-darker-grey);
+  border-radius: 6px;
+}
+
+nav li:first-child {
+  margin-right: auto;
+}
+
+nav li:nth-child(6){
+  margin-left: auto;
+}
+
+nav li:last-child {
+  display: none;}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  background-color: var(--color-light-grey);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar li:last-child {
+  margin-left: 0;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar a {
+  width: 100%;
 }
 
 /* ==== CONTAINER ==== */
@@ -96,17 +140,17 @@ header p {
 .hero-video {
   object-fit: cover;
   width: 100vw;
-  height: 95vh;
+  height: 75vh;
   overflow: hidden;
   z-index: 0;
 }
 
 .video-overlay {
   position: absolute;
-  top: 24px;
+  top: 56px;
   left: 0;
   width: 100%;
-  height: 95vh;
+  height: 75vh;
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
@@ -117,7 +161,7 @@ header p {
   z-index: 2;
   left: var(--space-page-x);
   right: var(--space-page-x);
-  top: 40.5%;
+  top: 30%;
   color: white;
   padding: var(--space-page-x);
 }
@@ -369,15 +413,8 @@ a {
 }
 
 @media (max-width: 640px) {
-  header {
-    padding: 0 10px;
-  }
-  .head-left button {
-    display: none;
-  }
-  .head-right a {
-    padding-left: 0 5px;
-    font-size: 10px;
+  .sidebar {
+    width: 100%;
   }
   .services-cards {
     grid-template-columns: 10px repeat(6, 1fr) 10px;
@@ -399,6 +436,12 @@ a {
   }
   footer .container {
     flex-direction: column;
+  }
+  .hideOnMobile {
+    display: none;
+  }
+  nav li:last-child {
+    display: flex;
   }
 }
 
