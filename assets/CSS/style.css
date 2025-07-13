@@ -16,7 +16,6 @@ body {
   height: 100%;
   line-height: 1.5;
   color: var(--color-text);
-  background-color: var(--color-background); /* Light grey background */
   -webkit-font-smoothing: antialiased; /* Smooth text rendering for WebKit browsers */
   -moz-osx-font-smoothing: grayscale; /* Smooth text rendering for Firefox on macOS */
   font-family: 'Roboto', system-ui, -apple-system, sans-serif; /* Modern, clean font */
@@ -27,10 +26,6 @@ body {
   --color-white: #ffffff;           /* pure white */
   --color-light-grey: #f4f4f4;      /* soft light grey */
   --color-primary: #edff66;         /* neon yellow */
-  --color-light-green: #8ae37e;     /* light green */
-  --color-soft-green: #2ebf92;      /* soft green */
-  --color-teal: #009795;            /* teal */
-  --color-teal-blue: #0f6f80;       /* teal blue */
   --color-navy-blue: #2f4858;           /* deep navy blue */
   --color-background: var(--color-light-grey);
   --spacing: 1rem;
@@ -40,14 +35,13 @@ body {
   --space-lg: 32px;
   --space-xl: 64px;
   --space-xxl: 128px;
-  --space-fluid: clamp(60px, 8vw, 100px);
+  --space-fluid: clamp(60px, 8vw, 80px);
 }
 
 /* ==== TYPOGRAPHY ==== */
 h1 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
-  /* letter-spacing: 1px; */
   font-size: 2.5rem;
   font-weight: 900;
   margin-top: 1rem;
@@ -79,8 +73,7 @@ header {
   position: absolute;
   padding: 10px 40px;
   z-index: 999;
-  background-color: #4b4b4b5b; /* Semi-transparent background using 5b at the end */
-  backdrop-filter: blur(10px);
+  background-color: #f4f4f4
 }
 
 header p {
@@ -99,17 +92,16 @@ header p {
 
 .head-right a {
   padding-left: 25px;
-  color: var(--color-light-grey);
+  color: var(--color-navy-blue);
   font-size: 20px;
   font-weight: 500;
 }
 
 /* ==== CONTAINER ==== */
 .container {
-  max-width: 1280px;
+  max-width: 1300px;
   margin: 0 auto;
   padding-bottom: var(--space-fluid);
-  padding-top: var(--space-fluid);
 }
 
 .hero-section {
@@ -155,7 +147,6 @@ header p {
 .hero-info button:hover {
   background-color: var(--color-navy-blue);
   color: var(--color-primary);
-  box-shadow: 0 0 15px var(--color-primary);
   border: 2px solid var(--color-primary);
 }
 
@@ -177,7 +168,6 @@ header p {
 }
 
 .image-box {
-  border-radius: 50px;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -187,26 +177,24 @@ header p {
 }
 
 .services-cards {
-  display: grid;
-  grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
-  grid-gap: 40px;
-  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  padding: (var(--space-lg) 0);
 }
 
 .cards {
-  grid-column: 2 / span 12;
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(12, minmax(auto, 60px));
-  grid-gap: 40px;
+  grid-template-columns: repeat(12, minmax(auto, 1fr));
+  grid-gap: 32px;
 }
 
 .card {
-  grid-column-end: span 4;
+  grid-column-end: span 6;
   display: flex;
   flex-direction: column;
   background-color: var(--color-navy-blue);
   transition: all 0.3s ease 0s;
-  border-radius: 12px;
 }
 
 .cards p {
@@ -217,20 +205,13 @@ header p {
   color: var(--color-light-grey);
 }
 
-.services-cards .card:hover {
-  box-shadow: 0 0 15px var(--color-navy-blue)
-}
 
-.journey .card:hover {
-    box-shadow: 0 0 15px var(--color-light-grey);
-}
 
 .card__image-container {
   width: 100%;
   padding-top: 56.25%;
   overflow: hidden;
   position: relative;
-  border-radius: 12px 12px 0 0;
 }
 
 .card__image-container img {
@@ -306,7 +287,6 @@ header p {
 
 .journey li {
   border: 5px solid var(--color-primary);
-  border-radius: 20px;
   padding: 20px;
   margin-bottom: 30px;
 }
@@ -318,23 +298,7 @@ footer {
 }
 
 .elevate {
-  background-image: -webkit-gradient(
-      linear,
-      left top, left bottom,
-      from(rgba(244, 244, 244, 0.9)),
-      to(rgba(244, 244, 244, 0.9))
-    ),
-    /* Gemini advice on linear-gradietn */ url(../images/footer.png);
-  background-image: -o-linear-gradient(
-      rgba(244, 244, 244, 0.9),
-      rgba(244, 244, 244, 0.9)
-    ),
-    /* Gemini advice on linear-gradietn */ url(../images/footer.png);
-  background-image: linear-gradient(
-      rgba(244, 244, 244, 0.9),
-      rgba(244, 244, 244, 0.9)
-    ),
-    /* Gemini advice on linear-gradietn */ url(../images/footer.png);
+  background-image: url(../images/topography.svg);
   background-position: center;
   background-size: cover;
 
@@ -366,15 +330,14 @@ footer i {
 
 /* ==== BUTTONS ==== */
 button {
-  padding: 10px 30px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  transition: 0.3s;
+  background: var(--color-primary);
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-weight: 600;
 }
 button:hover {
-  opacity: 0.7;
+  background: var(--color-navy-blue);
+  color: var(--color-primary);
 }
 
 /* ==== FORMS ==== */
@@ -449,6 +412,10 @@ a {
     width: 300px;
     height: 500px;
   }
+
+  .container {
+    padding: 0 24px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -467,7 +434,6 @@ a {
   .card {
     grid-column-end: span 6;
   }
-  .container {
-    padding: var(--space-fluid);
-  }
+  
 }
+

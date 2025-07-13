@@ -261,6 +261,8 @@ This tutorial provided guidance on how to create animations and build a website 
 
  html reset and base chatgpt
 
+ https://heropatterns.com/ - svg patterns footer
+
 ### Content
 
 The textual content and overall narrative for this fictional website were a collaborative effort between the developer and AI.
