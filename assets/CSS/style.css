@@ -24,42 +24,28 @@ body {
 /* ==== THEME COLORS ==== */
 :root {
   --color-white: #ffffff;           /* pure white */
-  --color-light-grey: #f4f4f4;      /* soft light grey */
+  --color-light-grey: #FAFAFA;      /* soft light grey */
   --color-primary: #edff66;         /* neon yellow */
   --color-navy-blue: #2f4858;           /* deep navy blue */
-  --color-background: var(--color-light-grey);
-  --spacing: 1rem;
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 32px;
-  --space-xl: 64px;
-  --space-xxl: 128px;
-  --space-fluid: clamp(60px, 8vw, 80px);
+  --space-page-x: clamp(16px, 6vw, 24px); /* modern side paddings */
+  --space-section-y: clamp(80px, 8vw, 96px); /* vertical padding */
+  --space-grid-gap: 32px; /* gap between cards */
 }
 
 /* ==== TYPOGRAPHY ==== */
-h1 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  font-weight: 900;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-h2, h3 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+h1, h2, h3 {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  letter-spacing: -0.5px;
+  text-transform: none;
 }
 p {
   font-size: clamp(1rem, 1.1vw + 0.5rem, 1.25rem); /* ~16px → 20px */
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--color-navy-blue);
-  margin-bottom: var(--space-md);
-  font-weight: 400;
+  margin-bottom: var(--space-page-x);
+  font-weight: 300;
 }
 
 i {
@@ -73,7 +59,7 @@ header {
   position: absolute;
   padding: 10px 40px;
   z-index: 999;
-  background-color: #f4f4f4
+  background-color: var(--color-light-grey);
 }
 
 header p {
@@ -84,10 +70,6 @@ header p {
   width: 40px;
   height: 40px;
   margin-right: 20px; /* Space between logo and button */
-}
-
-.head-left button:hover {
-  opacity: 0.7;
 }
 
 .head-right a {
@@ -101,32 +83,46 @@ header p {
 .container {
   max-width: 1300px;
   margin: 0 auto;
-  padding-bottom: var(--space-fluid);
+  padding-bottom: var(--space-section-y);
 }
 
+
 .hero-section {
-  position: relative;
   width: 100vw;
-  height: 100vh;
    bottom: 24px;
+   padding-bottom: var(--space-section-y);
 }
 
 .hero-video {
   object-fit: cover;
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   overflow: hidden;
+  z-index: 0;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  height: 95vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .hero-info {
-  z-index: 1;
   position: absolute;
-  top: 80px;
-  left: 40px;
+  top: var(--space-section-y);
+  z-index: 2;
+  left: var(--space-page-x);
+  right: var(--space-page-x);
+  top: 40.5%;
+  color: white;
+  padding: var(--space-page-x);
 }
 
 .hero-info h1 {
-  font-size: 100px;
   color: var(--color-light-grey);
   margin: 0;
 }
@@ -135,30 +131,32 @@ header p {
   color: var(--color-primary);
   font-size: 25px;
   max-width: 500px;
-  font-weight: 900;
   margin-bottom: 20px;
 }
 
 .hero-info button {
   background-color: var(--color-primary);
   border: 2px solid var(--color-primary);
+  color: var(--color-navy-blue);
+}
+
+.hero-info button.secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  margin-left: 20px;
 }
 
 .hero-info button:hover {
-  background-color: var(--color-navy-blue);
+  background-color: transparent;
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
 }
 
-.hero-heading-bottom {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 100px;
-  font-weight: 900;
-  margin: 0;
-  position: absolute;
-  right: 40px;
-  bottom: 0px;
-  color: var(--color-light-grey);
+.hero-info button.secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-navy-blue);
+  border: 2px solid var(--color-primary);
 }
 
 .intro {
@@ -179,14 +177,13 @@ header p {
 .services-cards {
   display: flex;
   justify-content: center;
-  padding: (var(--space-lg) 0);
 }
 
 .cards {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(12, minmax(auto, 1fr));
-  grid-gap: 32px;
+  gap: var(--space-grid-gap);
 }
 
 .card {
@@ -223,7 +220,7 @@ header p {
 }
 
 .card__content {
-  padding: 20px;
+  padding: 24px;
 }
 
 .card__title {
@@ -279,16 +276,9 @@ header p {
 }
 
 .journey button:hover {
-  background-color: var(--color-navy-blue);
-  color: var(--color-primary);
-  box-shadow: 0 0 15px var(--color-primary);
-  border: 2px solid var(--color-primary);
-}
-
-.journey li {
-  border: 5px solid var(--color-primary);
-  padding: 20px;
-  margin-bottom: 30px;
+  background-color: transparent;
+  color: var(--color-navy-blue);
+  border: 2px solid var(--color-navy-blue);
 }
 
 /* ==== FOOTER ==== */
@@ -301,7 +291,6 @@ footer {
   background-image: url(../images/topography.svg);
   background-position: center;
   background-size: cover;
-
 }
 
 footer p {
@@ -330,13 +319,14 @@ footer i {
 
 /* ==== BUTTONS ==== */
 button {
-  background: var(--color-primary);
+  background: var(--color-navy-blue);
   border-radius: 6px;
   padding: 12px 24px;
   font-weight: 600;
+  cursor: pointer;
 }
 button:hover {
-  background: var(--color-navy-blue);
+  background: var(--color-light-grey);
   color: var(--color-primary);
 }
 
@@ -389,12 +379,6 @@ a {
     padding-left: 0 5px;
     font-size: 10px;
   }
-  .hero-info {
-    left: 5%;
-  }
-  .hero-section h1, .hero-heading-bottom {
-    font-size: 55px;
-  }
   .services-cards {
     grid-template-columns: 10px repeat(6, 1fr) 10px;
     grid-gap: 10px;
@@ -407,21 +391,9 @@ a {
   .card {
     grid-column-end: span 6;
   }
-
-  .image-box {
-    width: 300px;
-    height: 500px;
-  }
-
-  .container {
-    padding: 0 24px;
-  }
 }
 
 @media (max-width: 768px) {
-  .services-cards {
-    grid-gap: 20px;
-  }
   .card {
     grid-column-end: span 12;
   }
@@ -430,10 +402,21 @@ a {
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .card {
-    grid-column-end: span 6;
-  }
-  
+@media screen and (max-width: 1024px) {
 }
 
+@media only screen and (max-width: 1332px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .hero-video, .video-overlay {
+    height: 70vh;
+  }
+  .hero-info {
+    top: 30%;
+  }
+}
