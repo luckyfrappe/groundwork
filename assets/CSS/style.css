@@ -210,10 +210,12 @@ nav li:last-child {
 
 .card__buttons a {
   display: inline-flex;
-  align-items: center;
-  gap: 8px; /* or whatever spacing you want between text and chevron */
-  text-decoration: none;
-  color: inherit;
+  gap: 8px; 
+  padding-bottom: var(--space-page-x);
+}
+
+.card__buttons a:hover {
+  text-decoration: underline;
 }
 
 .services-cards {
@@ -234,6 +236,24 @@ nav li:last-child {
   flex-direction: column;
   background-color: var(--color-light-grey);
   transition: all 0.3s ease 0s;
+}
+
+.articles-section h2 {
+  text-align: center;
+  margin-bottom: var(--space-section-y);
+}
+
+.span-four {
+  grid-column-end: span 4;
+  
+}
+
+.span-four h3 {
+  font-size: large;
+}
+
+.span-four p {
+  font-size: medium;
 }
 
 
@@ -264,20 +284,6 @@ nav li:last-child {
   display: flex;
   align-self: end;
   align-items: center;
-}
-
-.border {
-  background-color: var(--color-primary);
-  align-items: center;
-  justify-content: center;
-}
-
-.border h3 {
-  color: var(--color-navy-blue);
-}
-
-.border p {
-  color: var(--color-navy-blue)
 }
 
 .journey {
