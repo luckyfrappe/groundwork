@@ -255,7 +255,10 @@ nav li:last-child {
 
 .span-four {
   grid-column-end: span 4;
-  
+}
+
+.span-eight {
+  grid-column-end: span 8;
 }
 
 .span-four h3 {
@@ -305,6 +308,12 @@ nav li:last-child {
   width: 100%;
   height: 100%;
   color: var(--color-navy-blue);
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.journey-card {
+  margin-bottom: var(--space-page-x);
 }
 
 .journey h2 {
@@ -325,7 +334,6 @@ nav li:last-child {
   background-color: var(--color-primary);
   color: var(--color-navy-blue);
   border: 2px solid var(--color-primary);
-  margin-bottom: 60px;
 }
 
 .journey button:hover {
