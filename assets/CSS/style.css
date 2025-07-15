@@ -344,16 +344,46 @@ nav li:last-child {
 
 /* ==== FOOTER ==== */
 footer {
-  background-color: var(--color-light-grey);
+  background: var(--color-light-grey);
+  padding: var(--space-page-x) 0;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 80px;
+  padding-bottom: 0;
+}
+
+.footer-columns i {
   color: var(--color-navy-blue);
 }
 
-footer p {
-  color: var(--color-navy-blue);
+.footer-columns div h4 {
+  color: #777;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
-footer i {
-  color: var(--color-navy-blue);
+
+.footer-columns li {
+  margin: var(--space-page-x) 0;
+}
+
+
+.footer-columns a:hover {
+  text-decoration: underline;
+}
+
+.footer-extra {
+  margin-top: var(--space-page-x);
+  text-align: center;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
 
 /*  */
