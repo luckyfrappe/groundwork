@@ -41,6 +41,7 @@ h1, h2, h3 {
   letter-spacing: -0.5px;
   text-transform: none;
   margin-bottom: var(--space-page-x);
+  color: var(--color-navy-blue);
 }
 p {
   font-size: clamp(1rem, 1.1vw + 0.5rem, 1.25rem); /* ~16px → 20px */
@@ -281,6 +282,7 @@ nav li:last-child {
 
 .card__title {
   margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 .card__info {
@@ -297,7 +299,6 @@ nav li:last-child {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  color: var(--color-navy-blue);
   padding-bottom: 0;
   margin-bottom: 0;
 }
@@ -313,10 +314,6 @@ nav li:last-child {
 
 .journey i {
   font-size: 50px;
-  color: var(--color-navy-blue);
-}
-
-.journey .card p {
   color: var(--color-navy-blue);
 }
 
@@ -403,7 +400,7 @@ button {
 
 
 /* ==== FORMS ==== */
-input,
+/* input,
 button,
 textarea,
 select {
@@ -416,10 +413,10 @@ input, textarea {
   border: 1px solid #ccc;
   padding: 0.5rem;
   border-radius: 4px;
-}
+} */
 
 /* ==== IMAGES ==== */
-img,
+/* img,
 picture,
 video,
 canvas,
@@ -427,7 +424,7 @@ svg {
   display: block;
   max-width: 100%;
   height: auto;
-}
+} */
 
 /* ==== LISTS ==== */
 ul, ol {
@@ -470,6 +467,16 @@ a {
   }
   nav li:last-child {
     display: flex;
+  }
+  nav a {
+    padding: 0 0.5rem;
+  }
+  .hero-info button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .secondary {
+    margin-left: 0;
   }
 }
 
