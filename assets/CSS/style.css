@@ -165,7 +165,7 @@ nav li:last-child {
 }
 
 .hero-info > p {
-  color: var(--color-primary);
+  color: var(--color-white);
   font-size: 25px;
   max-width: 500px;
   margin-bottom: 20px;
@@ -343,7 +343,8 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   gap: 80px;
-  padding-bottom: 0;
+  padding: var(--space-page-x);
+
 }
 
 .footer-columns i {
