@@ -7,6 +7,12 @@
   padding: 0;
 }
 
+/* add comments and clean and organize the CSS */
+
+/* optimize correct order of elements as they load per website */
+
+/* adjust names of the classes */
+
 html {
   box-sizing: border-box; /* Ensures consistent box-sizing */
   scroll-behavior: smooth; /* Smooth scrolling for anchor links */
@@ -436,6 +442,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* adjust correct media queries copy from fastlane project */
 
 @media (max-width: 640px) {
   .sidebar {
