@@ -140,22 +140,12 @@ nav li:last-child {
    padding-bottom: var(--space-section-y);
 }
 
-.hero-video {
+.hero-image {
   object-fit: cover;
   width: 100vw;
   height: 75vh;
   overflow: hidden;
   z-index: 0;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 75vh;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 1;
 }
 
 .hero-info {
@@ -493,9 +483,6 @@ a {
 }
 
 @media only screen and (max-width: 1600px) {
-  .hero-video, .video-overlay {
-    height: 70vh;
-  }
   .hero-info {
     top: 30%;
   }
