@@ -2,9 +2,9 @@
 
 This website provides an instant preliminary cost estimate for construction groundwork projects, specifically for Groundwork Solutions Ltd. It aims to streamline the initial client interaction by offering a transparent and efficient way to get an early understanding of project costs.
 
-<!-- <img src="" alt="Mockup image of Groundwork Solutions Ltd. website on different devices"> -->
+<img src="assets/images/responsive.png" alt="Mockup image of Groundwork Solutions Ltd. website on different devices">
 
-<a href="https://luckyfrappe.github.io/groundwork/" target="_blank" aria-label="Groundwork Solutions Ltd. website opens in a new window on Github Pages">View Groundwork Solutions Ltd. on Github Pages</a>
+<a href="https://luckyfrappe.github.io/groundwork/" aria-label="Groundwork Solutions Ltd. website opens in a new window on Github Pages">View Groundwork Solutions Ltd. on Github Pages</a>
 
 ## CONTENTS
 
@@ -112,21 +112,17 @@ This website is designed to provide a seamless and professional experience for o
 
 **Landing Page:**
 
-- **Hero Section:** An impactful introduction setting the tone for reliable groundwork solutions.
+- **Hero Section:** Large hero image, intro heading, two CTA buttons.
 <!-- Add hero image -->
-- **Introduction Section:** Briefly highlights the company's role as a trusted foundation partner.
+- **Introduction Section:** Card layout with image + content and link to learn more.
 <!-- Add introduction image -->
-- **Services Teaser:** A concise overview teasing the comprehensive offerings, with a clear link to the full Services page, inviting users to explore further.
+- **Articles Section:** Highlighting company mission and values through article cards.
+- **Services Teaser:** Service cards with clear titles and summaries.
 <!-- Add services image -->
-
-<!-- Update and reconstruct the section -->
-- **Customer Journey and Contact Section:** Lays out the clear steps for clients to engage with us and bridges the gap between understanding our comprehensive services and taking the next step with a clear CTA.
+- **Customer Journey and Contact Section:** Step-by-step visual breakdown of client process from estimate to delivery.
   <!-- Add image -->
 
-  <!-- Add any new sections and images -->
-
 <!-- To be created -->
-
 **Estimate Form (Multi-Step):**
 
 <!-- https://css-tricks.com/how-to-create-multi-step-forms-with-vanilla-javascript-and-css/ -->
@@ -156,19 +152,21 @@ This website is designed to provide a seamless and professional experience for o
 
 Future implementations could include:
 
-- **Allow users to upload historical project data for more accurate estimates.**
+- **Use historical project data for more accurate estimates.**
 - **Integrate a system to automatically request quotes from suppliers.**
 - **Develop an admin dashboard for Groundwork Solutions Ltd. to manage and track all quotes.**
 - **Services Page - Presents a comprehensive list of Groundwork Solutions Ltd.'s services, enhanced with appropriate images.**
 - **Articles/Portfolio Page**
 - **Contact form page.**
+- **About us page.**
+- **Blog system for industry news/articles.**
+- **Multilingual support for international users.**
+- **User login system for saving projects.**
 
 ### Accessibility Considerations
-<!-- go through each picture and video for alt -->
-  <!-- - **Semantic HTML:** Utilizing meaningful HTML tags to ensure proper document structure for assistive technologies. -->
-  <!-- - **Descriptive Alt Attributes:** All images include descriptions for screen reader users. -->
-  <!-- - **Color Contrast:**  -->
-  <!-- - **Accessible Navigation:** Current page links are clearly marked for screen readers, enhancing navigability. -->
+  - **Semantic HTML:** Utilizing meaningful HTML tags to ensure proper document structure for assistive technologies.
+  - **Descriptive Alt Attributes:** All images include descriptions for screen reader users.
+  - **Color Contrast:** 
 
 ## Technologies Used
 
@@ -180,13 +178,13 @@ HTML, CSS and Javascript.
 
 - **Git:** For version control.
 - **Github:** To save and store the files for the website.
-<!-- - **Google Fonts:** Import fonts (Merriweather Sans for Headings, Roboto Flex for Paragraphs). -->
+- **Google Fonts:** Import fonts (Merriweather Sans for Headings, Roboto Flex for Paragraphs).
 - **Google Dev Tools:** Development.
-<!-- - **Font Awesome:** Import icons. -->
+- **Font Awesome:** Import icons.
 - **FreeConvert:** To downsize and convert the hero video.
-  - **Favicon.io:** To create favicon.
-  <!-- - **Tiny PNG:** To downsize the images. -->
-  <!-- - **Am I Responsive?:** To showcase the website on different devices. -->
+- **Favicon.io:** To create favicon.
+- **Tiny PNG:** To downsize the images.
+- **Polypane:** To showcase the website on different devices.
   <!-- - **Autoprefixer CSS online:** Applied to add necessary vendor prefixes to CSS properties, ensuring broader browser compatibility. -->
 - **ChatGPT (by OpenAI):** Used for generating specific service and feature descriptions, ensuring industry relevance and authenticity in the website's content.
 - **Gemini (by Google):** Providing extensive debugging assistance and code explanations during development.
@@ -249,44 +247,25 @@ For testing details, known issues, and resolved bugs, see [TESTING.md](TESTING.m
 
 ### Code Used
 
-<!-- - <a href="[https://fonts.google.com/](https://fonts.google.com/)" target="_blank" rel="noopener">Google Fonts</a>: Imported for custom typography, including Merriweather Sans (for headings) and Roboto Flex (for paragraphs). -->
-<!-- - <a href="[https://fontawesome.com/](https://fontawesome.com/)" target="_blank" rel="noopener">Font Awesome</a>: Used for scalable vector icons across the site. Integrated via the Font Awesome CDN. -->
-- Clippy: <a href="[https://bennettfeely.com/clippy/](https://bennettfeely.com/clippy/)" target="_blank" rel="noopener">clip-path css to clip the images</a>.
-- Responsive Cards: Inspired by examples from <a href="[https://codesandbox.io/p/sandbox/responsive-card-layout-with-css-grid-rpfdn?file=%2Fstyles.css%3A82%2C1-110%2C2](https://codesandbox.io/p/sandbox/responsive-card-layout-with-css-grid-rpfdn?file=%2Fstyles.css%3A82%2C1-110%2C2)" target="_blank" rel="noopener">CodeSandbox</a>.
-- Video Tutorial Guide: "Create AMAZING Gaming Websites with HTML CSS and JavaScript" by MiladiCode (https://www.youtube.com/watch?v=ukMPKm3cLns)
-This tutorial provided guidance on how to create animations and build a website prototype using HTML, CSS, and JavaScript, covering topics from setting up files to implementing scroll animations and mobile responsiveness.
- <!-- https://css-tricks.com/how-to-create-multi-step-forms-with-vanilla-javascript-and-css/ -->
-
- https://css-tricks.com/gradient-borders-in-css/ border gradient css
-
- html reset and base chatgpt
-
- https://heropatterns.com/ - svg patterns footer
-
- https://www.youtube.com/watch?v=U8smiWQ8Seg - responsive navbar redo
+- <a href="https://fonts.google.com/">Google Fonts</a>: Used for custom typography — <em>Merriweather Sans</em> for headings and <em>Roboto Flex</em> for paragraph text.<br>
+- <a href="https://fontawesome.com/">Font Awesome</a>: Integrated via CDN to provide scalable vector icons throughout the site.<br>
+- <a href="https://codesandbox.io/p/sandbox/responsive-card-layout-with-css-grid-rpfdn?file=%2Fstyles.css%3A82%2C1-110%2C2">Responsive Card Layout</a>: Inspired by a layout example from CodeSandbox.<br>
+- HTML Reset & Base Structure: Generated with assistance from ChatGPT to establish clean default styling and structure.<br>
+- <a href="https://www.youtube.com/watch?v=U8smiWQ8Seg">Responsive Navbar Concept</a>: Initially based on a YouTube tutorial, but significantly modified and rebuilt to suit the project’s design.
 
 ### Content
 
-The textual content and overall narrative for this fictional website were a collaborative effort between the developer and AI.
-Various service and feature descriptions, as well as general website copy, were generated with the assistance of ChatGPT (by OpenAI) and Gemini (by Google).
-
-<!-- Add potential help from my friend who works as a construction supervisor -->
+The textual content and overall narrative of this fictional website were developed collaboratively by the developer with support from AI tools. Descriptions of services, features, and general website copy were generated with the assistance of ChatGPT (by OpenAI) and Gemini (by Google). Inspiration for the content was drawn from the website <a href="https://gmt-ab.se/">gmt-ab.se</a> 
 
 ### Media
 
-- **Hero Video:** Sourced from <a href="[https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/](https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/)" target="_blank" rel="noopener">Pexels</a>.
-- **Royalty-Free Stock Images:**
-  - About Section: `assets/images/about.jpeg` (A construction worker in a hard hat and safety vest, standing on a construction site with heavy machinery in the background.) Provided by a friend who works as construction supervisor.
- - services https://www.pexels.com/photo/bird-s-eye-view-photo-of-heavy-equipment-on-construction-site-1188554/
- - services https://www.pexels.com/photo/people-with-hard-hard-standing-on-the-construction-site-8961260/
+- All images were provided by a friend who works as construction supervisor at <a href="https://gmt-ab.se/">gmt-ab.se</a>.<br>
+- <strong>Favicons:</strong> Generated using <a href="https://favicon.io/">Favicon.io</a>.<br>
+- <strong>Color Palette:</strong> Generated using <a href="https://mycolor.space/">ColorSpace</a>.<br>
+- <strong>Image Optimization:</strong> Images were compressed and optimized using <a href="https://tinypng.com/">Tiny PNG</a>.<br>
+- <strong>Responsive Showcase Image:</strong> The screenshot demonstrating website responsiveness was created using <a href="https://polypane.app/">Polypane</a>.<br>
+- <strong>Canva:</strong> Used to create the logo via <a href="https://www.canva.com/">Canva</a>.
 
-  - **Favicons:** Generated using <a href="[https://favicon.io/](https://favicon.io/)" target="_blank" rel="noopener">Favicon.io</a>.
-  - **Color Palette:** Generated using <a href="[https://mycolor.space/](https://mycolor.space/)" target="_blank" rel="noopener">ColorSpace</a>.
-  <!-- - **Image Optimization:** Images were compressed and optimized using <a href="[https://tinypng.com/](https://tinypng.com/)" target="_blank" rel="noopener">Tiny PNG</a>. -->
-  <!-- - **Responsive Showcase Image:** The screenshot demonstrating website responsiveness was created using <a href="[http://ami.responsivedesign.is/](http://ami.responsivedesign.is)" target="_blank" rel="noopener">Am I Responsive?</a>. -->
-
-- **Hero Video Optimization:** The hero video was downsized and converted using <a href="[https://www.freeconvert.com/](https://www.freeconvert.com/)" target="_blank" rel="noopener">FreeConvert</a>.
-- **Canva:** Used to create the logo.
 
 ### Acknowledgments
 
