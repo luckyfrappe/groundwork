@@ -250,6 +250,7 @@ For testing details, known issues, and resolved bugs, see [TESTING.md](TESTING.m
 - HTML Reset & Base Structure: Generated with assistance from ChatGPT to establish clean default styling and structure.<br>
 - <a href="https://www.youtube.com/watch?v=U8smiWQ8Seg">Responsive Navbar Concept</a>: Initially based on a YouTube tutorial, but significantly modified and rebuilt to suit the project’s design.
 - <a href="https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s">Scroll-behavior</a>: borrowed from MiladiCode.
+https://www.youtube.com/watch?v=M0O-vquFHto&t=2373s by dotWebdesign Responsive Multi Step Registration Form
 
 ### Content
 
