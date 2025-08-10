@@ -1,0 +1,14 @@
+{
+  "name": "groundwork",
+  "version": "1.0.0",
+  "description": "This website provides an instant preliminary cost estimate for construction groundwork projects, specifically for Groundwork Solutions Ltd. It aims to streamline the initial client interaction by offering a transparent and efficient way to get an early understanding of project costs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}

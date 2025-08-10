@@ -17,12 +17,6 @@
     <!-- Stylesheet CSS -->
     <link rel="stylesheet" href="assets/CSS/style.css">
 
-    <!-- Font Awesome (for icons) -->
-    <script
-      src="https://kit.fontawesome.com/1ca7252419.js"
-      crossorigin="anonymous"
-    ></script>
-
     <!-- Google Fonts (Merriweather Sans for Headings, Roboto Flex for Paragraphs) -->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Anton&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
@@ -47,10 +41,17 @@
       href="assets/images/favicon-16x16.png"
    >
     <link rel="manifest" href="assets/images/site.webmanifest">
+
+     <!-- Font Awesome (for icons) -->
+    <script
+      src="https://kit.fontawesome.com/1ca7252419.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Site-wide Header -->
     <header class="flex center space-between">
+      <!-- Build by following tutorial from Coding2GO -->
       <nav>
         <ul class="sidebar">
           <li onclick="hideSidebar()">
@@ -81,7 +82,7 @@
         </ul>
         <ul>
           <li>
-            <a href="#intro"
+            <a href="#hero"
               ><img src="assets/images/groundwork.svg" alt="logo"
            ></a>
           </li>
@@ -130,9 +131,8 @@
 
     <!-- Main Content -->
     <main>
-
       <!-- Hero Section -->
-      <section class="hero-section">
+      <section class="hero-section" id="hero">
         <img
           src="assets/images/about.jpeg"
           alt="Hero Image"
@@ -141,13 +141,14 @@
         <div class="hero-info">
           <h1>Ground work Solutions Ltd.</h1>
           <p>Where every great build begins</p>
-          <button>Start project</button>
-          <button class="secondary" style="margin-left: 0">Contact us</button>
+          <a href="new-project.html"><button>Start project</button></a>
+          <a href="#footer"><button class="secondary" style="margin-left: 0">Contact us</button></a>
         </div>
       </section>
       <!-- About Section -->
       <section id="intro" class="intro container center flex">
         <h2>YOUR PROJECT'S TRUSTED FOUNDATION PARTNER</h2>
+        <!-- Cards were rewritten by a layout example from CodeSandbox -->
         <div class="card intro-card">
           <div class="card__image-container">
             <img
@@ -191,6 +192,7 @@
           modern technology and proven methods to deliver a safe, efficient, and
           reliable foundation for your vision.
         </p>
+        <!-- Cards were rewritten by a layout example from CodeSandbox -->
         <div class="cards">
           <div class="card">
             <div class="card__image-container">
@@ -235,6 +237,7 @@
           Our mission is to give you the confidence to build with strength,
           precision, and sustainability.
         </h2>
+        <!-- Cards were rewritten by a layout example from CodeSandbox -->
         <div class="cards">
           <div class="card span-four">
             <div class="card__image-container">
@@ -287,6 +290,7 @@
       <!-- Project Journey Section -->
       <section id="journey" class="journey container">
         <h2>Your Next Project</h2>
+        <!-- Cards were rewritten by a layout example from CodeSandbox -->
         <div class="card journey-card">
           <div class="card__image-container">
             <img

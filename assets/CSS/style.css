@@ -1,4 +1,4 @@
-/* Reset CSS */
+/* Reset CSS created with ChatGPT */
 *,
 *::before,
 *::after {
@@ -8,20 +8,23 @@
 }
 
 html {
-  box-sizing: border-box; /* Ensures consistent box-sizing */
-  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    box-sizing: border-box; /* Ensures consistent box-sizing */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links, firstly borrowed from MiladiCode https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s */
 }
 
 body {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   line-height: 1.5;
   color: var(--color-text);
+  /* Webkit and OS X font smoothing advised by Gemini by Google */
   -webkit-font-smoothing: antialiased; /* Smooth text rendering */
   -moz-osx-font-smoothing: grayscale; /* Smooth text rendering */
   font-family: "Roboto", system-ui, -apple-system, sans-serif;
 }
 
-/* THEME & TYPOGRAPHY */
+/* THEME & TYPOGRAPHY, clamp were advised by ChatGPT */
 :root {
   --color-white: #ffffff; /* pure white */
   --color-light-grey: #fafafa; /* soft light grey */
@@ -101,6 +104,7 @@ header {
   z-index: 1000;
 }
 
+ /* Navbar build by following tutorial from Coding2GO */
 nav ul {
   justify-content: center;
   width: 100vw;
@@ -228,7 +232,7 @@ nav li:last-child {
   border: 2px solid var(--color-white);
 }
 
-/* Reusable Cards */
+/* Reusable Cards were rewritten by a layout example from CodeSandbox */
 .cards {
   grid-column: 1 / -1;
   display: grid;
@@ -365,6 +369,7 @@ nav li:last-child {
 footer {
   background: var(--color-light-grey);
   padding: var(--space-page-x) 0;
+  margin-top: auto;
 }
 
 .footer-columns {

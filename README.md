@@ -42,7 +42,7 @@ This website provides an instant preliminary cost estimate for construction grou
 
 ### Business Goals
 
-- The main goal of this website is to provide clients with an instant preliminary cost estimate for construction groundwork projects in Sweden.
+- The main goal of this website is to provide clients with an instant preliminary cost estimate for construction groundwork projects.
 - Build a professional web-based MVP that supports lead generation.
 - Clearly communicate Groundwork Solutions Ltd.'s value and services.
 - Encourage visitors to take action through clear Call to Actions (CTAs) to get a finalized quote.
@@ -252,6 +252,7 @@ For testing details, known issues, and resolved bugs, see [TESTING.md](TESTING.m
 - <a href="https://codesandbox.io/p/sandbox/responsive-card-layout-with-css-grid-rpfdn?file=%2Fstyles.css%3A82%2C1-110%2C2">Responsive Card Layout</a>: Inspired by a layout example from CodeSandbox.<br>
 - HTML Reset & Base Structure: Generated with assistance from ChatGPT to establish clean default styling and structure.<br>
 - <a href="https://www.youtube.com/watch?v=U8smiWQ8Seg">Responsive Navbar Concept</a>: Initially based on a YouTube tutorial, but significantly modified and rebuilt to suit the project’s design.
+- <a href="https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s">Scroll-behavior</a>: borrowed from MiladiCode.
 
 ### Content
 
