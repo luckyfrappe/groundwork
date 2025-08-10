@@ -59,7 +59,7 @@ This website provides an instant preliminary cost estimate for construction grou
 
 - An interactive front-end form to input project details.
 - A live estimation engine that calculates costs based on inputs.
-- A results page displaying a service-by-service cost breakdown and a total estimated price range.
+- At the end of form subbmission, displaying a service-by-service cost breakdown and a total estimated price range.
 
 **As a potential client, I want to understand what services Groundwork Solutions Ltd. offers, so I can check if it fits our needs.**
 
@@ -71,7 +71,7 @@ This website provides an instant preliminary cost estimate for construction grou
 
 **As a lead, I want to easily reach out for a finalized quote, so I can get started.**
 
-- A clear CTA on the results page to "Send us your details for a finalized quote."
+- A clear CTA at the end to "Send us your details for a finalized quote."
 - A visible contact section with essential company info and links.
 
 **As a general and returning visitor, I want to quickly find contact details, so I can reach out.**
@@ -137,9 +137,6 @@ This website is designed to provide a seamless and professional experience for o
 <!-- Add image -->
 - **Live Estimation Engine (JavaScript Logic):** Calculates costs based on user inputs and provided price ranges for each service, including excavation volume, service costs, and a fixed site management fee. Applies a +20% surcharge for "Rush" projects.
 <!-- Add image -->
-
-<!-- To be created -->
-**Results & Summary Page:**
 
 - Displays a service-by-service cost breakdown.
 <!-- Add image -->
