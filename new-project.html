@@ -97,6 +97,10 @@
                         <div class="logo"><a href="/"><span>.web</span>design</a></div>
                         <ul class="progress-steps">
                             <li class="step active">
+                                <span>Start</span>
+                                <p>Overview<br></p>
+                            </li>
+                            <li class="step active">
                                 <span>1</span>
                                 <p>Contact Information<br><span>25 secs to complete</span></p>
                             </li>
@@ -118,38 +122,59 @@
                             </li>
                         </ul>
                     </div>
+
                     <form action="">
-                        <!-- Step 1: Contact Info -->
-                        <div class="form-one form-step">
+                        <!-- Step 0: Worksite Overview -->
+                        <div class="form-zero form-step">
                             <div class="bg-svg"></div>
-                            <h2>Contact Information</h2>
-                            <p>Please provide your contact information</p>
-                            <div>
-                                <label for="fullName">Full Name <sup>*</sup></label>
-                                <input type="text" id="fullName" name="fullName" required placeholder="Alex Johnson" />
-
-                                <label for="companyName">Company Name <sup>*</sup></label>
-                                <input type="text" id="companyName" name="companyName" required
-                                    placeholder="Your company" />
-
-                                <label for="email">Email Address <sup>*</sup></label>
-                                <input type="email" id="email" name="email" required placeholder="example@mail.com" />
-
-                                <label for="phone">Phone Number (Optional)</label>
-                                <input type="text" id="phone" name="phone" placeholder="+46 70 123 4567" />
-
-                                <label>
-                                    <input type="checkbox" id="consent" required />
-                                    I agree to be contacted by Groundwork Solutions Ltd.
-                                </label>
-                            </div>
+                            <h2>Worksite Overview</h2>
+                            <p>Do you have one or multiple worksites for this estimate?</p>
+                            <label><input type="radio" name="siteCount" value="single" checked /> Single
+                                worksite</label>
+                            <label><input type="radio" name="siteCount" value="multiple" /> Multiple worksites</label>
+                            <button type="button" id="addSiteBtn" style="display:none;">+ Add another worksite</button>
                         </div>
-                        <!-- Step 2: Project Info -->
-                        <div class="form-two form-step">
+
+                        <!-- Step 1: Contact Information -->
+                        <div class="form-one form-step">
                             <div class="bg-svg"></div>
                             <h2>Project Information</h2>
                             <p>Please provide your project information</p>
                             <div>
+                                <h2>Contact Information</h2>
+                                <p>Please provide your details so we can send your estimate.</p>
+
+                                <label for="fullName">Full Name <sup>*</sup></label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="Alex Johnson" />
+
+                                <label for="companyName">Company / Organisation</label>
+                                <input type="text" id="companyName" name="companyName"
+                                    placeholder="Your company (optional)" />
+
+                                <label for="email">Email Address <sup>*</sup></label>
+                                <input type="email" id="email" name="email" required placeholder="example@mail.com" />
+
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+46 70 123 4567" />
+
+                                <label><input type="checkbox" id="consent" required /> I agree to be contacted with my
+                                    estimate.</label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Project Basics (per site) -->
+                        <div class="form-two form-step">
+                            <div class="bg-svg"></div>
+                            <h2>Services Needed</h2>
+                            <p>Please select the services you require</p>
+                            <div>
+                                <h2>Project Basics</h2>
+                                <p>Tell us about this worksite.</p>
+
+                                <label for="projectName">Worksite Name / Identifier</label>
+                                <input type="text" id="projectName" name="projectName"
+                                    placeholder="Site A, North Wing, etc." />
+
                                 <label for="projectType">Project Type <sup>*</sup></label>
                                 <select id="projectType" name="projectType" required>
                                     <option value="">-- Select project type --</option>
@@ -158,114 +183,139 @@
                                     <option value="Residential Housing">Residential Housing</option>
                                     <option value="Office Building">Office Building</option>
                                     <option value="Industrial Facility">Industrial Facility</option>
+                                    <option value="Infrastructure">Road / Bridge / Civil Works</option>
                                     <option value="Other">Other</option>
                                 </select>
                                 <input type="text" id="projectTypeOther" name="projectTypeOther"
-                                    placeholder="Please specify"
-                                    style="display:none; margin-top:-1rem; margin-bottom:1rem;" />
+                                    placeholder="Please specify" style="display:none;" />
 
-                                <label for="projectCity">Project City or Municipality <sup>*</sup></label>
-                                <input type="text" id="projectCity" name="projectCity" required
+                                <label for="projectLocation">Project City / Country <sup>*</sup></label>
+                                <input type="text" id="projectLocation" name="projectLocation" required
                                     placeholder="Stockholm" />
 
-                                <label for="projectReference">Project Reference (Optional)</label>
+                                <label for="projectReference">Reference / Internal Code</label>
                                 <input type="text" id="projectReference" name="projectReference"
-                                    placeholder="Reference number or notes" />
+                                    placeholder="Optional reference" />
+
+                                <label for="siteUpload">Upload Site Plan / Photo (optional)</label>
+                                <input type="file" id="siteUpload" name="siteUpload" accept=".jpg,.jpeg,.png,.pdf" />
                             </div>
                         </div>
-                        <!-- Step 3: Required Services -->
+
+                        <!-- Step 3: Services Selection -->
                         <div class="form-three form-step">
                             <div class="bg-svg"></div>
-                            <h2>Services Needed</h2>
-                            <p>Please select the services you require</p>
+                            <h2>Project Specifications</h2>
+                            <p>Please provide your project specifications</p>
                             <div>
-                                <label><input type="checkbox" name="services" value="Excavation" /> Excavation & Site
-                                    Prep</label>
-                                <label><input type="checkbox" name="services" value="Piling" /> Piling & Foundation
+                                <h2>Required Services</h2>
+                                <p>Select all services you need for this worksite.</p>
+
+                                <label><input type="checkbox" name="services" value="excavation" /> Excavation & Site
+                                    Preparation</label>
+                                <label><input type="checkbox" name="services" value="piling" /> Piling / Foundation
                                     Reinforcement</label>
-                                <label><input type="checkbox" name="services" value="ConcreteSlabs" /> Concrete Slab /
+                                <label><input type="checkbox" name="services" value="slab" /> Concrete Slab /
                                     Foundation</label>
-                                <label><input type="checkbox" name="services" value="Shoring" /> Shoring & Retaining
+                                <label><input type="checkbox" name="services" value="shoring" /> Shoring / Retaining
                                     Walls</label>
-                                <label><input type="checkbox" name="services" value="RockHandling" /> Rock Handling &
+                                <label><input type="checkbox" name="services" value="rock" /> Rock Breaking /
                                     Blasting</label>
-                                <label><input type="checkbox" name="services" value="Drainage" /> Drainage System
-                                </label>
-                                <label><input type="checkbox" name="services" value="FrostInsulation" /> Frost
-                                    Insulation</label>
-                                <label><input type="checkbox" name="services" value="SiteSetup" checked disabled /> Site
-                                    Setup & Project Management (Fixed Cost, always included)</label>
+                                <label><input type="checkbox" name="services" value="drainage" /> Drainage
+                                    System</label>
+                                <label><input type="checkbox" name="services" value="frost" /> Frost Insulation</label>
+                                <label><input type="checkbox" name="services" value="rush" /> Rush Delivery</label>
+                                <label><input type="checkbox" name="services" value="siteSetup" checked disabled /> Site
+                                    Setup & Management (always included)</label>
                             </div>
                         </div>
-                </div>
-                <!-- Step 4: Project Specifications -->
-                <div class="form-four form-step">
-                    <div class="bg-svg"></div>
-                    <h2>Project Specifications</h2>
-                    <p>Please provide your project specifications</p>
-                    <div>
-                        <label for="siteArea">Site Area (m²) <sup>*</sup></label>
-                        <input type="number" id="siteArea" name="siteArea" min="1" required placeholder="e.g. 500" />
 
-                        <label for="excavationDepth">Excavation Depth (meters) <sup>*</sup></label>
-                        <input type="number" step="0.1" id="excavationDepth" name="excavationDepth" min="0" required
-                            placeholder="e.g. 1.5" />
+                        <!-- Step 4: Specifications (dynamic based on services) -->
+                        <div class="form-four form-step">
+                            <div class="bg-svg"></div>
+                            <h2>Specifications</h2>
+                            <p>Enter details for the services you selected.</p>
 
-                        <div id="pilingFields" style="display:none;">
-                            <label for="numPiles">Number of Piles <sup>*</sup></label>
-                            <input type="number" id="numPiles" name="numPiles" min="1" placeholder="e.g. 100" />
-                            <label><input type="checkbox" id="unsurePiles" /> I'm unsure - estimate based on site
-                                area</label>
+                            <label for="siteArea">Total Site Area (m²) <sup>*</sup></label>
+                            <input type="number" id="siteArea" name="siteArea" min="1" required
+                                placeholder="e.g. 500" />
+
+                            <div id="excavationFields" style="display:none;">
+                                <label for="excavationDepth">Excavation Depth (m) <sup>*</sup></label>
+                                <input type="number" step="0.1" id="excavationDepth" name="excavationDepth" min="0"
+                                    placeholder="e.g. 1.5" />
+                            </div>
+
+                            <div id="pilingFields" style="display:none;">
+                                <label for="numPiles">Number of Piles</label>
+                                <input type="number" id="numPiles" name="numPiles" min="1" placeholder="e.g. 100" />
+                                <label><input type="checkbox" id="unsurePiles" /> Estimate piles based on site
+                                    area</label>
+                            </div>
+
+                            <div id="drainageFields" style="display:none;">
+                                <label for="drainageLength">Drainage Length (m)</label>
+                                <input type="number" id="drainageLength" name="drainageLength" min="0"
+                                    placeholder="e.g. 150" />
+                            </div>
+
+                            <div id="frostFields" style="display:none;">
+                                <label>Frost Insulation<sup>*</sup></label>
+                                <label><input type="radio" name="frostInsulation" value="yes" /> Yes</label>
+                                <label><input type="radio" name="frostInsulation" value="no" checked /> No</label>
+
+                                <div id="frostAreaInput" style="display:none; margin-top: 0.5rem;">
+                                    <label for="frostArea">Frost Insulation Area (m²) <sup>*</sup></label>
+                                    <input type="number" id="frostArea" name="frostArea" min="1"
+                                        placeholder="e.g. 500" />
+                                </div>
+                            </div>
+
+                            <label for="notes">Additional Notes / Special Requirements</label>
+                            <textarea id="notes" name="notes"
+                                placeholder="Any details that could affect pricing"></textarea>
                         </div>
 
-                        <div id="drainageFields" style="display:none;">
-                            <label for="drainageLength">Drainage System Length (linear meters) <sup>*</sup></label>
-                            <input type="number" id="drainageLength" name="drainageLength" min="0"
-                                placeholder="e.g. 150" />
+                        <!-- Step 5: Summary & CSV Export -->
+                        <div class="summaryForm form-step">
+                            <div class="bg-svg"></div>
+                            <h2>Estimate Summary</h2>
+                            <p>Review and download your estimate.</p>
+
+                            <section id="summaryContact"></section>
+                            <section id="summarySites"></section>
+                            <section id="summaryServices"></section>
+                            <section id="summaryTotal"></section>
+
+                            <button type="button" id="exportCsvBtn">Download CSV</button>
+
+                            <label for="goToProModeBtn">Want to adjust advanced pricing details?</label>
+                            <input type="button" id="goToProModeBtn" value="Go to Pro Mode" />
+
+                            <!-- Step 6: Pro-mode -->
+                            <div class="proMode" style="display:none;">
+                                <h2>Pro Mode</h2>
+                                <p>Interact with your estimate data in detail.</p>
+                                <table id="proModeTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Worksite</th>
+                                            <th>Service</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Dynamic rows will be inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-
-                        <div id="frostFields" style="display:none;">
-                            <label>Frost Insulation<sup>*</sup></label>
-                            <label><input type="radio" name="frostInsulation" value="yes" /> Yes</label>
-                            <label><input type="radio" name="frostInsulation" value="no" checked /> No</label>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <!-- Step 5: Summary -->
-                <div class="summaryForm">
-                    <div class="bg-svg"></div>
-                    <h2>Your Project Estimate Summary</h2>
-                    <p>Please review your information</p>
-                    <div>
-                        <section id="summaryContact">
-                            <!-- Contact info review -->
-                        </section>
-
-                        <section id="summaryProject">
-                            <!-- Project basics review -->
-                        </section>
-
-                        <section id="summaryServices">
-                            <!-- Services and quantities with min–max cost per service -->
-                            <ul>
-                                <li>Excavation: 750 m³ → 225 000 – 600 000 SEK</li>
-                                <li>Concrete Slab: 500 m² → 1 250 000 – 2 500 000 SEK</li>
-                                <!-- Additional services -->
-                                <li>Site Setup & Management: fixed 200 000 – 1 000 000 SEK</li>
-                                <li>Rush: 100 000 – 300 000 SEK</li>
-                            </ul>
-                        </section>
-
-                        <section id="summaryTotal">
-                            <strong>Total Estimate: 1.7 M – 4.1 M SEK</strong>
-                        </section>
-
-                        
-                    </div>
-                </div>
-                <!-- <button type="submit">Confirm and Proceed</button> -->
             </div>
         </div>
+
 
     </main>
     <!-- Site-wide Footer -->
