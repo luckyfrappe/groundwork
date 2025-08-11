@@ -43,4 +43,13 @@ Many bugs were identified and successfully resolved throughout the development p
 - Unwanted Video Margin: A black margin appearing below the hero video has been eliminated.
 - Footer Horizontal Scrolling: An unintentional margin-right: 150px on the footer, which caused horizontal scrolling, has been removed.
 
+- The Bug: Circle Misalignment:
+    The circular step numbers in the form's progress bar were not aligning vertically. Due to varying text lengths in each step, the circles were horizontally misaligned, appearing staggered instead of in a straight line.
+
+    The Cause
+    The <ul> element, which was a flex container with flex-direction: column, had its children (<li> items) horizontally centered by the align-items: center property. In a column-based flexbox, align-items controls horizontal alignment. This centering caused the list items to shift horizontally depending on the width of their text content, thus misaligning the circles.
+
+    The Solution
+    The issue was fixed by removing align-items: center from the <ul> element. The list was then wrapped in a <div> with a new align-center class to manage its overall horizontal positioning. This change allowed the list items to align to the left by default, placing all the circles in a straight vertical line.
+
 Back to [README.md](README.md)
