@@ -365,6 +365,33 @@ nav li:last-child {
   border: 2px solid var(--color-navy-blue);
 }
 
+/* Form Box */
+
+.form-box {
+  display: flex;
+  flex-direction: row;
+  border: 8px solid var(--color-darker-grey);
+  background-color: var(--color-light-grey);
+  border-radius: 6px;
+}
+
+/* Progress bar */
+.form-box .progress {
+  position: relative; 
+  padding: 1em;
+}
+
+.logo {
+  padding: 40px 48px;
+  text-align: center;
+}
+
+.logo span {
+  color: var(--color-primary);
+  background-color: var(--color-navy-blue);
+}
+
+
 /* Footer */
 footer {
   background: var(--color-light-grey);
@@ -409,6 +436,16 @@ footer {
 }
 
 /* Media Queries */
+@media screen and (min-width: 768px) {
+  .form-box .progress {
+    flex: 1 0 35%;
+    min-width: 300px;
+    padding: 3em;
+  }
+  .logo {
+    margin: -48px -48px 48px;
+  }
+}
 @media screen and (max-width: 768px) {
   .hideOnMobile {
     display: none;
