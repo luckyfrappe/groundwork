@@ -400,6 +400,27 @@ nav li:last-child {
   padding: 1em;
 }
 
+/* Wrapper for the progress bar borrowed from WeiChiaChang */
+.wrapper-progress-bar {
+  width: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: var(--color-darker-grey);
+  padding: 3px;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+.progress-bar-fill {
+  display: block;
+  height: 22px;
+  background-color: var(--color-primary);
+  border-radius: 3px;
+  transition: width 500ms ease-in-out;
+}
+
 .logo {
   padding: 40px 48px;
   text-align: center;
@@ -469,7 +490,9 @@ form>div {
 
 form>div p {
   color: var(--color-grey);
-};
+}
+
+;
 
 form>div>div> {
   display: flex;
@@ -513,7 +536,7 @@ form .checkbox input {
   height: auto;
 }
 
-form > div:not(.btn-group) {
+form>div:not(.btn-group) {
   display: none;
   -webkit-animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
@@ -525,6 +548,7 @@ form > div:not(.btn-group) {
     -webkit-transform: translateY(10%);
     transform: translateY(10%);
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translateY(0);
@@ -532,7 +556,7 @@ form > div:not(.btn-group) {
   }
 }
 
-form > div.active {
+form>div.active {
   display: block;
 }
 
@@ -610,6 +634,9 @@ footer {
   .form-box {
     flex-direction: row;
   }
+  .wrapper-progress-bar {
+    display: none;
+  }
   .form-box .progress {
     flex: 1 0 35%;
     min-width: 300px;
@@ -667,7 +694,7 @@ footer {
     flex-direction: column;
   }
   .progress ul.progress-steps {
-    display: none
+    display: none;
   }
 }
 

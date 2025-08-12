@@ -17,7 +17,15 @@
   const submitButton = document.querySelector('.btn-submit');
   const steps = document.querySelectorAll(".step");
   const form_steps = document.querySelectorAll(".form-step");
+  
   let active = 1;
+  function updatepdateProgressBar() {
+  // Update the progress bar width, suggested by Copilot
+  const progressBarFill = document.querySelector('.progress-bar-fill');
+      progressBarFill.style.width = `${(active / steps.length) * 100}%`;
+  }
+
+  updatepdateProgressBar();
 
   nextButton.addEventListener('click', () => {
     let currentForm = document.querySelector('.form-step.active');
@@ -32,6 +40,7 @@
       nextSiblingForm.classList.add('active');
       nextStep.classList.add('active');
       active++;
+      updatepdateProgressBar()
     }
     buttonControls();
   })
@@ -48,6 +57,7 @@
       prevSiblingForm.classList.add('active');
       prevStep.classList.add('active');
       active--;
+      updatepdateProgressBar()
     }
     buttonControls();
   })
