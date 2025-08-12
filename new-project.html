@@ -94,7 +94,9 @@
                 <div class="form-box">
                     <!-- Progress bar -->
                     <div class="progress">
-                        <div class="logo"><h1><span>Ground</span>work</h1></div>
+                        <div class="logo">
+                            <h1><span>Ground</span>work</h1>
+                        </div>
                         <div class="align-center">
                             <ul class="progress-steps">
                                 <li class="step active">
@@ -125,15 +127,18 @@
                         </div>
                     </div>
 
-                    <form action="">
+                    <form>
                         <!-- Step 0: Worksite Overview -->
                         <div class="form-zero form-step">
                             <div class="bg-svg"></div>
                             <h2>Worksite Overview</h2>
                             <p>Do you have one or multiple worksites for this estimate?</p>
-                            <label><input type="radio" name="siteCount" value="single" checked /> Single
-                                worksite</label>
-                            <label><input type="radio" name="siteCount" value="multiple" /> Multiple worksites</label>
+                            <div>
+                                <label><input type="radio" name="siteCount" value="single" checked /> Single
+                                    worksite</label>
+                                <label><input type="radio" name="siteCount" value="multiple" /> Multiple
+                                    worksites</label>
+                            </div>
                             <button type="button" id="addSiteBtn" style="display:none;">+ Add another worksite</button>
                         </div>
 
@@ -145,22 +150,29 @@
                             <div>
                                 <h2>Contact Information</h2>
                                 <p>Please provide your details so we can send your estimate.</p>
-
-                                <label for="fullName">Full Name <sup>*</sup></label>
-                                <input type="text" id="fullName" name="fullName" required placeholder="Alex Johnson" />
-
-                                <label for="companyName">Company / Organisation</label>
-                                <input type="text" id="companyName" name="companyName"
-                                    placeholder="Your company (optional)" />
-
-                                <label for="email">Email Address <sup>*</sup></label>
-                                <input type="email" id="email" name="email" required placeholder="example@mail.com" />
-
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+46 70 123 4567" />
-
-                                <label><input type="checkbox" id="consent" required /> I agree to be contacted with my
-                                    estimate.</label>
+                                <div>
+                                    <label for="fullName">Full Name <sup>*</sup></label>
+                                    <input type="text" id="fullName" name="fullName" required
+                                        placeholder="Alex Johnson" />
+                                </div>
+                                <div>
+                                    <label for="companyName">Company / Organisation</label>
+                                    <input type="text" id="companyName" name="companyName"
+                                        placeholder="Your company (optional)" />
+                                </div>
+                                <div>
+                                    <label for="email">Email Address <sup>*</sup></label>
+                                    <input type="email" id="email" name="email" required
+                                        placeholder="example@mail.com" />
+                                </div>
+                                <div>
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+46 70 123 4567" />
+                                </div>
+                                <div>
+                                    <label><input type="checkbox" id="consent" required /> I agree to be contacted with
+                                        my estimate.</label>
+                                </div>
                             </div>
                         </div>
 
@@ -172,35 +184,41 @@
                             <div>
                                 <h2>Project Basics</h2>
                                 <p>Tell us about this worksite.</p>
-
-                                <label for="projectName">Worksite Name / Identifier</label>
-                                <input type="text" id="projectName" name="projectName"
-                                    placeholder="Site A, North Wing, etc." />
-
-                                <label for="projectType">Project Type <sup>*</sup></label>
-                                <select id="projectType" name="projectType" required>
-                                    <option value="">-- Select project type --</option>
-                                    <option value="Data Center">Data Center</option>
-                                    <option value="Logistics Warehouse">Logistics Warehouse</option>
-                                    <option value="Residential Housing">Residential Housing</option>
-                                    <option value="Office Building">Office Building</option>
-                                    <option value="Industrial Facility">Industrial Facility</option>
-                                    <option value="Infrastructure">Road / Bridge / Civil Works</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <input type="text" id="projectTypeOther" name="projectTypeOther"
-                                    placeholder="Please specify" style="display:none;" />
-
-                                <label for="projectLocation">Project City / Country <sup>*</sup></label>
-                                <input type="text" id="projectLocation" name="projectLocation" required
-                                    placeholder="Stockholm" />
-
-                                <label for="projectReference">Reference / Internal Code</label>
-                                <input type="text" id="projectReference" name="projectReference"
-                                    placeholder="Optional reference" />
-
-                                <label for="siteUpload">Upload Site Plan / Photo (optional)</label>
-                                <input type="file" id="siteUpload" name="siteUpload" accept=".jpg,.jpeg,.png,.pdf" />
+                                <div>
+                                    <label for="projectName">Worksite Name / Identifier</label>
+                                    <input type="text" id="projectName" name="projectName"
+                                        placeholder="Site A, North Wing, etc." />
+                                </div>
+                                <div>
+                                    <label for="projectType">Project Type <sup>*</sup></label>
+                                    <select id="projectType" name="projectType" required>
+                                        <option value="">-- Select project type --</option>
+                                        <option value="Data Center">Data Center</option>
+                                        <option value="Logistics Warehouse">Logistics Warehouse</option>
+                                        <option value="Residential Housing">Residential Housing</option>
+                                        <option value="Office Building">Office Building</option>
+                                        <option value="Industrial Facility">Industrial Facility</option>
+                                        <option value="Infrastructure">Road / Bridge / Civil Works</option>
+                                        <option value="Other">Other</option>
+                                    </select><br>
+                                    <input type="text" id="projectTypeOther" name="projectTypeOther"
+                                        placeholder="Please specify" style="display:none;" />
+                                </div>
+                                <div>
+                                    <label for="projectLocation">Project City / Country <sup>*</sup></label>
+                                    <input type="text" id="projectLocation" name="projectLocation" required
+                                        placeholder="Stockholm" />
+                                </div>
+                                <div>
+                                    <label for="projectReference">Reference / Internal Code</label>
+                                    <input type="text" id="projectReference" name="projectReference"
+                                        placeholder="Optional reference" />
+                                </div>
+                                <div>
+                                    <label for="siteUpload">Upload Site Plan / Photo (optional)</label>
+                                    <input type="file" id="siteUpload" name="siteUpload"
+                                        accept=".jpg,.jpeg,.png,.pdf" />
+                                </div>
                             </div>
                         </div>
 
@@ -212,23 +230,26 @@
                             <div>
                                 <h2>Required Services</h2>
                                 <p>Select all services you need for this worksite.</p>
-
-                                <label><input type="checkbox" name="services" value="excavation" /> Excavation & Site
-                                    Preparation</label>
-                                <label><input type="checkbox" name="services" value="piling" /> Piling / Foundation
-                                    Reinforcement</label>
-                                <label><input type="checkbox" name="services" value="slab" /> Concrete Slab /
-                                    Foundation</label>
-                                <label><input type="checkbox" name="services" value="shoring" /> Shoring / Retaining
-                                    Walls</label>
-                                <label><input type="checkbox" name="services" value="rock" /> Rock Breaking /
-                                    Blasting</label>
-                                <label><input type="checkbox" name="services" value="drainage" /> Drainage
-                                    System</label>
-                                <label><input type="checkbox" name="services" value="frost" /> Frost Insulation</label>
-                                <label><input type="checkbox" name="services" value="rush" /> Rush Delivery</label>
-                                <label><input type="checkbox" name="services" value="siteSetup" checked disabled /> Site
-                                    Setup & Management (always included)</label>
+                                <div>
+                                    <label><input type="checkbox" name="services" value="excavation" /> Excavation &
+                                        Site
+                                        Preparation</label>
+                                    <label><input type="checkbox" name="services" value="piling" /> Piling / Foundation
+                                        Reinforcement</label>
+                                    <label><input type="checkbox" name="services" value="slab" /> Concrete Slab /
+                                        Foundation</label>
+                                    <label><input type="checkbox" name="services" value="shoring" /> Shoring / Retaining
+                                        Walls</label>
+                                    <label><input type="checkbox" name="services" value="rock" /> Rock Breaking /
+                                        Blasting</label>
+                                    <label><input type="checkbox" name="services" value="drainage" /> Drainage
+                                        System</label>
+                                    <label><input type="checkbox" name="services" value="frost" /> Frost
+                                        Insulation</label>
+                                    <label><input type="checkbox" name="services" value="rush" /> Rush Delivery</label>
+                                    <label><input type="checkbox" name="services" value="siteSetup" checked disabled />
+                                        Site Setup & Management (always included)</label>
+                                </div>
                             </div>
                         </div>
 
@@ -237,11 +258,11 @@
                             <div class="bg-svg"></div>
                             <h2>Specifications</h2>
                             <p>Enter details for the services you selected.</p>
-
-                            <label for="siteArea">Total Site Area (m²) <sup>*</sup></label>
-                            <input type="number" id="siteArea" name="siteArea" min="1" required
-                                placeholder="e.g. 500" />
-
+                            <div>
+                                <label for="siteArea">Total Site Area (m²) <sup>*</sup></label>
+                                <input type="number" id="siteArea" name="siteArea" min="1" required
+                                    placeholder="e.g. 500" />
+                            </div>
                             <div id="excavationFields" style="display:none;">
                                 <label for="excavationDepth">Excavation Depth (m) <sup>*</sup></label>
                                 <input type="number" step="0.1" id="excavationDepth" name="excavationDepth" min="0"
@@ -272,10 +293,11 @@
                                         placeholder="e.g. 500" />
                                 </div>
                             </div>
-
-                            <label for="notes">Additional Notes / Special Requirements</label>
-                            <textarea id="notes" name="notes"
-                                placeholder="Any details that could affect pricing"></textarea>
+                            <div>
+                                <label for="notes">Additional Notes / Special Requirements</label>
+                                <textarea id="notes" name="notes"
+                                    placeholder="Any details that could affect pricing"></textarea>
+                            </div>
                         </div>
 
                         <!-- Step 5: Summary & CSV Export -->

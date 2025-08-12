@@ -51,5 +51,22 @@ Many bugs were identified and successfully resolved throughout the development p
 
     The Solution
     The issue was fixed by removing align-items: center from the <ul> element. The list was then wrapped in a <div> with a new align-center class to manage its overall horizontal positioning. This change allowed the list items to align to the left by default, placing all the circles in a straight vertical line.
+- Description:
+CSS styles targeting form elements — did not apply on the page, while other CSS styles worked fine. This caused the form elements to display with default browser styles despite defined CSS rules.
 
+Troubleshooting Steps:
+Verified CSS selectors and specificity.
+Checked for CSS resets overriding styles.
+
+Attempted using !important on styles to force application.
+
+Used browser developer tools to inspect applied and overridden styles.
+
+Tested applying styles inline directly in HTML to confirm correctness.
+
+Resolution:
+Applying styles inline confirmed the CSS rules were valid and effective. After removing inline styles and reinserting the same rules into the external CSS file, styles for all form elements began applying correctly.
+
+Notes:
+The root cause remains unknown(it seems our CSS form elements decided to play hide-and-seek), but reapplying styles externally resolved the problem.
 Back to [README.md](README.md)

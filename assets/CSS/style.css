@@ -8,8 +8,10 @@
 }
 
 html {
-    box-sizing: border-box; /* Ensures consistent box-sizing */
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links, firstly borrowed from MiladiCode https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s */
+  box-sizing: border-box;
+  /* Ensures consistent box-sizing */
+  scroll-behavior: smooth;
+  /* Smooth scrolling for anchor links, firstly borrowed from MiladiCode https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s */
 }
 
 body {
@@ -19,21 +21,33 @@ body {
   line-height: 1.5;
   color: var(--color-text);
   /* Webkit and OS X font smoothing advised by Gemini by Google */
-  -webkit-font-smoothing: antialiased; /* Smooth text rendering */
-  -moz-osx-font-smoothing: grayscale; /* Smooth text rendering */
+  -webkit-font-smoothing: antialiased;
+  /* Smooth text rendering */
+  -moz-osx-font-smoothing: grayscale;
+  /* Smooth text rendering */
   font-family: "Roboto", system-ui, -apple-system, sans-serif;
 }
 
 /* THEME & TYPOGRAPHY, clamp were advised by ChatGPT */
 :root {
-  --color-white: #ffffff; /* pure white */
-  --color-light-grey: #fafafa; /* soft light grey */
-  --color-darker-grey: #f1f1f1; /* slightly darker grey */
-  --color-primary: #edff66; /* neon yellow */
-  --color-navy-blue: #2f4858; /* deep navy blue */
-  --space-page-x: clamp(16px, 6vw, 24px); /* modern side paddings */
-  --space-section-y: clamp(80px, 8vw, 96px); /* vertical padding */
-  --space-grid-gap: 32px; /* gap between cards */
+  --color-white: #ffffff;
+  /* pure white */
+  --color-light-grey: #fafafa;
+  /* soft light grey */
+  --color-darker-grey: #f1f1f1;
+  /* slightly darker grey */
+  --color-grey: #777;
+  /* medium grey */
+  --color-primary: #edff66;
+  /* neon yellow */
+  --color-navy-blue: #2f4858;
+  /* deep navy blue */
+  --space-page-x: clamp(16px, 6vw, 24px);
+  /* modern side paddings */
+  --space-section-y: clamp(80px, 8vw, 96px);
+  /* vertical padding */
+  --space-grid-gap: 32px;
+  /* gap between cards */
 }
 
 h1,
@@ -76,6 +90,7 @@ button {
   padding: 12px 24px;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s ease-out;
 }
 
 .container {
@@ -87,12 +102,15 @@ button {
 .flex {
   display: flex;
 }
+
 .fluid {
   width: 100%;
 }
+
 .center {
   align-items: center;
 }
+
 .space-between {
   justify-content: space-between;
 }
@@ -104,7 +122,7 @@ header {
   z-index: 1000;
 }
 
- /* Navbar build by following tutorial from Coding2GO */
+/* Navbar build by following tutorial from Coding2GO */
 nav ul {
   justify-content: center;
   width: 100vw;
@@ -202,7 +220,7 @@ nav li:last-child {
   margin: 0;
 }
 
-.hero-info > p {
+.hero-info>p {
   color: var(--color-white);
   font-size: 25px;
   max-width: 500px;
@@ -250,7 +268,8 @@ nav li:last-child {
 
 .card__image-container {
   width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
+  padding-top: 56.25%;
+  /* 16:9 aspect ratio */
   overflow: hidden;
   position: relative;
 }
@@ -369,15 +388,15 @@ nav li:last-child {
 
 .form-box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: 8px solid var(--color-darker-grey);
   background-color: var(--color-light-grey);
-  border-radius: 6px;
+  border-radius: 15px;
 }
 
 /* Progress bar */
 .form-box .progress {
-  position: relative; 
+  position: relative;
   padding: 1em;
 }
 
@@ -432,7 +451,84 @@ nav li:last-child {
 
 .progress ul.progress-steps li p span {
   font-size: smaller;
-  color: grey;
+  color: var(--color-grey);
+}
+
+/* Form */
+.form-box form {
+  width: 100%;
+  padding: 3em 1em;
+  background-color: var(--color-white);
+  border-radius: 15px 15px 6px 6px;
+}
+
+form>div {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form>div p {
+  color: var(--color-grey);
+};
+
+form>div>div> {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+input {
+  margin-bottom: 2em;
+}
+
+input:not([type="checkbox"], [type="radio"], [type="button"]),
+select {
+  font-family: inherit;
+  height: 40px;
+  padding: 0 1em;
+  border-radius: 6px;
+  outline-color: var(--color-grey);
+  border: 1px solid var(--color-darker-grey);
+  background-color: transparent;
+  width: 100%;
+}
+
+form label {
+  font-size: smaller;
+  margin-bottom: 0.5em;
+}
+
+form .checkbox input {
+  height: auto;
+}
+
+.form-one, .form-two, .form-three, .form-four, .summaryForm {
+  display: none;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.btn-group [class*="btn-"] {
+  background-color: var(--color-primary);
+  -webkit-transition: background-color 0.3s, border-color 0.3s ease-out;
+}
+
+.btn-group [class*="btn-"]:disabled {
+  background-color: var(--color-light-grey);
+  cursor: default;
+}
+
+.btn-group [class*="btn-"]:hover:not(:disabled) {
+  background-color: transparent;
+}
+
+::placeholder {
+  color: var(--color-grey);
 }
 
 /* Footer */
@@ -480,18 +576,24 @@ footer {
 
 /* Media Queries */
 @media screen and (min-width: 768px) {
+  .form-box {
+    flex-direction: row;
+  }
   .form-box .progress {
     flex: 1 0 35%;
     min-width: 300px;
     padding: 3em;
   }
+
   .logo {
     margin: -48px -48px 48px;
   }
+
   .progress ul.progress-steps {
     flex-direction: column;
     gap: 0;
   }
+
   .progress ul.progress-steps li:not(:last-child)::before {
     content: '';
     position: absolute;
@@ -501,43 +603,61 @@ footer {
     height: 65px;
     background-color: var(--color-darker-grey);
   }
+
+  .form-box form {
+    padding: 3em;
+    border-radius: 0 6px 6px 0;
+  }
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 767px) {
   .hideOnMobile {
     display: none;
   }
+
   nav li:last-child {
     display: flex;
   }
+
   nav a {
     padding: 0 0.5rem;
   }
+
   .card {
     grid-column-end: span 12;
   }
+
   .hero-info button {
     width: 100%;
     margin-bottom: 10px;
   }
+
   footer .container {
     flex-direction: column;
   }
+  .progress ul.progress-steps {
+    display: none
+  }
 }
+
 /* make sidebar links full width */
 @media screen and (max-width: 640px) {
   .sidebar {
     width: 100%;
     font-size: 2rem;
   }
+
   .services-cards {
     grid-template-columns: 10px repeat(6, 1fr) 10px;
     grid-gap: 10px;
   }
+
   .cards {
     grid-column: 2 / span 6;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px;
   }
+
   .card {
     grid-column-end: span 6;
   }
