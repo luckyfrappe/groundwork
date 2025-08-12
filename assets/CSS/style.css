@@ -437,18 +437,11 @@ nav li:last-child {
   align-items: center;
 }
 
-.progress ul.progress-steps {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 2em;
-}
-
 .progress ul.progress-steps li {
   position: relative;
   display: flex;
   align-items: flex-start;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .step-number {
@@ -458,7 +451,7 @@ nav li:last-child {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1em;
+  margin-right: 0.5em;
   border-radius: 50%;
   background-color: var(--color-darker-grey);
   z-index: 1;
@@ -634,9 +627,11 @@ footer {
   .form-box {
     flex-direction: row;
   }
+
   .wrapper-progress-bar {
     display: none;
   }
+
   .form-box .progress {
     flex: 1 0 35%;
     min-width: 300px;
@@ -658,7 +653,7 @@ footer {
     left: 28px;
     top: 51px;
     width: 4px;
-    height: 65px;
+    height: 80px;
     background-color: var(--color-darker-grey);
   }
 
@@ -693,6 +688,7 @@ footer {
   footer .container {
     flex-direction: column;
   }
+
   .progress ul.progress-steps {
     display: none;
   }
