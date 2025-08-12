@@ -21,11 +21,16 @@
 
   nextButton.addEventListener('click', () => {
     let currentForm = document.querySelector('.form-step.active');
-    let nextSibling = currentForm.nextElementSibling;
+    let currentStep = document.querySelector('.step.active');
+    let nextSiblingForm = currentForm.nextElementSibling;
+    let nextStep = currentStep.nextElementSibling;
 
-    if (nextSibling && nextSibling.classList.contains('form-step')) {
+
+    if (nextSiblingForm && nextSiblingForm.classList.contains('form-step')) {
       currentForm.classList.remove('active');
-      nextSibling.classList.add('active');
+      currentStep.classList.remove('active');
+      nextSiblingForm.classList.add('active');
+      nextStep.classList.add('active');
       active++;
     }
     buttonControls();
@@ -33,11 +38,15 @@
 
   prevButton.addEventListener('click', () => {
     let currentForm = document.querySelector('.form-step.active');
-    let prevSibling = currentForm.previousElementSibling;
+    let currentStep = document.querySelector('.step.active');
+    let prevSiblingForm = currentForm.previousElementSibling;
+    let prevStep = currentStep.previousElementSibling;
 
-    if (prevSibling && prevSibling.classList.contains('form-step')) {
+    if (prevSiblingForm && prevSiblingForm.classList.contains('form-step')) {
       currentForm.classList.remove('active');
-      prevSibling.classList.add('active');
+      currentStep.classList.remove('active');
+      prevSiblingForm.classList.add('active');
+      prevStep.classList.add('active');
       active--;
     }
     buttonControls();
