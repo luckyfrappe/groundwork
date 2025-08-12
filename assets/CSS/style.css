@@ -493,6 +493,17 @@ select {
   width: 100%;
 }
 
+textarea {
+  width: 100%;
+  font-family: inherit;
+  height: 20vh;
+  padding: 1em;
+  border-radius: 6px;
+  outline-color: var(--color-grey);
+  border: 1px solid var(--color-darker-grey);
+  background-color: transparent;
+}
+
 form label {
   font-size: smaller;
   margin-bottom: 0.5em;
@@ -502,8 +513,27 @@ form .checkbox input {
   height: auto;
 }
 
-.form-one, .form-two, .form-three, .form-four, .summaryForm {
+form > div:not(.btn-group) {
   display: none;
+  -webkit-animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10%);
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+form > div.active {
+  display: block;
 }
 
 .btn-group {
@@ -515,7 +545,6 @@ form .checkbox input {
 
 .btn-group [class*="btn-"] {
   background-color: var(--color-primary);
-  -webkit-transition: background-color 0.3s, border-color 0.3s ease-out;
 }
 
 .btn-group [class*="btn-"]:disabled {
@@ -530,6 +559,8 @@ form .checkbox input {
 ::placeholder {
   color: var(--color-grey);
 }
+
+
 
 /* Footer */
 footer {
