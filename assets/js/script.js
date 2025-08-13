@@ -211,17 +211,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Add site button functionality
-  // This button allows users to add more worksite fields dynamically
+  // This button allows users to add more worksite fields dynamically, added delete button with help from ChatGPT
   addSiteBtn.addEventListener('click', () => {
-    // Create a new worksite form
     const worksiteFields = document.querySelector('.worksite-fields');
+
+    // Create a new worksite container
     const newWorksite = document.createElement('div');
     newWorksite.classList.add('worksite-field-new');
+
+    // Add inner HTML + delete button in the same div
     newWorksite.innerHTML = `
-      <label for="worksiteName">Worksite Name / Identifier</label>
-      <input type="text" name="worksiteName" placeholder="Site A, North Wing, etc." />
-    `;
+    <label for="worksiteName">Worksite Name / Identifier</label>
+    <input type="text" name="worksiteName" placeholder="Site A, North Wing, etc." />
+    <button type="button" class="delete-worksite-btn">Delete</button>
+  `;
+
+    // Append to container
     worksiteFields.appendChild(newWorksite);
+
+    // Add event listener to the delete button that attaches to the new worksite div
+    const deleteBtn = newWorksite.querySelector('.delete-worksite-btn');
+    deleteBtn.addEventListener('click', () => {
+      newWorksite.remove(); // Remove this specific worksite div
+    });
   });
 
 
