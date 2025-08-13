@@ -187,9 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Start section
   const howManyWorksites = document.querySelector('.card-radio-group');
-
   howManyWorksites.addEventListener('change', howManyWorksitesChange);
+  const addSiteBtn = document.getElementById('addSiteBtn');
 
   /**
    * Allows to add more worksite fields
@@ -199,16 +200,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const selected = howManyWorksites.querySelector('input[name="siteCount"]:checked');
     // If multiple selected - add more worksite fields
     if (selected.value === 'multiple') {
-      const addSiteBtn = document.getElementById('addSiteBtn');
       addSiteBtn.classList.remove('hide');
     } else if (selected.value === 'single') {
-      const addSiteBtn = document.getElementById('addSiteBtn');
       addSiteBtn.classList.add('hide');
+      // If single selected - remove all but the first worksite field
+      const worksiteFields = document.querySelector('.worksite-fields');
+      const worksiteFieldsArray = Array.from(worksiteFields.children);
+      worksiteFieldsArray.slice(1).forEach(field => field.remove());
     }
   }
 
-
-
+  // Add site button functionality
+  // This button allows users to add more worksite fields dynamically
+  addSiteBtn.addEventListener('click', () => {
+    // Create a new worksite form
+    const worksiteFields = document.querySelector('.worksite-fields');
+    const newWorksite = document.createElement('div');
+    newWorksite.classList.add('worksite-field-new');
+    newWorksite.innerHTML = `
+      <label for="worksiteName">Worksite Name / Identifier</label>
+      <input type="text" name="worksiteName" placeholder="Site A, North Wing, etc." />
+    `;
+    worksiteFields.appendChild(newWorksite);
+  });
 
 
 

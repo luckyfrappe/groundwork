@@ -148,13 +148,16 @@
                                     <span>Multiple worksites</span>
                                 </label>
                             </div>
-                            <p>Tell us about this worksite.</p>
-                            <div>
-                                <label for="projectName">Worksite Name / Identifier</label>
-                                <input type="text" id="projectName" name="projectName"
-                                    placeholder="Site A, North Wing, etc." />
+                            <p>Tell us about this worksite(s).</p>
+                            <div class="worksite-fields">
+                                <div class="worksite-field">
+                                    <label for="worksiteName">Worksite Name / Identifier</label>
+                                    <input type="text" name="worksiteName"
+                                        placeholder="Site A, North Wing, etc." />
+                                </div>
                             </div>
-                            <button type="button" id="addSiteBtn" class="hide"><i class="fa-solid fa-plus"></i> Add another worksite</button>
+                            <button type="button" id="addSiteBtn" class="hide"><i class="fa-solid fa-plus"></i> Add
+                                another worksite</button>
                         </div>
 
                         <!-- Step 1: Contact Information -->
@@ -225,7 +228,8 @@
                         <div class="form-three form-step">
                             <div class="bg-svg"></div>
                             <h2>Required Services</h2>
-                            <p>Select all services you need for this worksite. Site Setup & Management is always included.</p>
+                            <p>Select all services you need for this worksite. Site Setup & Management is always
+                                included.</p>
                             <div class="services-cards">
                                 <label>
                                     <input type="checkbox" name="services" value="excavation" />
