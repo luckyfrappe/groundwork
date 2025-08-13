@@ -1,5 +1,5 @@
-  document.addEventListener('DOMContentLoaded', () => {
-  
+document.addEventListener('DOMContentLoaded', () => {
+
   // Function to toggle the sidebar visibility
   function showSidebar() {
     const sidebar = document.querySelector('.sidebar');
@@ -17,12 +17,12 @@
   const submitButton = document.querySelector('.btn-submit');
   const steps = document.querySelectorAll(".step");
   const form_steps = document.querySelectorAll(".form-step");
-  
+
   let active = 1;
   function updatepdateProgressBar() {
-  // Update the progress bar width, suggested by Copilot
-  const progressBarFill = document.querySelector('.progress-bar-fill');
-      progressBarFill.style.width = `${(active / steps.length) * 100}%`;
+    // Update the progress bar width, suggested by Copilot
+    const progressBarFill = document.querySelector('.progress-bar-fill');
+    progressBarFill.style.width = `${(active / steps.length) * 100}%`;
   }
 
   updatepdateProgressBar();
@@ -104,58 +104,88 @@
  * - "per pile" = each pile
  * - "fixed" = one-off cost per site
  */
-const COSTS = {
-  EXCAVATION: {
-    UNIT: "m3",
-    MIN: 12,
-    MAX: 60
+  const COSTS = {
+    EXCAVATION: {
+      UNIT: "m3",
+      MIN: 12,
+      MAX: 60
+    },
+    PILING_PER_PILE: {
+      UNIT: "pile",
+      MIN: 800,
+      MAX: 2000
+    },
+    PILING_PER_METER: {
+      UNIT: "m",
+      MIN: 400,
+      MAX: 700
+    },
+    CONCRETE_SLAB: {
+      UNIT: "m2",
+      MIN: 50,
+      MAX: 150
+    },
+    DRAINAGE: {
+      UNIT: "lm",
+      MIN: 10,
+      MAX: 200
+    },
+    FROST_INSULATION: {
+      UNIT: "m2",
+      MIN: 20,
+      MAX: 60
+    },
+    SHORING: {
+      UNIT: "m2",
+      MIN: 150,
+      MAX: 400
+    },
+    ROCK_BLASTING: {
+      UNIT: "m3",
+      MIN: 40,
+      MAX: 120
+    },
+    SITE_SETUP: {
+      UNIT: "fixed",
+      MIN: 20000,
+      MAX: 200000
+    },
+    RUSH_SURCHARGE: {
+      MULTIPLIER: 1.20
+    }
+  };
+
+/**
+ * Condition Coefficients
+ * Multipliers applied to base min/max service totals
+ */
+const COEFFICIENTS = {
+  SOIL_TYPE: {
+    sand: 1.0,
+    loam: 1.05,
+    clay: 1.15,
+    rocky: 1.25,
+    unknown: 1.1
   },
-  PILING_PER_PILE: {
-    UNIT: "pile",
-    MIN: 800,
-    MAX: 2000
+  TERRAIN: {
+    flat: 1.0,
+    slope: 1.05,
+    complex: 1.15,
+    terraced: 1.15 // treated same as complex for MVP
   },
-  PILING_PER_METER: {
-    UNIT: "m",
-    MIN: 400,
-    MAX: 700
+  GROUNDWATER: {
+    low: 1.0,
+    medium: 1.05,
+    high: 1.15,
+    unknown: 1.0
   },
-  CONCRETE_SLAB: {
-    UNIT: "m2",
-    MIN: 50,
-    MAX: 150
-  },
-  DRAINAGE: {
-    UNIT: "lm",
-    MIN: 10,
-    MAX: 200
-  },
-  FROST_INSULATION: {
-    UNIT: "m2",
-    MIN: 20,
-    MAX: 60
-  },
-  SHORING: {
-    UNIT: "m2",
-    MIN: 150,
-    MAX: 400
-  },
-  ROCK_BLASTING: {
-    UNIT: "m3",
-    MIN: 40,
-    MAX: 120
-  },
-  SITE_SETUP: {
-    UNIT: "fixed",
-    MIN: 20000,
-    MAX: 200000
-  },
-  RUSH_SURCHARGE: {
-    MULTIPLIER: 1.20
+  ACCESS: {
+    good: 1.0,
+    fair: 1.05,
+    limited: 1.1,
+    narrow: 1.1 // same as limited for MVP
   }
 };
-
-  
 
 
 
