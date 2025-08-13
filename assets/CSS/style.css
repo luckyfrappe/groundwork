@@ -583,6 +583,17 @@ form label {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 24px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--color-grey);
+  border-radius: 6px;
+}
+
+.services-cards p {
+  width: 100%;
+  color: var(--color-navy-blue);
+  font-size: 1.5em;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .services-cards label {
@@ -609,7 +620,7 @@ form label {
 }
 
 .services-cards i {
-  font-size: 1.2rem;
+  font-size: 1rem;
   transition: color 0.2s;
 }
 

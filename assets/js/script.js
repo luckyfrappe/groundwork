@@ -187,41 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const worksite = {
-    name: "",
-    siteArea_m2: 0,
-    terrain: "",
-    soilType: "",
-    groundwater: "",
-    access: "",
-    obstacles: "",
-    services: {
-      excavation: false,
-      pilingPerPile: false,
-      pilingPerMeter: false,
-      concreteSlabs: false,
-      drainage: false,
-      frostInsulation: false,
-      shoring: false,
-      rockBlasting: false,
-      siteSetup: true,
-      rush: false
-    },
-    specs: {
-      siteArea: 0,
-      excavationDepth: 0,
-      numPiles: 0,
-      pilesLength: 0,
-      slabArea: 0,
-      slabThickness: 0,
-      drainageLength: 0,
-      frostArea: 0,
-      soilRemovalPct: 0,
-      materialVolumes: {},
-      notes: ""
-    }
-  };
-
   // Start section
   const howManyWorksites = document.querySelector('.card-radio-group');
   howManyWorksites.addEventListener('change', howManyWorksitesChange);
@@ -261,21 +226,54 @@ document.addEventListener('DOMContentLoaded', () => {
     newWorksite.innerHTML = `
     <label for="worksiteName">Worksite Name / Identifier</label>
     <input type="text" name="worksiteName" placeholder="Site A, North Wing, etc." required/>
-    <button type="button" class="delete-worksite-btn">Delete</button>
-  `;
+    <button type="button" class="delete-worksite-btn">Delete</button>`;
 
     // Append to container
     worksiteFields.appendChild(newWorksite);
 
+    const worksite = {
+      name: "",
+      siteArea_m2: 0,
+      terrain: "",
+      soilType: "",
+      groundwater: "",
+      access: "",
+      obstacles: "",
+      services: {
+        excavation: false,
+        pilingPerPile: false,
+        pilingPerMeter: false,
+        concreteSlabs: false,
+        drainage: false,
+        frostInsulation: false,
+        shoring: false,
+        rockBlasting: false,
+        siteSetup: true,
+        rush: false
+      },
+      specs: {
+        siteArea: 0,
+        excavationDepth: 0,
+        numPiles: 0,
+        pilesLength: 0,
+        slabArea: 0,
+        slabThickness: 0,
+        drainageLength: 0,
+        frostArea: 0,
+        soilRemovalPct: 0,
+        materialVolumes: {},
+        notes: ""
+      }
+    };
+
     project.worksites.push(worksite);
+   
 
     const input = newWorksite.querySelector('input[name="worksiteName"]');
     input.addEventListener("input", (e) => {
       worksite.name = e.target.value;
-      console.log("Updated project:", project);
+       updateWorksiteServices();  
     });
-
-    // Add event listener to the delete button that attaches to the new worksite div
 
     // Delete button logic
     const deleteBtn = newWorksite.querySelector('.delete-worksite-btn');
@@ -289,10 +287,10 @@ document.addEventListener('DOMContentLoaded', () => {
       newWorksite.remove();
       checkTheFirstDeleteButton();
       console.log("After deletion:", project);
+      updateWorksiteServices();
     });
-
     checkTheFirstDeleteButton();
-  }
+  };
 
   function checkTheFirstDeleteButton() {
     const worksiteFields = document.querySelector('.worksite-fields');
@@ -302,8 +300,81 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       deleteBtn.classList.remove('hide');
     }
+    return project.worksites;
   }
 
+  function updateWorksiteServices() {
+    console.log("updateWorksiteServices is running. Current project:", project);
+    const servicesForm = document.querySelector(".form-three");
+    // Clear the existing services
+    servicesForm.innerHTML = '';
+    console.log(project.worksites);
+    for (const site of project.worksites) {
+      // Create a new worksite container
+      const worksiteServices = document.createElement('div');
+      worksiteServices.classList.add('services-cards');
+
+      // Add inner HTML + delete button in the same div
+      worksiteServices.innerHTML =
+        `<p>Services for Worksite: ${site.name}</p>
+        <label>
+            <input type="checkbox" name="services" value="excavation" />
+            <i class="fas fa-digging"></i>
+            Excavation & Site Prep
+        </label>
+        <label>
+            <input type="checkbox" name="services" value="piling" />
+            <i class="fas fa-hammer"></i>
+            Piling / Foundation
+        </label>
+        <label>
+            <input type="checkbox" name="services" value="slab" />
+            <i class="fas fa-cube"></i>
+            Concrete Slab / Foundation
+        </label>
+        <label>
+            <input type="checkbox" name="services" value="shoring" />
+            <i class="fas fa-building"></i>
+            Shoring / Retaining Walls
+        </label>
+        <label>
+            <input type="checkbox" name="services" value="rock" />
+            <i class="fas fa-mountain"></i>
+            Rock Breaking / Blasting
+        </label>
+        <label>
+            <input type="checkbox" name="services" value="drainage" />
+            <i class="fas fa-water"></i>
+            Drainage System
+        </label>
+        <label>
+            <input type="checkbox" name="services" value="frost" />
+            <i class="fas fa-snowflake"></i>
+            Frost Insulation
+        </label>
+        <label>
+            <input type="checkbox" name="services" value="rush" />
+            <i class="fas fa-bolt"></i>
+            Rush Delivery
+        </label>
+        <label>
+            <input type="checkbox" name="services" value="siteSetup" checked disabled />
+            <i class="fas fa-tools"></i>
+            Site Setup & Management
+        </label>`;
+
+      // Add event listeners to link checkboxes with the current site's services, code from ChatGPT
+      worksiteServices.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', (e) => {
+          site.services[e.target.value] = e.target.checked;
+          console.log("Updated worksite services:", site);
+        });
+      });
+
+      // Append the whole services section to the form
+      servicesForm.appendChild(worksiteServices);
+    }
+  }
 
 
 });
