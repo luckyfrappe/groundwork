@@ -136,11 +136,18 @@
                             <div class="bg-svg"></div>
                             <h2>Worksite Overview</h2>
                             <p>Do you have one or multiple worksites for this estimate?</p>
-                            <div>
-                                <label><input type="radio" name="siteCount" value="single" checked /> Single
-                                    worksite</label>
-                                <label><input type="radio" name="siteCount" value="multiple" /> Multiple
-                                    worksites</label>
+                            <div class="card-radio-group">
+                                <label>
+                                    <input type="radio" name="siteCount" value="single" checked />
+                                    <i class="fa-solid fa-file"></i>
+                                    <span>Single worksite</span>
+                                </label>
+
+                                <label>
+                                    <input type="radio" name="siteCount" value="multiple" />
+                                    <i class="fa-solid fa-file-circle-plus"></i>
+                                    <span>Multiple worksites</span>
+                                </label>
                             </div>
                             <button type="button" id="addSiteBtn" style="display:none;">+ Add another worksite</button>
                         </div>
@@ -218,27 +225,55 @@
                         <div class="form-three form-step">
                             <div class="bg-svg"></div>
                             <h2>Required Services</h2>
-                            <p>Select all services you need for this worksite.</p>
-                            <div>
-                                <label><input type="checkbox" name="services" value="excavation" /> Excavation &
-                                    Site
-                                    Preparation</label>
-                                <label><input type="checkbox" name="services" value="piling" /> Piling / Foundation
-                                    Reinforcement</label>
-                                <label><input type="checkbox" name="services" value="slab" /> Concrete Slab /
-                                    Foundation</label>
-                                <label><input type="checkbox" name="services" value="shoring" /> Shoring / Retaining
-                                    Walls</label>
-                                <label><input type="checkbox" name="services" value="rock" /> Rock Breaking /
-                                    Blasting</label>
-                                <label><input type="checkbox" name="services" value="drainage" /> Drainage
-                                    System</label>
-                                <label><input type="checkbox" name="services" value="frost" /> Frost
-                                    Insulation</label>
-                                <label><input type="checkbox" name="services" value="rush" /> Rush Delivery</label>
-                                <label><input type="checkbox" name="services" value="siteSetup" checked disabled />
-                                    Site Setup & Management (always included)<br><br></label>
+                            <p>Select all services you need for this worksite. Site Setup & Management is always included.</p>
+                            <div class="services-cards">
+                                <label>
+                                    <input type="checkbox" name="services" value="excavation" />
+                                    <i class="fas fa-digging"></i>
+                                    Excavation & Site Prep
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="piling" />
+                                    <i class="fas fa-hammer"></i>
+                                    Piling / Foundation
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="slab" />
+                                    <i class="fas fa-cube"></i>
+                                    Concrete Slab / Foundation
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="shoring" />
+                                    <i class="fas fa-building"></i>
+                                    Shoring / Retaining Walls
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="rock" />
+                                    <i class="fas fa-mountain"></i>
+                                    Rock Breaking / Blasting
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="drainage" />
+                                    <i class="fas fa-water"></i>
+                                    Drainage System
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="frost" />
+                                    <i class="fas fa-snowflake"></i>
+                                    Frost Insulation
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="rush" />
+                                    <i class="fas fa-bolt"></i>
+                                    Rush Delivery
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="services" value="siteSetup" checked disabled />
+                                    <i class="fas fa-tools"></i>
+                                    Site Setup & Management
+                                </label>
                             </div>
+
                         </div>
 
                         <!-- Step 4: Specifications (dynamic based on services) -->
@@ -299,10 +334,12 @@
                             <section id="summaryServices"></section>
                             <section id="summaryTotal"></section>
 
-                            <button type="button" id="exportCsvBtn">Download CSV <i class="fa-solid fa-table"></i></button>
+                            <button type="button" id="exportCsvBtn">Download CSV <i
+                                    class="fa-solid fa-table"></i></button>
                             <div>
                                 <label for="goToProModeBtn">Want to adjust advanced pricing details?</label>
-                                <button type="button" id="goToProModeBtn">Pro Mode <i class="fa-solid fa-file-excel"></i></button>
+                                <button type="button" id="goToProModeBtn">Pro Mode <i
+                                        class="fa-solid fa-file-excel"></i></button>
                             </div>
 
                             <!-- Step 6: Pro-mode -->
@@ -325,9 +362,12 @@
                             </div>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn-prev" disabled><i class="fa-solid fa-backward"></i> Back</button>
-                            <button type="button" class="btn-next">Next Step <i class="fa-solid fa-forward"></i></button>
-                            <button type="submit" class="btn-submit" disabled>Submit Estimate <i class="fa-solid fa-paper-plane"></i></button>
+                            <button type="button" class="btn-prev" disabled><i class="fa-solid fa-backward"></i>
+                                Back</button>
+                            <button type="button" class="btn-next">Next Step <i
+                                    class="fa-solid fa-forward"></i></button>
+                            <button type="submit" class="btn-submit" disabled>Submit Estimate <i
+                                    class="fa-solid fa-paper-plane"></i></button>
                         </div>
                     </form>
                 </div>

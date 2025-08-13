@@ -40,6 +40,8 @@ body {
   /* medium grey */
   --color-primary: #edff66;
   /* neon yellow */
+  --color-primary-dark: #c6d800;
+  /* darkened neon yellow */
   --color-navy-blue: #2f4858;
   /* deep navy blue */
   --space-page-x: clamp(16px, 6vw, 24px);
@@ -485,6 +487,46 @@ select {
   background-color: transparent;
   width: 100%;
 }
+/* Radio button cards designed with help from ChatGPT */
+.card-radio-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 24px;
+}
+
+.card-radio-group i {
+  font-size: 2em;
+}
+
+.card-radio-group label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 2px solid var(--color-grey);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.card-radio-group label:hover {
+    border-color: var(--color-primary);
+}
+
+.card-radio-group input[type="radio"] {
+    display: none;
+}
+
+.card-radio-group i {
+    margin-bottom: 0.5rem;
+    color: var(--color-grey);
+    transition: color 0.3s ease;
+}
+
+.card-radio-group input[type="radio"]:checked + i {
+    color: var(--color-primary-dark);
+}
 
 textarea {
   width: 100%;
@@ -525,8 +567,49 @@ form label {
   margin-bottom: 0.5em;
 }
 
-form .checkbox input {
-  height: auto;
+/* Checkbox styles, designed with help from ChatGPT */
+.services-cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 24px;
+}
+
+.services-cards label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--color-grey);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #fff;
+}
+
+.services-cards label:hover {
+  border-color: var(--color-primary);
+}
+
+.services-cards input[type="checkbox"] {
+  display: none;
+}
+
+.services-cards input[type="checkbox"]:checked + i,
+.services-cards input[type="checkbox"]:checked + i + text {
+  color: var(--color-primary);
+}
+
+.services-cards i {
+  font-size: 1.5rem;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.services-cards input[type="checkbox"]:checked + i {
+  color: var(--color-primary-dark);
 }
 
 form>div:not(.btn-group) {
