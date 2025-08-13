@@ -520,7 +520,6 @@ select {
 
 .card-radio-group i {
     margin-bottom: 0.5rem;
-    color: var(--color-grey);
     transition: color 0.3s ease;
 }
 
@@ -578,7 +577,6 @@ form label {
 
 .services-cards label {
   display: flex;
-  align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--color-grey);
@@ -586,7 +584,6 @@ form label {
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s;
-  background-color: #fff;
 }
 
 .services-cards label:hover {
@@ -597,14 +594,12 @@ form label {
   display: none;
 }
 
-.services-cards input[type="checkbox"]:checked + i,
-.services-cards input[type="checkbox"]:checked + i + text {
+.services-cards input[type="checkbox"]:checked + i {
   color: var(--color-primary);
 }
 
 .services-cards i {
-  font-size: 1.5rem;
-  color: #555;
+  font-size: 1.2rem;
   transition: color 0.2s;
 }
 
