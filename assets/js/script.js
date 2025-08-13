@@ -155,43 +155,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-/**
- * Condition Coefficients
- * Multipliers applied to base min/max service totals
- */
-const coefficients = {
-  soilType: {
-    sand: 1.0,
-    loam: 1.05,
-    clay: 1.15,
-    rocky: 1.25,
-    unknown: 1.1
-  },
-  terrain: {
-    flat: 1.0,
-    slope: 1.05,
-    complex: 1.15,
-    terraced: 1.15 // treated same as complex for MVP
-  },
-  groundwater: {
-    low: 1.0,
-    medium: 1.05,
-    high: 1.15,
-    unknown: 1.0
-  },
-  access: {
-    good: 1.0,
-    fair: 1.05,
-    limited: 1.1,
-    narrow: 1.1 // same as limited for MVP
+  /**
+   * Condition Coefficients
+   * Multipliers applied to base min/max service totals
+   */
+  const coefficients = {
+    soilType: {
+      sand: 1.0,
+      loam: 1.05,
+      clay: 1.15,
+      rocky: 1.25,
+      unknown: 1.1
+    },
+    terrain: {
+      flat: 1.0,
+      slope: 1.05,
+      complex: 1.15,
+      terraced: 1.15 // treated same as complex for MVP
+    },
+    groundwater: {
+      low: 1.0,
+      medium: 1.05,
+      high: 1.15,
+      unknown: 1.0
+    },
+    access: {
+      good: 1.0,
+      fair: 1.05,
+      limited: 1.1,
+      narrow: 1.1 // same as limited for MVP
+    }
+  };
+
+  const howManyWorksites = document.querySelector('.card-radio-group');
+
+  howManyWorksites.addEventListener('change', howManyWorksitesChange);
+
+  /**
+   * Allows to add more worksite fields
+   */
+  function howManyWorksitesChange() {
+    // Checks what siteCount is selected
+    const selected = howManyWorksites.querySelector('input[name="siteCount"]:checked');
+    // If multiple selected - add more worksite fields
+    if (selected.value === 'multiple') {
+      const addSiteBtn = document.getElementById('addSiteBtn');
+      addSiteBtn.classList.remove('hide');
+    } else if (selected.value === 'single') {
+      const addSiteBtn = document.getElementById('addSiteBtn');
+      addSiteBtn.classList.add('hide');
+    }
   }
-};
-
-
-
-
-
-
 
 
 
