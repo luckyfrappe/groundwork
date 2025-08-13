@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const form_steps = document.querySelectorAll(".form-step");
 
   let active = 1;
-  function updatedateProgressBar() {
+  function updatedProgressBar() {
     // Update the progress bar width, suggested by Copilot
     const progressBarFill = document.querySelector('.progress-bar-fill');
     progressBarFill.style.width = `${(active / steps.length) * 100}%`;
   }
 
-  updatedateProgressBar();
+  updatedProgressBar();
 
   nextButton.addEventListener('click', () => {
     let currentForm = document.querySelector('.form-step.active');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       nextSiblingForm.classList.add('active');
       nextStep.classList.add('active');
       active++;
-      updatepdateProgressBar()
+      updatedProgressBar()
     }
     buttonControls();
   })
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       prevSiblingForm.classList.add('active');
       prevStep.classList.add('active');
       active--;
-      updatepdateProgressBar()
+      updatedProgressBar()
     }
     buttonControls();
   })
