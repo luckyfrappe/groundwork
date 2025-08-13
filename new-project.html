@@ -94,15 +94,13 @@
                 <div class="form-box">
                     <!-- Progress bar -->
                     <div class="progress">
-                        <div class="logo">
-                            <h1><span>Ground</span>work</h1>
-                        </div>
                         <div class="align-center">
                             <div class="wrapper-progress-bar">
-                                    <div class="progress-bar">
-                                        <span class="progress-bar-fill" style="width: 0%;" style = "text-align: center;"></span>
-                                    </div>
+                                <div class="progress-bar">
+                                    <span class="progress-bar-fill" style="width: 0%;"
+                                        style="text-align: center;"></span>
                                 </div>
+                            </div>
                             <ul class="progress-steps">
                                 <li class="step active">
                                     <p class="step-number">Start</p>
@@ -120,7 +118,7 @@
                                     <p class="step-number">3</p>
                                     <p>Services<br><span>1-2 min to complete</span></p>
                                 </li>
-                                <li class="step" >
+                                <li class="step">
                                     <p class="step-number">4</p>
                                     <p>Specifications<br><span>2-5 min to complete</span></p>
                                 </li>
@@ -239,7 +237,7 @@
                                     Insulation</label>
                                 <label><input type="checkbox" name="services" value="rush" /> Rush Delivery</label>
                                 <label><input type="checkbox" name="services" value="siteSetup" checked disabled />
-                                    Site Setup & Management (always included)</label>
+                                    Site Setup & Management (always included)<br><br></label>
                             </div>
                         </div>
 
@@ -301,10 +299,11 @@
                             <section id="summaryServices"></section>
                             <section id="summaryTotal"></section>
 
-                            <button type="button" id="exportCsvBtn">Download CSV</button>
-
-                            <label for="goToProModeBtn">Want to adjust advanced pricing details?</label>
-                            <input type="button" id="goToProModeBtn" value="Go to Pro Mode" />
+                            <button type="button" id="exportCsvBtn">Download CSV <i class="fa-solid fa-table"></i></button>
+                            <div>
+                                <label for="goToProModeBtn">Want to adjust advanced pricing details?</label>
+                                <button type="button" id="goToProModeBtn">Pro Mode <i class="fa-solid fa-file-excel"></i></button>
+                            </div>
 
                             <!-- Step 6: Pro-mode -->
                             <div class="proMode" style="display:none;">
@@ -326,9 +325,9 @@
                             </div>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn-prev" disabled>Back</button>
-                            <button type="button" class="btn-next">Next Step</button>
-                            <button type="submit" class="btn-submit" disabled>Submit Estimate</button>
+                            <button type="button" class="btn-prev" disabled><i class="fa-solid fa-backward"></i> Back</button>
+                            <button type="button" class="btn-next">Next Step <i class="fa-solid fa-forward"></i></button>
+                            <button type="submit" class="btn-submit" disabled>Submit Estimate <i class="fa-solid fa-paper-plane"></i></button>
                         </div>
                     </form>
                 </div>
