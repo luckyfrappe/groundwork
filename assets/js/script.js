@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const form_steps = document.querySelectorAll(".form-step");
 
   let active = 1;
-  function updatepdateProgressBar() {
+  function updatedateProgressBar() {
     // Update the progress bar width, suggested by Copilot
     const progressBarFill = document.querySelector('.progress-bar-fill');
     progressBarFill.style.width = `${(active / steps.length) * 100}%`;
   }
 
-  updatepdateProgressBar();
+  updatedateProgressBar();
 
   nextButton.addEventListener('click', () => {
     let currentForm = document.querySelector('.form-step.active');
@@ -187,6 +187,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const worksite = {
+    name: "",
+    siteArea_m2: 0,
+    terrain: "",
+    soilType: "",
+    groundwater: "",
+    access: "",
+    obstacles: "",
+    services: {
+      excavation: false,
+      pilingPerPile: false,
+      pilingPerMeter: false,
+      concreteSlabs: false,
+      drainage: false,
+      frostInsulation: false,
+      shoring: false,
+      rockBlasting: false,
+      siteSetup: true,
+      rush: false
+    },
+    specs: {
+      siteArea: 0,
+      excavationDepth: 0,
+      numPiles: 0,
+      pilesLength: 0,
+      slabArea: 0,
+      slabThickness: 0,
+      drainageLength: 0,
+      frostArea: 0,
+      soilRemovalPct: 0,
+      materialVolumes: {},
+      notes: ""
+    }
+  };
+
   // Start section
   const howManyWorksites = document.querySelector('.card-radio-group');
   howManyWorksites.addEventListener('change', howManyWorksitesChange);
@@ -232,11 +267,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Append to container
     worksiteFields.appendChild(newWorksite);
 
+    project.worksites.push(worksite);
+
+    const input = newWorksite.querySelector('input[name="worksiteName"]');
+    input.addEventListener("input", (e) => {
+      worksite.name = e.target.value;
+      console.log("Updated project:", project);
+    });
+
     // Add event listener to the delete button that attaches to the new worksite div
+
+    // Delete button logic
     const deleteBtn = newWorksite.querySelector('.delete-worksite-btn');
     deleteBtn.addEventListener('click', () => {
-      newWorksite.remove(); // Remove this specific worksite div
+      // Remove from project array 
+      const index = project.worksites.indexOf(worksite);
+      if (index > -1) {
+        project.worksites.splice(index, 1);
+      }
+      // Remove from UI
+      newWorksite.remove();
       checkTheFirstDeleteButton();
+      console.log("After deletion:", project);
     });
 
     checkTheFirstDeleteButton();
@@ -251,5 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
       deleteBtn.classList.remove('hide');
     }
   }
+
+
 
 });
