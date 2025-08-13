@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const howManyWorksites = document.querySelector('.card-radio-group');
   howManyWorksites.addEventListener('change', howManyWorksitesChange);
   const addSiteBtn = document.getElementById('addSiteBtn');
-
+  addWorksite(); // Add the first worksite field automatically
   /**
    * Allows to add more worksite fields
    */
@@ -201,23 +201,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // If multiple selected - add more worksite fields
     if (selected.value === 'multiple') {
       addSiteBtn.classList.remove('hide');
+      addWorksite(); // Add the first worksite field automatically
     } else if (selected.value === 'single') {
       addSiteBtn.classList.add('hide');
       // If single selected - remove all but the first worksite field
       const worksiteFields = document.querySelector('.worksite-fields');
       const worksiteFieldsArray = Array.from(worksiteFields.children);
       worksiteFieldsArray.slice(1).forEach(field => field.remove());
+      checkTheFirstDeleteButton();
     }
   }
 
   // Add site button functionality
   // This button allows users to add more worksite fields dynamically, added delete button with help from ChatGPT
-  addSiteBtn.addEventListener('click', () => {
+  addSiteBtn.addEventListener('click', addWorksite);
+  function addWorksite() {
     const worksiteFields = document.querySelector('.worksite-fields');
 
     // Create a new worksite container
     const newWorksite = document.createElement('div');
-    newWorksite.classList.add('worksite-field-new');
+    newWorksite.classList.add('worksite-field');
 
     // Add inner HTML + delete button in the same div
     newWorksite.innerHTML = `
@@ -233,16 +236,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteBtn = newWorksite.querySelector('.delete-worksite-btn');
     deleteBtn.addEventListener('click', () => {
       newWorksite.remove(); // Remove this specific worksite div
+      checkTheFirstDeleteButton();
     });
-  });
 
+    checkTheFirstDeleteButton();
+  }
 
-
-
-
-
-
-
-
+  function checkTheFirstDeleteButton() {
+    const worksiteFields = document.querySelector('.worksite-fields');
+    const deleteBtn = worksiteFields.querySelector('.delete-worksite-btn');
+    if (worksiteFields.children.length === 1) {
+      deleteBtn.classList.add('hide');
+    } else {
+      deleteBtn.classList.remove('hide');
+    }
+  }
 
 });
