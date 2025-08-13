@@ -78,6 +78,99 @@
     }
   }
 
+  // Project object:
+  const project = {
+    contact: {
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      consent: false
+    },
+    worksites: [],
+    options: {
+      currency: 'EUR',
+      proMode: false
+    }
+  };
+
+  /** 
+ * Groundwork Price Constants (EUR) 
+ * All prices are indicative values for MVP based on EU civil works data gathered from ChatGPT prompt.
+ * Units: 
+ * - "per m3" = cubic meter
+ * - "per m2" = square meter
+ * - "per lm" = linear meter
+ * - "per pile" = each pile
+ * - "fixed" = one-off cost per site
+ */
+const COSTS = {
+  EXCAVATION: {
+    UNIT: "m3",
+    MIN: 12,
+    MAX: 60
+  },
+  PILING_PER_PILE: {
+    UNIT: "pile",
+    MIN: 800,
+    MAX: 2000
+  },
+  PILING_PER_METER: {
+    UNIT: "m",
+    MIN: 400,
+    MAX: 700
+  },
+  CONCRETE_SLAB: {
+    UNIT: "m2",
+    MIN: 50,
+    MAX: 150
+  },
+  DRAINAGE: {
+    UNIT: "lm",
+    MIN: 10,
+    MAX: 200
+  },
+  FROST_INSULATION: {
+    UNIT: "m2",
+    MIN: 20,
+    MAX: 60
+  },
+  SHORING: {
+    UNIT: "m2",
+    MIN: 150,
+    MAX: 400
+  },
+  ROCK_BLASTING: {
+    UNIT: "m3",
+    MIN: 40,
+    MAX: 120
+  },
+  SITE_SETUP: {
+    UNIT: "fixed",
+    MIN: 20000,
+    MAX: 200000
+  },
+  RUSH_SURCHARGE: {
+    MULTIPLIER: 1.20
+  }
+};
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
