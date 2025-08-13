@@ -104,54 +104,54 @@ document.addEventListener('DOMContentLoaded', () => {
  * - "per pile" = each pile
  * - "fixed" = one-off cost per site
  */
-  const COSTS = {
-    EXCAVATION: {
-      UNIT: "m3",
-      MIN: 12,
-      MAX: 60
+  const costs = {
+    excavation: {
+      unit: "m3",
+      min: 12,
+      max: 60
     },
-    PILING_PER_PILE: {
-      UNIT: "pile",
-      MIN: 800,
-      MAX: 2000
+    pilingPerPile: {
+      unit: "pile",
+      min: 800,
+      max: 2000
     },
-    PILING_PER_METER: {
-      UNIT: "m",
-      MIN: 400,
-      MAX: 700
+    pilingPerMeter: {
+      unit: "m",
+      min: 400,
+      max: 700
     },
-    CONCRETE_SLAB: {
-      UNIT: "m2",
-      MIN: 50,
-      MAX: 150
+    concreteSlabs: {
+      unit: "m2",
+      min: 50,
+      max: 150
     },
-    DRAINAGE: {
-      UNIT: "lm",
-      MIN: 10,
-      MAX: 200
+    drainage: {
+      unit: "lm",
+      min: 10,
+      max: 200
     },
-    FROST_INSULATION: {
-      UNIT: "m2",
-      MIN: 20,
-      MAX: 60
+    frostInsulation: {
+      unit: "m2",
+      min: 20,
+      max: 60
     },
-    SHORING: {
-      UNIT: "m2",
-      MIN: 150,
-      MAX: 400
+    shoring: {
+      unit: "m2",
+      min: 150,
+      max: 400
     },
-    ROCK_BLASTING: {
-      UNIT: "m3",
-      MIN: 40,
-      MAX: 120
+    rockBlasting: {
+      unit: "m3",
+      min: 40,
+      max: 120
     },
-    SITE_SETUP: {
-      UNIT: "fixed",
-      MIN: 20000,
-      MAX: 200000
+    siteSetup: {
+      unit: "fixed",
+      min: 20000,
+      max: 200000
     },
-    RUSH_SURCHARGE: {
-      MULTIPLIER: 1.20
+    rushSurcharge: {
+      multiplier: 1.20
     }
   };
 
@@ -159,27 +159,27 @@ document.addEventListener('DOMContentLoaded', () => {
  * Condition Coefficients
  * Multipliers applied to base min/max service totals
  */
-const COEFFICIENTS = {
-  SOIL_TYPE: {
+const coefficients = {
+  soilType: {
     sand: 1.0,
     loam: 1.05,
     clay: 1.15,
     rocky: 1.25,
     unknown: 1.1
   },
-  TERRAIN: {
+  terrain: {
     flat: 1.0,
     slope: 1.05,
     complex: 1.15,
     terraced: 1.15 // treated same as complex for MVP
   },
-  GROUNDWATER: {
+  groundwater: {
     low: 1.0,
     medium: 1.05,
     high: 1.15,
     unknown: 1.0
   },
-  ACCESS: {
+  access: {
     good: 1.0,
     fair: 1.05,
     limited: 1.1,
