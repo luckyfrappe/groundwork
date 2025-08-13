@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add inner HTML + delete button in the same div
     newWorksite.innerHTML = `
     <label for="worksiteName">Worksite Name / Identifier</label>
-    <input type="text" name="worksiteName" placeholder="Site A, North Wing, etc." />
+    <input type="text" name="worksiteName" placeholder="Site A, North Wing, etc." required/>
     <button type="button" class="delete-worksite-btn">Delete</button>
   `;
 
