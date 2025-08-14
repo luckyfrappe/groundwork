@@ -33,6 +33,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let nextSiblingForm = currentForm.nextElementSibling;
     let nextStep = currentStep.nextElementSibling;
 
+    // Get all worksite name inputs, code from ChatGPT
+    const worksiteNames = document.querySelectorAll('.worksite-field input[name="worksiteName"]');
+    let allFilled = true;
+
+    worksiteNames.forEach(input => {
+      if (input.value.trim() === '') {
+        allFilled = false;
+        input.classList.add('error'); // optional: highlight empty fields
+      } else {
+        input.classList.remove('error');
+      }
+    });
+
+    if (!allFilled) {
+      alert("Please fill in all worksite names before proceeding.");
+      return; // Stop moving to the next step
+    }
 
     if (nextSiblingForm && nextSiblingForm.classList.contains('form-step')) {
       currentForm.classList.remove('active');
@@ -379,19 +396,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Function is remade by ChatGPT in order to show only selected services
   function updateWorksiteSpecifications() {
-  console.log("updateWorksiteSpecifications is running. Current project:", project);
-  const specificationsForm = document.querySelector(".form-four");
+    console.log("updateWorksiteSpecifications is running. Current project:", project);
+    const specificationsForm = document.querySelector(".form-four");
 
-  // Clear the existing specs
-  specificationsForm.innerHTML = 
-    `<h2>Specifications</h2>
+    // Clear the existing specs
+    specificationsForm.innerHTML =
+      `<h2>Specifications</h2>
     <p>Enter details for the services you selected.</p>`;
 
-  for (const site of project.worksites) {
-    const worksiteSpecs = document.createElement('div');
-    worksiteSpecs.classList.add('specifications-accordions');
+    for (const site of project.worksites) {
+      const worksiteSpecs = document.createElement('div');
+      worksiteSpecs.classList.add('specifications-accordions');
 
-    let specsHTML = `
+      let specsHTML = `
       <button class="accordion">Specs for Worksite: ${site.name}</button>
       <div class="panel">
         <!-- Always show site area -->
@@ -399,82 +416,81 @@ document.addEventListener('DOMContentLoaded', () => {
         <input type="number" id="siteArea_${site.name}" name="siteArea" min="1" required placeholder="e.g. 500"/>
     `;
 
-    // Show Excavation fields if excavation is selected
-    if (site.services.excavation) {
-      specsHTML += `
+      // Show Excavation fields if excavation is selected
+      if (site.services.excavation) {
+        specsHTML += `
         <label for="excavationDepth_${site.name}">Excavation Depth (m) <sup>*</sup></label>
         <input type="number" step="0.1" id="excavationDepth_${site.name}" name="excavationDepth" min="0" placeholder="e.g. 1.5"/>
       `;
-    }
+      }
 
-    // Show Piling fields if piling is selected
-    if (site.services.piling) {
-      specsHTML += `
+      // Show Piling fields if piling is selected
+      if (site.services.piling) {
+        specsHTML += `
         <label for="numPiles_${site.name}">Number of Piles</label>
         <input type="number" id="numPiles_${site.name}" name="numPiles" min="1" placeholder="e.g. 100"/>
 
         <label for="pilesLength_${site.name}">Total Pile Length (m)</label>
         <input type="number" id="pilesLength_${site.name}" name="pilesLength" min="0" placeholder="e.g. 200"/>
       `;
-    }
+      }
 
-    // Show Slab fields if slab is selected
-    if (site.services.slab) {
-      specsHTML += `
+      // Show Slab fields if slab is selected
+      if (site.services.slab) {
+        specsHTML += `
         <label for="slabArea_${site.name}">Slab Area (m²)</label>
         <input type="number" id="slabArea_${site.name}" name="slabArea" min="0" placeholder="e.g. 250"/>
 
         <label for="slabThickness_${site.name}">Slab Thickness (cm)</label>
         <input type="number" id="slabThickness_${site.name}" name="slabThickness" step="0.1" min="0" placeholder="e.g. 15"/>
       `;
-    }
+      }
 
-    // Show Drainage fields if drainage is selected
-    if (site.services.drainage) {
-      specsHTML += `
+      // Show Drainage fields if drainage is selected
+      if (site.services.drainage) {
+        specsHTML += `
         <label for="drainageLength_${site.name}">Drainage Length (m)</label>
         <input type="number" id="drainageLength_${site.name}" name="drainageLength" min="0" placeholder="e.g. 150"/>
       `;
-    }
+      }
 
-    // Show Frost Insulation fields if frost is selected
-    if (site.services.frost) {
-      specsHTML += `
+      // Show Frost Insulation fields if frost is selected
+      if (site.services.frost) {
+        specsHTML += `
         <label for="frostArea_${site.name}">Frost Insulation Area (m²) <sup>*</sup></label>
         <input type="number" id="frostArea_${site.name}" name="frostArea" min="1" placeholder="e.g. 500"/>
       `;
-    }
+      }
 
-    // Always show these general fields
-    specsHTML += `
+      // Always show these general fields
+      specsHTML += `
       <label for="soilRemovalPct_${site.name}">Soil Removal (% of total excavated volume)</label>
       <input type="number" id="soilRemovalPct_${site.name}" name="soilRemovalPct" min="0" max="100" placeholder="e.g. 25"/>
 
       <label for="materialVolumes_${site.name}">Material Volumes (list materials and quantities)</label>
-      <textarea id="materialVolumes_${site.name}" name="materialVolumes" placeholder="Example: Gravel - 20m³, Concrete - 15m³"></textarea>
+      <textarea id="materialVolumes_${site.name}" name="materialVolumes" placeholder="Example: Gravel - 20m³, Concrete - 15m³" style = "height: 40px;"></textarea>
 
       <label for="notes_${site.name}">Additional Notes / Special Requirements</label>
-      <textarea id="notes_${site.name}" name="notes" placeholder="Any details that could affect pricing"></textarea>
+      <textarea id="notes_${site.name}" name="notes" placeholder="Any details that could affect pricing" style = "height: 100px;"></textarea>
       </div>
     `;
 
-    worksiteSpecs.innerHTML = specsHTML;
+      worksiteSpecs.innerHTML = specsHTML;
 
-    // Bind number inputs to project object
-    worksiteSpecs.querySelectorAll('input[type="number"], textarea').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const key = e.target.name;
-        site.specs[key] = e.target.value;
-        console.log("Updated worksite specs:", site);
+      // Bind number inputs to project object
+      worksiteSpecs.querySelectorAll('input[type="number"], textarea').forEach(input => {
+        input.addEventListener('input', (e) => {
+          const key = e.target.name;
+          site.specs[key] = e.target.value;
+          console.log("Updated worksite specs:", site);
+        });
       });
-    });
 
-    specificationsForm.appendChild(worksiteSpecs);
+      specificationsForm.appendChild(worksiteSpecs);
+    }
+
+    wrapAccordions();
   }
-
-  wrapAccordions();
-}
-
 
   // Accordion code from https://www.w3schools.com/howto/howto_js_accordion.asp made as function, called when worksites are created
   function wrapAccordions() {
@@ -482,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var index;
 
     for (index = 0; index < acc.length; index++) {
-      acc[index].addEventListener("click", function() {
+      acc[index].addEventListener("click", function () {
         /* Toggle between adding and removing the "active" class,
         to highlight the button that controls the panel */
         this.classList.toggle("active-accordion");
