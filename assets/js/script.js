@@ -233,12 +233,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const worksite = {
       name: "",
-      siteArea_m2: 0,
       terrain: "",
       soilType: "",
       groundwater: "",
       access: "",
-      obstacles: "",
       services: {
         excavation: false,
         pilingPerPile: false,
@@ -414,10 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
       specsHTML += `
         <label for="numPiles_${site.name}">Number of Piles</label>
         <input type="number" id="numPiles_${site.name}" name="numPiles" min="1" placeholder="e.g. 100"/>
-
-        <label>
-            <input type="checkbox" id="unsurePiles_${site.name}"/> Estimate piles based on site area
-        </label>
 
         <label for="pilesLength_${site.name}">Total Pile Length (m)</label>
         <input type="number" id="pilesLength_${site.name}" name="pilesLength" min="0" placeholder="e.g. 200"/>
