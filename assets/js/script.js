@@ -618,78 +618,85 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Calculation functions:
 
-    function calculateTotal() {
-      const summarySites = document.querySelector(".summary-sites");
-      
-      for (const site of project.worksites) {
-        // Initialize site totals
-        let totalMin = 0;
-        let totalMax = 0;
-        let excavationMin = 0;
-        let excavationMax = 0;
-        let pilingMin = 0;
-        let pilingMax = 0;
-        let concreteMin = 0;
-        let concreteMax = 0;
-        let drainageMin = 0;
-        let drainageMax = 0;
-        let frostInsulationMin = 0;
-        let frostInsulationMax = 0;
-        let shoringMin = 0;
-        let shoringMax = 0;
-        let rockBlastingMin = 0;
-        let rockBlastingMax = 0;
-        let siteSetupMin = 0;
-        let siteSetupMax = 0;
+  function calculateTotal() {
+    const summarySites = document.querySelector("#summarySites");
+    summarySites.innerHTML = "";
 
-        // Calculate totals for each service
-        const siteArea = site.specs.siteArea || 0;
-        if (site.services.excavation) {
-          excavationMin += parseFloat(site.specs.excavationDepth) * costs.excavation.min;
-          excavationMax += parseFloat(site.specs.excavationDepth) * costs.excavation.max;
-        }
-        if (site.services.piling) {
-          pilingMin += parseFloat(site.specs.numPiles) * costs.piling.min;
-          pilingMax += parseFloat(site.specs.numPiles) * costs.piling.max;
-        }
-        if (site.services.concrete) {
-          concreteMin += parseFloat(site.specs.slabArea) * costs.concrete.min;
-          concreteMax += parseFloat(site.specs.slabArea) * costs.concrete.max;
-        }
-        if (site.services.drainage) {
-          drainageMin += parseFloat(site.specs.drainageLength) * costs.drainage.min;
-          drainageMax += parseFloat(site.specs.drainageLength) * costs.drainage.max;
-        }
-        if (site.services.frostInsulation) {
-          frostInsulationMin += parseFloat(site.specs.frostArea) * costs.frostInsulation.min;
-          frostInsulationMax += parseFloat(site.specs.frostArea) * costs.frostInsulation.max;
-        }
-        if (site.services.shoringLength_) {
-          shoringMin += parseFloat(site.specs.shoringLength_) * costs.shoring.min;
-          shoringMax += parseFloat(site.specs.shoringLength_) * costs.shoring.max;
-        }
-        if (site.services.rockBlasting) {
-          rockBlastingMin += parseFloat(site.specs.rockBlasting) * costs.rockBlasting.min;
-          rockBlastingMax += parseFloat(site.specs.rockBlasting) * costs.rockBlasting.max;
-        }
+    for (const site of project.worksites) {
+      let totalMin = 0;
+      let totalMax = 0;
 
-        totalMin += excavationMin + pilingMin + concreteMin + drainageMin + frostInsulationMin + shoringMin + rockBlastingMin + siteSetupMin;
-        totalMax += excavationMax + pilingMax + concreteMax + drainageMax + frostInsulationMax + shoringMax + rockBlastingMax + siteSetupMax;
+      const siteArea = parseFloat(site.specs.siteArea);
 
-        if (site.specs.rushSurcharge) {
-          totalMin = totalMin * costs.rushSurcharge.multiplier;
-          totalMax = totalMax * costs.rushSurcharge.multiplier;
-        }
-
-        // Update summary site totals
-        summarySites.innerHTML += `
-          <div class="summary-site">
-            <h4>${site.name}</h4>
-            <p>Min: ${totalMin}</p>
-            <p>Max: ${totalMax}</p>
-          </div>
-        `;
+      // Excavation (per m³)
+      if (site.services.excavation) {
+        const depth = parseFloat(site.specs.excavationDepth);
+        const volume = siteArea * depth;
+        totalMin += volume * costs.excavation.min;
+        totalMax += volume * costs.excavation.max;
       }
-    }
 
-  });
+      // Piling (per pile)
+      if (site.services.pilingPerPile) {
+        const numPiles = parseFloat(site.specs.numPiles);
+        totalMin += numPiles * costs.pilingPerPile.min;
+        totalMax += numPiles * costs.pilingPerPile.max;
+      }
+
+      // Concrete slabs (per m²)
+      if (site.services.concreteSlabs) {
+        const slabArea = parseFloat(site.specs.slabArea);
+        totalMin += slabArea * costs.concreteSlabs.min;
+        totalMax += slabArea * costs.concreteSlabs.max;
+      }
+
+      // Drainage (per linear meter)
+      if (site.services.drainage) {
+        const length = parseFloat(site.specs.drainageLength);
+        totalMin += length * costs.drainage.min;
+        totalMax += length * costs.drainage.max;
+      }
+
+      // Frost insulation (per m²)
+      if (site.services.frostInsulation) {
+        const frostArea = parseFloat(site.specs.frostArea);
+        totalMin += frostArea * costs.frostInsulation.min;
+        totalMax += frostArea * costs.frostInsulation.max;
+      }
+
+      // Shoring (per m²)
+      if (site.services.shoring) {
+        const shoringLength = parseFloat(site.specs.shoringLength);
+        totalMin += shoringLength * costs.shoring.min;
+        totalMax += shoringLength * costs.shoring.max;
+      }
+
+      // Rock blasting (per m³)
+      if (site.services.rockBlasting) {
+        const volume = parseFloat(site.specs.rockVolume);
+        totalMin += volume * costs.rockBlasting.min;
+        totalMax += volume * costs.rockBlasting.max;
+      }
+
+      // Site setup (fixed cost)
+      totalMin += costs.siteSetup.min;
+      totalMax += costs.siteSetup.max;
+
+      // Rush surcharge
+      if (site.services.rush) {
+        totalMin *= costs.rushSurcharge.multiplier;
+        totalMax *= costs.rushSurcharge.multiplier;
+      }
+
+      // Output
+      summarySites.innerHTML += `
+      <div class="summary-site">
+        <h4>${site.name}</h4>
+        <p>Min: €${totalMin.toFixed(2)}</p>
+        <p>Max: €${totalMax.toFixed(2)}</p>
+      </div>
+    `;
+    }
+  }
+
+});
