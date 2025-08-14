@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
     requiredFields.forEach(input => {
       if (input.value.trim() === '') {
         allFilled = false;
-        input.classList.add('error'); // optional: highlight empty fields
+        input.style.border = '2px solid red';
       } else {
-        input.classList.remove('error');
+        input.style.border = '';
       }
     });
 
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add inner HTML + delete button in the same div
     newWorksite.innerHTML = `
-    <label for="worksiteName">Worksite Name / Identifier</label>
+    <label for="worksiteName">Worksite Name / Identifier <sup>*</sup></label>
     <input type="text" name="worksiteName" placeholder="Site A, North Wing, etc." required/>
     <button type="button" class="delete-worksite-btn">Delete</button>`;
 

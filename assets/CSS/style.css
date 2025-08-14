@@ -492,6 +492,7 @@ select {
   width: 100%;
   margin-bottom: 24px;
 }
+
 /* Radio button cards designed with help from ChatGPT */
 .card-radio-group {
     display: flex;
