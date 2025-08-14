@@ -288,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
       checkTheFirstDeleteButton();
       console.log("After deletion:", project);
       updateWorksiteServices();
+      updateWorksiteSpecifications();
     });
     checkTheFirstDeleteButton();
   };
