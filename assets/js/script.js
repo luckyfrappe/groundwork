@@ -359,12 +359,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     contactForm.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', (e) => {
-          project.contact[e.target.value] = e.target.checked;
-          console.log("Updated consent details:", project.contact);
-        });
+      checkbox.addEventListener('change', (e) => {
+        project.contact[e.target.value] = e.target.checked;
+        console.log("Updated consent details:", project.contact);
       });
-}
+    });
+  }
 
   function updateProjectDetails() {
     console.log("updateProjectDetails is running. Current project:", project);
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Updated project details:", project.details);
       });
     });
-}
+  }
 
   function updateWorksiteServices() {
     console.log("updateWorksiteServices is running. Current project:", project);
@@ -555,6 +555,14 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       }
 
+      // Show shoring fields if shoring is selected
+      if (site.services.shoring) {
+        specsHTML += `
+        <label for="shoringLength_${site.name}">Shoring Length (m) <sup>*</sup></label>
+        <input type="number" id="shoringLength_${site.name}" name="shoringLength" min="0" required placeholder="e.g. 100"/>
+      `;
+      }
+
       // Always show these general fields
       specsHTML += `
       <label for="soilRemovalPct_${site.name}">Soil Removal (% of total excavated volume)</label>
@@ -576,6 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const key = e.target.name;
           site.specs[key] = e.target.value;
           console.log("Updated worksite specs:", site);
+          calculateTotal();
         });
       });
 
@@ -609,4 +618,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Calculation functions:
 
-});
+    function calculateTotal() {
+      const summarySites = document.querySelector(".summary-sites");
+      
+      for (const site of project.worksites) {
+        // Initialize site totals
+        let totalMin = 0;
+        let totalMax = 0;
+        let excavationMin = 0;
+        let excavationMax = 0;
+        let pilingMin = 0;
+        let pilingMax = 0;
+        let concreteMin = 0;
+        let concreteMax = 0;
+        let drainageMin = 0;
+        let drainageMax = 0;
+        let frostInsulationMin = 0;
+        let frostInsulationMax = 0;
+        let shoringMin = 0;
+        let shoringMax = 0;
+        let rockBlastingMin = 0;
+        let rockBlastingMax = 0;
+        let siteSetupMin = 0;
+        let siteSetupMax = 0;
+
+        // Calculate totals for each service
+        const siteArea = site.specs.siteArea || 0;
+        if (site.services.excavation) {
+          excavationMin += parseFloat(site.specs.excavationDepth) * costs.excavation.min;
+          excavationMax += parseFloat(site.specs.excavationDepth) * costs.excavation.max;
+        }
+        if (site.services.piling) {
+          pilingMin += parseFloat(site.specs.numPiles) * costs.piling.min;
+          pilingMax += parseFloat(site.specs.numPiles) * costs.piling.max;
+        }
+        if (site.services.concrete) {
+          concreteMin += parseFloat(site.specs.slabArea) * costs.concrete.min;
+          concreteMax += parseFloat(site.specs.slabArea) * costs.concrete.max;
+        }
+        if (site.services.drainage) {
+          drainageMin += parseFloat(site.specs.drainageLength) * costs.drainage.min;
+          drainageMax += parseFloat(site.specs.drainageLength) * costs.drainage.max;
+        }
+        if (site.services.frostInsulation) {
+          frostInsulationMin += parseFloat(site.specs.frostArea) * costs.frostInsulation.min;
+          frostInsulationMax += parseFloat(site.specs.frostArea) * costs.frostInsulation.max;
+        }
+        if (site.services.shoringLength_) {
+          shoringMin += parseFloat(site.specs.shoringLength_) * costs.shoring.min;
+          shoringMax += parseFloat(site.specs.shoringLength_) * costs.shoring.max;
+        }
+        if (site.services.rockBlasting) {
+          rockBlastingMin += parseFloat(site.specs.rockBlasting) * costs.rockBlasting.min;
+          rockBlastingMax += parseFloat(site.specs.rockBlasting) * costs.rockBlasting.max;
+        }
+
+        totalMin += excavationMin + pilingMin + concreteMin + drainageMin + frostInsulationMin + shoringMin + rockBlastingMin + siteSetupMin;
+        totalMax += excavationMax + pilingMax + concreteMax + drainageMax + frostInsulationMax + shoringMax + rockBlastingMax + siteSetupMax;
+
+        if (site.specs.rushSurcharge) {
+          totalMin = totalMin * costs.rushSurcharge.multiplier;
+          totalMax = totalMax * costs.rushSurcharge.multiplier;
+        }
+
+        // Update summary site totals
+        summarySites.innerHTML += `
+          <div class="summary-site">
+            <h4>${site.name}</h4>
+            <p>Min: ${totalMin}</p>
+            <p>Max: ${totalMax}</p>
+          </div>
+        `;
+      }
+    }
+
+  });
