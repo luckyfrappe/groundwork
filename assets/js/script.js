@@ -107,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     details: {
       projectType: '',
-      projectTypeOther: '',
       projectLocation: '',
       projectReference: '',
       siteUpload: ''
@@ -281,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     project.worksites.push(worksite);
 
-
     const input = newWorksite.querySelector('input[name="worksiteName"]');
     input.addEventListener("input", (e) => {
       worksite.name = e.target.value;
@@ -344,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <div>
                                 <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+46 70 123 4567"/>
+                                <input type="number" id="phone" name="phone" placeholder="+46 70 123 4567"/>
                             </div>
                             <div>
                                 <label><input type="checkbox" id="consent" required value="consent"/> I agree to be contacted with
@@ -388,8 +386,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <option value="Infrastructure">Road / Bridge / Civil Works</option>
                                     <option value="Other">Other</option>
                                 </select><br>
-                                <input type="text" id="projectTypeOther" name="projectTypeOther"
-                                    placeholder="Please specify" class="hide" />
                             </div>
                             <div>
                                 <label for="projectLocation">Project City / Country <sup>*</sup></label>
@@ -414,13 +410,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Updated project details:", project.details);
       });
     });
-
-    projectDetailsForm.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', (e) => {
-          project.contact[e.target.value] = e.target.checked;
-          console.log("Updated consent details:", project.contact);
-        });
-      });
 }
 
   function updateWorksiteServices() {
