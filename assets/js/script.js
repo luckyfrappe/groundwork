@@ -378,172 +378,108 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  //Function is remade by ChatGPT in order to show only selected services
   function updateWorksiteSpecifications() {
-    console.log("updateWorksiteSpecifications is running. Current project:", project);
-    const specificationsForm = document.querySelector(".form-four");
-    // Clear the existing services
-    specificationsForm.innerHTML = `<h2>Specifications</h2>
-                            <p>Enter details for the services you selected.</p>`;
-    console.log(project.specs);
-    for (const site of project.worksites) {
-      // Create a new worksite container
-      const worksiteSpecs = document.createElement('div');
-      worksiteSpecs.classList.add('specifications-accordions');
+  console.log("updateWorksiteSpecifications is running. Current project:", project);
+  const specificationsForm = document.querySelector(".form-four");
 
-      worksiteSpecs.innerHTML =`
-          <button class="accordion">Specs for Worksite: ${site.name}</button>
-          <div class="panel">
-            <!-- Site Area -->
-            <label for="siteArea">
-                Total Site Area (m²) <sup>*</sup>
-            </label>
-            <input 
-                type="number" 
-                id="siteArea" 
-                name="siteArea" 
-                min="1" 
-                required 
-                placeholder="e.g. 500" 
-            />
+  // Clear the existing specs
+  specificationsForm.innerHTML = 
+    `<h2>Specifications</h2>
+    <p>Enter details for the services you selected.</p>`;
 
-            <!-- Excavation Depth -->
-            <label for="excavationDepth">
-                Excavation Depth (m) <sup>*</sup>
-            </label>
-            <input 
-                type="number" 
-                step="0.1" 
-                id="excavationDepth" 
-                name="excavationDepth" 
-                min="0" 
-                placeholder="e.g. 1.5" 
-            />
+  for (const site of project.worksites) {
+    const worksiteSpecs = document.createElement('div');
+    worksiteSpecs.classList.add('specifications-accordions');
 
-            <!-- Number of Piles -->
-            <label for="numPiles">
-                Number of Piles
-            </label>
-            <input 
-                type="number" 
-                id="numPiles" 
-                name="numPiles" 
-                min="1" 
-                placeholder="e.g. 100" 
-            />
+    let specsHTML = `
+      <button class="accordion">Specs for Worksite: ${site.name}</button>
+      <div class="panel">
+        <!-- Always show site area -->
+        <label for="siteArea_${site.name}">Total Site Area (m²) <sup>*</sup></label>
+        <input type="number" id="siteArea_${site.name}" name="siteArea" min="1" required placeholder="e.g. 500"/>
+    `;
 
-            <label>
-                <input type="checkbox" id="unsurePiles" /> 
-                Estimate piles based on site area
-            </label>
-
-            <!-- Piles Length -->
-            <label for="pilesLength">
-                Total Pile Length (m)
-            </label>
-            <input 
-                type="number" 
-                id="pilesLength" 
-                name="pilesLength" 
-                min="0" 
-                placeholder="e.g. 200" 
-            />
-
-            <!-- Slab Area -->
-            <label for="slabArea">
-                Slab Area (m²)
-            </label>
-            <input 
-                type="number" 
-                id="slabArea" 
-                name="slabArea" 
-                min="0" 
-                placeholder="e.g. 250" 
-            />
-
-            <!-- Slab Thickness -->
-            <label for="slabThickness">
-                Slab Thickness (cm)
-            </label>
-            <input 
-                type="number" 
-                id="slabThickness" 
-                name="slabThickness" 
-                step="0.1" 
-                min="0" 
-                placeholder="e.g. 15" 
-            />
-
-            <!-- Drainage Length -->
-            <label for="drainageLength">
-                Drainage Length (m)
-            </label>
-            <input 
-                type="number" 
-                id="drainageLength" 
-                name="drainageLength" 
-                min="0" 
-                placeholder="e.g. 150" 
-            />
-
-            <!-- Frost Area -->
-            <label for="frostArea">
-                Frost Insulation Area (m²) <sup>*</sup>
-            </label>
-            <input 
-                type="number" 
-                id="frostArea" 
-                name="frostArea" 
-                min="1" 
-                placeholder="e.g. 500" 
-            />
-
-            <!-- Soil Removal Percentage -->
-            <label for="soilRemovalPct">
-                Soil Removal (% of total excavated volume)
-            </label>
-            <input 
-                type="number" 
-                id="soilRemovalPct" 
-                name="soilRemovalPct" 
-                min="0" 
-                max="100" 
-                placeholder="e.g. 25" 
-            />
-
-            <!-- Material Volumes -->
-            <label for="materialVolumes">
-                Material Volumes (list materials and quantities)
-            </label>
-            <textarea 
-                id="materialVolumes" 
-                name="materialVolumes" 
-                placeholder="Example: Gravel - 20m³, Concrete - 15m³">
-            </textarea>
-
-            <!-- Notes -->
-            <label for="notes">
-                Additional Notes / Special Requirements
-            </label>
-            <textarea 
-                id="notes" 
-                name="notes" 
-                placeholder="Any details that could affect pricing">
-            </textarea>
-          </div>`;
-
-      // Connect in similar fashion specs to the worksites
-      worksiteSpecs.querySelectorAll('input[type="number"]').forEach(input => {
-        input.addEventListener('input', (e) => {
-          site.specs[e.target.id] = e.target.value;
-          console.log("Updated worksite specs:", site);
-        });
-      });
-
-      // Append the whole services section to the form
-      specificationsForm.appendChild(worksiteSpecs);
+    // Show Excavation fields if excavation is selected
+    if (site.services.excavation) {
+      specsHTML += `
+        <label for="excavationDepth_${site.name}">Excavation Depth (m) <sup>*</sup></label>
+        <input type="number" step="0.1" id="excavationDepth_${site.name}" name="excavationDepth" min="0" placeholder="e.g. 1.5"/>
+      `;
     }
-    wrapAccordions();
+
+    // Show Piling fields if piling is selected
+    if (site.services.piling) {
+      specsHTML += `
+        <label for="numPiles_${site.name}">Number of Piles</label>
+        <input type="number" id="numPiles_${site.name}" name="numPiles" min="1" placeholder="e.g. 100"/>
+
+        <label>
+            <input type="checkbox" id="unsurePiles_${site.name}"/> Estimate piles based on site area
+        </label>
+
+        <label for="pilesLength_${site.name}">Total Pile Length (m)</label>
+        <input type="number" id="pilesLength_${site.name}" name="pilesLength" min="0" placeholder="e.g. 200"/>
+      `;
+    }
+
+    // Show Slab fields if slab is selected
+    if (site.services.slab) {
+      specsHTML += `
+        <label for="slabArea_${site.name}">Slab Area (m²)</label>
+        <input type="number" id="slabArea_${site.name}" name="slabArea" min="0" placeholder="e.g. 250"/>
+
+        <label for="slabThickness_${site.name}">Slab Thickness (cm)</label>
+        <input type="number" id="slabThickness_${site.name}" name="slabThickness" step="0.1" min="0" placeholder="e.g. 15"/>
+      `;
+    }
+
+    // Show Drainage fields if drainage is selected
+    if (site.services.drainage) {
+      specsHTML += `
+        <label for="drainageLength_${site.name}">Drainage Length (m)</label>
+        <input type="number" id="drainageLength_${site.name}" name="drainageLength" min="0" placeholder="e.g. 150"/>
+      `;
+    }
+
+    // Show Frost Insulation fields if frost is selected
+    if (site.services.frost) {
+      specsHTML += `
+        <label for="frostArea_${site.name}">Frost Insulation Area (m²) <sup>*</sup></label>
+        <input type="number" id="frostArea_${site.name}" name="frostArea" min="1" placeholder="e.g. 500"/>
+      `;
+    }
+
+    // Always show these general fields
+    specsHTML += `
+      <label for="soilRemovalPct_${site.name}">Soil Removal (% of total excavated volume)</label>
+      <input type="number" id="soilRemovalPct_${site.name}" name="soilRemovalPct" min="0" max="100" placeholder="e.g. 25"/>
+
+      <label for="materialVolumes_${site.name}">Material Volumes (list materials and quantities)</label>
+      <textarea id="materialVolumes_${site.name}" name="materialVolumes" placeholder="Example: Gravel - 20m³, Concrete - 15m³"></textarea>
+
+      <label for="notes_${site.name}">Additional Notes / Special Requirements</label>
+      <textarea id="notes_${site.name}" name="notes" placeholder="Any details that could affect pricing"></textarea>
+      </div>
+    `;
+
+    worksiteSpecs.innerHTML = specsHTML;
+
+    // Bind number inputs to project object
+    worksiteSpecs.querySelectorAll('input[type="number"], textarea').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const key = e.target.name;
+        site.specs[key] = e.target.value;
+        console.log("Updated worksite specs:", site);
+      });
+    });
+
+    specificationsForm.appendChild(worksiteSpecs);
   }
+
+  wrapAccordions();
+}
+
 
   // Accordion code from https://www.w3schools.com/howto/howto_js_accordion.asp made as function, called when worksites are created
   function wrapAccordions() {

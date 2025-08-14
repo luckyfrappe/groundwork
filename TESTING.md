@@ -70,3 +70,8 @@ Applying styles inline confirmed the CSS rules were valid and effective. After r
 Notes:
 The root cause remains unknown(it seems our CSS form elements decided to play hide-and-seek), but reapplying styles externally resolved the problem.
 Back to [README.md](README.md)
+
+- accordion script caused unwanted behaviour like wrapping accordion into another accordion or did not displayed properly due to active class. Resolved by wrapping into function wrapAccordions and call fucntion after the worksites specifications are created. Change name of active to active-accordion. 
+
+ updateWorksiteSpecifications function created by ChatGPT used wrong values that are not existing in services in order to add specs questions. 
+
