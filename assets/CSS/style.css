@@ -490,6 +490,7 @@ select {
   border: 1px solid var(--color-darker-grey);
   background-color: transparent;
   width: 100%;
+  margin-bottom: 24px;
 }
 /* Radio button cards designed with help from ChatGPT */
 .card-radio-group {
@@ -577,7 +578,7 @@ form label {
 }
 
 /* Checkbox styles, designed with help from ChatGPT */
-.services-cards {
+.services-form-cards {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -588,7 +589,7 @@ form label {
   border-radius: 6px;
 }
 
-.services-cards p {
+.services-form-cards p {
   width: 100%;
   color: var(--color-navy-blue);
   font-size: 1.5em;
@@ -596,7 +597,7 @@ form label {
   margin-bottom: 0;
 }
 
-.services-cards label {
+.services-form-cards label {
   display: flex;
   gap: 0.4rem;
   padding: 0.4rem 0.8rem;
@@ -607,24 +608,24 @@ form label {
   transition: all 0.2s;
 }
 
-.services-cards label:hover {
+.services-form-cards label:hover {
   border-color: var(--color-primary);
 }
 
-.services-cards input[type="checkbox"] {
+.services-form-cards input[type="checkbox"] {
   display: none;
 }
 
-.services-cards input[type="checkbox"]:checked + i {
+.services-form-cards input[type="checkbox"]:checked + i {
   color: var(--color-primary);
 }
 
-.services-cards i {
+.services-form-cards i {
   font-size: 1rem;
   transition: color 0.2s;
 }
 
-.services-cards input[type="checkbox"]:checked + i {
+.services-form-cards input[type="checkbox"]:checked + i {
   color: var(--color-primary-dark);
 }
 

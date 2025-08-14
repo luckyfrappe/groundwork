@@ -267,12 +267,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     project.worksites.push(worksite);
-   
+
 
     const input = newWorksite.querySelector('input[name="worksiteName"]');
     input.addEventListener("input", (e) => {
       worksite.name = e.target.value;
-       updateWorksiteServices();  
+      updateWorksiteServices();
     });
 
     // Delete button logic
@@ -307,12 +307,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("updateWorksiteServices is running. Current project:", project);
     const servicesForm = document.querySelector(".form-three");
     // Clear the existing services
-    servicesForm.innerHTML = '';
+    servicesForm.innerHTML = `<h2>Required Services</h2>
+                            <p>Site Setup & Management is always included.</p>`;
     console.log(project.worksites);
     for (const site of project.worksites) {
       // Create a new worksite container
       const worksiteServices = document.createElement('div');
-      worksiteServices.classList.add('services-cards');
+      worksiteServices.classList.add('services-form-cards');
 
       // Add inner HTML + delete button in the same div
       worksiteServices.innerHTML =
@@ -364,10 +365,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </label>`;
 
       // Add event listeners to link checkboxes with the current site's services, code from ChatGPT
-      worksiteServices.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        cb.addEventListener('change', (e) => {
+      worksiteServices.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
           site.services[e.target.value] = e.target.checked;
           console.log("Updated worksite services:", site);
+          updateWorksiteSpecifications();
         });
       });
 
@@ -375,6 +377,173 @@ document.addEventListener('DOMContentLoaded', () => {
       servicesForm.appendChild(worksiteServices);
     }
   }
+
+  function updateWorksiteSpecifications() {
+    console.log("updateWorksiteSpecifications is running. Current project:", project);
+    const specificationsForm = document.querySelector(".form-four");
+    // Clear the existing services
+    specificationsForm.innerHTML = `<h2>Specifications</h2>
+                            <p>Enter details for the services you selected.</p>`;
+    console.log(project.specs);
+    for (const site of project.worksites) {
+      // Create a new worksite container
+      const worksiteSpecs = document.createElement('div');
+      worksiteSpecs.classList.add('specifications-cards');
+
+      worksiteSpecs.innerHTML =`
+        <p>Specs for Worksite: ${site.name}</p>
+
+        <!-- Site Area -->
+        <label for="siteArea">
+            Total Site Area (m²) <sup>*</sup>
+        </label>
+        <input 
+            type="number" 
+            id="siteArea" 
+            name="siteArea" 
+            min="1" 
+            required 
+            placeholder="e.g. 500" 
+        />
+
+        <!-- Excavation Depth -->
+        <label for="excavationDepth">
+            Excavation Depth (m) <sup>*</sup>
+        </label>
+        <input 
+            type="number" 
+            step="0.1" 
+            id="excavationDepth" 
+            name="excavationDepth" 
+            min="0" 
+            placeholder="e.g. 1.5" 
+        />
+
+        <!-- Number of Piles -->
+        <label for="numPiles">
+            Number of Piles
+        </label>
+        <input 
+            type="number" 
+            id="numPiles" 
+            name="numPiles" 
+            min="1" 
+            placeholder="e.g. 100" 
+        />
+
+        <label>
+            <input type="checkbox" id="unsurePiles" /> 
+            Estimate piles based on site area
+        </label>
+
+        <!-- Piles Length -->
+        <label for="pilesLength">
+            Total Pile Length (m)
+        </label>
+        <input 
+            type="number" 
+            id="pilesLength" 
+            name="pilesLength" 
+            min="0" 
+            placeholder="e.g. 200" 
+        />
+
+        <!-- Slab Area -->
+        <label for="slabArea">
+            Slab Area (m²)
+        </label>
+        <input 
+            type="number" 
+            id="slabArea" 
+            name="slabArea" 
+            min="0" 
+            placeholder="e.g. 250" 
+        />
+
+        <!-- Slab Thickness -->
+        <label for="slabThickness">
+            Slab Thickness (cm)
+        </label>
+        <input 
+            type="number" 
+            id="slabThickness" 
+            name="slabThickness" 
+            step="0.1" 
+            min="0" 
+            placeholder="e.g. 15" 
+        />
+
+        <!-- Drainage Length -->
+        <label for="drainageLength">
+            Drainage Length (m)
+        </label>
+        <input 
+            type="number" 
+            id="drainageLength" 
+            name="drainageLength" 
+            min="0" 
+            placeholder="e.g. 150" 
+        />
+
+        <!-- Frost Area -->
+        <label for="frostArea">
+            Frost Insulation Area (m²) <sup>*</sup>
+        </label>
+        <input 
+            type="number" 
+            id="frostArea" 
+            name="frostArea" 
+            min="1" 
+            placeholder="e.g. 500" 
+        />
+
+        <!-- Soil Removal Percentage -->
+        <label for="soilRemovalPct">
+            Soil Removal (% of total excavated volume)
+        </label>
+        <input 
+            type="number" 
+            id="soilRemovalPct" 
+            name="soilRemovalPct" 
+            min="0" 
+            max="100" 
+            placeholder="e.g. 25" 
+        />
+
+        <!-- Material Volumes -->
+        <label for="materialVolumes">
+            Material Volumes (list materials and quantities)
+        </label>
+        <textarea 
+            id="materialVolumes" 
+            name="materialVolumes" 
+            placeholder="Example: Gravel - 20m³, Concrete - 15m³">
+        </textarea>
+
+        <!-- Notes -->
+        <label for="notes">
+            Additional Notes / Special Requirements
+        </label>
+        <textarea 
+            id="notes" 
+            name="notes" 
+            placeholder="Any details that could affect pricing">
+        </textarea>`;
+
+      // Connect in similar fashion specs to the worksites
+      worksiteSpecs.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('input', (e) => {
+          site.specs[e.target.id] = e.target.value;
+          console.log("Updated worksite specs:", site);
+        });
+      });
+
+      // Append the whole services section to the form
+      specificationsForm.appendChild(worksiteSpecs);
+    }
+  }
+
+
 
 
 });
