@@ -34,10 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let nextStep = currentStep.nextElementSibling;
 
     // Get all worksite name inputs, code from ChatGPT
-    const worksiteNames = document.querySelectorAll('.worksite-field input[name="worksiteName"]');
+    // Modified to get all required inputs inside the active form only
+    const requiredFields = currentForm.querySelectorAll('[required]');
     let allFilled = true;
 
-    worksiteNames.forEach(input => {
+    requiredFields.forEach(input => {
       if (input.value.trim() === '') {
         allFilled = false;
         input.classList.add('error'); // optional: highlight empty fields
@@ -47,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (!allFilled) {
-      alert("Please fill in all worksite names before proceeding.");
-      return; // Stop moving to the next step
+      alert("Please fill all required fields before proceeding.");
+      return; // Stop form from moving to next step
     }
 
     if (nextSiblingForm && nextSiblingForm.classList.contains('form-step')) {
