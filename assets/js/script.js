@@ -388,147 +388,148 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const site of project.worksites) {
       // Create a new worksite container
       const worksiteSpecs = document.createElement('div');
-      worksiteSpecs.classList.add('specifications-cards');
+      worksiteSpecs.classList.add('specifications-accordions');
 
       worksiteSpecs.innerHTML =`
-        <p>Specs for Worksite: ${site.name}</p>
+          <button class="accordion">Specs for Worksite: ${site.name}</button>
+          <div class="panel">
+            <!-- Site Area -->
+            <label for="siteArea">
+                Total Site Area (m²) <sup>*</sup>
+            </label>
+            <input 
+                type="number" 
+                id="siteArea" 
+                name="siteArea" 
+                min="1" 
+                required 
+                placeholder="e.g. 500" 
+            />
 
-        <!-- Site Area -->
-        <label for="siteArea">
-            Total Site Area (m²) <sup>*</sup>
-        </label>
-        <input 
-            type="number" 
-            id="siteArea" 
-            name="siteArea" 
-            min="1" 
-            required 
-            placeholder="e.g. 500" 
-        />
+            <!-- Excavation Depth -->
+            <label for="excavationDepth">
+                Excavation Depth (m) <sup>*</sup>
+            </label>
+            <input 
+                type="number" 
+                step="0.1" 
+                id="excavationDepth" 
+                name="excavationDepth" 
+                min="0" 
+                placeholder="e.g. 1.5" 
+            />
 
-        <!-- Excavation Depth -->
-        <label for="excavationDepth">
-            Excavation Depth (m) <sup>*</sup>
-        </label>
-        <input 
-            type="number" 
-            step="0.1" 
-            id="excavationDepth" 
-            name="excavationDepth" 
-            min="0" 
-            placeholder="e.g. 1.5" 
-        />
+            <!-- Number of Piles -->
+            <label for="numPiles">
+                Number of Piles
+            </label>
+            <input 
+                type="number" 
+                id="numPiles" 
+                name="numPiles" 
+                min="1" 
+                placeholder="e.g. 100" 
+            />
 
-        <!-- Number of Piles -->
-        <label for="numPiles">
-            Number of Piles
-        </label>
-        <input 
-            type="number" 
-            id="numPiles" 
-            name="numPiles" 
-            min="1" 
-            placeholder="e.g. 100" 
-        />
+            <label>
+                <input type="checkbox" id="unsurePiles" /> 
+                Estimate piles based on site area
+            </label>
 
-        <label>
-            <input type="checkbox" id="unsurePiles" /> 
-            Estimate piles based on site area
-        </label>
+            <!-- Piles Length -->
+            <label for="pilesLength">
+                Total Pile Length (m)
+            </label>
+            <input 
+                type="number" 
+                id="pilesLength" 
+                name="pilesLength" 
+                min="0" 
+                placeholder="e.g. 200" 
+            />
 
-        <!-- Piles Length -->
-        <label for="pilesLength">
-            Total Pile Length (m)
-        </label>
-        <input 
-            type="number" 
-            id="pilesLength" 
-            name="pilesLength" 
-            min="0" 
-            placeholder="e.g. 200" 
-        />
+            <!-- Slab Area -->
+            <label for="slabArea">
+                Slab Area (m²)
+            </label>
+            <input 
+                type="number" 
+                id="slabArea" 
+                name="slabArea" 
+                min="0" 
+                placeholder="e.g. 250" 
+            />
 
-        <!-- Slab Area -->
-        <label for="slabArea">
-            Slab Area (m²)
-        </label>
-        <input 
-            type="number" 
-            id="slabArea" 
-            name="slabArea" 
-            min="0" 
-            placeholder="e.g. 250" 
-        />
+            <!-- Slab Thickness -->
+            <label for="slabThickness">
+                Slab Thickness (cm)
+            </label>
+            <input 
+                type="number" 
+                id="slabThickness" 
+                name="slabThickness" 
+                step="0.1" 
+                min="0" 
+                placeholder="e.g. 15" 
+            />
 
-        <!-- Slab Thickness -->
-        <label for="slabThickness">
-            Slab Thickness (cm)
-        </label>
-        <input 
-            type="number" 
-            id="slabThickness" 
-            name="slabThickness" 
-            step="0.1" 
-            min="0" 
-            placeholder="e.g. 15" 
-        />
+            <!-- Drainage Length -->
+            <label for="drainageLength">
+                Drainage Length (m)
+            </label>
+            <input 
+                type="number" 
+                id="drainageLength" 
+                name="drainageLength" 
+                min="0" 
+                placeholder="e.g. 150" 
+            />
 
-        <!-- Drainage Length -->
-        <label for="drainageLength">
-            Drainage Length (m)
-        </label>
-        <input 
-            type="number" 
-            id="drainageLength" 
-            name="drainageLength" 
-            min="0" 
-            placeholder="e.g. 150" 
-        />
+            <!-- Frost Area -->
+            <label for="frostArea">
+                Frost Insulation Area (m²) <sup>*</sup>
+            </label>
+            <input 
+                type="number" 
+                id="frostArea" 
+                name="frostArea" 
+                min="1" 
+                placeholder="e.g. 500" 
+            />
 
-        <!-- Frost Area -->
-        <label for="frostArea">
-            Frost Insulation Area (m²) <sup>*</sup>
-        </label>
-        <input 
-            type="number" 
-            id="frostArea" 
-            name="frostArea" 
-            min="1" 
-            placeholder="e.g. 500" 
-        />
+            <!-- Soil Removal Percentage -->
+            <label for="soilRemovalPct">
+                Soil Removal (% of total excavated volume)
+            </label>
+            <input 
+                type="number" 
+                id="soilRemovalPct" 
+                name="soilRemovalPct" 
+                min="0" 
+                max="100" 
+                placeholder="e.g. 25" 
+            />
 
-        <!-- Soil Removal Percentage -->
-        <label for="soilRemovalPct">
-            Soil Removal (% of total excavated volume)
-        </label>
-        <input 
-            type="number" 
-            id="soilRemovalPct" 
-            name="soilRemovalPct" 
-            min="0" 
-            max="100" 
-            placeholder="e.g. 25" 
-        />
+            <!-- Material Volumes -->
+            <label for="materialVolumes">
+                Material Volumes (list materials and quantities)
+            </label>
+            <textarea 
+                id="materialVolumes" 
+                name="materialVolumes" 
+                placeholder="Example: Gravel - 20m³, Concrete - 15m³">
+            </textarea>
 
-        <!-- Material Volumes -->
-        <label for="materialVolumes">
-            Material Volumes (list materials and quantities)
-        </label>
-        <textarea 
-            id="materialVolumes" 
-            name="materialVolumes" 
-            placeholder="Example: Gravel - 20m³, Concrete - 15m³">
-        </textarea>
-
-        <!-- Notes -->
-        <label for="notes">
-            Additional Notes / Special Requirements
-        </label>
-        <textarea 
-            id="notes" 
-            name="notes" 
-            placeholder="Any details that could affect pricing">
-        </textarea>`;
+            <!-- Notes -->
+            <label for="notes">
+                Additional Notes / Special Requirements
+            </label>
+            <textarea 
+                id="notes" 
+                name="notes" 
+                placeholder="Any details that could affect pricing">
+            </textarea>
+          </div>`;
 
       // Connect in similar fashion specs to the worksites
       worksiteSpecs.querySelectorAll('input[type="number"]').forEach(input => {
@@ -541,9 +542,29 @@ document.addEventListener('DOMContentLoaded', () => {
       // Append the whole services section to the form
       specificationsForm.appendChild(worksiteSpecs);
     }
+    wrapAccordions();
   }
 
+  // Accordion code from https://www.w3schools.com/howto/howto_js_accordion.asp made as function, called when worksites are created
+  function wrapAccordions() {
+    var acc = document.getElementsByClassName("accordion");
+    var index;
 
+    for (index = 0; index < acc.length; index++) {
+      acc[index].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active-accordion");
 
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  }
 
 });
