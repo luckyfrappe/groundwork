@@ -73,5 +73,7 @@ Back to [README.md](README.md)
 
 - accordion script caused unwanted behaviour like wrapping accordion into another accordion or did not displayed properly due to active class. Resolved by wrapping into function wrapAccordions and call fucntion after the worksites specifications are created. Change name of active to active-accordion. 
 
+-I could not find a smoother way to implement registering contact info into project object so i rewrite updateWorksiteSpecifications into updateContactDetails function
+
  updateWorksiteSpecifications function created by ChatGPT used wrong values that are not existing in services in order to add specs questions. 
 

@@ -99,17 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // Project object:
   const project = {
     contact: {
-      name: '',
-      company: '',
+      fullName: '',
+      companyName: '',
       email: '',
       phone: '',
       consent: false
     },
-    worksites: [],
-    options: {
-      currency: 'EUR',
-      proMode: false
-    }
+    details: {
+      projectType: '',
+      projectTypeOther: '',
+      projectLocation: '',
+      projectReference: '',
+      siteUpload: ''
+    },
+    worksites: []
   };
 
   /** 
@@ -320,6 +323,56 @@ document.addEventListener('DOMContentLoaded', () => {
     return project.worksites;
   }
 
+  //Add contact info and project details:
+  updateContactDetails();
+
+  function updateContactDetails() {
+    console.log("updateContactDetails is running. Current project:", project);
+    const contactForm = document.querySelector(".form-one");
+    // Clear the existing contact form
+    contactForm.innerHTML =
+      `<h2>Contact Information</h2>
+                            <p>Please provide your details so we can send your estimate.</p>
+                            <div>
+                                <label for="fullName">Full Name <sup>*</sup></label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="Alex Johnson"/>
+                            </div>
+                            <div>
+                                <label for="companyName">Company / Organisation</label>
+                                <input type="text" id="companyName" name="companyName"
+                                    placeholder="Your company (optional)"/>
+                            </div>
+                            <div>
+                                <label for="email">Email Address <sup>*</sup></label>
+                                <input type="email" id="email" name="email" required placeholder="example@mail.com"/>
+                            </div>
+                            <div>
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+46 70 123 4567"/>
+                            </div>
+                            <div>
+                                <label><input type="checkbox" id="consent" required value="consent"/> I agree to be contacted with
+                                    my estimate.</label>
+                            </div>`;
+
+    // Bind number inputs to project object
+    contactForm.querySelectorAll('input[type="number"], input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const key = e.target.name;
+        project.contact[key] = e.target.value;
+        console.log("Updated contact details:", project.contact);
+      });
+    });
+
+    contactForm.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+          project.contact[e.target.value] = e.target.checked;
+          console.log("Updated consent details:", project.contact);
+        });
+      });
+}
+
+
   function updateWorksiteServices() {
     console.log("updateWorksiteServices is running. Current project:", project);
     const servicesForm = document.querySelector(".form-three");
@@ -428,30 +481,30 @@ document.addEventListener('DOMContentLoaded', () => {
       // Show Piling fields if piling is selected
       if (site.services.piling) {
         specsHTML += `
-        <label for="numPiles_${site.name}">Number of Piles</label>
-        <input type="number" id="numPiles_${site.name}" name="numPiles" min="1" placeholder="e.g. 100"/>
+        <label for="numPiles_${site.name}">Number of Piles <sup>*</sup></label>
+        <input type="number" id="numPiles_${site.name}" name="numPiles" min="1" required placeholder="e.g. 100"/>
 
-        <label for="pilesLength_${site.name}">Total Pile Length (m)</label>
-        <input type="number" id="pilesLength_${site.name}" name="pilesLength" min="0" placeholder="e.g. 200"/>
+        <label for="pilesLength_${site.name}">Total Pile Length (m) <sup>*</sup></label>
+        <input type="number" id="pilesLength_${site.name}" name="pilesLength" min="0" required placeholder="e.g. 200"/>
       `;
       }
 
       // Show Slab fields if slab is selected
       if (site.services.slab) {
         specsHTML += `
-        <label for="slabArea_${site.name}">Slab Area (m²)</label>
-        <input type="number" id="slabArea_${site.name}" name="slabArea" min="0" placeholder="e.g. 250"/>
+        <label for="slabArea_${site.name}">Slab Area (m²) <sup>*</sup></label>
+        <input type="number" id="slabArea_${site.name}" name="slabArea" min="0" required placeholder="e.g. 250"/>
 
-        <label for="slabThickness_${site.name}">Slab Thickness (cm)</label>
-        <input type="number" id="slabThickness_${site.name}" name="slabThickness" step="0.1" min="0" placeholder="e.g. 15"/>
+        <label for="slabThickness_${site.name}">Slab Thickness (cm) <sup>*</sup></label>
+        <input type="number" id="slabThickness_${site.name}" name="slabThickness" step="0.1" min="0" required placeholder="e.g. 15"/>
       `;
       }
 
       // Show Drainage fields if drainage is selected
       if (site.services.drainage) {
         specsHTML += `
-        <label for="drainageLength_${site.name}">Drainage Length (m)</label>
-        <input type="number" id="drainageLength_${site.name}" name="drainageLength" min="0" placeholder="e.g. 150"/>
+        <label for="drainageLength_${site.name}">Drainage Length (m) <sup>*</sup></label>
+        <input type="number" id="drainageLength_${site.name}" name="drainageLength" min="0" required placeholder="e.g. 150"/>
       `;
       }
 
@@ -459,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (site.services.frost) {
         specsHTML += `
         <label for="frostArea_${site.name}">Frost Insulation Area (m²) <sup>*</sup></label>
-        <input type="number" id="frostArea_${site.name}" name="frostArea" min="1" placeholder="e.g. 500"/>
+        <input type="number" id="frostArea_${site.name}" name="frostArea" min="1" required placeholder="e.g. 500"/>
       `;
       }
 
@@ -514,5 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  //Calculation functions:
 
 });
