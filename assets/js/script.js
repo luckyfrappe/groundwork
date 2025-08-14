@@ -136,11 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
       min: 800,
       max: 2000
     },
-    pilingPerMeter: {
-      unit: "m",
-      min: 400,
-      max: 700
-    },
     concreteSlabs: {
       unit: "m2",
       min: 50,
@@ -261,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
       services: {
         excavation: false,
         pilingPerPile: false,
-        pilingPerMeter: false,
         concreteSlabs: false,
         drainage: false,
         frostInsulation: false,
@@ -325,13 +319,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Add contact info and project details:
   updateContactDetails();
+  updateProjectDetails();
 
   function updateContactDetails() {
     console.log("updateContactDetails is running. Current project:", project);
     const contactForm = document.querySelector(".form-one");
     // Clear the existing contact form
     contactForm.innerHTML =
-      `<h2>Contact Information</h2>
+      `<div class="bg-svg"></div>
+      <h2>Contact Information</h2>
                             <p>Please provide your details so we can send your estimate.</p>
                             <div>
                                 <label for="fullName">Full Name <sup>*</sup></label>
@@ -372,6 +368,60 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 }
 
+  function updateProjectDetails() {
+    console.log("updateProjectDetails is running. Current project:", project);
+    const projectDetailsForm = document.querySelector(".form-two");
+    // Clear the existing contact form
+    projectDetailsForm.innerHTML =
+      `<div class="bg-svg"></div>
+                            <h2>Project Basics</h2>
+                            <p>Tell us about this project.</p>
+                            <div>
+                                <label for="projectType">Project Type <sup>*</sup></label>
+                                <select id="projectType" name="projectType" required>
+                                    <option value="">-- Select project type --</option>
+                                    <option value="Data Center">Data Center</option>
+                                    <option value="Logistics Warehouse">Logistics Warehouse</option>
+                                    <option value="Residential Housing">Residential Housing</option>
+                                    <option value="Office Building">Office Building</option>
+                                    <option value="Industrial Facility">Industrial Facility</option>
+                                    <option value="Infrastructure">Road / Bridge / Civil Works</option>
+                                    <option value="Other">Other</option>
+                                </select><br>
+                                <input type="text" id="projectTypeOther" name="projectTypeOther"
+                                    placeholder="Please specify" class="hide" />
+                            </div>
+                            <div>
+                                <label for="projectLocation">Project City / Country <sup>*</sup></label>
+                                <input type="text" id="projectLocation" name="projectLocation" required
+                                    placeholder="Stockholm" />
+                            </div>
+                            <div>
+                                <label for="projectReference">Reference / Internal Code</label>
+                                <input type="text" id="projectReference" name="projectReference"
+                                    placeholder="Optional reference" />
+                            </div>
+                            <div>
+                                <label for="siteUpload">Upload Site Plan / Photo (optional)</label>
+                                <input type="file" id="siteUpload" name="siteUpload" accept=".jpg,.jpeg,.png,.pdf" />
+                            </div>`;
+
+    // Bind number inputs to project object
+    projectDetailsForm.querySelectorAll('select, input[type="text"], input[type="file"]').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const key = e.target.name;
+        project.details[key] = e.target.value;
+        console.log("Updated project details:", project.details);
+      });
+    });
+
+    projectDetailsForm.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+          project.contact[e.target.value] = e.target.checked;
+          console.log("Updated consent details:", project.contact);
+        });
+      });
+}
 
   function updateWorksiteServices() {
     console.log("updateWorksiteServices is running. Current project:", project);
@@ -394,14 +444,14 @@ document.addEventListener('DOMContentLoaded', () => {
             Excavation & Site Prep
         </label>
         <label>
-            <input type="checkbox" name="services" value="piling" />
+            <input type="checkbox" name="services" value="pilingPerPile" />
             <i class="fas fa-hammer"></i>
             Piling / Foundation
         </label>
         <label>
-            <input type="checkbox" name="services" value="slab" />
+            <input type="checkbox" name="services" value="concreteSlabs" />
             <i class="fas fa-cube"></i>
-            Concrete Slab / Foundation
+            Concrete Slabs / Foundation
         </label>
         <label>
             <input type="checkbox" name="services" value="shoring" />
@@ -409,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Shoring / Retaining Walls
         </label>
         <label>
-            <input type="checkbox" name="services" value="rock" />
+            <input type="checkbox" name="services" value="rockBlasting" />
             <i class="fas fa-mountain"></i>
             Rock Breaking / Blasting
         </label>
@@ -419,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Drainage System
         </label>
         <label>
-            <input type="checkbox" name="services" value="frost" />
+            <input type="checkbox" name="services" value="frostInsulation" />
             <i class="fas fa-snowflake"></i>
             Frost Insulation
         </label>
@@ -479,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Show Piling fields if piling is selected
-      if (site.services.piling) {
+      if (site.services.pilingPerPile) {
         specsHTML += `
         <label for="numPiles_${site.name}">Number of Piles <sup>*</sup></label>
         <input type="number" id="numPiles_${site.name}" name="numPiles" min="1" required placeholder="e.g. 100"/>
@@ -489,8 +539,8 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       }
 
-      // Show Slab fields if slab is selected
-      if (site.services.slab) {
+      // Show Slab fields if concreteSlabs are selected
+      if (site.services.concreteSlabs) {
         specsHTML += `
         <label for="slabArea_${site.name}">Slab Area (m²) <sup>*</sup></label>
         <input type="number" id="slabArea_${site.name}" name="slabArea" min="0" required placeholder="e.g. 250"/>
@@ -508,8 +558,8 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       }
 
-      // Show Frost Insulation fields if frost is selected
-      if (site.services.frost) {
+      // Show frostInsulation Insulation fields if frostInsulation is selected
+      if (site.services.frostInsulation) {
         specsHTML += `
         <label for="frostArea_${site.name}">Frost Insulation Area (m²) <sup>*</sup></label>
         <input type="number" id="frostArea_${site.name}" name="frostArea" min="1" required placeholder="e.g. 500"/>
