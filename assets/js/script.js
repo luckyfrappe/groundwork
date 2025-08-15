@@ -73,7 +73,7 @@ nextButton.addEventListener('click', () => {
     updatedProgressBar()
     if (nextSiblingForm.classList.contains('summaryForm')) {
       updateContactSection();
-      updateProjectDetails();
+      updateDetailsSection();
       calculateTotal();
     }
   }
@@ -638,6 +638,19 @@ function updateContactSection() {
     <p>Company: ${project.contact.companyName || 'N/A'}</p>
     <p>Email: ${project.contact.email}</p>
     <p>Phone: ${project.contact.phone || 'N/A'}</p>
+  `;
+}
+
+function updateDetailsSection() {
+  const detailsSection = document.querySelector('#summaryDetails');
+
+  // Update project details
+  detailsSection.innerHTML = `
+    <h3>Project Details</h3>
+    <p>Project Type: ${project.details.projectType}</p>
+    <p>Location: ${project.details.projectLocation}</p>
+    <p>Project Reference: ${project.details.projectReference || 'N/A'}</p>
+    <p>Files: ${project.details.siteUpload || 'None'}</p>
   `;
 }
 
