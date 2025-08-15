@@ -254,6 +254,7 @@ https://www.youtube.com/watch?v=M0O-vquFHto&t=2373s by dotWebdesign Responsive M
 - Wrapper for the progress bar borrowed from WeiChiaChang https://gist.github.com/WeiChiaChang/abe92ca2e8da86ef69560b63903e8764 
 -style file upload button https://www.w3schools.com/cssref/sel_file-selector-button.php
 -Accordion used from https://www.w3schools.com/howto/howto_js_accordion.asp
+-IntersectionObserver code is made following youtube guide https://www.youtube.com/watch?v=T33NN_pPeNI
 
 ### Content
 

@@ -43,14 +43,14 @@
     <link rel="manifest" href="assets/images/site.webmanifest">
 
      <!-- Font Awesome (for icons) -->
-    <script
+    <script 
       src="https://kit.fontawesome.com/1ca7252419.js"
       crossorigin="anonymous"
     ></script>
   </head>
   <body>
     <!-- Site-wide Header -->
-    <header class="flex center space-between">
+    <header class="flex center space-between hidden">
       <!-- Build by following tutorial from Coding2GO -->
       <nav>
         <ul class="sidebar">
@@ -138,7 +138,7 @@
           alt="Hero Image"
           class="hero-image"
        >
-        <div class="hero-info">
+        <div class="hero-info hidden">
           <h1>Groundwork Solutions Ltd.</h1>
           <p>Where every great build begins</p>
           <a href="new-project.html"><button>Start project</button></a>
@@ -146,7 +146,7 @@
         </div>
       </section>
       <!-- About Section -->
-      <section id="intro" class="intro container center flex">
+      <section id="intro" class="intro container center flex hidden">
         <h2>YOUR PROJECT'S TRUSTED FOUNDATION PARTNER</h2>
         <!-- Cards were rewritten by a layout example from CodeSandbox -->
         <div class="card intro-card">
@@ -164,7 +164,7 @@
                 groundwork for projects of all sizes.
               </p>
             </div>
-            <div class="card__buttons">
+            <div class="card__buttons hidden">
               <a href="#services"
                 >Learn more about us<svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +183,7 @@
       </section>
 
       <!-- Services Section -->
-      <section id="services" class="services-section container">
+      <section id="services" class="services-section container hidden">
         <h2>Our Services</h2>
         <p>
           We provide a complete suite of groundwork and civil engineering
@@ -194,7 +194,7 @@
         </p>
         <!-- Cards were rewritten by a layout example from CodeSandbox -->
         <div class="cards">
-          <div class="card">
+          <div class="card hidden">
             <div class="card__image-container">
               <img src="assets/images/partner1.jpeg" alt="Work site image">
             </div>
@@ -210,7 +210,7 @@
               </div>
             </div>
           </div>
-          <div class="card">
+          <div class="card hidden">
             <div class="card__image-container">
               <img src="assets/images/shoring.jpeg" alt="Workers on site shoring up a structure">
             </div>
@@ -232,14 +232,14 @@
       </section>
 
       <!-- Articles section -->
-      <section id="articles" class="articles-section container">
+      <section id="articles" class="articles-section container hidden">
         <h2>
           Our mission is to give you the confidence to build with strength,
           precision, and sustainability.
         </h2>
         <!-- Cards were rewritten by a layout example from CodeSandbox -->
         <div class="cards">
-          <div class="card span-four">
+          <div class="card span-four hidden">
             <div class="card__image-container">
               <img src="assets/images/poeple.jpeg" alt="Construction workers collaborating on a project">
             </div>
@@ -254,7 +254,7 @@
               </div>
             </div>
           </div>
-          <div class="card span-four">
+          <div class="card span-four hidden">
             <div class="card__image-container">
               <img src="assets/images/test.jpeg" alt="A construction worker performing a site test with advanced equipment">
             </div>
@@ -269,7 +269,7 @@
               </div>
             </div>
           </div>
-          <div class="card span-four">
+          <div class="card span-four hidden">
             <div class="card__image-container">
               <img src="assets/images/team.jpeg" alt="A diverse team of construction professionals collaborating on a project">
             </div>
@@ -288,7 +288,7 @@
         </div>
       </section>
       <!-- Project Journey Section -->
-      <section id="journey" class="journey container">
+      <section id="journey" class="journey container hidden">
         <h2>Your Next Project</h2>
         <!-- Cards were rewritten by a layout example from CodeSandbox -->
         <div class="card journey-card">
@@ -298,7 +298,7 @@
               alt="Work site with construction workers and machinery"
            >
           </div>
-          <div class="card__content">
+          <div class="card__content ">
             <div class="card__info">
               <p>
                 Whether you have detailed plans or are just getting started, our
@@ -313,9 +313,9 @@
             </div>
           </div>
         </div>
-        <div class="services-cards">
+        <div class="services-cards hidden">
           <div class="cards">
-            <div class="card span-four">
+            <div class="card span-four hidden">
               <div class="card__content">
                 <h3 class="card__title">1. Instant Estimate</h3>
                 <div class="card__info">
@@ -329,7 +329,7 @@
                 </div>
               </div>
             </div>
-            <div class="card span-four">
+            <div class="card span-four hidden">
               <div class="card__content">
                 <h3 class="card__title">2. Expert Consultation</h3>
                 <div class="card__info">
@@ -342,7 +342,7 @@
                 </div>
               </div>
             </div>
-            <div class="card span-four">
+            <div class="card span-four hidden">
               <div class="card__content">
                 <h3 class="card__title">3. Site Assessment</h3>
                 <div class="card__info">
@@ -355,7 +355,7 @@
                 </div>
               </div>
             </div>
-            <div class="card span-four">
+            <div class="card span-four hidden">
               <div class="card__content">
                 <h3 class="card__title">4. Formal Proposal</h3>
                 <div class="card__info">
@@ -368,7 +368,7 @@
                 </div>
               </div>
             </div>
-            <div class="card span-four">
+            <div class="card span-four hidden">
               <div class="card__content">
                 <h3 class="card__title">5. Project Delivery</h3>
                 <div class="card__info">
@@ -386,7 +386,7 @@
       </section>
     </main>
     <!-- Site-wide Footer -->
-    <footer id="footer">
+    <footer id="footer" class="hidden">
       <div class="footer-columns container flex">
         <div>
           <h4>FOLLOW US</h4>
@@ -476,6 +476,6 @@
       </div>
     </footer>
     <!-- JavaScript -->
-    <script src="assets/js/script.js"></script>
+    <script defer src="assets/js/script.js"></script>
   </body>
 </html>
