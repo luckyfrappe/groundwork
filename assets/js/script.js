@@ -632,7 +632,7 @@ function calculateTotal() {
 
   let totalAllMin = 0;
   let totalAllMax = 0;
-  
+
   // Initialize grand total variables
   let grandMin = 0;
   let grandMax = 0;
@@ -794,9 +794,9 @@ function calculateTotal() {
   // Add grand total after the loop
   summaryHTML += `
         <hr>
-        <p><strong>Total for All Worksites:</strong></p>
+        <h3>Total for All Worksites:</h3>
         <p class="total-price-range">€${totalAllMin.toFixed(2)} - €${totalAllMax.toFixed(2)}</p>
-        <h3>Grand Total:</h3>
+        <p><strong>Grand Total:</strong></p>
         <p class="total-price-range">€${(grandMin).toFixed(2)} - €${(grandMax).toFixed(2)}</p>
       `;
 
