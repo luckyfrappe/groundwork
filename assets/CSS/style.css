@@ -131,6 +131,8 @@ nav ul {
   align-items: center;
   display: flex;
   padding: 6px 6px;
+  -webkit-animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 nav img {
@@ -215,6 +217,8 @@ nav li:last-child {
   right: var(--space-page-x);
   color: white;
   padding: var(--space-page-x);
+  -webkit-animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .hero-info h1 {
