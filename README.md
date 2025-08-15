@@ -182,7 +182,7 @@ HTML, CSS and Javascript.
 - **Favicon.io:** To create favicon.
 - **Tiny PNG:** To downsize the images.
 - **Polypane:** To showcase the website on different devices.
-  <!-- - **Autoprefixer CSS online:** Applied to add necessary vendor prefixes to CSS properties, ensuring broader browser compatibility. -->
+- **Autoprefixer CSS online:** Applied to add necessary vendor prefixes to CSS properties, ensuring broader browser compatibility.
 - **ChatGPT (by OpenAI):** Used for generating specific service and feature descriptions, ensuring industry relevance and authenticity in the website's content.
 - **Gemini (by Google):** Providing extensive debugging assistance and code explanations during development.
 - **ColorSpace:** Used to generate matching Color Palette 
