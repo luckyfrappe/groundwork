@@ -172,11 +172,6 @@ const costs = {
     min: 60,
     max: 100
   },
-  siteSetup: {
-    unit: "fixed",
-    min: 50000,
-    max: 100000
-  },
   rushSurcharge: {
     multiplier: 1.20
   }
@@ -272,7 +267,6 @@ function addWorksite() {
       frostInsulation: false,
       shoring: false,
       rockBlasting: false,
-      siteSetup: true,
       rush: false
     },
     specs: {
@@ -430,7 +424,7 @@ function updateWorksiteServices() {
   const servicesForm = document.querySelector(".form-three");
   // Clear the existing services
   servicesForm.innerHTML = `<h2>Required Services</h2>
-                            <p>Site Setup & Management is always included.</p>`;
+                            <p>Please select the services you require for each worksite.</p>`;
   console.log(project.worksites);
   for (const site of project.worksites) {
     // Create a new worksite container
@@ -479,11 +473,6 @@ function updateWorksiteServices() {
             <input type="checkbox" name="services" value="rush" />
             <i class="fas fa-bolt"></i>
             Rush Delivery
-        </label>
-        <label>
-            <input type="checkbox" name="services" value="siteSetup" checked disabled />
-            <i class="fas fa-tools"></i>
-            Site Setup & Management
         </label>`;
 
     // Add event listeners to link checkboxes with the current site's services, code from ChatGPT
@@ -635,57 +624,62 @@ function wrapAccordions() {
   }
 }
 
-//Calculation functions:
+//Calculation functions (debugged with Gemini by Google):
 
 function calculateTotal() {
   const summarySites = document.querySelector("#summarySites");
-  let summaryHTML = ""; // Clean slate for summary HTML
+  let summaryHTML = "";
 
+  let totalAllMin = 0;
+  let totalAllMax = 0;
+  
+  // Initialize grand total variables
   let grandMin = 0;
   let grandMax = 0;
 
   for (const site of project.worksites) {
     let totalMin = 0;
     let totalMax = 0;
-    let siteHTML = ""; // Temporary variable for each site's HTML
+    let siteHTML = "";
 
     const siteArea = parseFloat(site.specs.siteArea);
 
     siteHTML += `
-      <h3>${site.name}</h3>
-      <p class="summary-subtitle">Estimated cost range based on your inputs:</p>
-      <button class="accordion">Summary prices</button>
-      <div class="panel">
-        <p>Site Area: <strong>${siteArea} m²</strong></p>
-    `;
+          <h3>${site.name}</h3>
+          <p class="summary-subtitle">Estimated cost range based on your inputs:</p>
+          <button class="accordion">Summary prices</button>
+          <div class="panel">
+            <p>Site Area: <strong>${siteArea} m²</strong></p>
+        `;
 
     // Excavation (per m³)
     if (site.services.excavation) {
       const depth = parseFloat(site.specs.excavationDepth);
+
       const volume = siteArea * depth;
       const excavationMin = volume * costs.excavation.min;
       const excavationMax = volume * costs.excavation.max;
       totalMin += excavationMin;
       totalMax += excavationMax;
       siteHTML += `
-        <p>Excavation Depth: <strong>${depth} m</strong></p>
-        <p>Excavation Volume: <strong>${volume.toFixed(2)} m³</strong></p>
-        <p>Excavation Cost: €${excavationMin.toFixed(2)} - €${excavationMax.toFixed(2)}</p>
-      `;
+              <p>Excavation Depth: <strong>${depth} m</strong></p>
+              <p>Excavation Volume: <strong>${volume.toFixed(2)} m³</strong></p>
+              <p>Excavation Cost: €${excavationMin.toFixed(2)} - €${excavationMax.toFixed(2)}</p>
+            `;
+
     }
 
     // Piling (per pile)
     if (site.services.pilingPerPile) {
       const numPiles = parseFloat(site.specs.numPiles);
-      const pilingLength = parseFloat(site.specs.pilesLength);
       const pilingMin = numPiles * costs.pilingPerPile.min;
       const pilingMax = numPiles * costs.pilingPerPile.max;
       totalMin += pilingMin;
       totalMax += pilingMax;
       siteHTML += `
-        <p>Number of Piles: <strong>${numPiles}</strong></p>
-        <p>Piling Cost: €${pilingMin.toFixed(2)} - €${pilingMax.toFixed(2)}</p>
-      `;
+              <p>Number of Piles: <strong>${numPiles}</strong></p>
+              <p>Piling Cost: €${pilingMin.toFixed(2)} - €${pilingMax.toFixed(2)}</p>
+            `;
     }
 
     // Concrete slabs (per m²)
@@ -696,9 +690,9 @@ function calculateTotal() {
       totalMin += slabMin;
       totalMax += slabMax;
       siteHTML += `
-        <p>Concrete Slab Area: <strong>${slabArea} m²</strong></p>
-        <p>Concrete Slab Cost: €${slabMin.toFixed(2)} - €${slabMax.toFixed(2)}</p>
-      `;
+              <p>Concrete Slab Area: <strong>${slabArea} m²</strong></p>
+              <p>Concrete Slab Cost: €${slabMin.toFixed(2)} - €${slabMax.toFixed(2)}</p>
+            `;
     }
 
     // Drainage (per linear meter)
@@ -709,9 +703,9 @@ function calculateTotal() {
       totalMin += drainageMin;
       totalMax += drainageMax;
       siteHTML += `
-        <p>Drainage Length: <strong>${length} m</strong></p>
-        <p>Drainage Cost: €${drainageMin.toFixed(2)} - €${drainageMax.toFixed(2)}</p>
-      `;
+              <p>Drainage Length: <strong>${length} m</strong></p>
+              <p>Drainage Cost: €${drainageMin.toFixed(2)} - €${drainageMax.toFixed(2)}</p>
+            `;
     }
 
     // Frost insulation (per m²)
@@ -722,9 +716,9 @@ function calculateTotal() {
       totalMin += frostMin;
       totalMax += frostMax;
       siteHTML += `
-        <p>Frost Insulation Area: <strong>${frostArea} m²</strong></p>
-        <p>Frost Insulation Cost: €${frostMin.toFixed(2)} - €${frostMax.toFixed(2)}</p>
-      `;
+              <p>Frost Insulation Area: <strong>${frostArea} m²</strong></p>
+              <p>Frost Insulation Cost: €${frostMin.toFixed(2)} - €${frostMax.toFixed(2)}</p>
+            `;
     }
 
     // Shoring (per m²)
@@ -735,11 +729,22 @@ function calculateTotal() {
       totalMin += shoringMin;
       totalMax += shoringMax;
       siteHTML += `
-        <p>Shoring Length: <strong>${shoringLength} m</strong></p>
-        <p>Shoring Cost: €${shoringMin.toFixed(2)} - €${shoringMax.toFixed(2)}</p>
-      `;
+              <p>Shoring Length: <strong>${shoringLength} m</strong></p>
+              <p>Shoring Cost: €${shoringMin.toFixed(2)} - €${shoringMax.toFixed(2)}</p>
+            `;
     }
-
+    // Soil removal percentage
+    if (site.services.soilRemoval) {
+      const area = parseFloat(site.specs.soilArea);
+      const soilMin = area * costs.soilRemoval.min;
+      const soilMax = area * costs.soilRemoval.max;
+      totalMin += soilMin;
+      totalMax += soilMax;
+      siteHTML += `
+              <p>Soil Removal Area: <strong>${area} m²</strong></p>
+              <p>Soil Removal Cost: €${soilMin.toFixed(2)} - €${soilMax.toFixed(2)}</p>
+            `;
+    }
     // Rock blasting (per m³)
     if (site.services.rockBlasting) {
       const volume = parseFloat(site.specs.rockVolume);
@@ -748,17 +753,10 @@ function calculateTotal() {
       totalMin += rockMin;
       totalMax += rockMax;
       siteHTML += `
-        <p>Rock Blasting Volume: <strong>${volume} m³</strong></p>
-        <p>Rock Blasting Cost: €${rockMin.toFixed(2)} - €${rockMax.toFixed(2)}</p>
-      `;
+              <p>Rock Blasting Volume: <strong>${volume} m³</strong></p>
+              <p>Rock Blasting Cost: €${rockMin.toFixed(2)} - €${rockMax.toFixed(2)}</p>
+            `;
     }
-
-    // Site setup (fixed cost)
-    totalMin += costs.siteSetup.min;
-    totalMax += costs.siteSetup.max;
-    siteHTML += `
-      <p>Site Setup & Management Cost: €${costs.siteSetup.min} - €${costs.siteSetup.max}</p>
-    `;
 
     // Rush surcharge
     if (site.services.rush) {
@@ -767,31 +765,40 @@ function calculateTotal() {
       totalMin += rushMin;
       totalMax += rushMax;
       siteHTML += `
-        <p>Rush Surcharge (+20%) Cost: €${rushMin.toFixed(2)} - €${rushMax.toFixed(2)}</p>
-      `;
+            <p>Rush Surcharge (+20%) Cost: €${rushMin.toFixed(2)} - €${rushMax.toFixed(2)}</p>
+          `;
     }
 
     // Add the site's total to the overall grand total
-    grandMin += totalMin;
-    grandMax += totalMax;
+    totalAllMin += totalMin;
+    totalAllMax += totalMax;
 
     // Final output for the current site
     siteHTML += `
-      <hr>
-      <p class="total-price">Total for ${site.name}:</p>
-      <p class="total-price-range">€${totalMin.toFixed(2)} - €${totalMax.toFixed(2)}</p>
-      </div>
-    `;
+          <hr>
+          <p class="total-price">Total for ${site.name}:</p>
+          <p class="total-price-range">€${totalMin.toFixed(2)} - €${totalMax.toFixed(2)}</p>
+          </div>
+        `;
 
     summaryHTML += siteHTML;
   }
+  // Add site setup and management costs
+  const siteSetupMin = totalAllMin * 0.1;
+  const siteSetupMax = totalAllMax * 0.2;
+
+  // Add to grand totals
+  grandMin = totalAllMin + siteSetupMin;
+  grandMax = totalAllMax + siteSetupMax;
 
   // Add grand total after the loop
   summaryHTML += `
-    <hr>
-    <h3>Grand Total for All Worksites:</h3>
-    <p class="total-price-range">€${grandMin.toFixed(2)} - €${grandMax.toFixed(2)}</p>
-  `;
+        <hr>
+        <p><strong>Total for All Worksites:</strong></p>
+        <p class="total-price-range">€${totalAllMin.toFixed(2)} - €${totalAllMax.toFixed(2)}</p>
+        <h3>Grand Total:</h3>
+        <p class="total-price-range">€${(grandMin).toFixed(2)} - €${(grandMax).toFixed(2)}</p>
+      `;
 
   // Update the summary section with the final HTML
   summarySites.innerHTML = summaryHTML;
