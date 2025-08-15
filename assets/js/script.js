@@ -174,6 +174,11 @@ const costs = {
   },
   rushSurcharge: {
     multiplier: 1.20
+  },
+  soilRemoval: {
+    unit: "m3",
+    min: 30,
+    max: 50
   }
 };
 
@@ -279,7 +284,7 @@ function addWorksite() {
       drainageLength: 0,
       frostArea: 0,
       rockVolume: 0,
-      soilRemovalPct: 0,
+      soilVolume: 0,
       materialVolumes: {},
       notes: ""
     }
@@ -573,8 +578,8 @@ function updateWorksiteSpecifications() {
 
     // Always show these general fields
     specsHTML += `
-      <label for="soilRemovalPct_${site.name}">Soil Removal (% of total excavated volume)</label>
-      <input type="number" id="soilRemovalPct_${site.name}" name="soilRemovalPct" min="0" max="100" placeholder="e.g. 25"/>
+      <label for="soilVolume_${site.name}">Soil Volume (m³)</label>
+      <input type="number" id="soilVolume_${site.name}" name="soilVolume" min="0" max="100" placeholder="e.g. 25"/>
 
       <label for="materialVolumes_${site.name}">Material Volumes (list materials and quantities)</label>
       <textarea id="materialVolumes_${site.name}" name="materialVolumes" placeholder="Example: Gravel - 20m³, Concrete - 15m³" style = "height: 40px;"></textarea>
@@ -734,14 +739,14 @@ function calculateTotal() {
             `;
     }
     // Soil removal percentage
-    if (site.services.soilRemoval) {
-      const area = parseFloat(site.specs.soilArea);
-      const soilMin = area * costs.soilRemoval.min;
-      const soilMax = area * costs.soilRemoval.max;
+    if (site.specs.soilVolume > 0) {
+      const volume = parseFloat(site.specs.soilVolume);
+      const soilMin = volume * costs.soilRemoval.min;
+      const soilMax = volume * costs.soilRemoval.max;
       totalMin += soilMin;
       totalMax += soilMax;
       siteHTML += `
-              <p>Soil Removal Area: <strong>${area} m²</strong></p>
+              <p>Soil Removal Volume: <strong>${volume} m³</strong></p>
               <p>Soil Removal Cost: €${soilMin.toFixed(2)} - €${soilMax.toFixed(2)}</p>
             `;
     }
