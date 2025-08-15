@@ -71,6 +71,11 @@ nextButton.addEventListener('click', () => {
     nextStep.classList.add('active');
     active++;
     updatedProgressBar()
+    if (nextSiblingForm.classList.contains('summaryForm')) {
+      updateContactSection();
+      updateProjectDetails();
+      calculateTotal();
+    }
   }
   buttonControls();
 })
@@ -355,10 +360,6 @@ function updateContactDetails() {
                             <div>
                                 <label for="phone">Phone Number</label>
                                 <input type="number" id="phone" name="phone" placeholder="+46 70 123 4567"/>
-                            </div>
-                            <div>
-                                <label><input type="checkbox" id="consent" required value="consent"/> I agree to be contacted with
-                                    my estimate.</label>
                             </div>`;
 
   // Bind number inputs to project object
@@ -369,14 +370,12 @@ function updateContactDetails() {
       console.log("Updated contact details:", project.contact);
     });
   });
-
-  contactForm.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', (e) => {
-      project.contact[e.target.value] = e.target.checked;
-      console.log("Updated consent details:", project.contact);
-    });
-  });
 }
+
+document.querySelector('#consent').addEventListener('change', (e) => {
+  project.contact[e.target.value] = e.target.checked;
+  console.log("Updated consent details:", project.contact);
+});
 
 function updateProjectDetails() {
   console.log("updateProjectDetails is running. Current project:", project);
@@ -597,7 +596,6 @@ function updateWorksiteSpecifications() {
         const key = e.target.name;
         site.specs[key] = e.target.value;
         console.log("Updated worksite specs:", site);
-        calculateTotal();
       });
     });
 
@@ -629,8 +627,21 @@ function wrapAccordions() {
   }
 }
 
-//Calculation functions (debugged with Gemini by Google):
+//Update Contact section
+function updateContactSection() {
+  const contactSection = document.querySelector('#summaryContact');
 
+  // Update contact information
+  contactSection.innerHTML = `
+    <h3>Contact Information</h3>
+    <p>Name: ${project.contact.fullName}</p>
+    <p>Company: ${project.contact.companyName || 'N/A'}</p>
+    <p>Email: ${project.contact.email}</p>
+    <p>Phone: ${project.contact.phone || 'N/A'}</p>
+  `;
+}
+
+//Calculation functions (debugged with Gemini by Google):
 function calculateTotal() {
   const summarySites = document.querySelector("#summarySites");
   let summaryHTML = "";
