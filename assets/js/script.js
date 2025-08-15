@@ -139,43 +139,43 @@ const project = {
 const costs = {
   excavation: {
     unit: "m3",
-    min: 12,
-    max: 60
+    min: 20,
+    max: 40
   },
   pilingPerPile: {
     unit: "pile",
-    min: 800,
+    min: 1500,
     max: 2000
   },
   concreteSlabs: {
     unit: "m2",
-    min: 50,
+    min: 120,
     max: 150
   },
   drainage: {
     unit: "lm",
-    min: 10,
-    max: 200
+    min: 80,
+    max: 150
   },
   frostInsulation: {
     unit: "m2",
-    min: 20,
-    max: 60
+    min: 35,
+    max: 50
   },
   shoring: {
     unit: "m2",
-    min: 150,
-    max: 400
+    min: 250,
+    max: 350
   },
   rockBlasting: {
     unit: "m3",
-    min: 40,
-    max: 120
+    min: 60,
+    max: 100
   },
   siteSetup: {
     unit: "fixed",
-    min: 20000,
-    max: 200000
+    min: 50000,
+    max: 100000
   },
   rushSurcharge: {
     multiplier: 1.20
