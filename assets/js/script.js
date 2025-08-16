@@ -54,6 +54,13 @@ nextButton.addEventListener('click', () => {
     if (input.value.trim() === '') {
       allFilled = false;
       input.style.border = '2px solid red';
+      const acc = document.getElementsByClassName("accordion");
+      for (let i = 0; i < acc.length; i++) {
+        acc[i].classList.add("active-accordion");
+        const panel = acc[i].nextElementSibling;
+        panel.style.display = "block";
+      }
+    
     } else {
       input.style.border = '';
     }
@@ -519,7 +526,7 @@ function updateWorksiteSpecifications() {
     if (site.services.excavation) {
       specsHTML += `
         <label for="excavationDepth_${site.name}">Excavation Depth (m) <sup>*</sup></label>
-        <input type="number" step="0.1" id="excavationDepth_${site.name}" name="excavationDepth" min="0" placeholder="e.g. 1.5"/>
+        <input type="number" step="0.1" id="excavationDepth_${site.name}" name="excavationDepth" min="0" placeholder="e.g. 1.5" required/>
       `;
     }
 
