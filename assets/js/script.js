@@ -45,30 +45,85 @@ nextButton.addEventListener('click', () => {
   let nextSiblingForm = currentForm.nextElementSibling;
   let nextStep = currentStep.nextElementSibling;
 
-  // Get all worksite name inputs, code from ChatGPT
-  // Modified to get all required inputs inside the active form only
   const requiredFields = currentForm.querySelectorAll('[required]');
   let allFilled = true;
+
+  // An array to store unique accordion buttons that need to be opened, debugged with Gemini by Google
+  const accordionsToOpen = new Set();
 
   requiredFields.forEach(input => {
     if (input.value.trim() === '') {
       allFilled = false;
       input.style.border = '2px solid red';
-      const acc = document.getElementsByClassName("accordion");
-      for (let i = 0; i < acc.length; i++) {
-        acc[i].classList.add("active-accordion");
-        const panel = acc[i].nextElementSibling;
-        panel.style.display = "block";
+
+      // Find the parent accordion button and add it to the set
+      let parentAccordion = input.closest('.specifications-accordions');
+      if (parentAccordion) {
+        let accordionButton = parentAccordion.querySelector('.accordion');
+        if (accordionButton) {
+          accordionsToOpen.add(accordionButton);
+        }
       }
-    
     } else {
       input.style.border = '';
     }
   });
 
+  // Additional validation for services form
+  if (currentForm.classList.contains('form-three')) {
+    // Check if at least one service checkbox is checked, helped by Copilot
+    const serviceCheckboxes = currentForm.querySelectorAll('input[type="checkbox"]');
+    let atLeastOneChecked = false;
+
+    serviceCheckboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        atLeastOneChecked = true;
+        checkbox.parentElement.style.border = '';
+      } else {
+        checkbox.parentElement.style.border = '2px solid red';
+      }
+    });
+
+    if (!atLeastOneChecked) {
+      alert("Please select at least one service.");
+      return;
+    }
+  }
+
   if (!allFilled) {
+    // Open all the accordions that contain empty fields
+    accordionsToOpen.forEach(accordion => {
+      accordion.classList.add("active-accordion");
+      const panel = accordion.nextElementSibling;
+      panel.style.display = "block";
+    });
+  }
+
+  // Additional validation for contact form
+    if (currentForm.classList.contains('form-one')) {
+    const emailInput = currentForm.querySelector('#email');
+
+    // Simple email regex pattern from Stack Overflow
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!allFilled) {
+    // Open all the accordions that contain empty fields
+    accordionsToOpen.forEach(accordion => {
+      accordion.classList.add("active-accordion");
+      const panel = accordion.nextElementSibling;
+      panel.style.display = "block";
+    });
     alert("Please fill all required fields before proceeding.");
     return; // Stop form from moving to next step
+  }
+
+  if (!emailPattern.test(emailInput.value)) {
+      alert("Please enter a valid email address.");
+      emailInput.style.border = '2px solid red';
+      return;
+    } else {
+      emailInput.style.border = '';
+    }
   }
 
   if (nextSiblingForm && nextSiblingForm.classList.contains('form-step')) {
@@ -672,16 +727,16 @@ function calculateTotal() {
   // Initialize grand total variables
   let grandMin = 0;
   let grandMax = 0;
-
+  let id = 0;
   for (const site of project.worksites) {
     let totalMin = 0;
     let totalMax = 0;
     let siteHTML = "";
 
     const siteArea = parseFloat(site.specs.siteArea);
-
+    id++;
     siteHTML += `
-          <h3>${site.name}</h3>
+          <h3>Worksite ${id}: ${site.name}</h3>
           <p class="summary-subtitle">Estimated cost range based on your inputs:</p>
           <button class="accordion">Summary prices</button>
           <div class="panel">

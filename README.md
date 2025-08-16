@@ -256,6 +256,7 @@ https://www.youtube.com/watch?v=M0O-vquFHto&t=2373s by dotWebdesign Responsive M
 -Accordion used from https://www.w3schools.com/howto/howto_js_accordion.asp
 -IntersectionObserver code is made following youtube guide https://www.youtube.com/watch?v=T33NN_pPeNI
 -Hero video properties was originally taken from https://www.youtube.com/watch?v=ukMPKm3cLns
+-https://stackoverflow.com/questions/50330109/simple-regex-pattern-for-email Simple regex pattern for email
 
 ### Content
 
