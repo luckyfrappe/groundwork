@@ -887,3 +887,24 @@ function calculateTotal() {
   summarySites.innerHTML = summaryHTML;
   wrapAccordions();
 }
+
+
+// Form submission handling
+const form = document.querySelector("form"); // or use #myForm
+const summaryForm = document.querySelector(".summaryForm");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault(); // stop the form from submitting
+
+  summaryForm.innerHTML = `
+    <h2><i class="fas fa-check-circle"></i> Thank you for your submission!</h2>
+    <p>Your data has been received successfully.</p>
+    <button id="goHome">Go back to home page</button>
+  `;
+  document.querySelector("#goHome").addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+  prevButton.disabled = true;
+  nextButton.disabled = true;
+  submitButton.disabled = true;
+});

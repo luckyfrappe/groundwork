@@ -77,3 +77,9 @@ Back to [README.md](README.md)
 
  updateWorksiteSpecifications function created by ChatGPT used wrong values that are not existing in services in order to add specs questions. 
 
+Bug 1 – Navigation button not working:
+A <button> inside an <a> didn’t navigate to the home page. Fixed by using button button with window.location.href in JS.
+
+Bug 2 – Security risk with innerHTML:
+Whyle manual testing i experienced weird outcome by testing different characters inserted into Worksite name and found out that:
+Displaying user input via innerHTML can execute HTML/JS Cross-Site Scripting (XSS) which is a potential security risk. Need refactoring all the user inputs, out of scope for MVP project. 
