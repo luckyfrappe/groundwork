@@ -83,3 +83,18 @@ A <button> inside an <a> didn’t navigate to the home page. Fixed by using butt
 Bug 2 – Security risk with innerHTML:
 Whyle manual testing i experienced weird outcome by testing different characters inserted into Worksite name and found out that:
 Displaying user input via innerHTML can execute HTML/JS Cross-Site Scripting (XSS) which is a potential security risk. Need refactoring all the user inputs, out of scope for MVP project. 
+
+
+- The Problem
+Clicking the accordion button triggered an error because the browser's form validator was trying to focus on a required input named 'siteArea' or other services that was not visible. Furthermore, this validation also caused the view to jump to the required consent button on the final page. This happened because:
+
+The querySelectorAll('[required]') method was too broad, selecting invisible inputs and even buttons.
+
+Button clicks, especially on a form, were triggering the browser's default validation and submission behavior.
+
+The Fix
+The issue was resolved by two key changes to the JavaScript code:
+
+Refined Field Selection: The requiredFields selector was made more specific to target only form inputs (<input>, <select>, <textarea>) with the required attribute. This prevents the validation from checking non-input elements like the accordion buttons.
+
+Prevented Default Actions: The event.preventDefault() method was added to the click listeners for both the accordion buttons and the next button. This explicitly stops the browser's default validation and submission actions, giving full control over the form's flow to your custom JavaScript logic.

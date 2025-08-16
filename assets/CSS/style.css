@@ -932,6 +932,10 @@ form i {
   background-color: transparent;
 }
 
+.form-box button {
+  margin-bottom: 24px;
+}
+
 /* Footer */
 footer {
   background: var(--color-light-grey);

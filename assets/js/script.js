@@ -83,12 +83,14 @@ function buttonControls() {
  * wrapped to handle multiple accordions.
  */
 function wrapAccordions() {
-  // Accordion code from https://www.w3schools.com/howto/howto_js_accordion.asp made as function, called when worksites are created
   var acc = document.getElementsByClassName("accordion");
   var index;
 
   for (index = 0; index < acc.length; index++) {
-    acc[index].addEventListener("click", function () {
+    acc[index].addEventListener("click", function (event) {
+      // Prevent the button click from submitting the form or triggering validation
+      event.preventDefault(); 
+      
       /* Toggle between adding and removing the "active" class,
       to highlight the button that controls the panel */
       this.classList.toggle("active-accordion");
@@ -125,13 +127,14 @@ function checkTheFirstDeleteButton() {
 
 // Event listener for the "Next" button click
 
-nextButton.addEventListener('click', () => {
+nextButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent default form submission
   let currentForm = document.querySelector('.form-step.active');
   let currentStep = document.querySelector('.step.active');
   let nextSiblingForm = currentForm.nextElementSibling;
   let nextStep = currentStep.nextElementSibling;
 
-  const requiredFields = currentForm.querySelectorAll('[required]');
+  const requiredFields = currentForm.querySelectorAll('input[required], select[required], textarea[required]');
   let allFilled = true;
 
   // An array to store unique accordion buttons that need to be opened, debugged with Gemini by Google
@@ -250,6 +253,7 @@ howManyWorksites.addEventListener('change', howManyWorksitesChange);
 
 // Event listener for the "consent" checkbox
 document.querySelector('#consent').addEventListener('change', (e) => {
+  e.preventDefault();
   project.contact[e.target.value] = e.target.checked;
 });
 
@@ -427,7 +431,6 @@ function addWorksite() {
     // Remove from UI
     newWorksite.remove();
     checkTheFirstDeleteButton();
-    console.log("After deletion:", project);
     updateWorksiteServices();
     updateWorksiteSpecifications();
   });
@@ -583,7 +586,6 @@ function updateWorksiteServices() {
     worksiteServices.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
       checkbox.addEventListener('change', (e) => {
         site.services[e.target.value] = e.target.checked;
-        console.log("Updated worksite services:", site);
         updateWorksiteSpecifications();
       });
     });
@@ -697,7 +699,6 @@ function updateWorksiteSpecifications() {
       input.addEventListener('input', (e) => {
         const key = e.target.name;
         site.specs[key] = e.target.value;
-        console.log("Updated worksite specs:", site);
       });
     });
 
@@ -927,11 +928,16 @@ function calculateTotal() {
 }
 
 // Form submission
-const form = document.querySelector("form"); // or use #myForm
+const form = document.querySelector("form"); 
 const summaryForm = document.querySelector(".summaryForm");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // stop the form from submitting
+  const consentCheckbox = document.getElementById('consent');
+  if (!consentCheckbox.checked) {
+    alert('Please agree to the terms and conditions.');
+    return; // Stop the form submission
+  }
 
   summaryForm.innerHTML = `
     <h2><i class="fas fa-check-circle"></i> Thank you for your submission!</h2>
