@@ -1,3 +1,7 @@
+// =========================================================
+//  Global Variables & DOM Element Selection
+// =========================================================
+
 // Animations code from Beyond Fireship
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -12,33 +16,114 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
-// Function to toggle the sidebar visibility
-function showSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  sidebar.style.display = "flex";
-}
-
-// Function to hide the sidebar
-function hideSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  sidebar.style.display = "none";
-}
-
+// Navigation buttons and progress indicators
 const nextButton = document.querySelector('.btn-next');
 const prevButton = document.querySelector('.btn-prev');
 const submitButton = document.querySelector('.btn-submit');
 const steps = document.querySelectorAll(".step");
 const form_steps = document.querySelectorAll(".form-step");
+const howManyWorksites = document.querySelector('.card-radio-group');
+const addSiteBtn = document.getElementById('addSiteBtn');
 
+// Active step counter for progress bar and navigation
 let active = 1;
+
+// =========================================================
+//  Utility Functions
+// =========================================================
+
+/**
+ * Toggles the sidebar visibility to "flex".
+ */
+function showSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.style.display = "flex";
+}
+
+/**
+ * Toggles the sidebar visibility to "none".
+ */
+function hideSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.style.display = "none";
+}
+
+/**
+ * Updates the width of the progress bar based on the
+ * current active step.
+ */
 function updatedProgressBar() {
   // Update the progress bar width, suggested by Copilot
   const progressBarFill = document.querySelector('.progress-bar-fill');
   progressBarFill.style.width = `${(active / steps.length) * 100}%`;
 }
 
-updatedProgressBar();
+/**
+ * Controls the disabled state of the 'Next' and 'Previous' buttons
+ * based on the current step.
+ */
+function buttonControls() {
+  if (active === 1) {
+    prevButton.disabled = true;
+  } else {
+    prevButton.disabled = false;
+  }
 
+  if (active === steps.length) {
+    nextButton.disabled = true;
+    submitButton.disabled = false;
+  } else {
+    nextButton.disabled = false;
+    submitButton.disabled = true;
+  }
+}
+
+/**
+ * Toggles the accordion panel visibility. This function is
+ * wrapped to handle multiple accordions.
+ */
+function wrapAccordions() {
+  // Accordion code from https://www.w3schools.com/howto/howto_js_accordion.asp made as function, called when worksites are created
+  var acc = document.getElementsByClassName("accordion");
+  var index;
+
+  for (index = 0; index < acc.length; index++) {
+    acc[index].addEventListener("click", function () {
+      /* Toggle between adding and removing the "active" class,
+      to highlight the button that controls the panel */
+      this.classList.toggle("active-accordion");
+
+      /* Toggle between hiding and showing the active panel */
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+}
+
+/**
+ * Ensures the 'Delete' button on the first worksite field is
+ * hidden if it's the only one.
+ */
+function checkTheFirstDeleteButton() {
+  const worksiteFields = document.querySelector('.worksite-fields');
+  const deleteBtn = worksiteFields.querySelector('.delete-worksite-btn');
+  if (worksiteFields.children.length === 1) {
+    deleteBtn.classList.add('hide');
+  } else {
+    deleteBtn.classList.remove('hide');
+  }
+  return project.worksites;
+}
+
+// =========================================================
+//  Event Listeners
+// =========================================================
+
+// Event listener for the "Next" button click
 nextButton.addEventListener('click', () => {
   let currentForm = document.querySelector('.form-step.active');
   let currentStep = document.querySelector('.step.active');
@@ -69,7 +154,7 @@ nextButton.addEventListener('click', () => {
     }
   });
 
-   if (!allFilled) {
+  if (!allFilled) {
     // Open all the accordions that contain empty fields
     accordionsToOpen.forEach(accordion => {
       accordion.classList.add("active-accordion");
@@ -117,6 +202,7 @@ nextButton.addEventListener('click', () => {
     }
   }
 
+  // Move to the next form step if validation passes
   if (nextSiblingForm && nextSiblingForm.classList.contains('form-step')) {
     currentForm.classList.remove('active');
     currentStep.classList.remove('active');
@@ -131,8 +217,9 @@ nextButton.addEventListener('click', () => {
     }
   }
   buttonControls();
-})
+});
 
+// Event listener for the "Previous" button click
 prevButton.addEventListener('click', () => {
   let currentForm = document.querySelector('.form-step.active');
   let currentStep = document.querySelector('.step.active');
@@ -148,25 +235,27 @@ prevButton.addEventListener('click', () => {
     updatedProgressBar()
   }
   buttonControls();
-})
+});
 
-function buttonControls() {
-  if (active === 1) {
-    prevButton.disabled = true;
-  } else {
-    prevButton.disabled = false;
-  }
+// Event listener for the "Add Site" button
+addSiteBtn.addEventListener('click', addWorksite);
 
-  if (active === steps.length) {
-    nextButton.disabled = true;
-    submitButton.disabled = false;
-  } else {
-    nextButton.disabled = false;
-    submitButton.disabled = true;
-  }
-}
+// Event listener for the "siteCount" radio buttons
+howManyWorksites.addEventListener('change', howManyWorksitesChange);
 
-// Project object:
+// Event listener for the "consent" checkbox
+document.querySelector('#consent').addEventListener('change', (e) => {
+  project.contact[e.target.value] = e.target.checked;
+});
+
+// =========================================================
+//  Project Data & Price Constants
+// =========================================================
+
+/**
+ * Stores all project data, including contact info, project details,
+ * and dynamic worksite information.
+ */
 const project = {
   contact: {
     fullName: '',
@@ -240,13 +329,13 @@ const costs = {
   }
 };
 
-// Start section
-const howManyWorksites = document.querySelector('.card-radio-group');
-howManyWorksites.addEventListener('change', howManyWorksitesChange);
-const addSiteBtn = document.getElementById('addSiteBtn');
-addWorksite(); // Add the first worksite field automatically
+// =========================================================
+//  Dynamic Content & Data Handling Functions
+// =========================================================
+
 /**
- * Allows to add more worksite fields
+ * Handles the logic for adding or removing worksite fields
+ * based on the selected radio button.
  */
 function howManyWorksitesChange() {
   // Checks what siteCount is selected
@@ -265,9 +354,10 @@ function howManyWorksitesChange() {
   }
 }
 
-// Add site button functionality
-// This button allows users to add more worksite fields dynamically, added delete button with help from ChatGPT
-addSiteBtn.addEventListener('click', addWorksite);
+/**
+ * Dynamically adds a new worksite field and its corresponding
+ * data object to the project.
+ */
 function addWorksite() {
   const worksiteFields = document.querySelector('.worksite-fields');
 
@@ -276,6 +366,7 @@ function addWorksite() {
   newWorksite.classList.add('worksite-field');
 
   // Add inner HTML + delete button in the same div
+  // This button allows users to add more worksite fields dynamically, added delete button with help from ChatGPT
   newWorksite.innerHTML = `
     <label for="worksiteName">Worksite Name / Identifier <sup>*</sup></label>
     <input type="text" name="worksiteName" placeholder="Site A, North Wing, etc." required/>
@@ -338,115 +429,102 @@ function addWorksite() {
   checkTheFirstDeleteButton();
 };
 
-function checkTheFirstDeleteButton() {
-  const worksiteFields = document.querySelector('.worksite-fields');
-  const deleteBtn = worksiteFields.querySelector('.delete-worksite-btn');
-  if (worksiteFields.children.length === 1) {
-    deleteBtn.classList.add('hide');
-  } else {
-    deleteBtn.classList.remove('hide');
-  }
-  return project.worksites;
-}
-
-//Add contact info and project details:
-updateContactDetails();
-updateProjectDetails();
-
+/**
+ * Populates the contact information form fields and
+ * binds them to the project data object.
+ */
 function updateContactDetails() {
-  console.log("updateContactDetails is running. Current project:", project);
+  //Add contact info and project details:
   const contactForm = document.querySelector(".form-one");
   // Clear the existing contact form
   contactForm.innerHTML =
     `<div class="bg-svg"></div>
       <h2>Contact Information</h2>
-                            <p>Please provide your details so we can send your estimate.</p>
-                            <div>
-                                <label for="fullName">Full Name <sup>*</sup></label>
-                                <input type="text" id="fullName" name="fullName" required placeholder="Alex Johnson"/>
-                            </div>
-                            <div>
-                                <label for="companyName">Company / Organisation</label>
-                                <input type="text" id="companyName" name="companyName"
-                                    placeholder="Your company (optional)"/>
-                            </div>
-                            <div>
-                                <label for="email">Email Address <sup>*</sup></label>
-                                <input type="email" id="email" name="email" required placeholder="example@mail.com"/>
-                            </div>
-                            <div>
-                                <label for="phone">Phone Number</label>
-                                <input type="number" id="phone" name="phone" placeholder="+46 70 123 4567"/>
-                            </div>`;
+      <p>Please provide your details so we can send your estimate.</p>
+      <div>
+          <label for="fullName">Full Name <sup>*</sup></label>
+          <input type="text" id="fullName" name="fullName" required placeholder="Alex Johnson"/>
+      </div>
+      <div>
+          <label for="companyName">Company / Organisation</label>
+          <input type="text" id="companyName" name="companyName"
+              placeholder="Your company (optional)"/>
+      </div>
+      <div>
+          <label for="email">Email Address <sup>*</sup></label>
+          <input type="email" id="email" name="email" required placeholder="example@mail.com"/>
+      </div>
+      <div>
+          <label for="phone">Phone Number</label>
+          <input type="number" id="phone" name="phone" placeholder="+46 70 123 4567"/>
+      </div>`;
 
   // Bind number inputs to project object
   contactForm.querySelectorAll('input[type="number"], input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
     input.addEventListener('input', (e) => {
       const key = e.target.name;
       project.contact[key] = e.target.value;
-      console.log("Updated contact details:", project.contact);
     });
   });
 }
 
-document.querySelector('#consent').addEventListener('change', (e) => {
-  project.contact[e.target.value] = e.target.checked;
-  console.log("Updated consent details:", project.contact);
-});
-
+/**
+ * Populates the project details form fields and
+ * binds them to the project data object.
+ */
 function updateProjectDetails() {
-  console.log("updateProjectDetails is running. Current project:", project);
   const projectDetailsForm = document.querySelector(".form-two");
   // Clear the existing contact form
   projectDetailsForm.innerHTML =
     `<div class="bg-svg"></div>
-                            <h2>Project Basics</h2>
-                            <p>Tell us about this project.</p>
-                            <div>
-                                <label for="projectType">Project Type <sup>*</sup></label>
-                                <select id="projectType" name="projectType" required>
-                                    <option value="">-- Select project type --</option>
-                                    <option value="Data Center">Data Center</option>
-                                    <option value="Logistics Warehouse">Logistics Warehouse</option>
-                                    <option value="Residential Housing">Residential Housing</option>
-                                    <option value="Office Building">Office Building</option>
-                                    <option value="Industrial Facility">Industrial Facility</option>
-                                    <option value="Infrastructure">Road / Bridge / Civil Works</option>
-                                    <option value="Other">Other</option>
-                                </select><br>
-                            </div>
-                            <div>
-                                <label for="projectLocation">Project City / Country <sup>*</sup></label>
-                                <input type="text" id="projectLocation" name="projectLocation" required
-                                    placeholder="Stockholm" />
-                            </div>
-                            <div>
-                                <label for="projectReference">Reference / Internal Code</label>
-                                <input type="text" id="projectReference" name="projectReference"
-                                    placeholder="Optional reference" />
-                            </div>
-                            <div>
-                                <label for="siteUpload">Upload Site Plan / Photo (optional)</label>
-                                <input type="file" id="siteUpload" name="siteUpload" accept=".jpg,.jpeg,.png,.pdf" />
-                            </div>`;
+      <h2>Project Basics</h2>
+      <p>Tell us about this project.</p>
+      <div>
+          <label for="projectType">Project Type <sup>*</sup></label>
+          <select id="projectType" name="projectType" required>
+              <option value="">-- Select project type --</option>
+              <option value="Data Center">Data Center</option>
+              <option value="Logistics Warehouse">Logistics Warehouse</option>
+              <option value="Residential Housing">Residential Housing</option>
+              <option value="Office Building">Office Building</option>
+              <option value="Industrial Facility">Industrial Facility</option>
+              <option value="Infrastructure">Road / Bridge / Civil Works</option>
+              <option value="Other">Other</option>
+          </select><br>
+      </div>
+      <div>
+          <label for="projectLocation">Project City / Country <sup>*</sup></label>
+          <input type="text" id="projectLocation" name="projectLocation" required
+              placeholder="Stockholm" />
+      </div>
+      <div>
+          <label for="projectReference">Reference / Internal Code</label>
+          <input type="text" id="projectReference" name="projectReference"
+              placeholder="Optional reference" />
+      </div>
+      <div>
+          <label for="siteUpload">Upload Site Plan / Photo (optional)</label>
+          <input type="file" id="siteUpload" name="siteUpload" accept=".jpg,.jpeg,.png,.pdf" />
+      </div>`;
 
   // Bind number inputs to project object
   projectDetailsForm.querySelectorAll('select, input[type="text"], input[type="file"]').forEach(input => {
     input.addEventListener('input', (e) => {
       const key = e.target.name;
       project.details[key] = e.target.value;
-      console.log("Updated project details:", project.details);
     });
   });
 }
 
+/**
+ * Populates the services form dynamically based on the number
+ * of worksites in the project data.
+ */
 function updateWorksiteServices() {
-  console.log("updateWorksiteServices is running. Current project:", project);
   const servicesForm = document.querySelector(".form-three");
   // Clear the existing services
   servicesForm.innerHTML = `<h2>Required Services</h2>
                             <p>Please select the services you require for each worksite.</p>`;
-  console.log(project.worksites);
   for (const site of project.worksites) {
     // Create a new worksite container
     const worksiteServices = document.createElement('div');
@@ -510,9 +588,12 @@ function updateWorksiteServices() {
   }
 }
 
-//Function is remade by ChatGPT in order to show only selected services
+/**
+ * Populates the specifications form dynamically, showing only
+ * fields for selected services.
+ */
 function updateWorksiteSpecifications() {
-  console.log("updateWorksiteSpecifications is running. Current project:", project);
+  //Function is remade by ChatGPT in order to show only selected services
   const specificationsForm = document.querySelector(".form-four");
 
   // Clear the existing specs
@@ -527,7 +608,6 @@ function updateWorksiteSpecifications() {
     let specsHTML = `
       <button class="accordion">Specs for Worksite: ${site.name}</button>
       <div class="panel">
-        <!-- Always show site area -->
         <label for="siteArea_${site.name}">Total Site Area (m²) <sup>*</sup></label>
         <input type="number" id="siteArea_${site.name}" name="siteArea" min="1" required placeholder="e.g. 500"/>
     `;
@@ -622,29 +702,10 @@ function updateWorksiteSpecifications() {
   wrapAccordions();
 }
 
-// Accordion code from https://www.w3schools.com/howto/howto_js_accordion.asp made as function, called when worksites are created
-function wrapAccordions() {
-  var acc = document.getElementsByClassName("accordion");
-  var index;
-
-  for (index = 0; index < acc.length; index++) {
-    acc[index].addEventListener("click", function () {
-      /* Toggle between adding and removing the "active" class,
-      to highlight the button that controls the panel */
-      this.classList.toggle("active-accordion");
-
-      /* Toggle between hiding and showing the active panel */
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  }
-}
-
-//Update Contact section
+/**
+ * Updates the contact details section on the summary page.
+ * Populates the summary form with user-provided contact info.
+ */
 function updateContactSection() {
   const contactSection = document.querySelector('#summaryContact');
 
@@ -658,6 +719,10 @@ function updateContactSection() {
   `;
 }
 
+/**
+ * Updates the project details section on the summary page.
+ * @description Populates the summary form with user-provided project details.
+ */
 function updateDetailsSection() {
   const detailsSection = document.querySelector('#summaryDetails');
 
@@ -671,8 +736,12 @@ function updateDetailsSection() {
   `;
 }
 
-//Calculation functions (debugged with Gemini by Google):
+/**
+ * Calculates the total estimated cost for all worksites
+ * and updates the summary section.
+ */
 function calculateTotal() {
+  //Calculation functions (debugged with Gemini by Google):
   const summarySites = document.querySelector("#summarySites");
   let summaryHTML = "";
 
@@ -852,12 +921,11 @@ function calculateTotal() {
   wrapAccordions();
 }
 
-
-// Form submission handling
+// Form submission
 const form = document.querySelector("form"); // or use #myForm
 const summaryForm = document.querySelector(".summaryForm");
 
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", function (event) {
   event.preventDefault(); // stop the form from submitting
 
   summaryForm.innerHTML = `
@@ -872,3 +940,13 @@ form.addEventListener("submit", function(event) {
   nextButton.disabled = true;
   submitButton.disabled = true;
 });
+
+// =========================================================
+//  Initialisation
+// =========================================================
+
+// Initialize the form state when the page loads
+updatedProgressBar();
+addWorksite();
+updateContactDetails();
+updateProjectDetails();
