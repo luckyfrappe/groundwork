@@ -83,7 +83,7 @@ nextButton.addEventListener('click', () => {
   // Additional validation for services form
   if (currentForm.classList.contains('form-three')) {
     // Check if at least one service checkbox is checked, helped by Copilot
-    const serviceCheckboxes = currentForm.querySelectorAll('input[type="checkbox"]');
+    const serviceCheckboxes = currentForm.querySelectorAll('input[type="checkbox"]:not([value="rush"])');
     let atLeastOneChecked = false;
 
     serviceCheckboxes.forEach(checkbox => {
