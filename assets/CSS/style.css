@@ -132,6 +132,167 @@ button {
           justify-content: space-between;
 }
 
+/* Animations */
+.hide {
+  display: none;
+}
+
+.hidden {
+  opacity: 0;
+  -webkit-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+          transform: translateY(20px);
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  -o-transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.show {
+  -webkit-animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10%);
+    transform: translateY(10%);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10%);
+    transform: translateY(10%);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@media(prefers-reduced-motion) {
+  form>div:not(.btn-group) {
+    -webkit-animation: none;
+    animation: none;
+  }
+  .hidden {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+  .show {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+  .fadein {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+}
+
+/* Form Styles */
+input {
+  margin-bottom: 24px;
+}
+
+input:not([type="checkbox"], [type="radio"], [type="button"]),
+select {
+  font-family: inherit;
+  height: 40px;
+  padding: 0 1em;
+  border-radius: 6px;
+  outline-color: var(--color-grey);
+  border: 1px solid var(--color-darker-grey);
+  background-color: transparent;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+textarea {
+  width: 100%;
+  font-family: inherit;
+  height: 20vh;
+  padding: 1em;
+  border-radius: 6px;
+  outline-color: var(--color-grey);
+  border: 1px solid var(--color-darker-grey);
+  background-color: transparent;
+  margin-bottom: 24px;
+}
+
+::-webkit-file-upload-button {
+  font-family: inherit;
+  margin-top: 4px;
+  height: 30px;
+  border-radius: 6px;
+  outline-color: var(--color-grey);
+  border: 1px solid var(--color-navy-blue);
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-grey);
+}
+
+::file-selector-button {
+  font-family: inherit;
+  margin-top: 4px;
+  height: 30px;
+  border-radius: 6px;
+  outline-color: var(--color-grey);
+  border: 1px solid var(--color-navy-blue);
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-grey);
+}
+
+::-webkit-file-upload-button:hover {
+  background-color: var(--color-darker-grey);
+  color: var(--color-navy-blue);
+}
+
+::file-selector-button:hover {
+  background-color: var(--color-darker-grey);
+  color: var(--color-navy-blue);
+}
+
+form label {
+  font-size: smaller;
+  margin-bottom: 0.5em;
+}
+
+::-webkit-input-placeholder {
+  color: var(--color-grey);
+}
+
+::-moz-placeholder {
+  color: var(--color-grey);
+}
+
+:-ms-input-placeholder {
+  color: var(--color-grey);
+}
+
+::-ms-input-placeholder {
+  color: var(--color-grey);
+}
+
+::placeholder {
+  color: var(--color-grey);
+}
+
 /* Header */
 header {
   background-color: var(--color-light-grey);
@@ -520,27 +681,6 @@ nav li:last-child {
   margin-bottom: 1em;
 }
 
-.hide {
-  display: none;
-}
-
-.hidden {
-  opacity: 0;
-  -webkit-transform: translateY(20px);
-      -ms-transform: translateY(20px);
-          transform: translateY(20px);
-  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  -o-transition: opacity 0.3s ease, transform 0.3s ease;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transition: opacity 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
-}
-
-.show {
-  -webkit-animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
 .step-number {
   position: relative;
   width: 60px;
@@ -596,23 +736,6 @@ form>div>div> {
   margin-bottom: 2em;
 }
 
-input {
-  margin-bottom: 24px;
-}
-
-input:not([type="checkbox"], [type="radio"], [type="button"]),
-select {
-  font-family: inherit;
-  height: 40px;
-  padding: 0 1em;
-  border-radius: 6px;
-  outline-color: var(--color-grey);
-  border: 1px solid var(--color-darker-grey);
-  background-color: transparent;
-  width: 100%;
-  margin-bottom: 24px;
-}
-
 /* Radio button cards designed with help from ChatGPT */
 .card-radio-group {
     display: -webkit-box;
@@ -664,68 +787,6 @@ select {
 
 .card-radio-group input[type="radio"]:checked + i {
     color: var(--color-primary-dark);
-}
-
-textarea {
-  width: 100%;
-  font-family: inherit;
-  height: 20vh;
-  padding: 1em;
-  border-radius: 6px;
-  outline-color: var(--color-grey);
-  border: 1px solid var(--color-darker-grey);
-  background-color: transparent;
-  margin-bottom: 24px;
-}
-
-::-webkit-file-upload-button {
-  font-family: inherit;
-  margin-top: 4px;
-  height: 30px;
-  border-radius: 6px;
-  outline-color: var(--color-grey);
-  border: 1px solid var(--color-navy-blue);
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--color-grey);
-}
-
-::file-selector-button {
-  font-family: inherit;
-  margin-top: 4px;
-  height: 30px;
-  border-radius: 6px;
-  outline-color: var(--color-grey);
-  border: 1px solid var(--color-navy-blue);
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--color-grey);
-}
-
-::-webkit-file-upload-button:hover {
-  background-color: var(--color-darker-grey);
-  color: var(--color-navy-blue);
-}
-
-::file-selector-button:hover {
-  background-color: var(--color-darker-grey);
-  color: var(--color-navy-blue);
-}
-
-.form-step button {
-  margin-bottom: 24px;
-  background-color: var(--color-white);
-}
-
-  
-.form-step button:hover {
-  background-color: var(--color-darker-grey);
-  color: var(--color-navy-blue);
-}
-
-form label {
-  font-size: smaller;
-  margin-bottom: 0.5em;
 }
 
 /* Checkbox styles, designed with help from ChatGPT */
@@ -838,56 +899,6 @@ form>div:not(.btn-group) {
   animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(10%);
-    transform: translateY(10%);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(10%);
-    transform: translateY(10%);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-
-@media(prefers-reduced-motion) {
-  form>div:not(.btn-group) {
-    -webkit-animation: none;
-    animation: none;
-  }
-  .hidden {
-    -webkit-transition: none;
-    -o-transition: none;
-    transition: none;
-  }
-  .show {
-    -webkit-transition: none;
-    -o-transition: none;
-    transition: none;
-  }
-  .fadein {
-    -webkit-transition: none;
-    -o-transition: none;
-    transition: none;
-  }
-}
-
 form>div.active {
   display: block;
 }
@@ -919,26 +930,6 @@ form i {
 
 .btn-group [class*="btn-"]:hover:not(:disabled) {
   background-color: transparent;
-}
-
-::-webkit-input-placeholder {
-  color: var(--color-grey);
-}
-
-::-moz-placeholder {
-  color: var(--color-grey);
-}
-
-:-ms-input-placeholder {
-  color: var(--color-grey);
-}
-
-::-ms-input-placeholder {
-  color: var(--color-grey);
-}
-
-::placeholder {
-  color: var(--color-grey);
 }
 
 /* Footer */
