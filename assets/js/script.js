@@ -240,38 +240,6 @@ const costs = {
   }
 };
 
-/**
- * Condition Coefficients
- * Multipliers applied to base min/max service totals
- */
-const coefficients = {
-  soilType: {
-    sand: 1.0,
-    loam: 1.05,
-    clay: 1.15,
-    rocky: 1.25,
-    unknown: 1.1
-  },
-  terrain: {
-    flat: 1.0,
-    slope: 1.05,
-    complex: 1.15,
-    terraced: 1.15 // treated same as complex for MVP
-  },
-  groundwater: {
-    low: 1.0,
-    medium: 1.05,
-    high: 1.15,
-    unknown: 1.0
-  },
-  access: {
-    good: 1.0,
-    fair: 1.05,
-    limited: 1.1,
-    narrow: 1.1 // same as limited for MVP
-  }
-};
-
 // Start section
 const howManyWorksites = document.querySelector('.card-radio-group');
 howManyWorksites.addEventListener('change', howManyWorksitesChange);
@@ -318,10 +286,6 @@ function addWorksite() {
 
   const worksite = {
     name: "",
-    terrain: "",
-    soilType: "",
-    groundwater: "",
-    access: "",
     services: {
       excavation: false,
       pilingPerPile: false,
