@@ -69,6 +69,17 @@ nextButton.addEventListener('click', () => {
     }
   });
 
+   if (!allFilled) {
+    // Open all the accordions that contain empty fields
+    accordionsToOpen.forEach(accordion => {
+      accordion.classList.add("active-accordion");
+      const panel = accordion.nextElementSibling;
+      panel.style.display = "block";
+    });
+    alert("Please fill all required fields before proceeding.");
+    return; // Stop form from moving to next step
+  };
+
   // Additional validation for services form
   if (currentForm.classList.contains('form-three')) {
     // Check if at least one service checkbox is checked, helped by Copilot
@@ -90,34 +101,14 @@ nextButton.addEventListener('click', () => {
     }
   }
 
-  if (!allFilled) {
-    // Open all the accordions that contain empty fields
-    accordionsToOpen.forEach(accordion => {
-      accordion.classList.add("active-accordion");
-      const panel = accordion.nextElementSibling;
-      panel.style.display = "block";
-    });
-  }
-
   // Additional validation for contact form
-    if (currentForm.classList.contains('form-one')) {
+  if (currentForm.classList.contains('form-one')) {
     const emailInput = currentForm.querySelector('#email');
 
     // Simple email regex pattern from Stack Overflow
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!allFilled) {
-    // Open all the accordions that contain empty fields
-    accordionsToOpen.forEach(accordion => {
-      accordion.classList.add("active-accordion");
-      const panel = accordion.nextElementSibling;
-      panel.style.display = "block";
-    });
-    alert("Please fill all required fields before proceeding.");
-    return; // Stop form from moving to next step
-  }
-
-  if (!emailPattern.test(emailInput.value)) {
+    if (!emailPattern.test(emailInput.value)) {
       alert("Please enter a valid email address.");
       emailInput.style.border = '2px solid red';
       return;
@@ -885,6 +876,7 @@ function calculateTotal() {
   // Add grand total after the loop
   summaryHTML += `
         <hr>
+        <br>
         <h3>Total for All Worksites:</h3>
         <p class="total-price-range">€${totalAllMin.toFixed(2)} - €${totalAllMax.toFixed(2)}</p>
         <p><strong>Grand Total:</strong></p>
