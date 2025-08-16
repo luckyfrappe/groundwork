@@ -231,13 +231,23 @@ nav li:last-child {
   width: 100vw;
 }
 
-.hero-image {
-  -o-object-fit: cover;
-     object-fit: cover;
+/* Hero video properties was originally taken from https://www.youtube.com/watch?v=ukMPKm3cLns */
+.hero-video {
+  object-fit: cover;
   width: 100vw;
   height: 75vh;
   overflow: hidden;
   z-index: 0;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  width: 100%;
+  height: 75vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .hero-info {
@@ -255,34 +265,34 @@ nav li:last-child {
   margin: 0;
 }
 
-.hero-info>p {
-  color: var(--color-white);
+.hero-info > p {
+  color: var(--color-primary);
   font-size: 25px;
   max-width: 500px;
   margin-bottom: 20px;
 }
 
 .hero-info button {
-  background-color: var(--color-white);
-  border: 2px solid var(--color-white);
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   color: var(--color-navy-blue);
 }
 
 .hero-info button.secondary {
   background-color: transparent;
-  color: var(--color-white);
-  border: 2px solid var(--color-white);
-  margin-left: 10px;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  margin-left: 20px;
 }
 
 .hero-info button:hover {
-  background-color: var(--color-darker-grey);
-  border: 2px solid var(--color-darker-grey);
+  background-color: var(--color-primary-dark);
+  border: 2px solid var(--color-primary-dark);
 }
 
 .hero-info button.secondary:hover {
   background-color: rgba(255, 255, 255, 0.3);
-  border: 2px solid var(--color-white);
+  border: 2px solid var(--color-primary);
 }
 
 /* Reusable Cards were rewritten by a layout example from CodeSandbox */
@@ -358,7 +368,7 @@ nav li:last-child {
   padding-bottom: var(--space-page-x);
 }
 
-.card__buttons a:hover {
+.intro a:hover {
   text-decoration: underline;
 }
 
@@ -441,14 +451,13 @@ nav li:last-child {
 
 .journey button {
   background-color: var(--color-primary);
-  color: var(--color-navy-blue);
   border: 2px solid var(--color-primary);
+  color: var(--color-navy-blue);
 }
 
 .journey button:hover {
-  background-color: transparent;
-  color: var(--color-navy-blue);
-  border: 2px solid var(--color-navy-blue);
+  background-color: var(--color-primary-dark);
+  border: 2px solid var(--color-primary-dark);
 }
 
 /* Project estimate, the form layout builded using video guide from dotWebdesign */
@@ -1104,5 +1113,8 @@ footer {
 @media screen and (max-width: 1600px) {
   .hero-info {
     top: 30%;
+  }
+  .hero-video, .video-overlay {
+    height: 70vh;
   }
 }
