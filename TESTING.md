@@ -21,6 +21,9 @@ https://www.jslint.com/ originally provided 163 Warnings mostly to use " instead
 
 Further reducing number of errors by formatting all Line is longer than 80 characters. reducing number of warnings.to 24. 
 
+-deleting trailing spaces reducing numnber of errors to 20
+
+
 
 
 ### Manual Testing

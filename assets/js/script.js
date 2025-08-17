@@ -86,9 +86,9 @@ function wrapAccordions() {
   var acc = document.getElementsByClassName("accordion");
   var index;
 
-  for (index = 0; index < acc.length; index++) {
+  for (index = 0; index < acc.length; index += 1) {
     acc[index].addEventListener("click", function (event) {
-      // Prevent the button click from submitting the form 
+      // Prevent the button click from submitting the form
       // or triggering validation
       event.preventDefault();
 
@@ -171,9 +171,9 @@ nextButton.addEventListener("click", (event) => {
     });
     alert("Please fill all required fields before proceeding.");
     return; // Stop form from moving to next step
-  };
+  }
 
-  // Additional validation for services form, 
+  // Additional validation for services form,
   // Rewritten to check at least one service per worksite with Gemini by Google
   if (currentForm.classList.contains("form-three")) {
     let allSitesHaveService = false;
@@ -355,7 +355,7 @@ const costs = {
 function howManyWorksitesChange() {
   // Checks what siteCount is selected
   const selected = howManyWorksites.querySelector(
-    'input[name="siteCount"]:checked'
+    "input[name=\"siteCount\"]:checked"
   );
   // If multiple selected - add more worksite fields
   if (selected.value === "multiple") {
@@ -383,7 +383,7 @@ function addWorksite() {
   newWorksite.classList.add("worksite-field");
 
   // Add inner HTML + delete button in the same div
-  // This button allows users to add more worksite fields dynamically 
+  // This button allows users to add more worksite fields dynamically
   // Added delete button with help from ChatGPT
   newWorksite.innerHTML = `
     <label for="worksiteName">Worksite Name / Identifier <sup>*</sup></label>
@@ -428,7 +428,7 @@ function addWorksite() {
 
   project.worksites.push(worksite);
 
-  const input = newWorksite.querySelector('input[name="worksiteName"]');
+  const input = newWorksite.querySelector("input[name=\"worksiteName\"]");
   input.addEventListener("input", (e) => {
     worksite.name = e.target.value;
     updateWorksiteServices();
@@ -504,7 +504,7 @@ function updateContactDetails() {
 
   // Bind number inputs to project object
   contactForm
-    .querySelectorAll('input')
+    .querySelectorAll("input")
     .forEach((input) => {
       input.addEventListener("input", (e) => {
         const key = e.target.name;
@@ -568,7 +568,7 @@ function updateProjectDetails() {
 
   // Bind number inputs to project object
   projectDetailsForm
-    .querySelectorAll('select, input[type="text"], input[type="file"]')
+    .querySelectorAll("select, input[type=\"text\"], input[type=\"file\"]")
     .forEach((input) => {
       input.addEventListener("input", (e) => {
         const key = e.target.name;
@@ -641,7 +641,7 @@ function updateWorksiteServices() {
     // Add event listeners to link checkboxes with the current site's services
     // code from ChatGPT
     worksiteServices
-      .querySelectorAll('input[type="checkbox"]')
+      .querySelectorAll("input[type=\"checkbox\"]")
       .forEach((checkbox) => {
         checkbox.addEventListener("change", (e) => {
           site.services[e.target.value] = e.target.checked;
@@ -869,7 +869,7 @@ function updateWorksiteSpecifications() {
 
     // Bind number inputs to project object
     worksiteSpecs
-      .querySelectorAll('input[type="number"], textarea')
+      .querySelectorAll("input[type=\"number\"], textarea")
       .forEach((input) => {
         input.addEventListener("input", (e) => {
           const key = e.target.name;
