@@ -6,24 +6,24 @@
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('show');
+      entry.target.classList.add("show");
     } else {
-      entry.target.classList.remove('show');
+      entry.target.classList.remove("show");
     }
   });
 });
 
-const hiddenElements = document.querySelectorAll('.hidden');
+const hiddenElements = document.querySelectorAll(".hidden");
 hiddenElements.forEach((el) => observer.observe(el));
 
 // Navigation buttons and progress indicators
-const nextButton = document.querySelector('.btn-next');
-const prevButton = document.querySelector('.btn-prev');
-const submitButton = document.querySelector('.btn-submit');
+const nextButton = document.querySelector(".btn-next");
+const prevButton = document.querySelector(".btn-prev");
+const submitButton = document.querySelector(".btn-submit");
 const steps = document.querySelectorAll(".step");
 const form_steps = document.querySelectorAll(".form-step");
-const howManyWorksites = document.querySelector('.card-radio-group');
-const addSiteBtn = document.getElementById('addSiteBtn');
+const howManyWorksites = document.querySelector(".card-radio-group");
+const addSiteBtn = document.getElementById("addSiteBtn");
 
 // Active step counter for progress bar and navigation
 let active = 1;
@@ -36,7 +36,7 @@ let active = 1;
  * Toggles the sidebar visibility to "flex".
  */
 function showSidebar() {
-  const sidebar = document.querySelector('.sidebar');
+  const sidebar = document.querySelector(".sidebar");
   sidebar.style.display = "flex";
 }
 
@@ -44,7 +44,7 @@ function showSidebar() {
  * Toggles the sidebar visibility to "none".
  */
 function hideSidebar() {
-  const sidebar = document.querySelector('.sidebar');
+  const sidebar = document.querySelector(".sidebar");
   sidebar.style.display = "none";
 }
 
@@ -54,12 +54,12 @@ function hideSidebar() {
  */
 function updatedProgressBar() {
   // Update the progress bar width, suggested by Copilot
-  const progressBarFill = document.querySelector('.progress-bar-fill');
+  const progressBarFill = document.querySelector(".progress-bar-fill");
   progressBarFill.style.width = `${(active / steps.length) * 100}%`;
 }
 
 /**
- * Controls the disabled state of the 'Next' and 'Previous' buttons
+ * Controls the disabled state of the "Next" and "Previous" buttons
  * based on the current step.
  */
 function buttonControls() {
@@ -107,16 +107,16 @@ function wrapAccordions() {
 }
 
 /**
- * Ensures the 'Delete' button on the first worksite field is
+ * Ensures the "Delete" button on the first worksite field is
  * hidden if it's the only one.
  */
 function checkTheFirstDeleteButton() {
-  const worksiteFields = document.querySelector('.worksite-fields');
-  const deleteBtn = worksiteFields.querySelector('.delete-worksite-btn');
+  const worksiteFields = document.querySelector(".worksite-fields");
+  const deleteBtn = worksiteFields.querySelector(".delete-worksite-btn");
   if (worksiteFields.children.length === 1) {
-    deleteBtn.classList.add('hide');
+    deleteBtn.classList.add("hide");
   } else {
-    deleteBtn.classList.remove('hide');
+    deleteBtn.classList.remove("hide");
   }
   return project.worksites;
 }
@@ -127,34 +127,34 @@ function checkTheFirstDeleteButton() {
 
 // Event listener for the "Next" button click
 
-nextButton.addEventListener('click', (event) => {
+nextButton.addEventListener("click", (event) => {
   event.preventDefault(); // Prevent default form submission
-  let currentForm = document.querySelector('.form-step.active');
-  let currentStep = document.querySelector('.step.active');
+  let currentForm = document.querySelector(".form-step.active");
+  let currentStep = document.querySelector(".step.active");
   let nextSiblingForm = currentForm.nextElementSibling;
   let nextStep = currentStep.nextElementSibling;
 
-  const requiredFields = currentForm.querySelectorAll('input[required], select[required], textarea[required]');
+  const requiredFields = currentForm.querySelectorAll("input[required], select[required], textarea[required]");
   let allFilled = true;
 
   // An array to store unique accordion buttons that need to be opened, debugged with Gemini by Google
   const accordionsToOpen = new Set();
 
   requiredFields.forEach(input => {
-    if (input.value.trim() === '') {
+    if (input.value.trim() === "") {
       allFilled = false;
-      input.style.border = '2px solid red';
+      input.style.border = "2px solid red";
 
       // Find the parent accordion button and add it to the set
-      let parentAccordion = input.closest('.specifications-accordions');
+      let parentAccordion = input.closest(".specifications-accordions");
       if (parentAccordion) {
-        let accordionButton = parentAccordion.querySelector('.accordion');
+        let accordionButton = parentAccordion.querySelector(".accordion");
         if (accordionButton) {
           accordionsToOpen.add(accordionButton);
         }
       }
     } else {
-      input.style.border = '';
+      input.style.border = "";
     }
   });
 
@@ -170,7 +170,7 @@ nextButton.addEventListener('click', (event) => {
   };
 
   // Additional validation for services form, rewritten to check at least one service per worksite with Gemini by Google
-  if (currentForm.classList.contains('form-three')) {
+  if (currentForm.classList.contains("form-three")) {
 
     let allSitesHaveService = false;
     for (const site of project.worksites) {
@@ -181,7 +181,7 @@ nextButton.addEventListener('click', (event) => {
 
       // Check if any service is selected for the current site
       for (const service in site.services) {
-        if (service !== 'rush' && site.services[service]) {
+        if (service !== "rush" && site.services[service]) {
           atLeastOneChecked = true;
           break;
         }
@@ -196,29 +196,29 @@ nextButton.addEventListener('click', (event) => {
   }
 
   // Additional validation for contact form
-  if (currentForm.classList.contains('form-one')) {
-    const emailInput = currentForm.querySelector('#email');
+  if (currentForm.classList.contains("form-one")) {
+    const emailInput = currentForm.querySelector("#email");
 
     // Simple email regex pattern from Stack Overflow
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailPattern.test(emailInput.value)) {
       alert("Please enter a valid email address.");
-      emailInput.style.border = '2px solid red';
+      emailInput.style.border = "2px solid red";
       return;
     } else {
-      emailInput.style.border = '';
+      emailInput.style.border = "";
     }
   }
 
-  if (nextSiblingForm && nextSiblingForm.classList.contains('form-step')) {
-    currentForm.classList.remove('active');
-    currentStep.classList.remove('active');
-    nextSiblingForm.classList.add('active');
-    nextStep.classList.add('active');
+  if (nextSiblingForm && nextSiblingForm.classList.contains("form-step")) {
+    currentForm.classList.remove("active");
+    currentStep.classList.remove("active");
+    nextSiblingForm.classList.add("active");
+    nextStep.classList.add("active");
     active++;
     updatedProgressBar()
-    if (nextSiblingForm.classList.contains('summaryForm')) {
+    if (nextSiblingForm.classList.contains("summaryForm")) {
       updateContactSection();
       updateDetailsSection();
       calculateTotal();
@@ -228,17 +228,17 @@ nextButton.addEventListener('click', (event) => {
 })
 
 // Event listener for the "Previous" button click
-prevButton.addEventListener('click', () => {
-  let currentForm = document.querySelector('.form-step.active');
-  let currentStep = document.querySelector('.step.active');
+prevButton.addEventListener("click", () => {
+  let currentForm = document.querySelector(".form-step.active");
+  let currentStep = document.querySelector(".step.active");
   let prevSiblingForm = currentForm.previousElementSibling;
   let prevStep = currentStep.previousElementSibling;
 
-  if (prevSiblingForm && prevSiblingForm.classList.contains('form-step')) {
-    currentForm.classList.remove('active');
-    currentStep.classList.remove('active');
-    prevSiblingForm.classList.add('active');
-    prevStep.classList.add('active');
+  if (prevSiblingForm && prevSiblingForm.classList.contains("form-step")) {
+    currentForm.classList.remove("active");
+    currentStep.classList.remove("active");
+    prevSiblingForm.classList.add("active");
+    prevStep.classList.add("active");
     active--;
     updatedProgressBar()
   }
@@ -246,13 +246,13 @@ prevButton.addEventListener('click', () => {
 });
 
 // Event listener for the "Add Site" button
-addSiteBtn.addEventListener('click', addWorksite);
+addSiteBtn.addEventListener("click", addWorksite);
 
 // Event listener for the "siteCount" radio buttons
-howManyWorksites.addEventListener('change', howManyWorksitesChange);
+howManyWorksites.addEventListener("change", howManyWorksitesChange);
 
 // Event listener for the "consent" checkbox
-document.querySelector('#consent').addEventListener('change', (e) => {
+document.querySelector("#consent").addEventListener("change", (e) => {
   e.preventDefault();
   project.contact[e.target.value] = e.target.checked;
 });
@@ -267,17 +267,17 @@ document.querySelector('#consent').addEventListener('change', (e) => {
  */
 const project = {
   contact: {
-    fullName: '',
-    companyName: '',
-    email: '',
-    phone: '',
+    fullName: "",
+    companyName: "",
+    email: "",
+    phone: "",
     consent: false
   },
   details: {
-    projectType: '',
-    projectLocation: '',
-    projectReference: '',
-    siteUpload: ''
+    projectType: "",
+    projectLocation: "",
+    projectReference: "",
+    siteUpload: ""
   },
   worksites: []
 };
@@ -350,13 +350,13 @@ function howManyWorksitesChange() {
   // Checks what siteCount is selected
   const selected = howManyWorksites.querySelector('input[name="siteCount"]:checked');
   // If multiple selected - add more worksite fields
-  if (selected.value === 'multiple') {
-    addSiteBtn.classList.remove('hide');
+  if (selected.value === "multiple") {
+    addSiteBtn.classList.remove("hide");
     addWorksite(); // Add the first worksite field automatically
-  } else if (selected.value === 'single') {
-    addSiteBtn.classList.add('hide');
+  } else if (selected.value === "single") {
+    addSiteBtn.classList.add("hide");
     // If single selected - remove all but the first worksite field
-    const worksiteFields = document.querySelector('.worksite-fields');
+    const worksiteFields = document.querySelector(".worksite-fields");
     const worksiteFieldsArray = Array.from(worksiteFields.children);
     worksiteFieldsArray.slice(1).forEach(field => field.remove());
     checkTheFirstDeleteButton();
@@ -368,11 +368,11 @@ function howManyWorksitesChange() {
  * data object to the project.
  */
 function addWorksite() {
-  const worksiteFields = document.querySelector('.worksite-fields');
+  const worksiteFields = document.querySelector(".worksite-fields");
 
   // Create a new worksite container
-  const newWorksite = document.createElement('div');
-  newWorksite.classList.add('worksite-field');
+  const newWorksite = document.createElement("div");
+  newWorksite.classList.add("worksite-field");
 
   // Add inner HTML + delete button in the same div
   // This button allows users to add more worksite fields dynamically, added delete button with help from ChatGPT
@@ -421,8 +421,8 @@ function addWorksite() {
   });
 
   // Delete button logic
-  const deleteBtn = newWorksite.querySelector('.delete-worksite-btn');
-  deleteBtn.addEventListener('click', () => {
+  const deleteBtn = newWorksite.querySelector(".delete-worksite-btn");
+  deleteBtn.addEventListener("click", () => {
     // Remove from project array 
     const index = project.worksites.indexOf(worksite);
     if (index > -1) {
@@ -468,7 +468,7 @@ function updateContactDetails() {
 
   // Bind number inputs to project object
   contactForm.querySelectorAll('input[type="number"], input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
-    input.addEventListener('input', (e) => {
+    input.addEventListener("input", (e) => {
       const key = e.target.name;
       project.contact[key] = e.target.value;
     });
@@ -515,7 +515,7 @@ function updateProjectDetails() {
 
   // Bind number inputs to project object
   projectDetailsForm.querySelectorAll('select, input[type="text"], input[type="file"]').forEach(input => {
-    input.addEventListener('input', (e) => {
+    input.addEventListener("input", (e) => {
       const key = e.target.name;
       project.details[key] = e.target.value;
     });
@@ -533,8 +533,8 @@ function updateWorksiteServices() {
                             <p>Please select the services you require for each worksite.</p>`;
   for (const site of project.worksites) {
     // Create a new worksite container
-    const worksiteServices = document.createElement('div');
-    worksiteServices.classList.add('services-form-cards');
+    const worksiteServices = document.createElement("div");
+    worksiteServices.classList.add("services-form-cards");
 
     // Add inner HTML + delete button in the same div
     worksiteServices.innerHTML =
@@ -580,9 +580,9 @@ function updateWorksiteServices() {
             Rush Delivery
         </label>`;
 
-    // Add event listeners to link checkboxes with the current site's services, code from ChatGPT
+    // Add event listeners to link checkboxes with the current site"s services, code from ChatGPT
     worksiteServices.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-      checkbox.addEventListener('change', (e) => {
+      checkbox.addEventListener("change", (e) => {
         site.services[e.target.value] = e.target.checked;
         updateWorksiteSpecifications();
       });
@@ -607,8 +607,8 @@ function updateWorksiteSpecifications() {
     <p>Enter details for the services you selected.</p>`;
 
   for (const site of project.worksites) {
-    const worksiteSpecs = document.createElement('div');
-    worksiteSpecs.classList.add('specifications-accordions');
+    const worksiteSpecs = document.createElement("div");
+    worksiteSpecs.classList.add("specifications-accordions");
 
     let specsHTML = `
       <button class="accordion">Specs for Worksite: ${site.name}</button>
@@ -694,7 +694,7 @@ function updateWorksiteSpecifications() {
 
     // Bind number inputs to project object
     worksiteSpecs.querySelectorAll('input[type="number"], textarea').forEach(input => {
-      input.addEventListener('input', (e) => {
+      input.addEventListener("input", (e) => {
         const key = e.target.name;
         site.specs[key] = e.target.value;
       });
@@ -711,15 +711,15 @@ function updateWorksiteSpecifications() {
  * Populates the summary form with user-provided contact info.
  */
 function updateContactSection() {
-  const contactSection = document.querySelector('#summaryContact');
+  const contactSection = document.querySelector("#summaryContact");
 
   // Update contact information
   contactSection.innerHTML = `
     <h3>Contact Information</h3>
     <p>Name: ${project.contact.fullName}</p>
-    <p>Company: ${project.contact.companyName || 'N/A'}</p>
+    <p>Company: ${project.contact.companyName || "N/A"}</p>
     <p>Email: ${project.contact.email}</p>
-    <p>Phone: ${project.contact.phone || 'N/A'}</p>
+    <p>Phone: ${project.contact.phone || "N/A"}</p>
   `;
 }
 
@@ -728,15 +728,15 @@ function updateContactSection() {
  * @description Populates the summary form with user-provided project details.
  */
 function updateDetailsSection() {
-  const detailsSection = document.querySelector('#summaryDetails');
+  const detailsSection = document.querySelector("#summaryDetails");
 
   // Update project details
   detailsSection.innerHTML = `
     <h3>Project Details</h3>
     <p>Project Type: ${project.details.projectType}</p>
     <p>Location: ${project.details.projectLocation}</p>
-    <p>Project Reference: ${project.details.projectReference || 'N/A'}</p>
-    <p>Files: ${project.details.siteUpload || 'None'}</p>
+    <p>Project Reference: ${project.details.projectReference || "N/A"}</p>
+    <p>Files: ${project.details.siteUpload || "None"}</p>
   `;
 }
 
@@ -935,9 +935,9 @@ const summaryForm = document.querySelector(".summaryForm");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // stop the form from submitting
-  const consentCheckbox = document.getElementById('consent');
+  const consentCheckbox = document.getElementById("consent");
   if (!consentCheckbox.checked) {
-    alert('Please agree to the terms and conditions.');
+    alert("Please agree to the terms and conditions.");
     return; // Stop the form submission
   }
 
