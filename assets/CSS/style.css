@@ -94,7 +94,7 @@ a {
 }
 
 /* General Element & Utility Styles */
-button {
+.btn {
   border-radius: 6px;
   padding: 12px 24px;
   font-weight: 600;
@@ -102,6 +102,10 @@ button {
   -webkit-transition: background-color 0.3s, border-color 0.3s ease-out;
   -o-transition: background-color 0.3s, border-color 0.3s ease-out;
   transition: background-color 0.3s, border-color 0.3s ease-out;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  color: var(--color-navy-blue);
+  margin-bottom: 24px;
 }
 
 .container {
@@ -397,7 +401,8 @@ nav li:last-child {
 
 /* Hero video properties was originally taken from https://www.youtube.com/watch?v=ukMPKm3cLns */
 .hero-video {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100vw;
   height: 75vh;
   overflow: hidden;
@@ -436,36 +441,25 @@ nav li:last-child {
   margin-bottom: 20px;
 }
 
-.hero-info button,
-.home {
-  background-color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  color: var(--color-navy-blue);
-}
-
-.home {
-  margin-bottom: 24px;
-}
-
 .not-found {
   padding-top: 30vh;
   height: 80vh;
 }
 
-.hero-info button.secondary {
+.hero-info .btn.secondary {
   background-color: transparent;
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
   margin-left: 20px;
 }
 
-.hero-info button:hover,
+.hero-info .btn:hover,
 .home:hover {
   background-color: var(--color-primary-dark);
   border: 2px solid var(--color-primary-dark);
 }
 
-.hero-info button.secondary:hover {
+.hero-info .btn.secondary:hover {
   background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid var(--color-primary);
 }
@@ -624,15 +618,15 @@ nav li:last-child {
   color: var(--color-navy-blue);
 }
 
-.journey button {
+.journey .btn {
   background-color: var(--color-primary);
-  border: 2px solid var(--color-primary);
   color: var(--color-navy-blue);
+  padding-bottom: 12px;
+  margin-bottom: 0;
 }
 
-.journey button:hover {
+.journey .btn:hover {
   background-color: var(--color-primary-dark);
-  border: 2px solid var(--color-primary-dark);
 }
 
 /* Project estimate, the form layout builded using video guide from dotWebdesign */
@@ -739,9 +733,7 @@ form>div p {
   color: var(--color-grey);
 }
 
-;
-
-form>div>div> {
+form>div>div>input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -938,6 +930,15 @@ form i,
 
 .btn-group [class*="btn-"] {
   background-color: var(--color-primary);
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, border-color 0.3s ease-out;
+  -o-transition: background-color 0.3s, border-color 0.3s ease-out;
+  transition: background-color 0.3s, border-color 0.3s ease-out;
+  color: var(--color-navy-blue);
+  margin-bottom: 24px;
 }
 
 .btn-group [class*="btn-"]:disabled {
@@ -955,6 +956,19 @@ form i,
 
 .form-box button {
   margin-bottom: 24px;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, border-color 0.3s ease-out;
+  -o-transition: background-color 0.3s, border-color 0.3s ease-out;
+  transition: background-color 0.3s, border-color 0.3s ease-out;
+  color: var(--color-navy-blue);
+  background-color: var(--color-light-grey);
+}
+
+.summaryForm {
+  min-height: 40vh;
 }
 
 /* Footer */
@@ -1074,8 +1088,10 @@ footer {
     grid-column-end: span 12;
   }
 
-  .hero-info button {
-    width: 100%;
+  .hero-info .btn {
+    text-align: center;
+    display: block; 
+    width: 100%;   
     margin-bottom: 10px;
   }
 

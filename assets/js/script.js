@@ -599,42 +599,42 @@ function updateWorksiteServices() {
       <p>Services for Worksite: ${site.name}</p>
       <label>
         <input type="checkbox" name="services" value="excavation" />
-        <i class="fas fa-digging"></i>
+        <i class="fas fa-digging" aria-hidden="true"></i>
         Excavation & Site Prep
       </label>
       <label>
         <input type="checkbox" name="services" value="pilingPerPile" />
-        <i class="fas fa-hammer"></i>
+        <i class="fas fa-hammer" aria-hidden="true"></i>
         Piling / Foundation
       </label>
       <label>
         <input type="checkbox" name="services" value="concreteSlabs" />
-        <i class="fas fa-cube"></i>
+        <i class="fas fa-cube" aria-hidden="true"></i>
         Concrete Slabs / Foundation
       </label>
       <label>
         <input type="checkbox" name="services" value="shoring" />
-        <i class="fas fa-building"></i>
+        <i class="fas fa-building" aria-hidden="true"></i>
         Shoring / Retaining Walls
       </label>
       <label>
         <input type="checkbox" name="services" value="rockBlasting" />
-        <i class="fas fa-mountain"></i>
+        <i class="fas fa-mountain" aria-hidden="true"></i>
         Rock Breaking / Blasting
       </label>
       <label>
         <input type="checkbox" name="services" value="drainage" />
-        <i class="fas fa-water"></i>
+        <i class="fas fa-water" aria-hidden="true"></i>
         Drainage System
       </label>
       <label>
         <input type="checkbox" name="services" value="frostInsulation" />
-        <i class="fas fa-snowflake"></i>
+        <i class="fas fa-snowflake" aria-hidden="true"></i>
         Frost Insulation
       </label>
       <label>
         <input type="checkbox" name="services" value="rush" />
-        <i class="fas fa-bolt"></i>
+        <i class="fas fa-bolt" aria-hidden="true"></i>
         Rush Delivery
       </label>
     `;
@@ -1194,16 +1194,15 @@ form.addEventListener("submit", function (event) {
 
   summaryForm.innerHTML = `
     <h2>
-      <i class="fas fa-check-circle"></i> Thank you for your submission!
+      <i class="fas fa-check-circle" aria-hidden="true"></i> Thank you for your submission!
     </h2>
     <p>
       Your data has been received successfully.
     </p>
-    <button class="home">Go back to home page</button>
+    <a href="index.html" class="btn">
+      Return to Homepage <i class="fa-solid fa-home" aria-hidden="true"></i>
+    </a>
   `;
-  document.querySelector(".home").addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
   prevButton.disabled = true;
   nextButton.disabled = true;
   submitButton.disabled = true;
