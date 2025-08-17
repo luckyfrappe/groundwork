@@ -104,7 +104,11 @@ This website provides a seamless and professional experience for obtaining groun
 
 **Responsive Navigation Bar:** The top navigation bar ensures intuitive site navigation. It features the Groundwork Solutions Ltd. branding and essential links. For an optimal user experience on mobile, the navigation condenses into a universally recognized burger menu.
 
+<!-- Image placeholder: Navigation bar screenshot -->
+
 **Footer:** A functional footer houses social media icon links (e.g., YouTube, Facebook, Twitter, LinkedIn, Instagram), and privacy policy information. Icons are chosen for their universal recognition and minimalist design.
+
+<!-- Image placeholder: Footer bar screenshot -->
 
 **Animations**  
 - On all pages, some elements appear with a smooth animation when you scroll to them.  
@@ -114,6 +118,8 @@ This website provides a seamless and professional experience for obtaining groun
 - The sidebar menu can be opened and closed.  
 - Clicking on any link in the sidebar automatically closes it.  
 - This behavior is the same on every page.
+
+<!-- Image placeholder: Sidebar -->
 
 ### Page-Specific Features
 
@@ -125,9 +131,13 @@ This website provides a seamless and professional experience for obtaining groun
 - Services teaser with summaries.
 - Customer journey and contact section.
 
+<!-- Image placeholder: Hero section screenshot -->
+
 **Estimate Form (Multi-Step)**
 
 The form is designed as a guided, step-by-step process with validation, progress tracking, and dynamic fields.
+
+<!-- Image placeholder: Step-by-step form screenshot -->
 
 **Step 1 – Worksite Overview**  
 - Start by creating at least one worksite.  
@@ -135,15 +145,21 @@ The form is designed as a guided, step-by-step process with validation, progress
 - Each worksite will later hold its own set of required services and specifications.
 - Validates name(s) for worksites is intered before proceeding. 
 
+<!-- Image placeholder: Step 1 screenshot -->
+
 **Step 2 – Contact Information**  
 - Collects name, company (optional), email, and phone number (optional).  
 - Validates email format before proceeding.
 - Validates name is not just a space. 
 
+<!-- Image placeholder: Step 2 screenshot -->
+
 **Step 3 – Project Basics**  
 - Captures project type (dropdown), location, and internal reference (optional).  
 - Allows optional upload of a project plan or photo.
 - Validates input on required fields before proceeding.
+
+<!-- Image placeholder: Step 3 screenshot -->
 
 **Step 4 – Required Services**  
 - Each worksite has its own services checklist.  
@@ -158,6 +174,8 @@ The form is designed as a guided, step-by-step process with validation, progress
   - Rush Delivery (+20% surcharge applied later) - can not be selected as service on it's own. 
 - At least one service must be selected per worksite.
 
+<!-- Image placeholder: Step 4 screenshot -->
+
 **Step 5 – Specifications**  
 - Expands into detailed input fields based on the services chosen.  
 - Uses accordion panels for each worksite.  
@@ -168,12 +186,16 @@ The form is designed as a guided, step-by-step process with validation, progress
   - Drainage, frost insulation, shoring, and rock blasting → lengths/areas/volumes as required  
 - Always includes optional soil volume, material breakdown, and notes.
 
+<!-- Image placeholder: Step 5 screenshot -->
+
 **Step 6 – Summary & Submission**  
 - Displays collected **Contact Info** and **Project Details**  
 - Shows a **Worksite-by-Worksite Cost Breakdown**, including min–max ranges  
 - Applies rush surcharge if selected  
 - Updates totals dynamically before submission
 - Includes a mandatory consent checkbox.
+
+<!-- Image placeholder: Step 6 screenshot -->
 
 **Additional Features**  
 - **Progress Bar:** Updates as the user moves through the steps  
@@ -188,6 +210,8 @@ The form is designed as a guided, step-by-step process with validation, progress
 - The header and sidebar navigation are still available, so users can access other sections of the site.  
 - The footer provides contact information, office hours, and social media links, keeping the user connected even on an error page.  
 - Overall, it keeps the site’s branding consistent and helps users find their way back without frustration.
+
+<!-- Image placeholder: 404 page screenshot -->
 
 ### Future Implementations
 

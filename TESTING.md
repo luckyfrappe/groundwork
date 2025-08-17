@@ -13,11 +13,24 @@ Testing for this project was a continuous and integral part of the development p
     * [Known Bugs](#known-bugs)  
     * [Solved Bugs](#solved-bugs)  
 
+### User Stories & Test Cases
+
+| User Story | Test Case | Expected Outcome | Pass/Fail |
+|------------|-----------|-----------------|-----------|
+| As a first-time visitor, I want the site to be easy to access and navigate. | 1. Access the live site from a desktop, tablet, and mobile device.2. Test navigation links (e.g., in the header and footer) across all devices. | The site displays correctly and navigation is simple to use on all devices.The navigation links function as intended. | Pass |
+| As a potential client, I want to quickly get a cost estimate for my groundwork project. | 1. Navigate to the multi-step form and enter project details.2. Fill out all required fields and progress through each step.3. Verify the final summary page. | The form accepts and validates input correctly.The final summary page displays a comprehensive cost breakdown and a total estimated price range. | Pass | 
+| As a potential client, I want to understand what services are offered. | 1. Navigate to the Services section on the landing page.2. Read the titles and descriptions provided for each service. | The services section is clearly visible on the landing page.The titles and descriptions accurately explain the services offered by the company. | Pass |
+| As a decision-maker, I want to know Groundwork Solutions Ltd. is reliable. | 1. Access the "About Us" section on the landing page.2. Review the content detailing the company's approach and expertise. | The "About Us" section is easy to find.The content provides a clear and professional overview that inspires confidence in the company. | Pass |
+| As a lead, I want to easily reach out for a finalized quote. | 1. Complete the multi-step form and reach the summary page.2. Locate the final Call to Action (CTA) and the contact information section. | A clear CTA is present on the summary page to submit details.A visible contact section with essential information is easily accessible. | Pass |
+| As a general and returning visitor, I want to quickly find contact details. | 1. From any page on the site, scroll to the bottom.2. Locate the contact information section and the social media links. | The contact information is easily visible in the footer. Social media links are present and correctly linked. | Pass |
+
 ### Automated Testing
 
 Automated tools were used throughout the project to ensure code quality and accessibility standards were met. This was a critical step in professionalizing the codebase.
 
 **Google Lighthouse:**
+
+<!-- Example screenshot of Lighthouse report for each section -->
 
 | Page          | Performance | Accessibility | Best Practices | SEO | Notes               |
 |---------------|------------|---------------|----------------|-----|-------------------|
@@ -27,9 +40,15 @@ Automated tools were used throughout the project to ensure code quality and acce
 
 HTML & CSS Validation: The website's code was run through the official W3C validators to ensure it adheres to web standards. The HTML validator was used to check for proper syntax, correct nesting of elements, and semantic correctness. Similarly, the CSS validator was used to verify CSS syntax, property usage, and vendor prefix issues.
 
-JSLint & JSHint: The JavaScript code was rigorously checked using JSLint and JSHint to enforce coding standards and identify potential errors. Initially, over 160 warnings were flagged, primarily for minor formatting issues like single quotes and line length. These were systematically fixed. The number of warnings was reduced to just nine by standardizing quotes, shortening lines, and deleting trailing spaces. The final few warnings were addressed by refining function placement and resolving unnecessary semicolons.
+<!-- Example of W3C HTML & CSS validator reports -->
+
+JSLint: The JavaScript code was rigorously checked using JSLint and JSHint to enforce coding standards and identify potential errors. Initially, over 160 warnings were flagged, primarily for minor formatting issues like single quotes and line length. These were systematically fixed. The number of warnings was reduced to just nine by standardizing quotes, shortening lines, and deleting trailing spaces. The final few warnings were addressed by refining function placement and resolving unnecessary semicolons.
+
+<!-- Screenshot of JSLint/JSHint output -->
 
 Autoprefixer: This tool was used to automatically add vendor prefixes to the CSS properties, ensuring the website's styles render correctly across a wide range of browsers. This step was essential for maintaining a consistent look and feel, even for older browser versions.
+
+<!-- Screenshot of WAVE accessibility testing results -->
 
 WAVE Accessibility Tool: The website was checked with the WAVE tool to identify accessibility issues. A single, acknowledged warning for redundant links was noted. This warning was deemed acceptable as the multiple CTAs intentionally point to the same URL in different sections to guide user flow.
 
@@ -139,7 +158,7 @@ Feature Functionality: Every interactive element and feature was manually tested
 
 ## BUGS
 
-Many bugs were identified and successfully resolved throughout the development process. Here is a summary of key issues and their solutions, highlighting the problem-solving journey.
+Almost all bugs were identified and successfully resolved throughout the development process. Here is a summary of key issues and their solutions, highlighting the problem-solving journey.
 
 ### Known Bugs
 
