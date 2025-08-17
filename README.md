@@ -1,12 +1,14 @@
 # Groundwork Solutions
 
-This website provides an instant preliminary cost estimate for construction groundwork projects, specifically for Groundwork Solutions Ltd. The primary goal is to streamline the initial client interaction by offering a transparent and efficient way for potential customers to get an early understanding of project costs.
+This website provides an instant preliminary cost estimate for construction groundwork projects, specifically for **Groundwork Solutions Ltd.** The primary goal is to streamline the initial client interaction by offering a transparent and efficient way for potential customers to get an early understanding of project costs.
 
-<img src="assets/images/responsive.png" alt="Mockup image of Groundwork Solutions Ltd. website on different devices">
+![Mockup image of Groundwork Solutions Ltd. website on different devices](assets/images/responsive.png)
 
-<a href="https://luckyfrappe.github.io/groundwork/" aria-label="Groundwork Solutions Ltd. website opens in a new window on Github Pages">View Groundwork Solutions Ltd. on Github Pages</a>
+🔗 **Live site:** <https://luckyfrappe.github.io/groundwork/>
 
-## CONTENTS
+---
+
+## Contents
 
 - [User Experience (UX)](#user-experience-ux)
   - [Business Goals](#business-goals)
@@ -36,6 +38,8 @@ This website provides an instant preliminary cost estimate for construction grou
   - [Media](#media)
   - [Acknowledgments](#acknowledgments)
 
+---
+
 ## User Experience (UX)
 
 ### Business Goals
@@ -49,227 +53,263 @@ This website provides an instant preliminary cost estimate for construction grou
 
 **As a first-time visitor, I want the site to be easy to access and navigate.**
 
-- The site works seamlessly across desktop, tablet, and mobile devices.
-- Navigation is clear and simple, with a responsive layout that remains functional at all screen sizes.
+- Works seamlessly across desktop, tablet, and mobile devices.
+- Navigation is clear and simple, with a responsive layout.
 
 **As a potential client, I want to quickly get a cost estimate for my groundwork project.**
 
-- The site features an interactive, multi-step form for inputting project details.
-- A live estimation engine calculates costs based on user inputs.
-- The final step provides a service-by-service cost breakdown and a total estimated price range.
+- Features an interactive, multi-step form.
+- A live estimation engine calculates costs.
+- Provides a cost breakdown and total estimated range.
 
 **As a potential client, I want to understand what services are offered.**
 
-- A dedicated section lists the main services with clear titles and descriptions.
+- A dedicated section lists main services with clear titles and descriptions.
 
-**As a decision-maker, I want to know Groundwork Solutions Ltd. is reliable, so I can feel good about using it.**
+**As a decision-maker, I want to know the company is reliable.**
 
-- An "About Us" section detailing the company's approach and expertise.
+- "About Us" section details the company's approach and expertise.
 
-**As a lead, I want to easily reach out for a finalized quote, so I can get started.**
+**As a lead, I want to easily reach out for a finalized quote.**
 
-- A clear CTA at the end to "Send us your details for a finalized quote."
-- A visible contact section with essential company info and links.
+- Clear CTA provided at the end of the form.
+- Contact section with essential details.
 
-**As a general and returning visitor, I want to quickly find contact details, so I can reach out.**
+**As a returning visitor, I want to quickly find contact details.**
 
-- A visible contact section.
-- Footer with essential company info and links.
+- Contact information is accessible via a dedicated section and footer.
+
+---
 
 ## Design
 
 ### Color Scheme
 
-<!-- Add adobe https://color.adobe.com/create/color-wheel -->
-
-This project's design aims for a professional and clean aesthetic, utilizing a specific color palette that reflects the construction industry's robustness while maintaining a modern feel.
+Professional and clean palette reflecting the robustness of the construction industry while keeping a modern look.
 
 ### Typography
 
-<!-- Adjust - For typography, Merriweather Sans (sourced from Google Fonts) is employed for all headings, lending a distinct yet web-friendly appeal. Roboto Flex (also from Google Fonts) is used for paragraph text, ensuring readability and a professional, modern feel. -->
+- **Headings:** [Merriweather Sans](https://fonts.google.com/specimen/Merriweather+Sans)
+- **Body text:** [Roboto Flex](https://fonts.google.com/specimen/Roboto+Flex)
 
 ### Imagery
 
-Visual content, including images and videos, aims to evoke a sense of professionalism and the scale of groundwork projects. Imagery includes construction sites, heavy machinery, and relevant diagrams. Additional royalty-free images were sourced from Pexels and Unsplash. Full author credits for all assets can be found in the dedicated [Credits section](#credits) of this project.
+Visuals evoke professionalism and scale: construction sites, heavy machinery, diagrams. Images sourced from **Pexels**, **Unsplash**, and industry contacts. See [Credits](#credits).
 
 ### Wireframes
 
-<!-- Project started withour wireframes -->
+No formal wireframes created. The layout was built following guides and then customized for the project’s needs.
+
+---
 
 ## Features
 
-This website is designed to provide a seamless and professional experience for obtaining groundwork project estimates, offering a robust set of features across its key sections:
+This website provides a seamless and professional experience for obtaining groundwork estimates.
 
 ### Common to All Pages
 
-- **Responsive Navigation Bar:** Top navigation bar ensures intuitive site navigation. It features the Groundwork Solutions Ltd. branding and essential links (Home, Services, About, Contact). <!-- For an optimal user experience on mobile devices, the navigation condenses into a universally recognized burger menu, maintaining a clean interface. -->
-- **Footer:** A functional footer houses social media icon links (e.g., YouTube, Facebook, Twitter, LinkedIn, Instagram) and privacy policy information. Icons are chosen for their universal recognition and minimalist design.
+**Responsive Navigation Bar** with burger menu on mobile.
+**Footer** with social media icons and privacy info.
+
+**Animations**  
+- On all pages, some elements appear with a smooth animation when you scroll to them.  
+- When you scroll past them, the animation effect disappears.  
+
+**Sidebar Navigation**  
+- The sidebar menu can be opened and closed.  
+- Clicking on any link in the sidebar automatically closes it.  
+- This behavior is the same on every page.
 
 ### Page-Specific Features
 
 **Landing Page:**
 
-- **Hero Section:** Large hero image, intro heading, two CTA buttons.
-<!-- Add hero image -->
-- **Introduction Section:** Card layout with image + content and link to learn more.
-<!-- Add introduction image -->
-- **Articles Section:** Highlighting company mission and values through article cards.
-- **Services Teaser:** Service cards with clear titles and summaries.
-<!-- Add services image -->
-- **Customer Journey and Contact Section:** Step-by-step visual breakdown of client process from estimate to delivery.
-  <!-- Add image -->
+- Hero section with video, heading, and CTAs.
+- Introduction section with card layout.
+- Articles highlighting mission and values.
+- Services teaser with summaries.
+- Customer journey and contact section.
 
-<!-- To be created -->
-**Estimate Form (Multi-Step):**
+**Estimate Form (Multi-Step)**
 
-<!-- https://css-tricks.com/how-to-create-multi-step-forms-with-vanilla-javascript-and-css/ -->
+The form is designed as a guided, step-by-step process with validation, progress tracking, and dynamic fields.
 
-- **Step 1 of 4: Project Basics:** Gathers high-level information like project type, location, and an optional project reference.
-<!-- Add image -->
-- **Step 2 of 4: Required Services:** Allows users to select all required services via checkboxes (Excavation & Site Prep, Piling & Foundation Reinforcement, Concrete Slab / Foundation, Shoring & Retaining Walls, Rock Handling & Blasting, Drainage System, Frost Insulation, Site Setup & Project Management).
-<!-- Add image -->
-- **Step 3 of 4: Project Specifications:** Dynamically displays fields based on selected services, such as site area, excavation depth, number of piles, and drainage system length. Includes an option for users to indicate if they are unsure about the number of piles.
-<!-- Add image -->
-- **Step 4 of 4: Timeline & Contact:** Covers project urgency (Standard or Rush with a +20% fee) and captures contact details (Full Name, Company Name, Email Address, Phone Number). Includes a consent checkbox for data storage.
-<!-- Add image -->
-- **Live Estimation Engine (JavaScript Logic):** Calculates costs based on user inputs and provided price ranges for each service, including excavation volume, service costs, and a fixed site management fee. Applies a +20% surcharge for "Rush" projects.
-<!-- Add image -->
+**Step 1 – Worksite Overview**  
+- Start by creating at least one worksite.  
+- Each worksite can be **added or deleted dynamically**.  
+- Each worksite will later hold its own set of required services and specifications.
 
-- Displays a service-by-service cost breakdown.
-<!-- Add image -->
-- Shows the total estimated price range (e.g., "11.8M – 25.1M SEK").
-<!-- Add image -->
-- Includes a clear Call to Action (CTA) like: "<!-- Send us your details for a finalized quote. -->"
-<!-- Add image -->
+**Step 2 – Contact Information**  
+- Collects name, company (optional), email, and phone number.  
+- Validates email format before proceeding.  
+- Includes a mandatory consent checkbox.
+
+**Step 3 – Project Basics**  
+- Captures project type (dropdown), location, and internal reference.  
+- Allows optional upload of a site plan or photo.
+
+**Step 4 – Required Services**  
+- Each worksite has its own services checklist.  
+- Available services:  
+  - Excavation & Site Prep  
+  - Piling / Foundation  
+  - Concrete Slabs / Foundation  
+  - Shoring / Retaining Walls  
+  - Rock Breaking / Blasting  
+  - Drainage System  
+  - Frost Insulation  
+  - Rush Delivery (+20% surcharge applied later)  
+- At least one service must be selected per worksite.
+
+**Step 5 – Specifications**  
+- Expands into detailed input fields based on the services chosen.  
+- Uses accordion panels for each worksite.  
+- Examples:  
+  - Excavation → site area + excavation depth  
+  - Piling → number of piles + total pile length  
+  - Concrete slabs → area + thickness  
+  - Drainage, frost insulation, shoring, and rock blasting → lengths/areas/volumes as required  
+- Always includes optional soil volume, material breakdown, and notes.
+
+**Step 6 – Summary & Submission**  
+- Displays collected **Contact Info** and **Project Details**  
+- Shows a **Worksite-by-Worksite Cost Breakdown**, including min–max ranges  
+- Applies rush surcharge if selected  
+- Updates totals dynamically before submission
+
+**Additional Features**  
+- **Progress Bar:** Updates as the user moves through the steps  
+- **Navigation Control:** Next/Previous buttons adapt depending on step  
+- **Validation:** Required fields and at least one service per worksite must be filled before moving forward  
+- **Dynamic Sites:** Users can add or remove worksites with their own services and specifications
 
 ### Future Implementations
 
-Future implementations could include:
-
-- **Use historical project data for more accurate estimates.**
-- **Integrate a system to automatically request quotes from suppliers.**
-- **Develop an admin dashboard for Groundwork Solutions Ltd. to manage and track all quotes.**
-- **Services Page - Presents a comprehensive list of Groundwork Solutions Ltd.'s services, enhanced with appropriate images.**
-- **Articles/Portfolio Page**
-- **Contact form page.**
-- **About us page.**
-- **Blog system for industry news/articles.**
-- **Multilingual support for international users.**
-- **User login system for saving projects.**
+- Use historical data for accuracy.
+- Integrate supplier quote requests automatically.
+- Admin dashboard for quote management.
+- Dedicated “Services,” “About,” and “Articles/Portfolio” pages.
+- Blog system.
+- Multilingual support.
+- User login for saved projects.
 
 ### Accessibility Considerations
-  - **Semantic HTML:** Utilizing meaningful HTML tags to ensure proper document structure for assistive technologies.
-  - **Descriptive Alt Attributes:** All images include descriptions for screen reader users.
-  - **Color Contrast:** 
+
+- Semantic HTML for assistive tech.
+- Descriptive `alt` text for images.
+- High-contrast color choices.
+
+---
 
 ## Technologies Used
 
 ### Languages Used
 
-HTML, CSS and Javascript.
+- **HTML**
+- **CSS**
+- **JavaScript**
 
 ### Frameworks, Libraries & Programs Used
 
-- **Git:** For version control.
-- **Github:** To save and store the files for the website.
-- **Google Fonts:** Import fonts (Merriweather Sans for Headings, Roboto Flex for Paragraphs).
-- **Google Dev Tools:** Development.
-- **Font Awesome:** Import icons.
-- **FreeConvert:** To downsize and convert the hero video.
-- **Favicon.io:** To create favicon.
-- **Tiny PNG:** To downsize the images.
-- **Polypane:** To showcase the website on different devices.
-- **Autoprefixer CSS online:** Applied to add necessary vendor prefixes to CSS properties, ensuring broader browser compatibility.
-- **ChatGPT (by OpenAI):** Used for generating specific service and feature descriptions, ensuring industry relevance and authenticity in the website's content.
-- **Gemini (by Google):** Providing extensive debugging assistance and code explanations during development.
-- **ColorSpace:** Used to generate matching Color Palette 
-- https://www.jslint.com/ to validate js
+- **Git & GitHub** – Version control and hosting.
+- **Google Fonts** – Typography.
+- **Google DevTools** – Development & debugging.
+- **Font Awesome** – Icons via CDN.
+- **FreeConvert** – Video compression.
+- **Favicon.io** – Favicon generation.
+- **TinyPNG** – Image optimization.
+- **Polypane** – Responsive device previews.
+- **Autoprefixer** – Vendor prefixes for CSS.
+- **ChatGPT (OpenAI) & Gemini (Google)** – Copy assistance and debugging.
+- **ColorSpace** – Palette generation.
+- **JSLint** – JavaScript validation.
+- **Custom JS Lint API** – <https://luckyfrappe.github.io/jsapi/>
+
+---
 
 ## Deployment & Local Development
 
 <details>
-  <summary>Deployment</summary>
-  <p>
-    This project's live version is deployed using **GitHub Pages**. Follow these steps to deploy your own instance:
+<summary><strong>Deployment (GitHub Pages)</strong> — click to expand</summary>
 
-1.  **Access GitHub:** Sign in to your GitHub account.
-2.  **Navigate to Repository:** Locate the `groundwork` repository for this project.
-3.  **Open Settings:** Click on the "Settings" tab within the repository navigation.
-4.  **Go to Pages:** In the left-hand sidebar, select the "Pages" option.
-5.  **Configure Source:**
-    - Under the "Source" section, choose the `main` branch from the branch dropdown menu.
-    - Select `/(root)` as the folder from the adjacent dropdown.
-6.  **Save Changes:** Click the "Save" button. Your live site will now be accessible at the URL provided by GitHub Pages, typically `https://github.com/luckyfrappe/groundwork`.
-  </p>
+This project is deployed using **GitHub Pages**.
+
+1. Sign in to GitHub.
+2. Open the `groundwork` repository.
+3. Go to **Settings → Pages**.
+4. Under **Source**, choose branch: `main` and folder: `/ (root)`.
+5. Click **Save**.
+6. Your site will be available at: <https://luckyfrappe.github.io/groundwork/>
+
 </details>
 
-### **Local Development**
+### Local Development
 
-To get a local copy of this project up and running on your machine, you have two primary methods: Forking and Cloning.
+#### How to Fork the Repository
 
-<details>
-  <summary>How to Fork the Repository</summary>
-  <p>
-    Forking creates a personal copy of the repository in your GitHub account, allowing you to make changes without affecting the original project.
+1. Log in to GitHub.
+2. Go to [`luckyfrappe/groundwork`](https://github.com/luckyfrappe/groundwork).
+3. Click **Fork** (top right).
 
-1.  Sign In: Log in to your GitHub account.
-2.  Go to Project: Visit the `luckyfrappe/groundwork` repository.
-3.  Initiate Fork: Click the "Fork" button located in the top-right corner of the page. This will create a copy under your own GitHub profile.
-  </p>
-</details>
+#### How to Clone the Repository
 
-<details>
-  <summary>How to Clone the Repository</summary>
-  <p>
-    Cloning downloads a full copy of the repository to your local computer, ready for development.
+1. Open your fork or the original repository.
+2. Click **Code → Copy URL** (HTTPS/SSH/CLI).
+3. In terminal, navigate to your desired folder:
 
-1. Access GitHub: Ensure you are logged into your GitHub account.
-2. Locate Repository: Navigate to the `luckyfrappe/groundwork` repository (or your forked version).
-3. Copy Clone URL: Click on the green "< > Code" button. Choose your preferred method (HTTPS, SSH, or GitHub CLI) and copy the provided URL.
-4. Open Terminal: Launch your terminal or command prompt (e.g., Git Bash, PowerShell, macOS Terminal).
-5. Navigate to Desired Directory: Change your current working directory to where you want to store the project.
-   Example: `cd Desktop/Projects`
-6. Execute Clone Command: Type `git clone` followed by pasting the URL you copied in step 3. Press Enter.
-Example: `git clone https://github.com/luckyfrappe/groundwork`
-  </p>
-</details>
+```bash
+cd Desktop/Projects
+```
+
+4. Run the clone command:
+
+```bash
+git clone https://github.com/luckyfrappe/groundwork
+```
+
+---
 
 ## Testing
 
-For testing details, known issues, and resolved bugs, see [TESTING.md](TESTING.md).
+See **[TESTING.md](TESTING.md)** for test cases, known issues, and resolved bugs.
+
+---
 
 ## Credits
 
-### Code Used
+<details>
+<summary><strong>Code Used</strong> — click to expand</summary>
 
-- <a href="https://fonts.google.com/">Google Fonts</a>: Used for custom typography — <em>Merriweather Sans</em> for headings and <em>Roboto Flex</em> for paragraph text.<br>
-- <a href="https://fontawesome.com/">Font Awesome</a>: Integrated via CDN to provide scalable vector icons throughout the site.<br>
-- <a href="https://codesandbox.io/p/sandbox/responsive-card-layout-with-css-grid-rpfdn?file=%2Fstyles.css%3A82%2C1-110%2C2">Responsive Card Layout</a>: Inspired by a layout example from CodeSandbox.<br>
-- HTML Reset & Base Structure: Generated with assistance from ChatGPT to establish clean default styling and structure.<br>
-- <a href="https://www.youtube.com/watch?v=U8smiWQ8Seg">Responsive Navbar Concept</a>: Initially based on a YouTube tutorial, but significantly modified and rebuilt to suit the project’s design.
-- <a href="https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s">Scroll-behavior</a>: borrowed from MiladiCode.
-https://www.youtube.com/watch?v=M0O-vquFHto&t=2373s by dotWebdesign Responsive Multi Step Registration Form
-- Wrapper for the progress bar borrowed from WeiChiaChang https://gist.github.com/WeiChiaChang/abe92ca2e8da86ef69560b63903e8764 
--style file upload button https://www.w3schools.com/cssref/sel_file-selector-button.php
--Accordion used from https://www.w3schools.com/howto/howto_js_accordion.asp
--IntersectionObserver code is made following youtube guide https://www.youtube.com/watch?v=T33NN_pPeNI
--Hero video properties was originally taken from https://www.youtube.com/watch?v=ukMPKm3cLns
--https://stackoverflow.com/questions/50330109/simple-regex-pattern-for-email Simple regex pattern for email
+- **Google Fonts** – <https://fonts.google.com/>
+- **Font Awesome** – <https://fontawesome.com/>
+- **Responsive Card Layout (CodeSandbox)** – <https://codesandbox.io/p/sandbox/responsive-card-layout-with-css-grid-rpfdn>
+- **Responsive Navbar Concept (YouTube)** – <https://www.youtube.com/watch?v=U8smiWQ8Seg>
+- **Scroll Behavior – MiladiCode (YouTube)** – <https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s>
+- **Responsive Multi-Step Form – dotWebdesign (YouTube)** – <https://www.youtube.com/watch?v=M0O-vquFHto&t=2373s>
+- **Progress Bar Wrapper – WeiChiaChang (Gist)** – <https://gist.github.com/WeiChiaChang/abe92ca2e8da86ef69560b63903e8764>
+- **Accordion – W3Schools** – <https://www.w3schools.com/howto/howto_js_accordion.asp>
+- **IntersectionObserver Guide (YouTube)** – <https://www.youtube.com/watch?v=T33NN_pPeNI>
+- **Email Regex (Stack Overflow)** – <https://stackoverflow.com/questions/50330109/simple-regex-pattern-for-email>
+
+</details>
 
 ### Content
 
-The textual content and overall narrative of this fictional website were developed collaboratively by the developer with support from AI tools. Descriptions of services, features, and general website copy were generated with the assistance of ChatGPT (by OpenAI) and Gemini (by Google). Inspiration for the content was drawn from the website <a href="https://gmt-ab.se/">gmt-ab.se</a> 
+Textual content was developed with assistance from **ChatGPT (OpenAI)** and **Gemini (Google)**, and inspired by **[gmt-ab.se](https://gmt-ab.se/)**.
 
-### Media
--- **Hero Video:** Sourced from <a href="[https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/](https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/)" target="_blank" rel="noopener">Pexels</a>.
-- All images were provided by a friend who works as construction supervisor at <a href="https://gmt-ab.se/">gmt-ab.se</a>.<br>
-- <strong>Favicons:</strong> Generated using <a href="https://favicon.io/">Favicon.io</a>.<br>
-- <strong>Color Palette:</strong> Generated using <a href="https://mycolor.space/">ColorSpace</a>.<br>
-- <strong>Image Optimization:</strong> Images were compressed and optimized using <a href="https://tinypng.com/">Tiny PNG</a>.<br>
-- <strong>Responsive Showcase Image:</strong> The screenshot demonstrating website responsiveness was created using <a href="https://polypane.app/">Polypane</a>.<br>
-- <strong>Canva:</strong> Used to create the logo via <a href="https://www.canva.com/">Canva</a>.
+<details>
+<summary><strong>Media</strong> — click to expand</summary>
 
+- **Hero Video:** Pexels – <https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/>
+- **Images:** Provided by a construction supervisor at **[gmt-ab.se](https://gmt-ab.se/)**.
+- **Favicons:** **[Favicon.io](https://favicon.io/)**
+- **Color Palette:** **[ColorSpace](https://mycolor.space/)**
+- **Image Optimization:** **[TinyPNG](https://tinypng.com/)**
+- **Responsive Showcase:** **[Polypane](https://polypane.app/)**
+- **Logo:** Created with **[Canva](https://www.canva.com/)**
+
+</details>
 
 ### Acknowledgments
 
-<!-- Add Acknowledgments -->
+Thanks to the tutorial creators, tool authors, and my industry contact for imagery. Their work and support were instrumental in completing this project.
