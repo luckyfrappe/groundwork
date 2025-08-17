@@ -6,6 +6,7 @@
 Testing for this project was a continuous and integral part of the development process. Given the dynamic nature of the project and the absence of a pre-defined plan or formal documentation, a test-as-you-go approach was adopted. This methodology, while initially challenging, proved essential for incrementally identifying and resolving issues, ultimately ensuring the website's reliability and polish. The focus was on achieving pixel-perfect responsiveness and flawless feature functionality across all stages of development.
 
 ## Contents
+* [User Stories](#user-stories)
 * [Automated Testing](#automated-testing)  
 * [Manual Testing](#manual-testing)
 * [Full Testing](#full-testing)
@@ -13,7 +14,7 @@ Testing for this project was a continuous and integral part of the development p
     * [Known Bugs](#known-bugs)  
     * [Solved Bugs](#solved-bugs)  
 
-### User Stories & Test Cases
+### User Stories
 
 | User Story | Test Case | Expected Outcome | Pass/Fail |
 |------------|-----------|-----------------|-----------|
