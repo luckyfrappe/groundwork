@@ -362,10 +362,9 @@ function addWorksite() {
       type="text"
       name="worksiteName"
       placeholder="Site A, North Wing, etc."
-      style="margin-bottom:0.5em;"
+      id="worksiteName"
       required
     />
-    <label for="delete-worksite-btn" style="display: none;">Delete Worksite</label>
     <button
       type="button"
       class="delete-worksite-btn"
