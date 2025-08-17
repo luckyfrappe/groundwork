@@ -17,6 +17,10 @@ However, things got much easier and less stressful once I started breaking down 
 
 ### Automated Testing
 
+https://www.jslint.com/ originally provided 163 Warnings mostly to use " instead of ', simple fix by searching for all ' and replacing with ". 
+
+
+
 ### Manual Testing
 
 ### Full Testing
