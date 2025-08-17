@@ -443,6 +443,15 @@ nav li:last-child {
   color: var(--color-navy-blue);
 }
 
+.home {
+  margin-bottom: 24px;
+}
+
+.not-found {
+  padding-top: 30vh;
+  height: 80vh;
+}
+
 .hero-info button.secondary {
   background-color: transparent;
   color: var(--color-primary);
