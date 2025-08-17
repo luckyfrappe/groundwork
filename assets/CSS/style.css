@@ -3,14 +3,14 @@
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   /* Ensures consistent box-sizing */
   scroll-behavior: smooth;
   /* Smooth scrolling for anchor links, firstly borrowed from MiladiCode https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s */
@@ -22,8 +22,8 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   min-height: 100vh;
   line-height: 1.5;
   color: var(--color-text);
@@ -122,14 +122,14 @@ button {
 
 .center {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .space-between {
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 /* Animations */
@@ -140,8 +140,8 @@ button {
 .hidden {
   opacity: 0;
   -webkit-transform: translateY(20px);
-      -ms-transform: translateY(20px);
-          transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  transform: translateY(20px);
   -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
   transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
   -o-transition: opacity 0.3s ease, transform 0.3s ease;
@@ -187,16 +187,19 @@ button {
     -webkit-animation: none;
     animation: none;
   }
+
   .hidden {
     -webkit-transition: none;
     -o-transition: none;
     transition: none;
   }
+
   .show {
     -webkit-transition: none;
     -o-transition: none;
     transition: none;
   }
+
   .fadein {
     -webkit-transition: none;
     -o-transition: none;
@@ -303,12 +306,12 @@ header {
 /* Navbar build by following tutorial from Coding2GO */
 nav ul {
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   width: 100vw;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -330,8 +333,8 @@ nav a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 nav a:hover {
@@ -362,14 +365,14 @@ nav li:last-child {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .sidebar li:last-child {
@@ -426,14 +429,15 @@ nav li:last-child {
   margin: 0;
 }
 
-.hero-info > p {
+.hero-info>p {
   color: var(--color-primary);
   font-size: 25px;
   max-width: 500px;
   margin-bottom: 20px;
 }
 
-.hero-info button {
+.hero-info button,
+.home {
   background-color: var(--color-primary);
   border: 2px solid var(--color-primary);
   color: var(--color-navy-blue);
@@ -446,7 +450,8 @@ nav li:last-child {
   margin-left: 20px;
 }
 
-.hero-info button:hover {
+.hero-info button:hover,
+.home:hover {
   background-color: var(--color-primary-dark);
   border: 2px solid var(--color-primary-dark);
 }
@@ -474,8 +479,8 @@ nav li:last-child {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   background-color: var(--color-light-grey);
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -496,8 +501,8 @@ nav li:last-child {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .card__content {
@@ -514,11 +519,11 @@ nav li:last-child {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-item-align: end;
-      -ms-grid-row-align: end;
-      align-self: end;
+  -ms-grid-row-align: end;
+  align-self: end;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .card__buttons a {
@@ -555,8 +560,8 @@ nav li:last-child {
 .intro {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .intro h2 {
@@ -575,8 +580,8 @@ nav li:last-child {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 /* Articles Section */
@@ -589,8 +594,8 @@ nav li:last-child {
 .journey {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   margin-bottom: var(--space-section-y);
@@ -629,8 +634,8 @@ nav li:last-child {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   margin-bottom: var(--space-section-y);
 }
 
@@ -645,7 +650,7 @@ nav li:last-child {
   padding: 3px;
   border-radius: 6px;
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
 }
 
 .progress-bar-fill {
@@ -663,11 +668,11 @@ nav li:last-child {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .progress ul.progress-steps li {
@@ -676,8 +681,8 @@ nav li:last-child {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   margin-bottom: 1em;
 }
 
@@ -689,11 +694,11 @@ nav li:last-child {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-right: 0.5em;
   border-radius: 50%;
   background-color: var(--color-darker-grey);
@@ -723,7 +728,9 @@ form>div {
 
 form>div p {
   color: var(--color-grey);
-};
+}
+
+;
 
 form>div>div> {
   display: -webkit-box;
@@ -731,18 +738,18 @@ form>div>div> {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   margin-bottom: 2em;
 }
 
 /* Radio button cards designed with help from ChatGPT */
 .card-radio-group {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 24px;
 }
 
 .card-radio-group i {
@@ -750,43 +757,43 @@ form>div>div> {
 }
 
 .card-radio-group label {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 1rem;
-    border: 2px solid var(--color-grey);
-    border-radius: 6px;
-    cursor: pointer;
-    -webkit-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid var(--color-grey);
+  border-radius: 6px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 .card-radio-group label:hover {
-    border-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .card-radio-group input[type="radio"] {
-    display: none;
+  display: none;
 }
 
 .card-radio-group i {
-    margin-bottom: 0.5rem;
-    -webkit-transition: color 0.3s ease;
-    -o-transition: color 0.3s ease;
-    transition: color 0.3s ease;
+  margin-bottom: 0.5rem;
+  -webkit-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-.card-radio-group input[type="radio"]:checked + i {
-    color: var(--color-primary-dark);
+.card-radio-group input[type="radio"]:checked+i {
+  color: var(--color-primary-dark);
 }
 
 /* Checkbox styles, designed with help from ChatGPT */
@@ -795,10 +802,10 @@ form>div>div> {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 24px;
   padding: 0.4rem 0.8rem;
@@ -837,7 +844,7 @@ form>div>div> {
   display: none;
 }
 
-.services-form-cards input[type="checkbox"]:checked + i {
+.services-form-cards input[type="checkbox"]:checked+i {
   color: var(--color-primary);
 }
 
@@ -848,7 +855,7 @@ form>div>div> {
   transition: color 0.2s;
 }
 
-.services-form-cards input[type="checkbox"]:checked + i {
+.services-form-cards input[type="checkbox"]:checked+i {
   color: var(--color-primary-dark);
 }
 
@@ -869,7 +876,8 @@ form>div>div> {
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active-accordion, .accordion:hover {
+.active-accordion,
+.accordion:hover {
   background-color: #ccc;
 }
 
@@ -882,7 +890,8 @@ form>div>div> {
 }
 
 .accordion:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  content: '\02795';
+  /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   color: #777;
   float: right;
@@ -890,7 +899,8 @@ form>div>div> {
 }
 
 .active-accordion:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
+  content: "\2796";
+  /* Unicode character for "minus" sign (-) */
 }
 
 form>div:not(.btn-group) {
@@ -908,10 +918,12 @@ form>div.active {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 1em;
 }
-form i {
+
+form i,
+.home i {
   color: var(--color-navy-blue);
 }
 
@@ -948,10 +960,10 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   gap: 80px;
   padding: var(--space-page-x);
 }
@@ -989,8 +1001,8 @@ footer {
   .form-box {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
   }
 
   .wrapper-progress-bar {
@@ -999,8 +1011,8 @@ footer {
 
   .form-box .progress {
     -webkit-box-flex: 1;
-        -ms-flex: 1 0 35%;
-            flex: 1 0 35%;
+    -ms-flex: 1 0 35%;
+    flex: 1 0 35%;
     min-width: 300px;
     padding: 3em;
   }
@@ -1012,8 +1024,8 @@ footer {
   .progress ul.progress-steps {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     gap: 0;
   }
 
@@ -1061,8 +1073,8 @@ footer {
   footer .container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 
   .progress ul.progress-steps {
@@ -1109,7 +1121,9 @@ footer {
   .hero-info {
     top: 30%;
   }
-  .hero-video, .video-overlay {
+
+  .hero-video,
+  .video-overlay {
     height: 70vh;
   }
 }

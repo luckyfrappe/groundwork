@@ -263,7 +263,7 @@ https://www.youtube.com/watch?v=M0O-vquFHto&t=2373s by dotWebdesign Responsive M
 The textual content and overall narrative of this fictional website were developed collaboratively by the developer with support from AI tools. Descriptions of services, features, and general website copy were generated with the assistance of ChatGPT (by OpenAI) and Gemini (by Google). Inspiration for the content was drawn from the website <a href="https://gmt-ab.se/">gmt-ab.se</a> 
 
 ### Media
-
+-- **Hero Video:** Sourced from <a href="[https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/](https://www.pexels.com/video/aerial-view-of-excavator-working-at-construction-site-30911527/)" target="_blank" rel="noopener">Pexels</a>.
 - All images were provided by a friend who works as construction supervisor at <a href="https://gmt-ab.se/">gmt-ab.se</a>.<br>
 - <strong>Favicons:</strong> Generated using <a href="https://favicon.io/">Favicon.io</a>.<br>
 - <strong>Color Palette:</strong> Generated using <a href="https://mycolor.space/">ColorSpace</a>.<br>

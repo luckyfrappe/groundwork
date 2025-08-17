@@ -89,8 +89,8 @@ function wrapAccordions() {
   for (index = 0; index < acc.length; index++) {
     acc[index].addEventListener("click", function (event) {
       // Prevent the button click from submitting the form or triggering validation
-      event.preventDefault(); 
-      
+      event.preventDefault();
+
       /* Toggle between adding and removing the "active" class,
       to highlight the button that controls the panel */
       this.classList.toggle("active-accordion");
@@ -446,8 +446,7 @@ function updateContactDetails() {
   const contactForm = document.querySelector(".form-one");
   // Clear the existing contact form
   contactForm.innerHTML =
-    `<div class="bg-svg"></div>
-      <h2>Contact Information</h2>
+    `      <h2>Contact Information</h2>
       <p>Please provide your details so we can send your estimate.</p>
       <div>
           <label for="fullName">Full Name <sup>*</sup></label>
@@ -484,8 +483,7 @@ function updateProjectDetails() {
   const projectDetailsForm = document.querySelector(".form-two");
   // Clear the existing contact form
   projectDetailsForm.innerHTML =
-    `<div class="bg-svg"></div>
-      <h2>Project Basics</h2>
+    `<h2>Project Basics</h2>
       <p>Tell us about this project.</p>
       <div>
           <label for="projectType">Project Type <sup>*</sup></label>
@@ -918,6 +916,10 @@ function calculateTotal() {
         <br>
         <h3>Total for All Worksites:</h3>
         <p class="total-price-range">€${totalAllMin.toFixed(2)} - €${totalAllMax.toFixed(2)}</p>
+        <p class="summary-subtitle">Site Setup & Management Costs (10% - 20% of total):</p>
+        <p class="total-price-range">€${siteSetupMin.toFixed(2)} - €${siteSetupMax.toFixed(2)}</p>
+        <hr>
+        <br>
         <p><strong>Grand Total:</strong></p>
         <p class="total-price-range">€${(grandMin).toFixed(2)} - €${(grandMax).toFixed(2)}</p>
       `;
@@ -928,7 +930,7 @@ function calculateTotal() {
 }
 
 // Form submission
-const form = document.querySelector("form"); 
+const form = document.querySelector("form");
 const summaryForm = document.querySelector(".summaryForm");
 
 form.addEventListener("submit", function (event) {
@@ -942,9 +944,9 @@ form.addEventListener("submit", function (event) {
   summaryForm.innerHTML = `
     <h2><i class="fas fa-check-circle"></i> Thank you for your submission!</h2>
     <p>Your data has been received successfully.</p>
-    <button id="goHome">Go back to home page</button>
+    <button class="home">Go back to home page</button>
   `;
-  document.querySelector("#goHome").addEventListener("click", () => {
+  document.querySelector(".home").addEventListener("click", () => {
     window.location.href = "index.html";
   });
   prevButton.disabled = true;
