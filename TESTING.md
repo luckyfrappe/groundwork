@@ -140,13 +140,14 @@ These are issues that have been identified but are out of scope for the current 
 -Cross-Site Scripting (XSS) Risk: The use of innerHTML to display user input, while convenient, presents a potential security risk. This needs to be refactored to use safer DOM manipulation methods.
 
 ### Solved Bugs
+
 - Systematic Styling & Responsiveness Issues: Inconsistent spacing, non-standardized typography, and layout problems on various screen sizes have been resolved. A more systematic styling approach was implemented, leading to a cohesive and responsive design across all elements. The footer has also been redesigned to function and display properly.
 - iOS/Safari Compatibility: The animations and videos, which previously failed to function correctly on iOS devices and in the Safari browser, have been debugged and fixed. The website now provides a consistent visual experience across these platforms.
 - Piles Question Logic Fix: A problem with the logic for the "piles" question has been identified and corrected, leading to more accurate calculations for this service.
 - Circle Misalignment in Progress Bar:
 - The Bug: The circular step numbers in the form's progress bar were horizontally misaligned due to varying text lengths.
-- The Cause: The <ul> element, a flex container with flex-direction: column, had align-items: center applied. In a column-based layout, this property controls horizontal alignment, causing the circles to shift based on text width.
-- The Solution: The align-items: center property was removed from the <ul> element. The list was then wrapped in a <div> with a new class to manage its overall horizontal positioning. This change allowed the list items to align to the left by default, placing all circles in a straight vertical line.
+- The Cause: The `<ul>` element, a flex container with flex-direction: column, had align-items: center applied. In a column-based layout, this property controls horizontal alignment, causing the circles to shift based on text width.
+- The Solution: The align-items: center property was removed from the `<ul>` element. The list was then wrapped in a `<div>` with a new class to manage its overall horizontal positioning. This change allowed the list items to align to the left by default, placing all circles in a straight vertical line.
 - CSS Style Application Issue:
 - The Bug: Styles for form elements were not being applied from the external CSS file, causing them to render with default browser styles.
 - The Cause: The root cause of this issue was not definitively identified, but it seemed to be a caching or file-linking anomaly.
