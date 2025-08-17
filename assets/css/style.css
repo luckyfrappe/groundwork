@@ -16,25 +16,6 @@ html {
   /* Smooth scrolling for anchor links, firstly borrowed from MiladiCode https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s */
 }
 
-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  min-height: 100vh;
-  line-height: 1.5;
-  color: var(--color-text);
-  /* Webkit and OS X font smoothing advised by Gemini by Google */
-  -webkit-font-smoothing: antialiased;
-  /* Smooth text rendering */
-  -moz-osx-font-smoothing: grayscale;
-  /* Smooth text rendering */
-  font-family: "Roboto", system-ui, -apple-system, sans-serif;
-}
-
 /* THEME & TYPOGRAPHY, clamp were advised by ChatGPT */
 :root {
   --color-white: #ffffff;
@@ -43,7 +24,7 @@ body {
   /* soft light grey */
   --color-darker-grey: #f1f1f1;
   /* slightly darker grey */
-  --color-grey: #777;
+  --color-grey: #555;
   /* medium grey */
   --color-primary: #edff66;
   /* neon yellow */
@@ -57,6 +38,25 @@ body {
   /* vertical padding */
   --space-grid-gap: 32px;
   /* gap between cards */
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.5;
+  color: var(--color-navy-blue);
+  /* Webkit and OS X font smoothing advised by Gemini by Google */
+  -webkit-font-smoothing: antialiased;
+  /* Smooth text rendering */
+  -moz-osx-font-smoothing: grayscale;
+  /* Smooth text rendering */
+  font-family: "Roboto", system-ui, -apple-system, sans-serif;
 }
 
 h1,
@@ -425,13 +425,14 @@ nav li:last-child {
   z-index: 2;
   left: var(--space-page-x);
   right: var(--space-page-x);
-  color: white;
   padding: var(--space-page-x);
 }
 
 .hero-info h1 {
   color: var(--color-light-grey);
   margin: 0;
+  font-weight: 900;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .hero-info>p {
@@ -439,6 +440,8 @@ nav li:last-child {
   font-size: 25px;
   max-width: 500px;
   margin-bottom: 20px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .not-found {
@@ -446,11 +449,16 @@ nav li:last-child {
   height: 80vh;
 }
 
+.hero-info .btn {
+  font-weight: 700;
+}
+
 .hero-info .btn.secondary {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.4);
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
   margin-left: 20px;
+  font-weight: 700;
 }
 
 .hero-info .btn:hover,
@@ -460,7 +468,7 @@ nav li:last-child {
 }
 
 .hero-info .btn.secondary:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid var(--color-primary);
 }
 
@@ -640,6 +648,17 @@ nav li:last-child {
   -ms-flex-direction: column;
   flex-direction: column;
   margin-bottom: var(--space-section-y);
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+legend {
+  display: none;
 }
 
 /* Wrapper for the progress bar borrowed from WeiChiaChang */
@@ -863,8 +882,8 @@ form>div>div>input {
 /* Accordion, code from https://www.w3schools.com/howto/howto_js_accordion.asp*/
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  background-color: #eee;
-  color: #444;
+  background-color: var(--color-darker-grey);
+  color: var(--color-navy-blue);
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -879,7 +898,7 @@ form>div>div>input {
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active-accordion,
 .accordion:hover {
-  background-color: #ccc;
+  background-color: var(--color-darker-grey);
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -894,7 +913,7 @@ form>div>div>input {
   content: '\02795';
   /* Unicode character for "plus" sign (+) */
   font-size: 13px;
-  color: #777;
+  color: var(--color-navy-blue);
   float: right;
   margin-left: 5px;
 }
@@ -995,8 +1014,9 @@ footer {
   color: var(--color-navy-blue);
 }
 
-.footer-columns div h4 {
-  color: #777;
+.footer-columns div h2 {
+  font-size: 1.2rem;
+  color: var(--color-grey);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 0;

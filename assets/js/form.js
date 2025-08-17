@@ -364,7 +364,13 @@ function addWorksite() {
       placeholder="Site A, North Wing, etc."
       required
     />
-    <button type="button" class="delete-worksite-btn">Delete</button>`;
+    <button 
+    type="button" 
+    class="delete-worksite-btn"
+    aria-label="Clear Worksite Name input" 
+    aria-controls="worksiteName"
+      >Delete
+    </button>`;
 
   // Append to container
   worksiteFields.appendChild(newWorksite);

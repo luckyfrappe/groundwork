@@ -179,24 +179,27 @@
             <form id="projectEstimateForm">
               <!-- Step 0: Worksite Overview -->
               <div class="form-zero form-step active">
-                <h2>Worksite Overview</h2>
+                <h1>Worksite Overview</h1>
                 <p>Do you have one or multiple worksites for this estimate?</p>
                 <div class="card-radio-group">
-                  <label>
-                    <input
-                      type="radio"
-                      name="siteCount"
-                      value="single"
-                      checked
-                   >
-                    <i class="fa-solid fa-file" aria-hidden="true"></i>
-                    <span>Single worksite</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="siteCount" value="multiple">
-                    <i class="fa-solid fa-file-circle-plus" aria-hidden="true"></i>
-                    <span>Multiple worksites</span>
-                  </label>
+                  <fieldset>
+                    <legend>Number of worksites</legend>
+                    <label>
+                      <input
+                        type="radio"
+                        name="siteCount"
+                        value="single"
+                        checked
+                    >
+                      <i class="fa-solid fa-file" aria-hidden="true"></i>
+                      <span>Single worksite</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="siteCount" value="multiple">
+                      <i class="fa-solid fa-file-circle-plus" aria-hidden="true"></i>
+                      <span>Multiple worksites</span>
+                    </label>
+                  </fieldset>
                 </div>
                 <p>Tell us about this worksite(s).</p>
                 <div class="worksite-fields"></div>
@@ -255,7 +258,7 @@
     <footer id="footer">
       <div class="footer-columns container flex">
         <div>
-          <h4>FOLLOW US</h4>
+          <h2>FOLLOW US</h2>
           <ul>
             <li>
               <a
@@ -305,7 +308,7 @@
           </ul>
         </div>
         <div>
-          <h4>CONTACT</h4>
+          <h2>CONTACT</h2>
           <ul>
             <li>
               <a
@@ -325,7 +328,7 @@
           </ul>
         </div>
         <div>
-          <h4>FIND US</h4>
+          <h2>FIND US</h2>
           <ul>
             <li>12 Construction Lane<br>Manchester, M1 1AB</li>
             <li>Office Hours: Mon–Fri 07:00–18:00</li>

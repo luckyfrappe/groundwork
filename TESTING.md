@@ -36,7 +36,9 @@ Functions declared within loops referencing an outer scoped variable may lead to
 
 fixe by moving updateWorksiteSpecifications(); after the check if at least one service is selected. 
 
+WAVE 
 
+“Multiple CTAs intentionally point to the same URL in different sections. WAVE redundant link warning is acknowledged and considered acceptable.”
 
 
 ### Manual Testing
