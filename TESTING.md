@@ -23,6 +23,19 @@ Further reducing number of errors by formatting all Line is longer than 80 chara
 
 -deleting trailing spaces reducing numnber of errors to 20
 
+- This update modernizes the wrapAccordions() function, improving its readability and reliability while addressing issues.
+
+What I've Done:
+Replaced var with const: This ensures variables are block-scoped and cannot be accidentally reassigned.
+
+Swapped this for event.currentTarget: event.currentTarget is a more reliable way to reference the element that the event listener is attached to, avoiding the ambiguity of this in different contexts. down to 9 warnings
+
+Remaining errors were due to functions used in es6 so i switched to https://luckyfrappe.github.io/jsapi/ based on Code institute JSHint API https://ci-jshint.herokuapp.com/ where i fixed unnecesary semicolon and fixe the remaining issue 
+
+Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (updateWorksiteSpecifications)
+
+fixe by moving updateWorksiteSpecifications(); after the check if at least one service is selected. 
+
 
 
 

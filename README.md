@@ -186,6 +186,7 @@ HTML, CSS and Javascript.
 - **ChatGPT (by OpenAI):** Used for generating specific service and feature descriptions, ensuring industry relevance and authenticity in the website's content.
 - **Gemini (by Google):** Providing extensive debugging assistance and code explanations during development.
 - **ColorSpace:** Used to generate matching Color Palette 
+- https://www.jslint.com/ to validate js
 
 ## Deployment & Local Development
 

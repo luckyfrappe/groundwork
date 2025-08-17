@@ -83,8 +83,8 @@ function buttonControls() {
  * wrapped to handle multiple accordions.
  */
 function wrapAccordions() {
-  var acc = document.getElementsByClassName("accordion");
-  var index;
+  let acc = document.getElementsByClassName("accordion");
+  let index;
 
   for (index = 0; index < acc.length; index += 1) {
     acc[index].addEventListener("click", function (event) {
@@ -94,10 +94,10 @@ function wrapAccordions() {
 
       /* Toggle between adding and removing the "active" class,
       to highlight the button that controls the panel */
-      this.classList.toggle("active-accordion");
+      event.currentTarget.classList.toggle("active-accordion");
 
       /* Toggle between hiding and showing the active panel */
-      var panel = this.nextElementSibling;
+      var panel = event.currentTarget.nextElementSibling;
       if (panel.style.display === "block") {
         panel.style.display = "none";
       } else {
@@ -198,6 +198,7 @@ nextButton.addEventListener("click", (event) => {
         return;
       }
     }
+    updateWorksiteSpecifications();
   }
 
   // Additional validation for contact form
@@ -449,7 +450,7 @@ function addWorksite() {
     updateWorksiteSpecifications();
   });
   checkTheFirstDeleteButton();
-};
+}
 
 /**
  * Populates the contact information form fields and
@@ -645,7 +646,6 @@ function updateWorksiteServices() {
       .forEach((checkbox) => {
         checkbox.addEventListener("change", (e) => {
           site.services[e.target.value] = e.target.checked;
-          updateWorksiteSpecifications();
         });
       });
 
