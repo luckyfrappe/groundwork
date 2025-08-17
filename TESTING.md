@@ -17,6 +17,14 @@ Testing for this project was a continuous and integral part of the development p
 
 Automated tools were used throughout the project to ensure code quality and accessibility standards were met. This was a critical step in professionalizing the codebase.
 
+**Google Lighthouse:**
+
+| Page          | Performance | Accessibility | Best Practices | SEO | Notes               |
+|---------------|------------|---------------|----------------|-----|-------------------|
+| Homepage      | [Score]    | [Score]       | [Score]        | [Score] | [Add notes here] |
+| Start Project | [Score]    | [Score]       | [Score]        | [Score] | [Add notes here] |
+| 404 Page.     | [Score]    | [Score]       | [Score]        | [Score] | [Add notes here] |
+
 HTML & CSS Validation: The website's code was run through the official W3C validators to ensure it adheres to web standards. The HTML validator was used to check for proper syntax, correct nesting of elements, and semantic correctness. Similarly, the CSS validator was used to verify CSS syntax, property usage, and vendor prefix issues.
 
 JSLint & JSHint: The JavaScript code was rigorously checked using JSLint and JSHint to enforce coding standards and identify potential errors. Initially, over 160 warnings were flagged, primarily for minor formatting issues like single quotes and line length. These were systematically fixed. The number of warnings was reduced to just nine by standardizing quotes, shortening lines, and deleting trailing spaces. The final few warnings were addressed by refining function placement and resolving unnecessary semicolons.
