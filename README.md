@@ -1,6 +1,6 @@
 # Groundwork Solutions
 
-This website provides an instant preliminary cost estimate for construction groundwork projects, specifically for Groundwork Solutions Ltd. It aims to streamline the initial client interaction by offering a transparent and efficient way to get an early understanding of project costs.
+This website provides an instant preliminary cost estimate for construction groundwork projects, specifically for Groundwork Solutions Ltd. The primary goal is to streamline the initial client interaction by offering a transparent and efficient way for potential customers to get an early understanding of project costs.
 
 <img src="assets/images/responsive.png" alt="Mockup image of Groundwork Solutions Ltd. website on different devices">
 
@@ -8,8 +8,6 @@ This website provides an instant preliminary cost estimate for construction grou
 
 ## CONTENTS
 
-<!-- Test all links -->
-<!-- Check _blank does not work -->
 - [User Experience (UX)](#user-experience-ux)
   - [Business Goals](#business-goals)
   - [User Stories](#user-stories)
@@ -42,28 +40,27 @@ This website provides an instant preliminary cost estimate for construction grou
 
 ### Business Goals
 
-- The main goal of this website is to provide clients with an instant preliminary cost estimate for construction groundwork projects.
-- Build a professional web-based MVP that supports lead generation.
+- Provide clients with an instant preliminary cost estimate for construction groundwork projects.
+- Serve as a professional web-based Minimum Viable Product (MVP) to support lead generation.
 - Clearly communicate Groundwork Solutions Ltd.'s value and services.
-- Encourage visitors to take action through clear Call to Actions (CTAs) to get a finalized quote.
+- Encourage visitors to take action through clear Call to Actions (CTAs) to obtain an estimation.
 
 ### User Stories
 
-**As a first-time visitor, I want the site to be easy to access and navigate, so I want to use it.**
+**As a first-time visitor, I want the site to be easy to access and navigate.**
 
-- Works well on desktop, tablet, and mobile.
-- Clear and simple navigation.
-- Layout doesn’t break or overlap at any screen size.
+- The site works seamlessly across desktop, tablet, and mobile devices.
+- Navigation is clear and simple, with a responsive layout that remains functional at all screen sizes.
 
-**As a potential client, I want to quickly get a cost estimate for my groundwork project, so I can plan my budget.**
+**As a potential client, I want to quickly get a cost estimate for my groundwork project.**
 
-- An interactive front-end form to input project details.
-- A live estimation engine that calculates costs based on inputs.
-- At the end of form subbmission, displaying a service-by-service cost breakdown and a total estimated price range.
+- The site features an interactive, multi-step form for inputting project details.
+- A live estimation engine calculates costs based on user inputs.
+- The final step provides a service-by-service cost breakdown and a total estimated price range.
 
-**As a potential client, I want to understand what services Groundwork Solutions Ltd. offers, so I can check if it fits our needs.**
+**As a potential client, I want to understand what services are offered.**
 
-- A section that lists main services with short titles and clear descriptions.
+- A dedicated section lists the main services with clear titles and descriptions.
 
 **As a decision-maker, I want to know Groundwork Solutions Ltd. is reliable, so I can feel good about using it.**
 
