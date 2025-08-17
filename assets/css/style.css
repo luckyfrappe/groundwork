@@ -650,6 +650,10 @@ nav li:last-child {
   margin-bottom: var(--space-section-y);
 }
 
+.form-zero {
+  min-height: 42vh;
+}
+
 fieldset {
   border: none;
   display: flex;

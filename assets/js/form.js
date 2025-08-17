@@ -362,14 +362,16 @@ function addWorksite() {
       type="text"
       name="worksiteName"
       placeholder="Site A, North Wing, etc."
+      style="margin-bottom:0.5em;"
       required
     />
-    <button 
-    type="button" 
-    class="delete-worksite-btn"
-    aria-label="Clear Worksite Name input" 
-    aria-controls="worksiteName"
-      >Delete
+    <label for="delete-worksite-btn" style="display: none;">Delete Worksite</label>
+    <button
+      type="button"
+      class="delete-worksite-btn"
+      aria-label="Clear Worksite Name input"
+      aria-controls="worksiteName"
+    >Delete
     </button>`;
 
   // Append to container
