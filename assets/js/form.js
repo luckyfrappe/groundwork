@@ -104,24 +104,31 @@ nextButton.addEventListener("click", (event) => {
   let nextSiblingForm = currentForm.nextElementSibling;
   let nextStep = currentStep.nextElementSibling;
 
-  validation(currentForm);
+  try {
+    validation(currentForm, nextSiblingForm, nextStep, currentStep);
+  } catch (error) {
+    alert(error.message);
+    return; // stop further execution if validation fails
+  }
+
   buttonControls();
 });
 
-function validation(currentForm) {
-    const requiredFields = currentForm.querySelectorAll(
+function validation(currentForm, nextSiblingForm, nextStep, currentStep) {
+  const requiredFields = currentForm.querySelectorAll(
     "input[required], select[required], textarea[required]"
   );
   let allFilled = true;
 
-  handleNextStep(currentForm);
+  allFilled = allRequiredFilled(requiredFields); // check required fields first
+  handleNextStep(currentForm, requiredFields, allFilled);
 
   if (nextSiblingForm && nextSiblingForm.classList.contains("form-step")) {
     currentForm.classList.remove("active");
     currentStep.classList.remove("active");
     nextSiblingForm.classList.add("active");
     nextStep.classList.add("active");
-    active++;
+    active += 1;
     updatedProgressBar();
   }
 }
@@ -134,7 +141,12 @@ prevButton.addEventListener("click", () => {
   let prevStep = currentStep.previousElementSibling;
 
   if (prevSiblingForm && prevSiblingForm.classList.contains("form-step")) {
-    switchForm(prevSiblingForm);
+    currentForm.classList.remove("active");
+    currentStep.classList.remove("active");
+    prevSiblingForm.classList.add("active");
+    prevStep.classList.add("active");
+    active -= 1;
+    updatedProgressBar();
   }
   buttonControls();
 });
@@ -151,23 +163,14 @@ document.querySelector("#consent").addEventListener("change", (e) => {
   project.contact[e.target.value] = e.target.checked;
 });
 
-function switchForm(prevSiblingForm) {
-  currentForm.classList.remove("active");
-    currentStep.classList.remove("active");
-    prevSiblingForm.classList.add("active");
-    prevStep.classList.add("active");
-    active--;
-    updatedProgressBar();
-}
-
-function handleNextStep() {
+function handleNextStep(currentForm, requiredFields, allFilled) {
   switch (true) {
     case currentForm.classList.contains("form-zero"):
-      validateOverviewForm();
+      allFilled = allRequiredFilled(requiredFields);
       break;
 
     case currentForm.classList.contains("form-one"):
-      validateContactForm();
+      validateContactForm(currentForm);
       break;
 
     case currentForm.classList.contains("form-three"):
@@ -175,76 +178,66 @@ function handleNextStep() {
       break;
 
     case currentForm.classList.contains("form-four"):
-      handleSpecificationsForm();
+      handleSpecificationsForm(requiredFields, allFilled);
       break;
 
     default:
-      console.log("No special rules for this form");
       break;
   }
 }
 
-function validateOverviewForm(currentForm) {
-  // Implement validation logic for the overview form
+function allRequiredFilled(requiredFields) {
+  for (const input of requiredFields) {
+    if (input.value.trim() === "") {
+      input.style.border = "2px solid red";
+      throw new Error(`Field "${input.name || input.id}" is required.`);
+    } else {
+      input.style.border = "";
+    }
+  }
+  return true; // all fields are filled
 }
 
 function validateContactForm(currentForm) {
-  // Implement validation logic for the contact form
-  // Additional validation for contact form
-    const emailInput = currentForm.querySelector("#email");
+  const emailInput = currentForm.querySelector("#email");
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Simple email regex pattern from Stack Overflow
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(emailInput.value)) {
-      alert("Please enter a valid email address.");
-      emailInput.style.border = "2px solid red";
-      return;
-    } else {
-      emailInput.style.border = "";
-    }
+  if (!emailPattern.test(emailInput.value)) {
+    emailInput.style.border = "2px solid red";
+    throw new Error(`Field "${emailInput.name || emailInput.id}" is invalid.`);
+  } else {
+    emailInput.style.border = "";
   }
+}
 
 function validateServicesForm() {
-  // Additional validation for services form,
-  // Rewritten to check at least one service per worksite with Gemini by Google
-    let allSitesHaveService = false;
-    for (const site of project.worksites) {
-      // Get the corresponding form card for the current site
-      const siteCard = document.querySelector(
-        `.services-form-cards[data-site-name="${site.name}"]`
-      );
-      let atLeastOneChecked = false;
+  for (const site of project.worksites) {
+    const siteCard = document.querySelector(
+      `.services-form-cards[data-site-name="${site.name}"]`
+    );
+    let atLeastOneChecked = false;
 
-      // Check if any service is selected for the current site
-      for (const service in site.services) {
-        if (service !== "rush" && site.services[service]) {
-          atLeastOneChecked = true;
-          updateWorksiteSpecifications();
-          break;
-        }
-      }
-
-      // Stop form from moving to next step
-      if (!atLeastOneChecked) {
-        alert("Please select at least one service for each worksite.");
-        return;
+    for (const service in site.services) {
+      if (service !== "rush" && site.services[service]) {
+        atLeastOneChecked = true;
+        updateWorksiteSpecifications();
+        break;
       }
     }
-  }
 
-function handleSpecificationsForm() {
-  // Implement specific validation or rules for Form Four
-   // An array to store unique accordion buttons that need to be opened
-  // Debugged with Gemini by Google
+    if (!atLeastOneChecked) {
+      throw new Error(`Please select at least one service for worksite "${site.name}".`);
+    }
+  }
+}
+
+function handleSpecificationsForm(requiredFields, allFilled) {
   const accordionsToOpen = new Set();
 
-  requiredFields.forEach((input) => {
+  for (const input of requiredFields) {
     if (input.value.trim() === "") {
-      allFilled = false;
       input.style.border = "2px solid red";
 
-      // Find the parent accordion button and add it to the set
       let parentAccordion = input.closest(".specifications-accordions");
       if (parentAccordion) {
         let accordionButton = parentAccordion.querySelector(".accordion");
@@ -252,30 +245,27 @@ function handleSpecificationsForm() {
           accordionsToOpen.add(accordionButton);
         }
       }
+
+      openAccordions(accordionsToOpen);
+      throw new Error(`Field "${input.name || input.id}" is required.`);
     } else {
       input.style.border = "";
-      // Implement specific validation or rules for the summary form
       updateContactSection();
       updateDetailsSection();
       calculateTotal();
     }
-  });
-
-  if (!allFilled) {
-    openAccordions(accordionsToOpen);
   }
 }
 
 function openAccordions(accordionsToOpen) {
-  // Open all the accordions that contain empty fields
-    accordionsToOpen.forEach((accordion) => {
-      accordion.classList.add("active-accordion");
-      const panel = accordion.nextElementSibling;
-      panel.style.display = "block";
-    });
-    alert("Please fill all required fields before proceeding.");
-    return; // Stop form from moving to next step
+  for (const accordion of accordionsToOpen) {
+    accordion.classList.add("active-accordion");
+    const panel = accordion.nextElementSibling;
+    panel.style.display = "block";
   }
+  alert("Please fill all required fields before proceeding.");
+  return;
+}
 
 // =========================================================
 //  Project Data & Price Constants
