@@ -216,6 +216,8 @@ function validateContactForm(currentForm) {
 }
 
 function validateServicesForm() {
+
+  let errorMessages = [];
   for (const site of project.worksites) {
     const siteCard = document.querySelector(
       `.services-form-cards[data-site-name="${site.name}"]`
@@ -231,8 +233,12 @@ function validateServicesForm() {
     }
 
     if (!atLeastOneChecked) {
-      throw new Error(`Please select at least one service for worksite "${site.name}".`);
+      errorMessages.push(`Please select at least one service for worksite "${site.name}". Rush is not a service on its own.`);
     }
+  }
+
+  if (errorMessages.length > 0) {
+    throw new Error(errorMessages.join("\n"));
   }
 }
 
