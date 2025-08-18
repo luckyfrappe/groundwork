@@ -118,10 +118,8 @@ function validation(currentForm, nextSiblingForm, nextStep, currentStep) {
   const requiredFields = currentForm.querySelectorAll(
     "input[required], select[required], textarea[required]"
   );
-  let allFilled = true;
 
-  allFilled = allRequiredFilled(requiredFields); // check required fields first
-  handleNextStep(currentForm, requiredFields, allFilled);
+  handleNextStep(currentForm, requiredFields);
 
   if (nextSiblingForm && nextSiblingForm.classList.contains("form-step")) {
     currentForm.classList.remove("active");
@@ -166,7 +164,7 @@ document.querySelector("#consent").addEventListener("change", (e) => {
 function handleNextStep(currentForm, requiredFields, allFilled) {
   switch (true) {
     case currentForm.classList.contains("form-zero"):
-      allFilled = allRequiredFilled(requiredFields);
+      allRequiredFilled(requiredFields);
       break;
 
     case currentForm.classList.contains("form-one"):
@@ -178,7 +176,7 @@ function handleNextStep(currentForm, requiredFields, allFilled) {
       break;
 
     case currentForm.classList.contains("form-four"):
-      handleSpecificationsForm(requiredFields, allFilled);
+      handleSpecificationsForm(requiredFields);
       break;
 
     default:
@@ -195,7 +193,6 @@ function allRequiredFilled(requiredFields) {
       input.style.border = "";
     }
   }
-  return true; // all fields are filled
 }
 
 function validateContactForm(currentForm) {
@@ -231,12 +228,34 @@ function validateServicesForm() {
   }
 }
 
-function handleSpecificationsForm(requiredFields, allFilled) {
+function handleSpecificationsForm(requiredFields) {
   const accordionsToOpen = new Set();
+  let validationErrors = [];
 
+  registerEmptyAccordions(requiredFields, accordionsToOpen, validationErrors);
+
+  // Check if there are any validation errors.
+  if (validationErrors.length > 0) {
+    // Open all the accordions for the empty fields.
+    openAccordions(accordionsToOpen);
+
+    // Throw a single error with all messages.
+    throw new Error(validationErrors.join("\n"));
+  }
+
+  // If validation passes, proceed with other updates.
+  updateContactSection();
+  updateDetailsSection();
+  calculateTotal();
+
+  return true; // All fields are filled.
+}
+
+function registerEmptyAccordions(requiredFields, accordionsToOpen, validationErrors) {
   for (const input of requiredFields) {
     if (input.value.trim() === "") {
       input.style.border = "2px solid red";
+      validationErrors.push(`Field "${input.name || input.id}" is required.`);
 
       let parentAccordion = input.closest(".specifications-accordions");
       if (parentAccordion) {
@@ -245,26 +264,18 @@ function handleSpecificationsForm(requiredFields, allFilled) {
           accordionsToOpen.add(accordionButton);
         }
       }
-
-      openAccordions(accordionsToOpen);
-      throw new Error(`Field "${input.name || input.id}" is required.`);
     } else {
       input.style.border = "";
-      updateContactSection();
-      updateDetailsSection();
-      calculateTotal();
     }
   }
 }
 
 function openAccordions(accordionsToOpen) {
-  for (const accordion of accordionsToOpen) {
+  accordionsToOpen.forEach((accordion) => {
     accordion.classList.add("active-accordion");
     const panel = accordion.nextElementSibling;
     panel.style.display = "block";
-  }
-  alert("Please fill all required fields before proceeding.");
-  return;
+  });
 }
 
 // =========================================================
