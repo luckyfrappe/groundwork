@@ -23,7 +23,6 @@ hiddenElements.forEach((el) => observer.observe(el));
 /**
  * Toggles the sidebar visibility to "flex".
  */
-
 function showSidebar() {
   const sidebar = document.querySelector(".sidebar");
   sidebar.style.display = "flex";

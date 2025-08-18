@@ -97,7 +97,6 @@ function checkTheFirstDeleteButton() {
 // =========================================================
 
 // Event listener for the "Next" button click
-
 nextButton.addEventListener("click", (event) => {
   event.preventDefault(); // Prevent default form submission
   let currentForm = document.querySelector(".form-step.active");
@@ -105,12 +104,138 @@ nextButton.addEventListener("click", (event) => {
   let nextSiblingForm = currentForm.nextElementSibling;
   let nextStep = currentStep.nextElementSibling;
 
-  const requiredFields = currentForm.querySelectorAll(
+  validation(currentForm);
+  buttonControls();
+});
+
+function validation(currentForm) {
+    const requiredFields = currentForm.querySelectorAll(
     "input[required], select[required], textarea[required]"
   );
   let allFilled = true;
 
-  // An array to store unique accordion buttons that need to be opened
+  handleNextStep(currentForm);
+
+  if (nextSiblingForm && nextSiblingForm.classList.contains("form-step")) {
+    currentForm.classList.remove("active");
+    currentStep.classList.remove("active");
+    nextSiblingForm.classList.add("active");
+    nextStep.classList.add("active");
+    active++;
+    updatedProgressBar();
+  }
+}
+
+// Event listener for the "Previous" button click
+prevButton.addEventListener("click", () => {
+  let currentForm = document.querySelector(".form-step.active");
+  let currentStep = document.querySelector(".step.active");
+  let prevSiblingForm = currentForm.previousElementSibling;
+  let prevStep = currentStep.previousElementSibling;
+
+  if (prevSiblingForm && prevSiblingForm.classList.contains("form-step")) {
+    switchForm(prevSiblingForm);
+  }
+  buttonControls();
+});
+
+// Event listener for the "Add Site" button
+addSiteBtn.addEventListener("click", addWorksite);
+
+// Event listener for the "siteCount" radio buttons
+howManyWorksites.addEventListener("change", howManyWorksitesChange);
+
+// Event listener for the "consent" checkbox
+document.querySelector("#consent").addEventListener("change", (e) => {
+  e.preventDefault();
+  project.contact[e.target.value] = e.target.checked;
+});
+
+function switchForm(prevSiblingForm) {
+  currentForm.classList.remove("active");
+    currentStep.classList.remove("active");
+    prevSiblingForm.classList.add("active");
+    prevStep.classList.add("active");
+    active--;
+    updatedProgressBar();
+}
+
+function handleNextStep() {
+  switch (true) {
+    case currentForm.classList.contains("form-zero"):
+      validateOverviewForm();
+      break;
+
+    case currentForm.classList.contains("form-one"):
+      validateContactForm();
+      break;
+
+    case currentForm.classList.contains("form-three"):
+      validateServicesForm();
+      break;
+
+    case currentForm.classList.contains("form-four"):
+      handleSpecificationsForm();
+      break;
+
+    default:
+      console.log("No special rules for this form");
+      break;
+  }
+}
+
+function validateOverviewForm(currentForm) {
+  // Implement validation logic for the overview form
+}
+
+function validateContactForm(currentForm) {
+  // Implement validation logic for the contact form
+  // Additional validation for contact form
+    const emailInput = currentForm.querySelector("#email");
+
+    // Simple email regex pattern from Stack Overflow
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(emailInput.value)) {
+      alert("Please enter a valid email address.");
+      emailInput.style.border = "2px solid red";
+      return;
+    } else {
+      emailInput.style.border = "";
+    }
+  }
+
+function validateServicesForm() {
+  // Additional validation for services form,
+  // Rewritten to check at least one service per worksite with Gemini by Google
+    let allSitesHaveService = false;
+    for (const site of project.worksites) {
+      // Get the corresponding form card for the current site
+      const siteCard = document.querySelector(
+        `.services-form-cards[data-site-name="${site.name}"]`
+      );
+      let atLeastOneChecked = false;
+
+      // Check if any service is selected for the current site
+      for (const service in site.services) {
+        if (service !== "rush" && site.services[service]) {
+          atLeastOneChecked = true;
+          updateWorksiteSpecifications();
+          break;
+        }
+      }
+
+      // Stop form from moving to next step
+      if (!atLeastOneChecked) {
+        alert("Please select at least one service for each worksite.");
+        return;
+      }
+    }
+  }
+
+function handleSpecificationsForm() {
+  // Implement specific validation or rules for Form Four
+   // An array to store unique accordion buttons that need to be opened
   // Debugged with Gemini by Google
   const accordionsToOpen = new Set();
 
@@ -129,11 +254,20 @@ nextButton.addEventListener("click", (event) => {
       }
     } else {
       input.style.border = "";
+      // Implement specific validation or rules for the summary form
+      updateContactSection();
+      updateDetailsSection();
+      calculateTotal();
     }
   });
 
   if (!allFilled) {
-    // Open all the accordions that contain empty fields
+    openAccordions(accordionsToOpen);
+  }
+}
+
+function openAccordions(accordionsToOpen) {
+  // Open all the accordions that contain empty fields
     accordionsToOpen.forEach((accordion) => {
       accordion.classList.add("active-accordion");
       const panel = accordion.nextElementSibling;
@@ -142,96 +276,6 @@ nextButton.addEventListener("click", (event) => {
     alert("Please fill all required fields before proceeding.");
     return; // Stop form from moving to next step
   }
-
-  // Additional validation for services form,
-  // Rewritten to check at least one service per worksite with Gemini by Google
-  if (currentForm.classList.contains("form-three")) {
-    let allSitesHaveService = false;
-    for (const site of project.worksites) {
-      // Get the corresponding form card for the current site
-      const siteCard = document.querySelector(
-        `.services-form-cards[data-site-name="${site.name}"]`
-      );
-      let atLeastOneChecked = false;
-
-      // Check if any service is selected for the current site
-      for (const service in site.services) {
-        if (service !== "rush" && site.services[service]) {
-          atLeastOneChecked = true;
-          break;
-        }
-      }
-
-      // Stop form from moving to next step
-      if (!atLeastOneChecked) {
-        alert("Please select at least one service for each worksite.");
-        return;
-      }
-    }
-    updateWorksiteSpecifications();
-  }
-
-  // Additional validation for contact form
-  if (currentForm.classList.contains("form-one")) {
-    const emailInput = currentForm.querySelector("#email");
-
-    // Simple email regex pattern from Stack Overflow
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(emailInput.value)) {
-      alert("Please enter a valid email address.");
-      emailInput.style.border = "2px solid red";
-      return;
-    } else {
-      emailInput.style.border = "";
-    }
-  }
-
-  if (nextSiblingForm && nextSiblingForm.classList.contains("form-step")) {
-    currentForm.classList.remove("active");
-    currentStep.classList.remove("active");
-    nextSiblingForm.classList.add("active");
-    nextStep.classList.add("active");
-    active++;
-    updatedProgressBar();
-    if (nextSiblingForm.classList.contains("summaryForm")) {
-      updateContactSection();
-      updateDetailsSection();
-      calculateTotal();
-    }
-  }
-  buttonControls();
-});
-
-// Event listener for the "Previous" button click
-prevButton.addEventListener("click", () => {
-  let currentForm = document.querySelector(".form-step.active");
-  let currentStep = document.querySelector(".step.active");
-  let prevSiblingForm = currentForm.previousElementSibling;
-  let prevStep = currentStep.previousElementSibling;
-
-  if (prevSiblingForm && prevSiblingForm.classList.contains("form-step")) {
-    currentForm.classList.remove("active");
-    currentStep.classList.remove("active");
-    prevSiblingForm.classList.add("active");
-    prevStep.classList.add("active");
-    active--;
-    updatedProgressBar();
-  }
-  buttonControls();
-});
-
-// Event listener for the "Add Site" button
-addSiteBtn.addEventListener("click", addWorksite);
-
-// Event listener for the "siteCount" radio buttons
-howManyWorksites.addEventListener("change", howManyWorksitesChange);
-
-// Event listener for the "consent" checkbox
-document.querySelector("#consent").addEventListener("change", (e) => {
-  e.preventDefault();
-  project.contact[e.target.value] = e.target.checked;
-});
 
 // =========================================================
 //  Project Data & Price Constants
