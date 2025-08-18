@@ -168,7 +168,12 @@ function handleNextStep(currentForm, requiredFields, allFilled) {
       break;
 
     case currentForm.classList.contains("form-one"):
+      allRequiredFilled(requiredFields);
       validateContactForm(currentForm);
+      break;
+
+    case currentForm.classList.contains("form-two"):
+      allRequiredFilled(requiredFields);
       break;
 
     case currentForm.classList.contains("form-three"):
@@ -185,20 +190,23 @@ function handleNextStep(currentForm, requiredFields, allFilled) {
 }
 
 function allRequiredFilled(requiredFields) {
+  let validationErrors = [];
   for (const input of requiredFields) {
     if (input.value.trim() === "") {
       input.style.border = "2px solid red";
-      throw new Error(`Field "${input.name || input.id}" is required.`);
+      validationErrors.push(`Field "${input.name || input.id}" is required.`);
     } else {
       input.style.border = "";
     }
+  }
+  if (validationErrors.length > 0) {
+    throw new Error(validationErrors.join("\n"));
   }
 }
 
 function validateContactForm(currentForm) {
   const emailInput = currentForm.querySelector("#email");
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   if (!emailPattern.test(emailInput.value)) {
     emailInput.style.border = "2px solid red";
     throw new Error(`Field "${emailInput.name || emailInput.id}" is invalid.`);
@@ -230,18 +238,16 @@ function validateServicesForm() {
 
 function handleSpecificationsForm(requiredFields) {
   const accordionsToOpen = new Set();
-  let validationErrors = [];
 
-  registerEmptyAccordions(requiredFields, accordionsToOpen, validationErrors);
+  registerEmptyAccordions(requiredFields, accordionsToOpen);
 
   // Check if there are any validation errors.
-  if (validationErrors.length > 0) {
+ 
     // Open all the accordions for the empty fields.
-    openAccordions(accordionsToOpen);
 
-    // Throw a single error with all messages.
-    throw new Error(validationErrors.join("\n"));
-  }
+    openAccordions(accordionsToOpen);
+    allRequiredFilled(requiredFields);
+  
 
   // If validation passes, proceed with other updates.
   updateContactSection();
@@ -255,8 +261,6 @@ function registerEmptyAccordions(requiredFields, accordionsToOpen, validationErr
   for (const input of requiredFields) {
     if (input.value.trim() === "") {
       input.style.border = "2px solid red";
-      validationErrors.push(`Field "${input.name || input.id}" is required.`);
-
       let parentAccordion = input.closest(".specifications-accordions");
       if (parentAccordion) {
         let accordionButton = parentAccordion.querySelector(".accordion");
