@@ -661,10 +661,10 @@ function updateWorksiteServices() {
     <p>Please select the services you require for each worksite.</p>
   `;
   
-  CreateServicesPerWorksite(servicesForm);
+  createServicesPerWorksite(servicesForm);
 }
 
-function CreateServicesPerWorksite(servicesForm) {
+function createServicesPerWorksite(servicesForm) {
   for (const site of project.worksites) {
     // Create a new worksite container
     const worksiteServices = document.createElement("div");
@@ -749,16 +749,47 @@ function updateWorksiteSpecifications() {
   const specificationsForm = document.querySelector(".form-four");
 
   // Clear the existing specs
+  clearSpecificationsForm(specificationsForm);
+
+  createSpecsificationsPerWorksite(specificationsForm);
+
+  wrapAccordions();
+}
+
+function clearSpecificationsForm(specificationsForm) {
   specificationsForm.innerHTML = `
     <h2>Specifications</h2>
     <p>Enter details for the services you selected.</p>
   `;
+}
 
+function createSpecsificationsPerWorksite(specificationsForm) {
   for (const site of project.worksites) {
     const worksiteSpecs = document.createElement("div");
     worksiteSpecs.classList.add("specifications-accordions");
 
-    let specsHTML = `
+    // Start building the HTML and open the accordion
+    let specsHTML = startAccordionHTML(site);
+
+    // Validate and append specific fields
+    specsHTML = validateSpecificationsPerSite(site, specsHTML);
+
+    // Always show these general fields and accordion closing tag
+    specsHTML += generalFields(site);
+
+    // Fill worksite specifications HTML
+    worksiteSpecs.innerHTML = specsHTML;
+
+    // Bind number inputs to project object
+    bindListenersToInputs(worksiteSpecs, site);
+
+    // add the worksite specifications to the form
+    specificationsForm.appendChild(worksiteSpecs);
+  }
+}
+
+function startAccordionHTML(site) {
+  return `
       <button class="accordion">Specs for Worksite: ${site.name}</button>
       <div class="panel">
         <label for="siteArea_${site.name}"
@@ -773,10 +804,46 @@ function updateWorksiteSpecifications() {
           placeholder="e.g. 500"
         />
     `;
+}
 
-    // Show Excavation fields if excavation is selected
+function validateSpecificationsPerSite(site, specsHTML) {
+  // Show Excavation fields if excavation is selected
     if (site.services.excavation) {
-      specsHTML += `
+      specsHTML += excavationFields(site);
+    }
+
+    // Show Piling fields if piling is selected
+    if (site.services.pilingPerPile) {
+      specsHTML += pilingFields(site);
+    }
+
+    // Show Slab fields if concreteSlabs are selected
+    if (site.services.concreteSlabs) {
+      specsHTML += concreteSlabsFields(site);
+    }
+    // Show Rock Blasting fields if rockBlasting is selected
+    if (site.services.rockBlasting) {
+      specsHTML += rockBlastingFields(site);
+    }
+    // Show Drainage fields if drainage is selected
+    if (site.services.drainage) {
+      specsHTML += drainageFields(site);
+    }
+
+    // Show frostInsulation Insulation fields if frostInsulation is selected
+    if (site.services.frostInsulation) {
+      specsHTML += frostInsulationFields(site);
+    }
+
+    // Show shoring fields if shoring is selected
+    if (site.services.shoring) {
+      specsHTML += shoringFields(site);
+    }
+    return specsHTML;
+}
+
+function excavationFields(site) {
+  return`
       <label for="excavationDepth_${site.name}"
         >Excavation Depth (m) <sup>*</sup></label
       >
@@ -790,11 +857,10 @@ function updateWorksiteSpecifications() {
         required
       />
       `;
-    }
+}
 
-    // Show Piling fields if piling is selected
-    if (site.services.pilingPerPile) {
-      specsHTML += `
+function pilingFields(site) {
+  return `
         <label for="numPiles_${site.name}"
           >Number of Piles <sup>*</sup></label
         >
@@ -819,11 +885,10 @@ function updateWorksiteSpecifications() {
           placeholder="e.g. 200"
         />
       `;
-    }
+}
 
-    // Show Slab fields if concreteSlabs are selected
-    if (site.services.concreteSlabs) {
-      specsHTML += `
+function concreteSlabsFields(site) {
+  return `
         <label for="slabArea_${site.name}"
           >Slab Area (m²) <sup>*</sup></label
         >
@@ -849,10 +914,10 @@ function updateWorksiteSpecifications() {
           placeholder="e.g. 15"
         />
       `;
-    }
-    // Show Rock Blasting fields if rockBlasting is selected
-    if (site.services.rockBlasting) {
-      specsHTML += `
+}
+
+function rockBlastingFields(site) {
+  return`
         <label for="rockVolume_${site.name}"
           >Rock Volume (m³) <sup>*</sup></label
         >
@@ -865,10 +930,10 @@ function updateWorksiteSpecifications() {
           placeholder="e.g. 100"
         />
       `;
-    }
-    // Show Drainage fields if drainage is selected
-    if (site.services.drainage) {
-      specsHTML += `
+}
+
+function drainageFields(site) {
+  return `
         <label for="drainageLength_${site.name}"
           >Drainage Length (m) <sup>*</sup></label
         >
@@ -881,11 +946,10 @@ function updateWorksiteSpecifications() {
           placeholder="e.g. 150"
         />
       `;
-    }
+}
 
-    // Show frostInsulation Insulation fields if frostInsulation is selected
-    if (site.services.frostInsulation) {
-      specsHTML += `
+function frostInsulationFields(site) {
+  return`
         <label for="frostArea_${site.name}"
           >Frost Insulation Area (m²) <sup>*</sup></label
         >
@@ -898,11 +962,10 @@ function updateWorksiteSpecifications() {
           placeholder="e.g. 500"
         />
       `;
-    }
+}
 
-    // Show shoring fields if shoring is selected
-    if (site.services.shoring) {
-      specsHTML += `
+function shoringFields(site) {
+  return `
         <label for="shoringLength_${site.name}"
           >Shoring Length (m) <sup>*</sup></label
         >
@@ -915,10 +978,10 @@ function updateWorksiteSpecifications() {
           placeholder="e.g. 100"
         />
       `;
-    }
+}
 
-    // Always show these general fields
-    specsHTML += `
+function generalFields(site) {
+  return `
         <label for="soilVolume_${site.name}">Soil Volume (m³)</label>
         <input
           type="number"
@@ -948,11 +1011,10 @@ function updateWorksiteSpecifications() {
         ></textarea>
       </div>
     `;
+}
 
-    worksiteSpecs.innerHTML = specsHTML;
-
-    // Bind number inputs to project object
-    worksiteSpecs
+function bindListenersToInputs(worksiteSpecs, site) {
+  worksiteSpecs
       .querySelectorAll('input[type="number"], textarea')
       .forEach((input) => {
         input.addEventListener("input", (e) => {
@@ -960,12 +1022,7 @@ function updateWorksiteSpecifications() {
           site.specs[key] = e.target.value;
         });
       });
-
-    specificationsForm.appendChild(worksiteSpecs);
-  }
-
-  wrapAccordions();
-}
+    }
 
 /**
  * Updates the contact details section on the summary page.
