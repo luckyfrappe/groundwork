@@ -199,12 +199,18 @@ function allRequiredFilled(requiredFields) {
     if (input.value.trim() === "") {
       input.style.border = "2px solid red";
       restoreOption(input);
-      validationErrors.push(`Field "${input.name || input.id}" is required.`);
+      validationErrors.push(`Field "${getLabelText(input)}" is required.`);
     }
   }
   if (validationErrors.length > 0) {
     throw new Error(validationErrors.join("\n"));
   }
+}
+
+// Initial brainstorming idea with ChatGPT, fully rewritten and implemented by the author
+function getLabelText(input) {
+  const label = document.querySelector(`label[for="${input.id}"]`);
+  return label ? label.innerText.replace("*", "").trim() : input.id;
 }
 
 // Restores grey border once user starts typing.
