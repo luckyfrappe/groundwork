@@ -178,6 +178,7 @@ function handleNextStep(currentForm, requiredFields, allFilled) {
 
     case currentForm.classList.contains("form-two"):
       allRequiredFilled(requiredFields);
+      updateWorksiteServices();
       break;
 
     case currentForm.classList.contains("form-three"):
@@ -415,20 +416,30 @@ function howManyWorksitesChange() {
   }
 }
 
-/**
- * Dynamically adds a new worksite field and its corresponding
- * data object to the project.
- */
 function addWorksite() {
   const worksiteFields = document.querySelector(".worksite-fields");
 
-  // Create a new worksite container
+  // Create element for worksite
+  const newWorksite = createWorksiteElement();
+  worksiteFields.appendChild(newWorksite);
+
+  // Create worksite data object
+  const worksite = createWorksiteData();
+  project.worksites.push(worksite);
+
+  // Setup listeners for input and delete button
+  setupWorksiteListeners(newWorksite, worksite);
+
+  checkTheFirstDeleteButton();
+}
+
+// Creates the DOM element for a new worksite
+// Initial brainstorming idea for the delete button with ChatGPT
+// Fully rewritten and implemented by the author
+function createWorksiteElement() {
   const newWorksite = document.createElement("div");
   newWorksite.classList.add("worksite-field");
 
-  // Add inner HTML + delete button in the same div
-  // This button allows users to add more worksite fields dynamically
-  // Added delete button with help from ChatGPT
   newWorksite.innerHTML = `
     <label for="worksiteName">Worksite Name / Identifier <sup>*</sup></label>
     <input
@@ -446,10 +457,13 @@ function addWorksite() {
     >Delete
     </button>`;
 
-  // Append to container
-  worksiteFields.appendChild(newWorksite);
+  return newWorksite;
+}
 
-  const worksite = {
+// Creates the initial worksite object
+// Inspired by project structure and fully customized by the author
+function createWorksiteData() {
+  return {
     name: "",
     services: {
       excavation: false,
@@ -476,13 +490,15 @@ function addWorksite() {
       notes: "",
     },
   };
+}
 
-  project.worksites.push(worksite);
-
+// Sets up event listeners for the new worksite
+// Input change and delete button logic
+function setupWorksiteListeners(newWorksite, worksite) {
+  // Input listener: updates worksite.name dynamically
   const input = newWorksite.querySelector('input[name="worksiteName"]');
   input.addEventListener("input", (e) => {
     worksite.name = e.target.value;
-    updateWorksiteServices();
   });
 
   // Delete button logic
@@ -490,17 +506,14 @@ function addWorksite() {
   deleteBtn.addEventListener("click", () => {
     // Remove from project array
     const index = project.worksites.indexOf(worksite);
-    if (index > -1) {
-      project.worksites.splice(index, 1);
-    }
+    if (index > -1) project.worksites.splice(index, 1);
+
     // Remove from UI
     newWorksite.remove();
     checkTheFirstDeleteButton();
-    updateWorksiteServices();
-    updateWorksiteSpecifications();
   });
-  checkTheFirstDeleteButton();
 }
+
 
 /**
  * Populates the contact information form fields and
