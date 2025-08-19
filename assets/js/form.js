@@ -169,11 +169,13 @@ function handleNextStep(currentForm, requiredFields, allFilled) {
   switch (true) {
     case currentForm.classList.contains("form-zero"):
       allRequiredFilled(requiredFields);
+      updateContactDetails();
       break;
 
     case currentForm.classList.contains("form-one"):
       allRequiredFilled(requiredFields);
       validateContactForm(currentForm);
+      updateProjectDetails();
       break;
 
     case currentForm.classList.contains("form-two"):
@@ -523,7 +525,19 @@ function updateContactDetails() {
   //Add contact info and project details:
   const contactForm = document.querySelector(".form-one");
   // Clear the existing contact form
-  contactForm.innerHTML = `
+  contactForm.innerHTML =  createContactFormHTML();
+
+  // Bind input fields to project object
+  contactForm.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("input", (e) => {
+      const key = e.target.name;
+      project.contact[key] = e.target.value;
+    });
+  });
+}
+
+function createContactFormHTML() {
+  return`
     <h2>Contact Information</h2>
     <p>Please provide your details so we can send your estimate.</p>
     <div>
@@ -565,14 +579,6 @@ function updateContactDetails() {
       />
     </div>
   `;
-
-  // Bind number inputs to project object
-  contactForm.querySelectorAll("input").forEach((input) => {
-    input.addEventListener("input", (e) => {
-      const key = e.target.name;
-      project.contact[key] = e.target.value;
-    });
-  });
 }
 
 /**
@@ -1276,5 +1282,3 @@ form.addEventListener("submit", function (event) {
 // Initialize the form state when the page loads
 updatedProgressBar();
 addWorksite();
-updateContactDetails();
-updateProjectDetails();
