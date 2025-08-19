@@ -9,14 +9,14 @@
 }
 
 html {
+  /* Ensures consistent box-sizing */
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  /* Ensures consistent box-sizing */
-  scroll-behavior: smooth;
   /* Smooth scrolling for anchor links, firstly borrowed from MiladiCode https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s */
+  scroll-behavior: smooth;
 }
 
-/* THEME & TYPOGRAPHY, clamp were advised by ChatGPT */
+/* THEME & TYPOGRAPHY */
 :root {
   --color-white: #ffffff;
   /* pure white */
@@ -32,6 +32,7 @@ html {
   /* darkened neon yellow */
   --color-navy-blue: #2f4858;
   /* deep navy blue */
+  /* Initial brainstorming idea with ChatGPT, fully rewritten and implemented by me */
   --space-page-x: clamp(16px, 6vw, 24px);
   /* modern side paddings */
   --space-section-y: clamp(80px, 8vw, 96px);
@@ -53,9 +54,7 @@ body {
   color: var(--color-navy-blue);
   /* Webkit and OS X font smoothing advised by Gemini by Google */
   -webkit-font-smoothing: antialiased;
-  /* Smooth text rendering */
   -moz-osx-font-smoothing: grayscale;
-  /* Smooth text rendering */
   font-family: "Roboto", system-ui, -apple-system, sans-serif;
 }
 
@@ -150,7 +149,8 @@ a {
   transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
   -o-transition: opacity 0.3s ease, transform 0.3s ease;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  transition: opacity 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease,
+    -webkit-transform 0.3s ease;
 }
 
 .show {
@@ -186,8 +186,11 @@ a {
   }
 }
 
-@media(prefers-reduced-motion) {
-  form>div:not(.btn-group) {
+/* Code adapted from: Beyond Fireship
+ https://www.youtube.com/watch?v=T33NN_pPeNI
+ Modified and integrated into project by me */
+@media (prefers-reduced-motion) {
+  form > div:not(.btn-group) {
     -webkit-animation: none;
     animation: none;
   }
@@ -399,10 +402,11 @@ nav li:last-child {
   width: 100vw;
 }
 
-/* Hero video properties was originally taken from https://www.youtube.com/watch?v=ukMPKm3cLns */
+/* Hero video properties was originally taken from https://www.youtube.com/watch?v=ukMPKm3cLns
+  Modified and integrated into project by me */
 .hero-video {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100vw;
   height: 75vh;
   overflow: hidden;
@@ -435,7 +439,7 @@ nav li:last-child {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.hero-info>p {
+.hero-info > p {
   color: var(--color-primary);
   font-size: 25px;
   max-width: 500px;
@@ -472,12 +476,20 @@ nav li:last-child {
   border: 2px solid var(--color-primary);
 }
 
-/* Reusable Cards were rewritten by a layout example from CodeSandbox */
+/* Reusable Cards were rewritten by a layout example from CodeSandbox
+   Modified and integrated into project by me */
 .cards {
   grid-column: 1 / -1;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr);
+  -ms-grid-columns: minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr)
+    var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap)
+    minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr)
+    var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap)
+    minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr)
+    var(--space-grid-gap) minmax(auto, 1fr) var(--space-grid-gap)
+    minmax(auto, 1fr) var(--space-grid-gap) minmax(auto, 1fr)
+    var(--space-grid-gap) minmax(auto, 1fr);
   grid-template-columns: repeat(12, minmax(auto, 1fr));
   gap: var(--space-grid-gap);
 }
@@ -637,8 +649,8 @@ nav li:last-child {
   background-color: var(--color-primary-dark);
 }
 
-/* Project estimate, the form layout builded using video guide from dotWebdesign */
-
+/* Project estimate, the form layout builded using video guide from dotWebdesign 
+  later modified and improved to fit project needs */
 .form-box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -661,11 +673,13 @@ fieldset {
   margin: 0;
   padding: 0;
 }
+
 legend {
   display: none;
 }
 
-/* Wrapper for the progress bar borrowed from WeiChiaChang */
+/* Code for progress bar adapted from: https://example.com
+Modified and integrated into project by me WeiChiaChang */
 .wrapper-progress-bar {
   width: 100%;
 }
@@ -675,8 +689,8 @@ legend {
   background-color: var(--color-darker-grey);
   padding: 3px;
   border-radius: 6px;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .progress-bar-fill {
@@ -748,15 +762,15 @@ legend {
   padding: 1em 0;
 }
 
-form>div {
+form > div {
   max-width: 900px;
 }
 
-form>div p {
+form > div p {
   color: var(--color-grey);
 }
 
-form>div>div>input {
+form > div > div > input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -767,7 +781,8 @@ form>div>div>input {
   margin-bottom: 2em;
 }
 
-/* Radio button cards designed with help from ChatGPT */
+/* Consulted ChatGPT (OpenAI) for assistance with initial styling av radio buttons. 
+Styled and adapted by me. */
 .card-radio-group {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -816,11 +831,12 @@ form>div>div>input {
   transition: color 0.3s ease;
 }
 
-.card-radio-group input[type="radio"]:checked+i {
+.card-radio-group input[type="radio"]:checked + i {
   color: var(--color-primary-dark);
 }
 
-/* Checkbox styles, designed with help from ChatGPT */
+/* Initial version generated with ChatGPT (OpenAI). 
+Rewritten and customised by me for this project. */
 .services-form-cards {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -868,7 +884,7 @@ form>div>div>input {
   display: none;
 }
 
-.services-form-cards input[type="checkbox"]:checked+i {
+.services-form-cards input[type="checkbox"]:checked + i {
   color: var(--color-primary);
 }
 
@@ -879,7 +895,7 @@ form>div>div>input {
   transition: color 0.2s;
 }
 
-.services-form-cards input[type="checkbox"]:checked+i {
+.services-form-cards input[type="checkbox"]:checked + i {
   color: var(--color-primary-dark);
 }
 
@@ -914,7 +930,7 @@ form>div>div>input {
 }
 
 .accordion:after {
-  content: '\02795';
+  content: "\02795";
   /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   color: var(--color-navy-blue);
@@ -927,13 +943,13 @@ form>div>div>input {
   /* Unicode character for "minus" sign (-) */
 }
 
-form>div:not(.btn-group) {
+form > div:not(.btn-group) {
   display: none;
   -webkit-animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fadeIn 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
-form>div.active {
+form > div.active {
   display: block;
 }
 
@@ -1077,7 +1093,7 @@ footer {
   }
 
   .progress ul.progress-steps li:not(:last-child)::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 28px;
     top: 51px;
@@ -1114,8 +1130,8 @@ footer {
 
   .hero-info .btn {
     text-align: center;
-    display: block; 
-    width: 100%;   
+    display: block;
+    width: 100%;
     margin-bottom: 10px;
   }
 
@@ -1139,7 +1155,8 @@ footer {
   }
 
   .services-cards {
-    -ms-grid-columns: 10px 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 10px;
+    -ms-grid-columns: 10px 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr
+      10px 10px;
     grid-template-columns: 10px repeat(6, 1fr) 10px;
     grid-gap: 10px;
   }

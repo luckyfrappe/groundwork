@@ -3,6 +3,7 @@
 // =========================================================
 
 // Animations code from Beyond Fireship
+// Modified and integrated into project by me
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -20,6 +21,8 @@ hiddenElements.forEach((el) => observer.observe(el));
 //  Utility Functions
 // =========================================================
 
+// Navbar functions made by Coding2GO
+// Modified and integrated into project by me
 /**
  * Toggles the sidebar visibility to "flex".
  */

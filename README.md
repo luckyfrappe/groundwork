@@ -263,7 +263,13 @@ This approach ensures a fully standardized, accurate, and scalable quoting workf
 - **TinyPNG** – Image optimization.
 - **Polypane** – Responsive device previews.
 - **Autoprefixer** – Vendor prefixes for CSS.
-- **ChatGPT (OpenAI) & Gemini (Google)** – Used for generating specific service descriptions, debugging assistance, improving functions and code explanations during development.
+- **ChatGPT (OpenAI) & Gemini (Google)** – ChatGPT (OpenAI) & Gemini (Google) – Used for generating service descriptions, debugging support, exploring different approaches, and clarifying code concepts during development.
+
+During the project, these AI tools were used as supportive resources for:
+Brainstorming approaches to form validation and error handling.
+Debugging JavaScript event listeners.
+Exploring different approaches for small code snippets (e.g., form validation logic), later fully implemented and adapted by the author.
+
 - **ColorSpace** – Palette generation.
 - **JSLint** – JavaScript validation.
 - **Custom JS Lint API** – <https://luckyfrappe.github.io/jsapi/>
@@ -333,9 +339,9 @@ See **[TESTING.md](TESTING.md)** for test cases, known issues, and resolved bugs
 - **Font Awesome** – <https://fontawesome.com/>
 - **Responsive Card Layout (CodeSandbox)** – <https://codesandbox.io/p/sandbox/responsive-card-layout-with-css-grid-rpfdn>
 - **Responsive Navbar Concept (YouTube)** – <https://www.youtube.com/watch?v=U8smiWQ8Seg>
-- **Scroll Behavior – MiladiCode (YouTube)** – <https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s>
-- **Responsive Multi-Step Form – dotWebdesign (YouTube)** – <https://www.youtube.com/watch?v=M0O-vquFHto&t=2373s>
-- **Progress Bar Wrapper – WeiChiaChang (Gist)** – <https://gist.github.com/WeiChiaChang/abe92ca2e8da86ef69560b63903e8764>
+- **Scroll Behavior – MiladiCode (YouTube) and initial HTML/CSS structure, fully rewritten and customised by me** – <https://www.youtube.com/watch?v=ukMPKm3cLns&t=2386s>
+- **Responsive Multi-Step Form – dotWebdesign (YouTube), partially rewritten and customised by me** – <https://www.youtube.com/watch?v=M0O-vquFHto&t=2373s>
+- **Progress Bar Wrapper – WeiChiaChang (Gist), modified and integrated into project by me, then improved by Copilot** – <https://gist.github.com/WeiChiaChang/abe92ca2e8da86ef69560b63903e8764>
 - **Accordion – W3Schools** – <https://www.w3schools.com/howto/howto_js_accordion.asp>
 - **IntersectionObserver Guide (YouTube)** – <https://www.youtube.com/watch?v=T33NN_pPeNI>
 - **Email Regex (Stack Overflow)** – <https://stackoverflow.com/questions/50330109/simple-regex-pattern-for-email>
