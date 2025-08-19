@@ -104,6 +104,8 @@ nextButton.addEventListener("click", (event) => {
   let nextSiblingForm = currentForm.nextElementSibling;
   let nextStep = currentStep.nextElementSibling;
 
+  // Validate the current form before proceeding
+  // Initial brainstorming idea with ChatGPT, fully rewritten and implemented by the author
   try {
     validation(currentForm, nextSiblingForm, nextStep, currentStep);
   } catch (error) {
@@ -127,6 +129,8 @@ function validation(currentForm, nextSiblingForm, nextStep, currentStep) {
     nextSiblingForm.classList.add("active");
     nextStep.classList.add("active");
     active += 1;
+    // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo#Example
+    window.scrollTo({ top: 0, behavior: "smooth" });
     updatedProgressBar();
   }
 }
@@ -194,14 +198,20 @@ function allRequiredFilled(requiredFields) {
   for (const input of requiredFields) {
     if (input.value.trim() === "") {
       input.style.border = "2px solid red";
+      restoreOption(input);
       validationErrors.push(`Field "${input.name || input.id}" is required.`);
-    } else {
-      input.style.border = "";
     }
   }
   if (validationErrors.length > 0) {
     throw new Error(validationErrors.join("\n"));
   }
+}
+
+// Restores grey border once user starts typing.
+function restoreOption(input) {
+  input.addEventListener("input", () => {
+    input.style.border = "2px solid grey";
+  });
 }
 
 function validateContactForm(currentForm) {
@@ -210,13 +220,10 @@ function validateContactForm(currentForm) {
   if (!emailPattern.test(emailInput.value)) {
     emailInput.style.border = "2px solid red";
     throw new Error(`Field "${emailInput.name || emailInput.id}" is invalid.`);
-  } else {
-    emailInput.style.border = "";
   }
 }
 
 function validateServicesForm() {
-
   let errorMessages = [];
   for (const site of project.worksites) {
     const siteCard = document.querySelector(
@@ -233,7 +240,9 @@ function validateServicesForm() {
     }
 
     if (!atLeastOneChecked) {
-      errorMessages.push(`Please select at least one service for worksite "${site.name}". Rush is not a service on its own.`);
+      errorMessages.push(
+        `Please select at least one service for worksite "${site.name}". Rush is not a service on its own.`
+      );
     }
   }
 
@@ -248,12 +257,11 @@ function handleSpecificationsForm(requiredFields) {
   registerEmptyAccordions(requiredFields, accordionsToOpen);
 
   // Check if there are any validation errors.
- 
-    // Open all the accordions for the empty fields.
 
-    openAccordions(accordionsToOpen);
-    allRequiredFilled(requiredFields);
-  
+  // Open all the accordions for the empty fields.
+
+  openAccordions(accordionsToOpen);
+  allRequiredFilled(requiredFields);
 
   // If validation passes, proceed with other updates.
   updateContactSection();
@@ -263,7 +271,11 @@ function handleSpecificationsForm(requiredFields) {
   return true; // All fields are filled.
 }
 
-function registerEmptyAccordions(requiredFields, accordionsToOpen, validationErrors) {
+function registerEmptyAccordions(
+  requiredFields,
+  accordionsToOpen,
+  validationErrors
+) {
   for (const input of requiredFields) {
     if (input.value.trim() === "") {
       input.style.border = "2px solid red";
@@ -381,7 +393,7 @@ const costs = {
 function howManyWorksitesChange() {
   // Checks what siteCount is selected
   const selected = howManyWorksites.querySelector(
-    "input[name=\"siteCount\"]:checked"
+    'input[name="siteCount"]:checked'
   );
   // If multiple selected - add more worksite fields
   if (selected.value === "multiple") {
@@ -461,7 +473,7 @@ function addWorksite() {
 
   project.worksites.push(worksite);
 
-  const input = newWorksite.querySelector("input[name=\"worksiteName\"]");
+  const input = newWorksite.querySelector('input[name="worksiteName"]');
   input.addEventListener("input", (e) => {
     worksite.name = e.target.value;
     updateWorksiteServices();
@@ -536,14 +548,12 @@ function updateContactDetails() {
   `;
 
   // Bind number inputs to project object
-  contactForm
-    .querySelectorAll("input")
-    .forEach((input) => {
-      input.addEventListener("input", (e) => {
-        const key = e.target.name;
-        project.contact[key] = e.target.value;
-      });
+  contactForm.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("input", (e) => {
+      const key = e.target.name;
+      project.contact[key] = e.target.value;
     });
+  });
 }
 
 /**
@@ -601,7 +611,7 @@ function updateProjectDetails() {
 
   // Bind number inputs to project object
   projectDetailsForm
-    .querySelectorAll("select, input[type=\"text\"], input[type=\"file\"]")
+    .querySelectorAll('select, input[type="text"], input[type="file"]')
     .forEach((input) => {
       input.addEventListener("input", (e) => {
         const key = e.target.name;
@@ -674,7 +684,7 @@ function updateWorksiteServices() {
     // Add event listeners to link checkboxes with the current site's services
     // code from ChatGPT
     worksiteServices
-      .querySelectorAll("input[type=\"checkbox\"]")
+      .querySelectorAll('input[type="checkbox"]')
       .forEach((checkbox) => {
         checkbox.addEventListener("change", (e) => {
           site.services[e.target.value] = e.target.checked;
@@ -899,7 +909,7 @@ function updateWorksiteSpecifications() {
 
     // Bind number inputs to project object
     worksiteSpecs
-      .querySelectorAll("input[type=\"number\"], textarea")
+      .querySelectorAll('input[type="number"], textarea')
       .forEach((input) => {
         input.addEventListener("input", (e) => {
           const key = e.target.name;
@@ -1236,6 +1246,8 @@ form.addEventListener("submit", function (event) {
   prevButton.disabled = true;
   nextButton.disabled = true;
   submitButton.disabled = true;
+  // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo#Example
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 // =========================================================
