@@ -588,7 +588,21 @@ function createContactFormHTML() {
 function updateProjectDetails() {
   const projectDetailsForm = document.querySelector(".form-two");
   // Clear the existing contact form
-  projectDetailsForm.innerHTML = `
+  projectDetailsForm.innerHTML = createDetailsFormHTML();
+
+  // Bind number inputs to project object
+  projectDetailsForm
+    .querySelectorAll('select, input[type="text"], input[type="file"]')
+    .forEach((input) => {
+      input.addEventListener("input", (e) => {
+        const key = e.target.name;
+        project.details[key] = e.target.value;
+      });
+    });
+}
+
+function createDetailsFormHTML() {
+  return `
     <h2>Project Basics</h2>
     <p>Tell us about this project.</p>
     <div>
@@ -633,16 +647,6 @@ function updateProjectDetails() {
       />
     </div>
   `;
-
-  // Bind number inputs to project object
-  projectDetailsForm
-    .querySelectorAll('select, input[type="text"], input[type="file"]')
-    .forEach((input) => {
-      input.addEventListener("input", (e) => {
-        const key = e.target.name;
-        project.details[key] = e.target.value;
-      });
-    });
 }
 
 /**
@@ -656,13 +660,29 @@ function updateWorksiteServices() {
     <h2>Required Services</h2>
     <p>Please select the services you require for each worksite.</p>
   `;
+  
+  CreateServicesPerWorksite(servicesForm);
+}
+
+function CreateServicesPerWorksite(servicesForm) {
   for (const site of project.worksites) {
     // Create a new worksite container
     const worksiteServices = document.createElement("div");
     worksiteServices.classList.add("services-form-cards");
 
     // Add inner HTML + delete button in the same div
-    worksiteServices.innerHTML = `
+    worksiteServices.innerHTML = getServicesHTML(site);
+
+    //Add eventlisteners to checkboxes
+    checkboxEventListeners(worksiteServices, site);
+
+    // Append the whole services section to the form
+    servicesForm.appendChild(worksiteServices);
+  }
+}
+
+function getServicesHTML(site) {
+  return `
       <p>Services for Worksite: ${site.name}</p>
       <label>
         <input type="checkbox" name="services" value="excavation" />
@@ -705,9 +725,12 @@ function updateWorksiteServices() {
         Rush Delivery
       </label>
     `;
+}
 
-    // Add event listeners to link checkboxes with the current site's services
-    // code from ChatGPT
+function checkboxEventListeners(worksiteServices, site) {
+  // Add event listeners to link checkboxes with the current site's services
+    // Initial version generated with ChatGPT (OpenAI). 
+    // Implemented by me
     worksiteServices
       .querySelectorAll('input[type="checkbox"]')
       .forEach((checkbox) => {
@@ -715,10 +738,6 @@ function updateWorksiteServices() {
           site.services[e.target.value] = e.target.checked;
         });
       });
-
-    // Append the whole services section to the form
-    servicesForm.appendChild(worksiteServices);
-  }
 }
 
 /**
