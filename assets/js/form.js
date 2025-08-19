@@ -506,7 +506,7 @@ function setupWorksiteListeners(newWorksite, worksite) {
   deleteBtn.addEventListener("click", () => {
     // Remove from project array
     const index = project.worksites.indexOf(worksite);
-    if (index > -1) project.worksites.splice(index, 1);
+      project.worksites.splice(index, 1);
 
     // Remove from UI
     newWorksite.remove();
