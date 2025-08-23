@@ -40,11 +40,12 @@ Automated tools were used throughout the project to ensure code quality and acce
 | Start Project | 98    | 100       | 100        | 91 | Significally insreased after optimisation |
 | 404 Page.     | 100    | 100       | 96        | 82 |  |
 
-HTML & CSS Validation: The website's code was run through the official W3C validators to ensure it adheres to web standards. The HTML validator was used to check for proper syntax, correct nesting of elements, and semantic correctness. Similarly, the CSS validator was used to verify CSS syntax, property usage, and vendor prefix issues.
+HTML & CSS Validation: The website's code was run through the official W3C validators to ensure it adheres to web standards. The HTML validator was used to check for proper syntax, correct nesting of elements, and semantic correctness. Similarly, the CSS validator was used to verify CSS syntax, property usage, and vendor prefix issues. CSS warnings are due to 
 
 ![alt text](assets/images/testing/homepagehtml.png "Results over home page HTML checker with no errros")
 ![alt text](assets/images/testing/404page.png "Results over 404 page HTML checker with no errros")
 ![alt text](assets/images/testing/newprojecthtml.png "Results over new project page HTML checker with no errros")
+![alt text](assets/images/testing/css.png "Results over css checker with no errros")
 
 The JavaScript code was rigorously checked using JSLint and custom made JSHint to enforce coding standards and identify potential errors. Initially, over 160 warnings were flagged, primarily for minor formatting issues like single quotes and line length. These were systematically fixed. The number of warnings was reduced to just nine by standardizing quotes, shortening lines, and deleting trailing spaces. The final few warnings were addressed by refining function placement and resolving unnecessary semicolons. Remaining warnings are only due to use of ES6.
 
