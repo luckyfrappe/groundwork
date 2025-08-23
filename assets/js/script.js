@@ -1,5 +1,5 @@
 // =========================================================
-//  Global Variables & DOM Element Selection
+//  Utility Functions
 // =========================================================
 
 // Animations code from Beyond Fireship
@@ -14,10 +14,6 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll(".hidden");
 hiddenElements.forEach((el) => observer.observe(el));
-
-// =========================================================
-//  Utility Functions
-// =========================================================
 
 // Navbar functions made by Coding2GO
 // Modified and integrated into project by me
