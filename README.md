@@ -2,7 +2,7 @@
 
 This website provides an instant preliminary cost estimate for construction groundwork projects, specifically for **Groundwork Solutions Ltd.** The primary goal is to streamline the initial client interaction by offering a transparent and efficient way for potential customers to get an early understanding of project costs.
 
-![Mockup image of Groundwork Solutions Ltd. website on different devices](assets/images/responsive.png)
+![Mockup image of Groundwork Solutions Ltd. website on different devices](assets/images/testing/overview.png)
 
 🔗 **Live site:** <https://luckyfrappe.github.io/groundwork/>
 
@@ -104,11 +104,11 @@ This website provides a seamless and professional experience for obtaining groun
 
 **Responsive Navigation Bar:** The top navigation bar ensures intuitive site navigation. It features the Groundwork Solutions Ltd. branding and essential links. For an optimal user experience on mobile, the navigation condenses into a universally recognized burger menu.
 
-<!-- Image placeholder: Navigation bar screenshot -->
+![alt text](assets/images/testing/navbar.png "Navbar")
 
 **Footer:** A functional footer houses social media icon links (e.g., YouTube, Facebook, Twitter, LinkedIn, Instagram), and privacy policy information. Icons are chosen for their universal recognition and minimalist design.
 
-<!-- Image placeholder: Footer bar screenshot -->
+![alt text](assets/images/testing/footer.png "Footer")
 
 **Animations**  
 - On all pages, some elements appear with a smooth animation when you scroll to them.  
@@ -119,7 +119,7 @@ This website provides a seamless and professional experience for obtaining groun
 - Clicking on any link in the sidebar automatically closes it.  
 - This behavior is the same on every page.
 
-<!-- Image placeholder: Sidebar -->
+![alt text](assets/images/testing/sidebar.png "Sidebar")
 
 ### Page-Specific Features
 
@@ -131,13 +131,15 @@ This website provides a seamless and professional experience for obtaining groun
 - Services teaser with summaries.
 - Customer journey and contact section.
 
-<!-- Image placeholder: Hero section screenshot -->
+![alt text](assets/images/testing/overview.png "Overview image of landing page")
+![alt text](assets/images/testing/about.png "About section")
+![alt text](assets/images/testing/services.png "Services section")
+![alt text](assets/images/testing/articles.png "Articles section")
+![alt text](assets/images/testing/contact.png "Contact section")
 
 **Estimate Form (Multi-Step)**
 
 The form is designed as a guided, step-by-step process with validation, progress tracking, and dynamic fields.
-
-<!-- Image placeholder: Step-by-step form screenshot -->
 
 **Step 1 – Worksite Overview**  
 - Start by creating at least one worksite.  
@@ -145,21 +147,22 @@ The form is designed as a guided, step-by-step process with validation, progress
 - Each worksite will later hold its own set of required services and specifications.
 - Validates name(s) for worksites is intered before proceeding. 
 
-<!-- Image placeholder: Step 1 screenshot -->
+![alt text](assets/images/testing/project-estimate.png "Worksite Overview")
+![alt text](assets/images/testing/multiple-projects-1.png "Worksite Overview, multiple")
 
 **Step 2 – Contact Information**  
 - Collects name, company (optional), email, and phone number (optional).  
 - Validates email format before proceeding.
 - Validates name is not just a space. 
 
-<!-- Image placeholder: Step 2 screenshot -->
+![alt text](assets/images/testing/contactform.png "Contact Information")
 
 **Step 3 – Project Basics**  
 - Captures project type (dropdown), location, and internal reference (optional).  
 - Allows optional upload of a project plan or photo.
 - Validates input on required fields before proceeding.
 
-<!-- Image placeholder: Step 3 screenshot -->
+![alt text](assets/images/testing/basics.png "Project Basics")
 
 **Step 4 – Required Services**  
 - Each worksite has its own services checklist.  
@@ -174,7 +177,7 @@ The form is designed as a guided, step-by-step process with validation, progress
   - Rush Delivery (+20% surcharge applied later) - can not be selected as service on it's own. 
 - At least one service must be selected per worksite.
 
-<!-- Image placeholder: Step 4 screenshot -->
+![alt text](assets/images/testing/servicesform.png "Required Services")
 
 **Step 5 – Specifications**  
 - Expands into detailed input fields based on the services chosen.  
@@ -186,7 +189,7 @@ The form is designed as a guided, step-by-step process with validation, progress
   - Drainage, frost insulation, shoring, and rock blasting → lengths/areas/volumes as required  
 - Always includes optional soil volume, material breakdown, and notes.
 
-<!-- Image placeholder: Step 5 screenshot -->
+![alt text](assets/images/testing/specs.png "Required Services")
 
 **Step 6 – Summary & Submission**  
 - Displays collected **Contact Info** and **Project Details**  
@@ -195,7 +198,8 @@ The form is designed as a guided, step-by-step process with validation, progress
 - Updates totals dynamically before submission
 - Includes a mandatory consent checkbox.
 
-<!-- Image placeholder: Step 6 screenshot -->
+![alt text](assets/images/testing/summary.png "Summary")
+![alt text](assets/images/testing/submit.png "Submission")
 
 **Additional Features**  
 - **Progress Bar:** Updates as the user moves through the steps  
@@ -211,7 +215,7 @@ The form is designed as a guided, step-by-step process with validation, progress
 - The footer provides contact information, office hours, and social media links, keeping the user connected even on an error page.  
 - Overall, it keeps the site’s branding consistent and helps users find their way back without frustration.
 
-<!-- Image placeholder: 404 page screenshot -->
+![alt text](assets/images/testing/404pageoverview.png "404 page")
 
 ### Future Implementations
 
@@ -263,16 +267,16 @@ This approach ensures a fully standardized, accurate, and scalable quoting workf
 - **TinyPNG** – Image optimization.
 - **Polypane** – Responsive device previews.
 - **Autoprefixer** – Vendor prefixes for CSS.
-- **ChatGPT (OpenAI) & Gemini (Google)** – ChatGPT (OpenAI) & Gemini (Google) – Used for generating service descriptions, debugging support, exploring different approaches, and clarifying code concepts during development.
+- **ColorSpace** – Palette generation.
+- **[JSLint](https://jshint.com/)** – JavaScript validation.
+- **jshint** - https://jshint.com/
+- **Custom JS Lint API** – <https://luckyfrappe.github.io/jsapi/>
+- **ChatGPT (OpenAI) & Gemini (Google)** – ChatGPT (OpenAI) & Gemini (Google) – Used for generating service descriptions, debugging support, exploring different approaches, and clarifying code concepts during development. 
 
 During the project, these AI tools were used as supportive resources for:
 Brainstorming approaches to form validation and error handling.
 Debugging JavaScript event listeners.
 Exploring different approaches for small code snippets (e.g., form validation logic), later fully implemented and adapted by the author.
-
-- **ColorSpace** – Palette generation.
-- **[JSLint](https://jshint.com/)** – JavaScript validation.
-- **Custom JS Lint API** – <https://luckyfrappe.github.io/jsapi/>
 
 ---
 

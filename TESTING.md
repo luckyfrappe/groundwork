@@ -19,8 +19,8 @@ Testing for this project was a continuous and integral part of the development p
 
 | User Story | Test Case | Expected Outcome | Pass/Fail |
 |------------|-----------|-----------------|-----------|
-| As a first-time visitor, I want the site to be easy to access and navigate. | 1. Access the live site from a desktop, tablet, and mobile device.2. Test navigation links (e.g., in the header and footer) across all devices. | The site displays correctly and navigation is simple to use on all devices.The navigation links function as intended. | Pass |
-| As a potential client, I want to quickly get a cost estimate for my groundwork project. | 1. Navigate to the multi-step form and enter project details.2. Fill out all required fields and progress through each step.3. Verify the final summary page. | The form accepts and validates input correctly.The final summary page displays a comprehensive cost breakdown and a total estimated price range. | Pass | 
+| As a first-time visitor, I want the site to be easy to access and navigate. | 1. Access the live site from a desktop, tablet, and mobile device. 2. Test navigation links (e.g., in the header and footer) across all devices. | The site displays correctly and navigation is simple to use on all devices.The navigation links function as intended. | Pass ![alt text](assets/images/testing/overview.png "Home page") |
+| As a potential client, I want to quickly get a cost estimate for my groundwork project. | 1. Navigate to the multi-step form and enter project details. 2. Fill out all required fields and progress through each step.3. Verify the final summary page. | The form accepts and validates input correctly.The final summary page displays a comprehensive cost breakdown and a total estimated price range. | Pass | 
 | As a potential client, I want to understand what services are offered. | 1. Navigate to the Services section on the landing page.2. Read the titles and descriptions provided for each service. | The services section is clearly visible on the landing page.The titles and descriptions accurately explain the services offered by the company. | Pass |
 | As a decision-maker, I want to know Groundwork Solutions Ltd. is reliable. | 1. Access the "About Us" section on the landing page.2. Review the content detailing the company's approach and expertise. | The "About Us" section is easy to find.The content provides a clear and professional overview that inspires confidence in the company. | Pass |
 | As a lead, I want to easily reach out for a finalized quote. | 1. Complete the multi-step form and reach the summary page.2. Locate the final Call to Action (CTA) and the contact information section. | A clear CTA is present on the summary page to submit details.A visible contact section with essential information is easily accessible. | Pass |
@@ -54,9 +54,12 @@ The JavaScript code was rigorously checked using JSLint and custom made JSHint t
 
 Autoprefixer: This tool was used to automatically add vendor prefixes to the CSS properties, ensuring the website's styles render correctly across a wide range of browsers. This step was essential for maintaining a consistent look and feel, even for older browser versions.
 
-<!-- Screenshot of WAVE accessibility testing results -->
+WAVE Accessibility Tool: The website was evaluated using the WAVE tool to identify accessibility issues. A single, acknowledged warning for redundant links was noted. This warning is acceptable, as multiple CTAs intentionally point to the same URL in different sections to guide user flow. On the home page, there were two contrast errors, which I addressed by adding a subtle box shadow. The text is now easily readable but still triggers errors. 
 
-WAVE Accessibility Tool: The website was checked with the WAVE tool to identify accessibility issues. A single, acknowledged warning for redundant links was noted. This warning was deemed acceptable as the multiple CTAs intentionally point to the same URL in different sections to guide user flow.
+![alt text](assets/images/testing/wavehome.png "Results from WAVE")
+![alt text](assets/images/testing/newprojectwave.png "Results from WAVE")
+![alt text](assets/images/testing/404wave.png "Results from WAVE")
+
 
 ### Manual Testing
 
@@ -70,9 +73,9 @@ Feature Functionality: Every interactive element and feature was manually tested
 
 | Test Number | Test Description | Expected Result | Actual Result | Pass/Fail |
 |--------------|-----------------|----------------|---------------|-----------|
-| **Scroll Animations** 001 | Initial State: Elements with the `.hidden` class are not visible on page load. | Elements with the `.hidden` class are not displayed or are in their initial hidden state (e.g., opacity: 0). | The elements are correctly hidden from view on load. | pass |
+| **Scroll Animations** 001 | Initial State: Elements with the `.hidden` class are not visible on page load. | Elements with the `.hidden` class are not displayed. | The elements are correctly hidden from view on load. | pass |
 | 002 | Scroll Down: Elements with the `.hidden` class come into the viewport. | The `show` class is added, and the elements become visible with a smooth transition. | The elements animate into view as the user scrolls down. | pass |
-| 003 | Scroll Up: An element that has been shown scrolls out of the viewport. | The `show` class is removed, and the element returns to its hidden state. | The animation class is correctly removed when the element is not in view. | pass |
+| 003 | Scroll Up: An element that has been shown scrolls out of the viewport. | Animation is not applied once more and elements stay visible. | No additional animation | pass |
 | **Sidebar Navigation**004 | Show Sidebar: Click the hamburger menu icon. | The sidebar menu becomes visible by having its display property set to flex. | The sidebar slides into view as expected. | pass |
 | 005 | Hide Sidebar (via 'X'): Click the 'X' icon (close button) within the sidebar. | The sidebar menu disappears by having its display property set to none. | The sidebar correctly hides. | pass |
 | 006 | Hide Sidebar (via link): Click any navigation link within the sidebar. | The sidebar disappears, and the page navigates to the linked section. | The sidebar hides as the user navigates. | pass |
@@ -116,7 +119,7 @@ Feature Functionality: Every interactive element and feature was manually tested
 | 004 | Multiple worksites option: Selecting Multiple worksites makes the Add another worksite button visible and adds an initial worksite field. | The Add another worksite button is shown, and the first worksite input field appears. | Button and field appear as expected. | pass |
 | 005 | Add Worksite Functionality: Clicking the Add another worksite button adds a new worksite field. | A new worksite field appears below the previous one. | A new worksite field is added with each click. | pass |
 | 006 | Delete Worksite Functionality: The 'Delete' button on a worksite field correctly removes it. | The worksite field is removed from the form. The delete button on the last remaining worksite field is hidden. | The delete button correctly removes the field, and the button on the final field hides. | pass |
-| 007 | Navigation to Step 1: Clicking the Next Step button while on this step. | The form transitions to the "Contact Information" page. | The form successfully moves to the next page. | pass |
+| 007 | Navigation to Step 1: Clicking the Next Step button while on this step if all names are fileld in. | The form transitions to the "Contact Information" page. Otherwise an error message will appear. | The form successfully moves to the next page. | pass |
 | **Step 1: Contact Information**  008 | Required Field Validation: Clicking Next Step without filling in required fields. | An alert message appears, and the empty fields are highlighted with a red border. | An alert message appears and the fields are highlighted. | pass |
 | 009 | Email Validation: Entering an invalid email address and clicking Next Step. | An alert message appears, and the email field is highlighted with a red border. | An alert and highlight correctly appear for invalid emails. | pass |
 | 010 | Back Button: Clicking Back returns to the previous step. | The form transitions back to the "Worksite Overview" page. | The form successfully transitions back. | pass |
@@ -129,6 +132,9 @@ Feature Functionality: Every interactive element and feature was manually tested
 | **Step 5: Summary & Submission** 017 | Summary Content: The summary page displays all previously entered data, including contact details, project basics, and a cost breakdown for each worksite. | All data is correctly displayed in the summary sections. | The summary page accurately reflects all input data. | pass |
 | 018 | Total Calculation: The total estimated cost is calculated and displayed correctly, including any surcharges. | A total price range is shown at the bottom of the summary. | The total is calculated and displayed correctly. | pass |
 | 019 | Submit Button: The Submit button is enabled only on the final step. | The Submit button is enabled and works on the summary page. | The button is correctly enabled and disabled based on the step. | pass |
+| 020 **Extra** | Smart Error Window | All errors should be correctly gathered and displayed in the error window. | The error window accurately reflects all errors. | Pass      |
+| 021 | Input Fields Functionality | After typing in the input fields, the red border indicating an error should disappear. | The red border is removed as expected.          | Pass  
+| 022 | Page Functionality: Progressing to next step should scroll up page to the top. | Page scrolling up to the top. | Page scrolls up as expected. | pass |
 
 **Multi-Step Form Test:**
 
