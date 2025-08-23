@@ -271,7 +271,7 @@ Debugging JavaScript event listeners.
 Exploring different approaches for small code snippets (e.g., form validation logic), later fully implemented and adapted by the author.
 
 - **ColorSpace** – Palette generation.
-- **JSLint** – JavaScript validation.
+- **[JSLint](https://jshint.com/)** – JavaScript validation.
 - **Custom JS Lint API** – <https://luckyfrappe.github.io/jsapi/>
 
 ---

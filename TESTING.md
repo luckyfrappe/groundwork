@@ -1,6 +1,7 @@
 # Groundwork Solutions - Testing Documentation
 
-<!-- <img src="" alt="Mockup image of FASTLANE website on different devices"> -->
+![alt text](assets/images/testing/overview.png "Overview image of landing page")
+
 <a href="https://luckyfrappe.github.io/groundwork/" target="_blank" aria-labe="Groundwork website opens in a new window on Github Pages">View Groundwork Solutions on Github Pages</a>
 
 Testing for this project was a continuous and integral part of the development process. Given the dynamic nature of the project and the absence of a pre-defined plan or formal documentation, a test-as-you-go approach was adopted. This methodology, while initially challenging, proved essential for incrementally identifying and resolving issues, ultimately ensuring the website's reliability and polish. The focus was on achieving pixel-perfect responsiveness and flawless feature functionality across all stages of development.
@@ -35,17 +36,17 @@ Automated tools were used throughout the project to ensure code quality and acce
 
 | Page          | Performance | Accessibility | Best Practices | SEO | Notes               |
 |---------------|------------|---------------|----------------|-----|-------------------|
-| Homepage      | [Score]    | [Score]       | [Score]        | [Score] | [Add notes here] |
-| Start Project | [Score]    | [Score]       | [Score]        | [Score] | [Add notes here] |
-| 404 Page.     | [Score]    | [Score]       | [Score]        | [Score] | [Add notes here] |
+| Homepage      | 77    | 100       | 100        | 91 | Largest Contentful Paint element 5,570 ms hero vide, which was downsized many times, further downsizing is affecting video quality |
+| Start Project | 98    | 100       | 100        | 91 | [Add notes here] |
+| 404 Page.     | 100    | 100       | 96        | 82 | [Add notes here] |
 
 HTML & CSS Validation: The website's code was run through the official W3C validators to ensure it adheres to web standards. The HTML validator was used to check for proper syntax, correct nesting of elements, and semantic correctness. Similarly, the CSS validator was used to verify CSS syntax, property usage, and vendor prefix issues.
 
 <!-- Example of W3C HTML & CSS validator reports -->
 
-JSLint: The JavaScript code was rigorously checked using JSLint and JSHint to enforce coding standards and identify potential errors. Initially, over 160 warnings were flagged, primarily for minor formatting issues like single quotes and line length. These were systematically fixed. The number of warnings was reduced to just nine by standardizing quotes, shortening lines, and deleting trailing spaces. The final few warnings were addressed by refining function placement and resolving unnecessary semicolons.
+The JavaScript code was rigorously checked using JSLint and custom made JSHint to enforce coding standards and identify potential errors. Initially, over 160 warnings were flagged, primarily for minor formatting issues like single quotes and line length. These were systematically fixed. The number of warnings was reduced to just nine by standardizing quotes, shortening lines, and deleting trailing spaces. The final few warnings were addressed by refining function placement and resolving unnecessary semicolons. Remaining warnings are only due to use of ES6.
 
-<!-- Screenshot of JSLint/JSHint output -->
+![alt text](assets/images/testing/jshint.png "Results from https://jshint.com/")
 
 Autoprefixer: This tool was used to automatically add vendor prefixes to the CSS properties, ensuring the website's styles render correctly across a wide range of browsers. This step was essential for maintaining a consistent look and feel, even for older browser versions.
 
