@@ -1064,7 +1064,59 @@ function updateDetailsSection() {
  */
 function calculateTotal() {
   //Calculation functions (debugged with Gemini by Google):
-  const summarySites = document.querySelector("#summarySites");
+
+  //Prepare calculation section
+  let { summarySites, summaryHTML, totalAllMin, totalAllMax, grandMin, grandMax, id } = prepareCalculationSection();
+
+  // Calculate totals per worksite and update values
+  const results = calculateOverWorksiteTotals(summaryHTML, totalAllMin, totalAllMax, id);
+  summaryHTML = results.summaryHTML;
+  totalAllMin = results.totalAllMin;
+  totalAllMax = results.totalAllMax;
+  id = results.id;
+
+  // Add site setup and management costs
+  const siteSetupMin = totalAllMin * 0.1;
+  const siteSetupMax = totalAllMax * 0.2;
+
+  // Add to grand totals
+  grandMin = totalAllMin + siteSetupMin;
+  grandMax = totalAllMax + siteSetupMax;
+
+  // Add grand total after the loop
+  summaryHTML += `
+    <hr>
+    <br>
+    <h3>Total for All Worksites:</h3>
+    <p class="total-price-range">
+      €${totalAllMin.toFixed(2)} - €${totalAllMax.toFixed(2)}
+    </p>
+    <p class="summary-subtitle">
+      Site Setup & Management Costs (10% - 20% of total):
+    </p>
+    <p class="total-price-range">
+      €${siteSetupMin.toFixed(2)} - €${siteSetupMax.toFixed(2)}
+    </p>
+    <hr>
+    <br>
+    <p>
+      <strong>
+        Grand Total:
+      </strong>
+    </p>
+    <p class="total-price-range">
+      €${grandMin.toFixed(2)} - €${grandMax.toFixed(2)}
+    </p>
+  `;
+
+  // Update the summary section with the final HTML
+  summarySites.innerHTML = summaryHTML;
+  wrapAccordions();
+}
+
+function prepareCalculationSection() {
+  // Prepare the summary section for calculations
+  let summarySites = document.querySelector("#summarySites");
   let summaryHTML = "";
 
   let totalAllMin = 0;
@@ -1074,20 +1126,19 @@ function calculateTotal() {
   let grandMin = 0;
   let grandMax = 0;
   let id = 0;
+  return { summarySites, summaryHTML, totalAllMin, totalAllMax, grandMin, grandMax, id };
+}
+
+function calculateOverWorksiteTotals(summaryHTML, totalAllMin, totalAllMax, id) {
   for (const site of project.worksites) {
     let totalMin = 0;
     let totalMax = 0;
     let siteHTML = "";
 
-    const siteArea = parseFloat(site.specs.siteArea);
-    id++;
-    siteHTML += `
-      <h3>Worksite ${id}: ${site.name}</h3>
-      <p class="summary-subtitle">Estimated cost range based on your inputs:</p>
-      <button class="accordion">Summary prices</button>
-      <div class="panel">
-        <p>Site Area: <strong>${siteArea} m²</strong></p>
-        `;
+    const siteAreaResult = addSiteAreaToSiteHTML(site, siteHTML, id);
+    siteHTML = siteAreaResult.siteHTML;
+    const siteArea = siteAreaResult.siteArea;
+    id = siteAreaResult.id;
 
     // Excavation (per m³)
     if (site.services.excavation) {
@@ -1282,43 +1333,20 @@ function calculateTotal() {
 
     summaryHTML += siteHTML;
   }
-  // Add site setup and management costs
-  const siteSetupMin = totalAllMin * 0.1;
-  const siteSetupMax = totalAllMax * 0.2;
+  return { summaryHTML, totalAllMin, totalAllMax };
+}
 
-  // Add to grand totals
-  grandMin = totalAllMin + siteSetupMin;
-  grandMax = totalAllMax + siteSetupMax;
-
-  // Add grand total after the loop
-  summaryHTML += `
-    <hr>
-    <br>
-    <h3>Total for All Worksites:</h3>
-    <p class="total-price-range">
-      €${totalAllMin.toFixed(2)} - €${totalAllMax.toFixed(2)}
-    </p>
-    <p class="summary-subtitle">
-      Site Setup & Management Costs (10% - 20% of total):
-    </p>
-    <p class="total-price-range">
-      €${siteSetupMin.toFixed(2)} - €${siteSetupMax.toFixed(2)}
-    </p>
-    <hr>
-    <br>
-    <p>
-      <strong>
-        Grand Total:
-      </strong>
-    </p>
-    <p class="total-price-range">
-      €${grandMin.toFixed(2)} - €${grandMax.toFixed(2)}
-    </p>
-  `;
-
-  // Update the summary section with the final HTML
-  summarySites.innerHTML = summaryHTML;
-  wrapAccordions();
+function addSiteAreaToSiteHTML(site, siteHTML, id) {
+  const siteArea = parseFloat(site.specs.siteArea);
+    id += 1;
+    siteHTML += `
+      <h3>Worksite ${id}: ${site.name}</h3>
+      <p class="summary-subtitle">Estimated cost range based on your inputs:</p>
+      <button class="accordion">Summary prices</button>
+      <div class="panel">
+        <p>Site Area: <strong>${siteArea} m²</strong></p>
+        `;
+    return { siteArea, siteHTML, id };
 }
 
 // Form submission
