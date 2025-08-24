@@ -509,7 +509,9 @@ function setupWorksiteListeners(newWorksite, worksite) {
     // Remove from project array
     const index = project.worksites.indexOf(worksite);
     const servicesForm = document.querySelector(".form-three");
-    servicesForm.children[index].remove(); // Also remove services section
+    if (servicesForm.children[index]) {
+      servicesForm.children[index].remove(); // Also remove services section
+    }
     project.worksites.splice(index, 1);
 
     // Remove from UI
@@ -676,7 +678,7 @@ function createServicesPerWorksite(servicesForm) {
 
     //Add eventlisteners to checkboxes
     checkboxEventListeners(worksiteServices, site);
-    
+
     // Append the whole services section to the form
     servicesForm.appendChild(worksiteServices);
   }
@@ -751,7 +753,6 @@ function updateWorksiteSpecifications() {
 
   // Clear the existing specs
   clearSpecificationsForm(specificationsForm);
-
   createSpecsificationsPerWorksite(specificationsForm);
 
   wrapAccordions();

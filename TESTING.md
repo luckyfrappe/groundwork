@@ -2,25 +2,26 @@
 
 ![alt text](assets/images/testing/overview.png "Overview image of landing page")
 
-<a href="https://luckyfrappe.github.io/groundwork/" target="_blank" aria-labe="Groundwork website opens in a new window on Github Pages">View Groundwork Solutions on Github Pages</a>
+🔗 [**Live site**](https://luckyfrappe.github.io/groundwork/)
 
 Testing for this project was a continuous and integral part of the development process. Given the dynamic nature of the project and the absence of a pre-defined plan or formal documentation, a test-as-you-go approach was adopted. This methodology, while initially challenging, proved essential for incrementally identifying and resolving issues, ultimately ensuring the website's reliability and polish. The focus was on achieving pixel-perfect responsiveness and flawless feature functionality across all stages of development.
 
 ## Contents
-* [User Stories](#user-stories)
-* [Automated Testing](#automated-testing)  
-* [Manual Testing](#manual-testing)
-* [Full Testing](#full-testing)
-* [Bugs](#bugs)  
-    * [Known Bugs](#known-bugs)  
-    * [Solved Bugs](#solved-bugs)  
+
+- [User Stories](#user-stories)
+- [Automated Testing](#automated-testing)
+- [Manual Testing](#manual-testing)
+- [Full Testing](#full-testing)
+- [Bugs](#bugs)
+ - [Known Bugs](#known-bugs)
+ - [Solved Bugs](#solved-bugs)
 
 ### User Stories
 
 | User Story | Test Case | Expected Outcome | Pass/Fail |
-|------------|-----------|-----------------|-----------|
+| --- | --- | --- | --- |
 | As a first-time visitor, I want the site to be easy to access and navigate. | 1. Access the live site from a desktop, tablet, and mobile device. 2. Test navigation links (e.g., in the header and footer) across all devices. | The site displays correctly and navigation is simple to use on all devices.The navigation links function as intended. | Pass ![alt text](assets/images/testing/overview.png "Home page") |
-| As a potential client, I want to quickly get a cost estimate for my groundwork project. | 1. Navigate to the multi-step form and enter project details. 2. Fill out all required fields and progress through each step.3. Verify the final summary page. | The form accepts and validates input correctly.The final summary page displays a comprehensive cost breakdown and a total estimated price range. | Pass ![alt text](assets/images/testing/summary.png "Summary page") | 
+| As a potential client, I want to quickly get a cost estimate for my groundwork project. | 1. Navigate to the multi-step form and enter project details. 2. Fill out all required fields and progress through each step.3. Verify the final summary page. | The form accepts and validates input correctly.The final summary page displays a comprehensive cost breakdown and a total estimated price range. | Pass ![alt text](assets/images/testing/summary.png "Summary page") |
 | As a potential client, I want to understand what services are offered. | 1. Navigate to the Services section on the landing page.2. Read the titles and descriptions provided for each service. | The services section is clearly visible on the landing page.The titles and descriptions accurately explain the services offered by the company. | Pass ![alt text](assets/images/testing/services.png "Services section") |
 | As a decision-maker, I want to know Groundwork Solutions Ltd. is reliable. | 1. Access the "About Us" section on the landing page.2. Review the content detailing the company's approach and expertise. | The "About Us" section is easy to find.The content provides a clear and professional overview that inspires confidence in the company. | Pass ![alt text](assets/images/testing/about.png "About section") |
 | As a lead, I want to easily reach out for a finalized quote. | 1. Complete the multi-step form and reach the summary page.2. Locate the final Call to Action (CTA) and the contact information section. | A clear CTA is present on the summary page to submit details. A visible contact section with essential information is easily accessible. | Pass ![alt text](assets/images/testing/contactform.png "Contact section") |
@@ -32,15 +33,13 @@ Automated tools were used throughout the project to ensure code quality and acce
 
 **Google Lighthouse:**
 
-<!-- Example screenshot of Lighthouse report for each section -->
+| Page | Performance | Accessibility | Best Practices | SEO | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Homepage | 77 | 100 | 100 | 91 | Largest Contentful Paint element 5,570 ms hero video, which was downsized many times, further downsizing is affecting video quality |
+| Start Project | 98 | 100 | 100 | 91 | Significally insreased after optimisation |
+| 404 Page. | 100 | 100 | 96 | 82 | |
 
-| Page          | Performance | Accessibility | Best Practices | SEO | Notes               |
-|---------------|------------|---------------|----------------|-----|-------------------|
-| Homepage      | 77    | 100       | 100        | 91 | Largest Contentful Paint element 5,570 ms hero vide, which was downsized many times, further downsizing is affecting video quality |
-| Start Project | 98    | 100       | 100        | 91 | Significally insreased after optimisation |
-| 404 Page.     | 100    | 100       | 96        | 82 |  |
-
-HTML & CSS Validation: The website's code was run through the official W3C validators to ensure it adheres to web standards. The HTML validator was used to check for proper syntax, correct nesting of elements, and semantic correctness. Similarly, the CSS validator was used to verify CSS syntax, property usage, and vendor prefix issues. CSS warnings are due to 
+HTML & CSS Validation: The website's code was run through the official W3C validators to ensure it adheres to web standards. The HTML validator was used to check for proper syntax, correct nesting of elements, and semantic correctness. Similarly, the CSS validator was used to verify CSS syntax, property usage, and vendor prefix issues. CSS warnings are due to
 
 ![alt text](assets/images/testing/homepagehtml.png "Results over home page HTML checker with no errros")
 ![alt text](assets/images/testing/404page.png "Results over 404 page HTML checker with no errros")
@@ -54,12 +53,11 @@ The JavaScript code was rigorously checked using JSLint and custom made JSHint t
 
 Autoprefixer: This tool was used to automatically add vendor prefixes to the CSS properties, ensuring the website's styles render correctly across a wide range of browsers. This step was essential for maintaining a consistent look and feel, even for older browser versions.
 
-WAVE Accessibility Tool: The website was evaluated using the WAVE tool to identify accessibility issues. A single, acknowledged warning for redundant links was noted. This warning is acceptable, as multiple CTAs intentionally point to the same URL in different sections to guide user flow. On the home page, there were two contrast errors, which I addressed by adding a subtle box shadow. The text is now easily readable but still triggers errors. 
+WAVE Accessibility Tool: The website was evaluated using the WAVE tool to identify accessibility issues. A single, acknowledged warning for redundant links was noted. This warning is acceptable, as multiple CTAs intentionally point to the same URL in different sections to guide user flow. On the home page, there were two contrast errors, which I addressed by adding a subtle box shadow. The text is now easily readable but still triggers errors.
 
 ![alt text](assets/images/testing/wavehome.png "Results from WAVE")
 ![alt text](assets/images/testing/newprojectwave.png "Results from WAVE")
 ![alt text](assets/images/testing/404wave.png "Results from WAVE")
-
 
 ### Manual Testing
 
@@ -72,7 +70,7 @@ Feature Functionality: Every interactive element and feature was manually tested
 **Common to all pages:**
 
 | Test Number | Test Description | Expected Result | Actual Result | Pass/Fail |
-|--------------|-----------------|----------------|---------------|-----------|
+| --- | --- | --- | --- | --- |
 | **Scroll Animations** 001 | Initial State: Elements with the `.hidden` class are not visible on page load. | Elements with the `.hidden` class are not displayed. | The elements are correctly hidden from view on load. | pass |
 | 002 | Scroll Down: Elements with the `.hidden` class come into the viewport. | The `show` class is added, and the elements become visible with a smooth transition. | The elements animate into view as the user scrolls down. | pass |
 | 003 | Scroll Up: An element that has been shown scrolls out of the viewport. | Animation is not applied once more and elements stay visible. | No additional animation | pass |
@@ -83,7 +81,7 @@ Feature Functionality: Every interactive element and feature was manually tested
 **Main page:**
 
 | Test Number | Test Description | Expected Result | Actual Result | Pass/Fail |
-|--------------|-----------------|----------------|---------------|-----------|
+| --- | --- | --- | --- | --- |
 | **Header & Navigation** | Desktop: The header and navigation bar are correctly displayed at the top of the page. All navigation links (Start project, About, etc.) are visible. | The header is visible and all links are displayed. | The header is visible and all links are displayed. | pass |
 | 002 | Desktop: Clicking the navigation links takes the user to the correct section of the page. | Clicking each link scrolls the page to its corresponding section. | Each link correctly navigates to its section. | pass |
 | 003 | Desktop: The hamburger menu icon is hidden. | The hamburger menu icon is not visible on desktop. | The hamburger menu icon is correctly hidden. | pass |
@@ -99,7 +97,7 @@ Feature Functionality: Every interactive element and feature was manually tested
 | 013 | The card with the image and text is displayed correctly. | The card is displayed with the image on the left and text on the right on desktop, or stacked on mobile. | The card is responsive and displays correctly on all screen sizes. | pass |
 | **Services Section** 014 | The section heading and introductory paragraph are displayed correctly. | The heading and text are formatted and positioned as expected. | The heading and paragraph are displayed correctly. | pass |
 | 015 | The two service cards (Groundworks and Structural Support) are displayed. | The cards with images, titles, and descriptions are visible. | All cards are visible and correctly formatted. | pass |
- **Articles Section** 016 | The section heading and three article cards are displayed correctly. | The heading and three cards with images, titles, and text are visible. | All cards and the heading are correctly displayed. | pass |
+| **Articles Section** 016 | The section heading and three article cards are displayed correctly. | The heading and three cards with images, titles, and text are visible. | All cards and the heading are correctly displayed. | pass |
 | **Project Journey Section** 017 | The section heading and the main card (Your Next Project) are displayed correctly. | The heading and the card with an image and text are visible. | The heading and card are displayed as intended. | pass |
 | 018 | The 5-step process cards are displayed below the main card. | The five cards with numbers, titles, and icons are visible and correctly formatted. | The cards are visible and correctly formatted. | pass |
 | **Footer** 019 | The footer is visible at the bottom of the page. | The footer is displayed and contains the correct information. | The footer is visible and all information is correct. | pass |
@@ -112,41 +110,41 @@ Feature Functionality: Every interactive element and feature was manually tested
 **Start new project page:**
 
 | Test Number | Test Description | Expected Result | Actual Result | Pass/Fail |
-|--------------|-----------------|----------------|---------------|-----------|
-| **Header & Footer**  | Header & Navigation: The header and navigation links should work as expected, including the mobile sidebar. | The header displays correctly and all links redirect to the correct sections on index.html. | The header and links function as intended. | pass |
+| --- | --- | --- | --- | --- |
+| **Header & Footer** | Header & Navigation: The header and navigation links should work as expected, including the mobile sidebar. | The header displays correctly and all links redirect to the correct sections on index.html. | The header and links function as intended. | pass |
 | 002 | Footer: The footer is present at the bottom of the page with correct social links and contact info. | The footer is visible and all links are functional. | Footer is present and all links work correctly. | pass |
 | **Step 0: Worksite Overview** 003 | Initial State: The form loads on "Worksite Overview" with the Single worksite radio button checked. | The form-zero div is active, and the Single worksite radio is pre-selected. | The correct form step is active with the radio button pre-selected. | pass |
 | 004 | Multiple worksites option: Selecting Multiple worksites makes the Add another worksite button visible and adds an initial worksite field. | The Add another worksite button is shown, and the first worksite input field appears. | Button and field appear as expected. | pass |
 | 005 | Add Worksite Functionality: Clicking the Add another worksite button adds a new worksite field. | A new worksite field appears below the previous one. | A new worksite field is added with each click. | pass |
 | 006 | Delete Worksite Functionality: The 'Delete' button on a worksite field correctly removes it. | The worksite field is removed from the form. The delete button on the last remaining worksite field is hidden. | The delete button correctly removes the field, and the button on the final field hides. | pass |
 | 007 | Navigation to Step 1: Clicking the Next Step button while on this step if all names are fileld in. | The form transitions to the "Contact Information" page. Otherwise an error message will appear. | The form successfully moves to the next page. | pass |
-| **Step 1: Contact Information**  008 | Required Field Validation: Clicking Next Step without filling in required fields. | An alert message appears, and the empty fields are highlighted with a red border. | An alert message appears and the fields are highlighted. | pass |
+| **Step 1: Contact Information** 008 | Required Field Validation: Clicking Next Step without filling in required fields. | An alert message appears, and the empty fields are highlighted with a red border. | An alert message appears and the fields are highlighted. | pass |
 | 009 | Email Validation: Entering an invalid email address and clicking Next Step. | An alert message appears, and the email field is highlighted with a red border. | An alert and highlight correctly appear for invalid emails. | pass |
 | 010 | Back Button: Clicking Back returns to the previous step. | The form transitions back to the "Worksite Overview" page. | The form successfully transitions back. | pass |
 | **Step 2: Project Basics** 011 | Required Fields: All required fields must be filled before proceeding. | The form only moves forward if Project Type and Project Location are filled. | The form successfully validates required fields. | pass |
-| **Step 3: Services Selection**  012 | Dynamic Worksite Cards: A services card is displayed for each worksite defined in Step 0. | A unique services card appears for "Worksite 1", "Worksite 2", etc. | The cards are generated correctly for each worksite. | pass |
+| **Step 3: Services Selection** 012 | Dynamic Worksite Cards: A services card is displayed for each worksite defined in Step 0. | A unique services card appears for "Worksite 1", "Worksite 2", etc. | The cards are generated correctly for each worksite. | pass |
 | 013 | Service Selection: Selecting services and clicking Next Step. | The form moves to the next step if at least one service is selected for each worksite. | The form successfully validates and moves to the next step. | pass |
-| **Step 4: Specifications**  014 | Dynamic Accordion Panels: The accordion panels for each worksite should only contain input fields for services selected in the previous step. | For a worksite where "Excavation" was chosen, only the Excavation Depth field is present. | The dynamic fields are correctly generated for each worksite. | pass |
+| **Step 4: Specifications** 014 | Dynamic Accordion Panels: The accordion panels for each worksite should only contain input fields for services selected in the previous step. | For a worksite where "Excavation" was chosen, only the Excavation Depth field is present. | The dynamic fields are correctly generated for each worksite. | pass |
 | 015 | Accordion Functionality: Tapping on an accordion button should reveal its content. | The accordion panel slides down to show the input fields. | The accordion panels open and close as intended. | pass |
 | 016 | Required Field Validation: Empty required fields should trigger an alert and open the corresponding accordion panel. | An alert message appears, and the correct accordion opens to show the empty fields. | The validation works, highlighting fields and opening accordions. | pass |
 | **Step 5: Summary & Submission** 017 | Summary Content: The summary page displays all previously entered data, including contact details, project basics, and a cost breakdown for each worksite. | All data is correctly displayed in the summary sections. | The summary page accurately reflects all input data. | pass |
 | 018 | Total Calculation: The total estimated cost is calculated and displayed correctly, including any surcharges. | A total price range is shown at the bottom of the summary. | The total is calculated and displayed correctly. | pass |
 | 019 | Submit Button: The Submit button is enabled only on the final step. | The Submit button is enabled and works on the summary page. | The button is correctly enabled and disabled based on the step. | pass |
-| 020 **Extra** | Smart Error Window | All errors should be correctly gathered and displayed in the error window. | The error window accurately reflects all errors. | Pass      |
-| 021 | Input Fields Functionality | After typing in the input fields, the red border indicating an error should disappear. | The red border is removed as expected.          | Pass  
+| 020 **Extra** | Smart Error Window | All errors should be correctly gathered and displayed in the error window. | The error window accurately reflects all errors. | Pass |
+| 021 | Input Fields Functionality | After typing in the input fields, the red border indicating an error should disappear. | The red border is removed as expected. | Pass |
 | 022 | Page Functionality: Progressing to next step should scroll up page to the top. | Page scrolling up to the top. | Page scrolls up as expected. | pass |
 
 **Multi-Step Form Test:**
 
 | Test number | Test Description | Expected Result | Actual Result | Pass/Fail |
-|--------------|-----------------|----------------|---------------|-----------|
+| --- | --- | --- | --- | --- |
 | **Progress Bar & Navigation** 001 | Initial State: Progress bar starts at approximately 20% on page load. | The `progress-bar-fill` element has a width of approximately 20%. | The progress bar is almost empty. | pass |
 | 002 | Progress Bar Update: Clicking "Next Step" advances the progress bar. | The progress bar's width increases with each step. | The progress bar updates correctly. | pass |
 | 003 | Button States: "Back" button is disabled on the first step, and "Next" is disabled on the last step. | `prevButton` is disabled on step 0 and `nextButton` is disabled on step 5. | The buttons are correctly enabled/disabled. | pass |
 | **Step 0: Worksite Overview** 004 | Radio Button Change: Switching from "single" to "multiple" worksites. | The Add another worksite button appears, and a new worksite field is added. | The UI correctly updates based on the radio button selection. | pass |
 | 005 | Adding Worksites: Clicking Add another worksite adds a new input field. | A new input field with a corresponding 'Delete' button is added to the form. | A new worksite field is correctly added. | pass |
 | 006 | Deleting Worksites: Clicking the 'Delete' button on a worksite. | The worksite field is removed. If only one remains, its delete button is hidden. | Deleting worksite fields works as expected. | pass |
-| **Step 1: Contact Information**  007 | Form Binding: Inputting data into the contact form fields. | The `project.contact` object is updated in real-time with the input values. | The object is correctly updated. | pass |
+| **Step 1: Contact Information** 007 | Form Binding: Inputting data into the contact form fields. | The `project.contact` object is updated in real-time with the input values. | The object is correctly updated. | pass |
 | 008 | Email Validation: Entering an invalid email address. | An alert message appears, and the email input field is highlighted in red. | The email validation correctly flags invalid inputs. | pass |
 | **Step 2 & 3: Project Basics & Services** 009 | Form Binding: Filling out project details and selecting services. | The `project.details` and `project.worksites` objects are updated with the selected data. | The data binding works as expected. | pass |
 | 010 | Services Validation: Clicking Next Step without selecting a service for a worksite. | An alert message appears, preventing the user from advancing. | The validation correctly prevents advancement. | Pass |
@@ -176,7 +174,9 @@ Almost all bugs were identified and successfully resolved throughout the develop
 
 These are issues that have been identified but are out of scope for the current MVP.
 
--Cross-Site Scripting (XSS) Risk: The use of innerHTML to display user input, while convenient, presents a potential security risk. This needs to be refactored to use safer DOM manipulation methods.
+- Cross-Site Scripting (XSS) Risk: The use of innerHTML to display user input, while convenient, presents a potential security risk. This needs to be refactored to use safer DOM manipulation methods.
+- Changing the worksite name was not updating it on the services page.
+- Consider refactoring so that the entered values in the worksite specification remain intact when adjusting services in the previous step to make form more dynamic.
 
 ### Solved Bugs
 
@@ -200,3 +200,5 @@ These are issues that have been identified but are out of scope for the current 
 - The form wasn’t updating correctly when navigating back to the basics step and then moving forward, causing previously selected services (that should be unselected) to remain. Updated the form to be dynamic by linking the delete button to the servicesForm for proper cleanup and rebuilding of services.
 
 Back to [README.md](README.md)
+
+[Back to Top](#groundwork-solutions---testing-documentation)
