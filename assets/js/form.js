@@ -165,7 +165,7 @@ document.querySelector("#consent").addEventListener("change", (e) => {
   project.contact[e.target.value] = e.target.checked;
 });
 
-function handleNextStep(currentForm, requiredFields, allFilled) {
+function handleNextStep(currentForm, requiredFields) {
   switch (true) {
     case currentForm.classList.contains("form-zero"):
       allRequiredFilled(requiredFields);
@@ -508,6 +508,8 @@ function setupWorksiteListeners(newWorksite, worksite) {
   deleteBtn.addEventListener("click", () => {
     // Remove from project array
     const index = project.worksites.indexOf(worksite);
+    const servicesForm = document.querySelector(".form-three");
+    servicesForm.children[index].remove(); // Also remove services section
     project.worksites.splice(index, 1);
 
     // Remove from UI
@@ -654,13 +656,9 @@ function createDetailsFormHTML() {
  */
 function updateWorksiteServices() {
   const servicesForm = document.querySelector(".form-three");
-  // Clear the existing services
-  servicesForm.innerHTML = `
-    <h2>Required Services</h2>
-    <p>Please select the services you require for each worksite.</p>
-  `;
-
-  createServicesPerWorksite(servicesForm);
+  if (servicesForm.children.length !== project.worksites.length) {
+    createServicesPerWorksite(servicesForm);
+  }
 }
 
 function createServicesPerWorksite(servicesForm) {
@@ -674,7 +672,7 @@ function createServicesPerWorksite(servicesForm) {
 
     //Add eventlisteners to checkboxes
     checkboxEventListeners(worksiteServices, site);
-
+    
     // Append the whole services section to the form
     servicesForm.appendChild(worksiteServices);
   }
