@@ -526,7 +526,9 @@ function updateContactDetails() {
   //Add contact info and project details:
   const contactForm = document.querySelector(".form-one");
   // Clear the existing contact form
-  contactForm.innerHTML = createContactFormHTML();
+  if (!contactForm.children.length) {
+    contactForm.innerHTML = createContactFormHTML();
+  }
 
   // Bind input fields to project object
   contactForm.querySelectorAll("input").forEach((input) => {
@@ -589,7 +591,9 @@ function createContactFormHTML() {
 function updateProjectDetails() {
   const projectDetailsForm = document.querySelector(".form-two");
   // Clear the existing contact form
-  projectDetailsForm.innerHTML = createDetailsFormHTML();
+  if (!projectDetailsForm.children.length) {
+    projectDetailsForm.innerHTML = createDetailsFormHTML();
+  }
 
   // Bind number inputs to project object
   projectDetailsForm

@@ -65,7 +65,7 @@ WAVE Accessibility Tool: The website was evaluated using the WAVE tool to identi
 
 Extensive manual testing was performed on various browsers and devices to validate the user experience.
 
-Browser & Device Compatibility: The website was tested on multiple browsers (Chrome, Firefox, Safari) and devices (desktop, tablet, mobile) to ensure consistent layout, functionality, and responsiveness.
+Browser & Device Compatibility: The website was tested on multiple browsers (Chrome, Firefox, Safari, Opera and Edge) and devices (desktop, iPad, iPhone) to ensure consistent layout, functionality, and responsiveness.
 
 Feature Functionality: Every interactive element and feature was manually tested to confirm it works as expected. This included validating form field inputs, ensuring button clicks trigger the correct actions, and confirming dynamic content is generated and displayed properly.
 
@@ -197,5 +197,6 @@ These are issues that have been identified but are out of scope for the current 
 - Form Validation & Required Fields:
 - The Bug: Clicking an accordion button triggered a form validation error, causing the view to jump to a required but hidden input. The issue was due to an overly broad selector.
 - The Solution: The requiredFields selector was refined to specifically target only form input elements. Additionally, event.preventDefault() was added to the click listeners for both the accordion and navigation buttons, giving JavaScript full control over the form's behavior and preventing the browser's default validation.
+- The form wasn’t updating correctly when navigating back to the basics step and then moving forward, causing previously selected services (that should be unselected) to remain. Updated the form to be dynamic by linking the delete button to the servicesForm for proper cleanup and rebuilding of services.
 
 Back to [README.md](README.md)
